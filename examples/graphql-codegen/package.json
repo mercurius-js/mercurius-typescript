@@ -1,0 +1,14 @@
+{
+  "name": "graphql-codegen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "keywords": [
+    "graphql-codegen"
+  ],
+  "author": "PabloSz",
+  "license": "MIT"
+}

@@ -1,0 +1,40 @@
+{
+  "name": "mercurius-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "mercurius",
+    "graphql",
+    "typescript",
+    "gql"
+  ],
+  "homepage": "https://github.com/PabloSzx/mercurius-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/PabloSzx/mercurius-typescript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloSzx/mercurius-typescript.git"
+  },
+  "license": "MIT",
+  "author": "PabloSz",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "tap --100",
+    "prepare": "tsc"
+  },
+  "dependencies": {
+    "fastify": "^3.7.0",
+    "graphql": "^15.3.0",
+    "lodash": "^4.17.20",
+    "mercurius": "^6.4.0",
+    "tap": "^14.10.8"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.162",
+    "@types/node": "^14.14.2",
+    "@types/tap": "^14.10.1",
+    "mercurius-integration-testing": "^3.1.2",
+    "typescript": "^4.0.3"
+  }
+}
