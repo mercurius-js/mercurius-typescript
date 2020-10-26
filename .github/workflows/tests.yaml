@@ -17,4 +17,4 @@ jobs:
         with:
           version: latest
       - run: pnpm i
-      - run: pnpm test -r
+      - run: pnpm test

@@ -1,0 +1,18 @@
+{
+  "name": "mercurius-typescript",
+  "version": "1.0.0",
+  "description": "All the examples are available in the [examples folder](./examples/)",
+  "homepage": "https://github.com/PabloSzx/mercurius-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/PabloSzx/mercurius-typescript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloSzx/mercurius-typescript.git"
+  },
+  "license": "MIT",
+  "author": "PabloSz",
+  "scripts": {
+    "test": "pnpm test --recursive --no-bail --stream"
+  }
+}

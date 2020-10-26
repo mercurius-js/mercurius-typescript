@@ -8,19 +8,19 @@ import mercurius, {
 
 export const app = Fastify()
 
-const buildContext = (req: FastifyRequest, _reply: FastifyReply) => {
+const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
   return {
     authorization: req.headers.authorization,
   }
 }
 
+type PromiseType<T> = T extends PromiseLike<infer U> ? U : T
+
 declare module 'mercurius' {
-  interface MercuriusContext extends ReturnType<typeof buildContext> {}
+  interface MercuriusContext
+    extends PromiseType<ReturnType<typeof buildContext>> {}
 }
 
-/**
- * The order of the generics might be changed to Root, Args, Context
- */
 const helloTyped: IFieldResolver<
   {} /** Root */,
   MercuriusContext /** Context */,
@@ -56,9 +56,10 @@ const isContextAsDefined: IFieldResolver<{}, MercuriusContext, {}> = (
   )
 }
 
+const NOTIFICATION = 'notification'
+
 const resolvers: IResolvers = {
   Query: {
-    hello: () => 'world',
     helloTyped,
     helloInline: ((root) => {
       // {}
@@ -67,15 +68,38 @@ const resolvers: IResolvers = {
     }) as IFieldResolver<{}>,
     isContextAsDefined,
   },
+  Mutation: {
+    createNotification(_root, { message }: { message: string }, { pubsub }) {
+      pubsub.publish({
+        topic: NOTIFICATION,
+        payload: {
+          newNotification: message,
+        },
+      })
+      return true
+    },
+  },
+  Subscription: {
+    newNotification: {
+      subscribe: (_root, _args, { pubsub }) => {
+        return pubsub.subscribe(NOTIFICATION)
+      },
+    },
+  },
 }
 
 app.register(mercurius, {
   schema: `
     type Query {
-      hello: String!
       helloTyped: String!
       helloInline: String!
       isContextAsDefined: Boolean!
+    }
+    type Subscription {
+      newNotification: String!
+    }
+    type Mutation {
+      createNotification(message: String!): Boolean!
     }
     `,
   resolvers,

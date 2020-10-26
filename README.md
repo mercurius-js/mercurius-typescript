@@ -8,7 +8,7 @@ All the examples are available in the [examples folder](./examples/)
 
 This project uses [pnpm workspaces](https://pnpm.js.org/en/workspaces)
 
-But the examples are just basic Node.js packages, but for development and to test them yourself you will need to [install it](https://pnpm.js.org/en/installation) and then simply write
+But the examples are just basic Node.js packages, but for development and to test them yourself you will need to [install it](https://pnpm.js.org/en/installation) and then simply execute
 
 ```bash
 pnpm i
@@ -16,10 +16,10 @@ pnpm i
 
 To install all the required dependencies
 
-And then write anywhere:
+And then execute:
 
 ```bash
-pnpm test -r
+pnpm test
 ```
 
 To tests all the projects

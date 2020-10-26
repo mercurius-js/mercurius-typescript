@@ -1,8 +1,14 @@
+import gql from 'graphql-tag'
 import { createMercuriusTestClient } from 'mercurius-integration-testing'
-import { app } from '../src'
 import tap from 'tap'
 
-tap.test('basic', async (t) => {
+import { app } from '../src'
+
+tap.tearDown(async () => {
+  await app.close()
+})
+
+tap.test('query', async (t) => {
   t.plan(2)
   const client = createMercuriusTestClient(app)
 
@@ -12,18 +18,16 @@ tap.test('basic', async (t) => {
       helloTyped: string
       helloInline: string
     }>(
+      gql`
+        query {
+          helloTyped
+          helloInline
+        }
       `
-    query {
-        hello
-        helloTyped
-        helloInline
-    }
-    `
     )
     .then((response) => {
       t.equivalent(response, {
         data: {
-          hello: 'world',
           helloTyped: 'world',
           helloInline: 'world',
         },
@@ -34,13 +38,68 @@ tap.test('basic', async (t) => {
     .query<{
       isContextAsDefined: boolean
     }>(
+      gql`
+        query {
+          isContextAsDefined
+        }
       `
-    query {
-      isContextAsDefined
-    }
-  `
     )
     .then(({ data: { isContextAsDefined } }) => {
       t.equal(isContextAsDefined, true)
     })
+})
+
+tap.test('subscription', async (t) => {
+  t.plan(2)
+  const notificationMessage = 'Hello World'
+
+  const client = createMercuriusTestClient(app)
+
+  await new Promise<void>(async (resolve) => {
+    await client.subscribe<{
+      newNotification: string
+    }>({
+      query: gql`
+        subscription {
+          newNotification
+        }
+      `,
+      onData(response) {
+        t.equivalent(response, {
+          data: {
+            newNotification: notificationMessage,
+          },
+        })
+
+        resolve()
+      },
+    })
+    await client
+      .mutate<
+        {
+          createNotification: boolean
+        },
+        {
+          message: string
+        }
+      >(
+        gql`
+          mutation($message: String!) {
+            createNotification(message: $message)
+          }
+        `,
+        {
+          variables: {
+            message: notificationMessage,
+          },
+        }
+      )
+      .then((response) => {
+        t.equivalent(response, {
+          data: {
+            createNotification: true,
+          },
+        })
+      })
+  })
 })
