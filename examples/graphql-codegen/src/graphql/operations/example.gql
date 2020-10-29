@@ -1,0 +1,7 @@
+query hello {
+  Hello
+}
+
+mutation add($x: Int!, $y: Int!) {
+  add(x: $x, y: $y)
+}

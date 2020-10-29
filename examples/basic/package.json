@@ -1,25 +1,12 @@
 {
   "name": "mercurius-typescript",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [
-    "mercurius",
-    "graphql",
-    "typescript",
-    "gql"
-  ],
-  "homepage": "https://github.com/PabloSzx/mercurius-typescript#readme",
-  "bugs": {
-    "url": "https://github.com/PabloSzx/mercurius-typescript/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PabloSzx/mercurius-typescript.git"
-  },
+  "description": "Mercurius basic example using only included types",
   "license": "MIT",
   "author": "PabloSz",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "prepare": "tsc",
     "test": "tap --100"
   },

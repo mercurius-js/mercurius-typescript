@@ -1,0 +1,19 @@
+schema: src/graphql/schema/**/*.gql
+documents: src/graphql/operations/**/*.gql
+generates:
+  src/graphql/schema/index.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+  src/graphql/operations/index.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
+config:
+  useTypeImports: true
+  preResolveTypes: true
+  contextType: mercurius#MercuriusContext
+hooks:
+  afterAllFileWrite:
+    - prettier --write

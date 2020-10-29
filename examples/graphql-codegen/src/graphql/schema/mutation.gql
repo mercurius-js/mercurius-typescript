@@ -1,0 +1,3 @@
+type Mutation {
+  add(x: Int!, y: Int!): Int!
+}
