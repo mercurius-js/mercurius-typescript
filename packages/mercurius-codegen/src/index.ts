@@ -59,7 +59,7 @@ interface CodegenMercuriusOptions {
 
 export async function generateCode(
   schema: GraphQLSchema,
-  codegenConfig: CodegenPluginsConfig = { defaultMapper: 'Partial<{T}>' },
+  codegenConfig: CodegenPluginsConfig = { defaultMapper: 'DeepPartial<{T}>' },
   preImportCode?: string
 ) {
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
