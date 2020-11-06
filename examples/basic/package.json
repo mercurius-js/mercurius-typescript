@@ -1,6 +1,7 @@
 {
   "name": "mercurius-typescript",
   "version": "1.0.0",
+  "private": true,
   "description": "Mercurius basic example using only included types",
   "license": "MIT",
   "author": "PabloSz",

@@ -1,6 +1,7 @@
 {
   "name": "mercurius-typescript",
   "version": "1.0.0",
+  "private": true,
   "description": "All the examples are available in the [examples folder](./examples/)",
   "homepage": "https://github.com/PabloSzx/mercurius-typescript#readme",
   "bugs": {

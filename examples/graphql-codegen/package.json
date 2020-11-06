@@ -1,6 +1,7 @@
 {
   "name": "graphql-codegen",
   "version": "1.0.0",
+  "private": true,
   "description": "Mercurius + GraphQL Code Generator example",
   "keywords": [
     "graphql-codegen"
@@ -9,8 +10,8 @@
   "author": "PabloSz",
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "graphql-codegen && tsc",
     "build": "graphql-codegen && tsc",
+    "prepare": "graphql-codegen && tsc",
     "test": "tap --100"
   },
   "dependencies": {
