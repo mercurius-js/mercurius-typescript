@@ -1,7 +1,20 @@
 {
   "name": "mercurius-codegen",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "keywords": [
+    "fastify",
+    "graphql",
+    "gql",
+    "mercurius",
+    "typescript",
+    "codegen"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mercurius-js/mercurius-typescript"
+  },
   "license": "MIT",
+  "author": "PabloSz <pablosaez1995@gmail.com>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
