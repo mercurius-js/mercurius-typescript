@@ -1,15 +1,8 @@
 import type {} from 'mercurius'
 import { FastifyInstance } from 'fastify'
-import fs from 'fs'
-import { GraphQLSchema, parse, printSchema } from 'graphql'
-import mkdirp from 'mkdirp'
-import { dirname, resolve } from 'path'
-import { format, resolveConfig } from 'prettier'
+import { GraphQLSchema } from 'graphql'
 
-import { codegen } from '@graphql-codegen/core'
-import * as typescriptPlugin from '@graphql-codegen/typescript'
 import { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
-import * as typescriptResolversPlugin from '@graphql-codegen/typescript-resolvers'
 import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
@@ -62,6 +55,16 @@ export async function generateCode(
   codegenConfig: CodegenPluginsConfig = { defaultMapper: 'DeepPartial<{T}>' },
   preImportCode?: string
 ) {
+  // It's not actually worth it to use Promise.all() because it's being transpiled to sync requires anyways
+
+  const { codegen } = await import('@graphql-codegen/core')
+  const typescriptPlugin = await import('@graphql-codegen/typescript')
+  const typescriptResolversPlugin = await import(
+    '@graphql-codegen/typescript-resolvers'
+  )
+  const { parse, printSchema } = await import('graphql')
+  const { format, resolveConfig } = await import('prettier')
+
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
 
   let code = preImportCode || ''
@@ -115,6 +118,10 @@ export async function writeGeneratedCode({
   code: string
   targetPath: string
 }) {
+  const { default: mkdirp } = await import('mkdirp')
+  const fs = await import('fs')
+  const { resolve, dirname } = await import('path')
+
   targetPath = resolve(targetPath)
 
   await mkdirp(dirname(targetPath))
