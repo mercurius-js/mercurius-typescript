@@ -40,7 +40,10 @@ mercuriusCodegen(app, {
   targetPath: './src/generated/graphql.ts',
 })
 
-// Then it will generate the file, and without doing anything special, the resolvers are going to be typed, or if your resolvers are in different files ...
+//Then it will automatically generate the file, 
+// and without doing anything special, 
+// the resolvers are going to be typed, 
+// or if your resolvers are in different files...
 
 app.listen(8000)
 ```

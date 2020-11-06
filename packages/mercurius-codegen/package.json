@@ -1,6 +1,6 @@
 {
   "name": "mercurius-codegen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,8 +16,7 @@
     "@graphql-codegen/typescript": "^1.17.11",
     "@graphql-codegen/typescript-resolvers": "^1.17.10",
     "mkdirp": "^1.0.4",
-    "prettier": "^2.1.2",
-    "tmp-promise": "^3.0.2"
+    "prettier": "^2.1.2"
   },
   "devDependencies": {
     "@types/mkdirp": "^1.0.1",
@@ -28,6 +27,7 @@
     "graphql": "^15.4.0",
     "mercurius": "^6.4.0",
     "tap": "^14.10.8",
+    "tmp-promise": "^3.0.2",
     "typescript": "^4.0.5"
   },
   "peerDependencies": {

@@ -70,7 +70,6 @@ importers:
       '@graphql-codegen/typescript-resolvers': 1.17.10_graphql@15.4.0
       mkdirp: 1.0.4
       prettier: 2.1.2
-      tmp-promise: 3.0.2
     devDependencies:
       '@types/mkdirp': 1.0.1
       '@types/node': 14.14.6
@@ -80,6 +79,7 @@ importers:
       graphql: 15.4.0
       mercurius: 6.4.0
       tap: 14.10.8
+      tmp-promise: 3.0.2
       typescript: 4.0.5
     specifiers:
       '@graphql-codegen/core': ^1.17.8
@@ -4438,7 +4438,7 @@ packages:
   /rimraf/3.0.2:
     dependencies:
       glob: 7.1.6
-    dev: false
+    dev: true
     hasBin: true
     resolution:
       integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
@@ -4951,7 +4951,7 @@ packages:
   /tmp-promise/3.0.2:
     dependencies:
       tmp: 0.2.1
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-OyCLAKU1HzBjL6Ev3gxUeraJNlbNingmi8IrHHEsYH8LTmEuhvYfqvhn2F/je+mjf4N58UmZ96OMEy1JanSCpA==
   /tmp/0.0.33:
@@ -4965,7 +4965,7 @@ packages:
   /tmp/0.2.1:
     dependencies:
       rimraf: 3.0.2
-    dev: false
+    dev: true
     engines:
       node: '>=8.17.0'
     resolution:
