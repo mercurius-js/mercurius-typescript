@@ -1,9 +1,12 @@
 {
   "name": "mercurius-codegen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "tsc",
     "test": "tap --100 test/index.test.ts"
