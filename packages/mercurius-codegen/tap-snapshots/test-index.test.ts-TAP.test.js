@@ -154,18 +154,18 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  DateTime: ResolverTypeWrapper<Partial<Scalars['DateTime']>>
+  DateTime: ResolverTypeWrapper<DeepPartial<Scalars['DateTime']>>
   Query: ResolverTypeWrapper<{}>
-  String: ResolverTypeWrapper<Partial<Scalars['String']>>
-  Boolean: ResolverTypeWrapper<Partial<Scalars['Boolean']>>
+  String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
+  Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  DateTime: Partial<Scalars['DateTime']>
+  DateTime: DeepPartial<Scalars['DateTime']>
   Query: {}
-  String: Partial<Scalars['String']>
-  Boolean: Partial<Scalars['Boolean']>
+  String: DeepPartial<Scalars['String']>
+  Boolean: DeepPartial<Scalars['Boolean']>
 }
 
 export interface DateTimeScalarConfig
