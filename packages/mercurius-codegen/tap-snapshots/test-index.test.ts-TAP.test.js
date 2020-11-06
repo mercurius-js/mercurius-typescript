@@ -154,18 +154,18 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  DateTime: ResolverTypeWrapper<Scalars['DateTime']>
+  DateTime: ResolverTypeWrapper<Partial<Scalars['DateTime']>>
   Query: ResolverTypeWrapper<{}>
-  String: ResolverTypeWrapper<Scalars['String']>
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>
+  String: ResolverTypeWrapper<Partial<Scalars['String']>>
+  Boolean: ResolverTypeWrapper<Partial<Scalars['Boolean']>>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  DateTime: Scalars['DateTime']
+  DateTime: Partial<Scalars['DateTime']>
   Query: {}
-  String: Scalars['String']
-  Boolean: Scalars['Boolean']
+  String: Partial<Scalars['String']>
+  Boolean: Partial<Scalars['Boolean']>
 }
 
 export interface DateTimeScalarConfig
@@ -195,6 +195,17 @@ export type Resolvers<ContextType = any> = {
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
 export type IResolvers<ContextType = any> = Resolvers<ContextType>
+
+export type DeepPartial<T> = T extends Function
+  ? T
+  : T extends Array<infer U>
+  ? _DeepPartialArray<U>
+  : T extends object
+  ? _DeepPartialObject<T>
+  : T | undefined
+
+interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
+type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> }
 
 declare module 'mercurius' {
   interface IResolvers

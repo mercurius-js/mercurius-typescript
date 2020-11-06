@@ -10,18 +10,13 @@ import { codegen } from '@graphql-codegen/core'
 import * as typescriptPlugin from '@graphql-codegen/typescript'
 import { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
 import * as typescriptResolversPlugin from '@graphql-codegen/typescript-resolvers'
-import { ParsedTypeScriptResolversConfig } from '@graphql-codegen/typescript-resolvers/visitor'
+import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
 
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>
-}
-
-type MidCodegenPluginsConfig = DeepPartial<
-  TypeScriptPluginConfig & ParsedTypeScriptResolversConfig
->
+type MidCodegenPluginsConfig = TypeScriptPluginConfig &
+  TypeScriptResolversPluginConfig
 
 export interface CodegenPluginsConfig extends MidCodegenPluginsConfig {
-  [k: string]: any
+  [k: string]: unknown
 }
 
 interface CodegenMercuriusOptions {
@@ -50,6 +45,10 @@ interface CodegenMercuriusOptions {
    *    }
    * }
    * ```
+   * @default
+   * codegenConfig: {
+   *    defaultMapper: "DeepPartial<{T}>"
+   * }
    */
   codegenConfig?: CodegenPluginsConfig
   /**
@@ -60,7 +59,7 @@ interface CodegenMercuriusOptions {
 
 export async function generateCode(
   schema: GraphQLSchema,
-  codegenConfig?: CodegenPluginsConfig,
+  codegenConfig: CodegenPluginsConfig = { defaultMapper: 'Partial<{T}>' },
   preImportCode?: string
 ) {
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
@@ -68,7 +67,7 @@ export async function generateCode(
   let code = preImportCode || ''
 
   code += await codegen({
-    config: Object.assign({}, codegenConfig),
+    config: codegenConfig,
     documents: [],
     filename: 'mercurius.generated.ts',
     pluginMap: {
@@ -87,6 +86,17 @@ export async function generateCode(
   })
 
   code += `
+  export type DeepPartial<T> = T extends Function
+  ? T
+  : T extends Array<infer U>
+  ? _DeepPartialArray<U>
+  : T extends object
+  ? _DeepPartialObject<T>
+  : T | undefined;
+
+  interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
+  type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
+
   declare module "mercurius" {
       interface IResolvers extends Resolvers<import("mercurius").MercuriusContext> { }
   }

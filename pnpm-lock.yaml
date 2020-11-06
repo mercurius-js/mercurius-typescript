@@ -4,17 +4,17 @@ importers:
   examples/basic:
     dependencies:
       fastify: 3.7.0
-      graphql: 15.3.0
+      graphql: 15.4.0
       lodash: 4.17.20
       mercurius: 6.4.0
     devDependencies:
-      '@types/lodash': 4.14.162
-      '@types/node': 14.14.3
+      '@types/lodash': 4.14.165
+      '@types/node': 14.14.6
       '@types/tap': 14.10.1
-      graphql-tag: 2.11.0_graphql@15.3.0
-      mercurius-integration-testing: 3.1.2_ff64d2c6ca56e06203c753ebfc566f7d
+      graphql-tag: 2.11.0_graphql@15.4.0
+      mercurius-integration-testing: 3.1.2_cbb373faf98868ca4b612dffec515304
       tap: 14.10.8
-      typescript: 4.0.3
+      typescript: 4.0.5
     specifiers:
       '@types/lodash': ^4.14.162
       '@types/node': ^14.14.3
@@ -520,7 +520,7 @@ packages:
       '@babel/helper-function-name': 7.10.4
       '@babel/helper-split-export-declaration': 7.11.0
       '@babel/parser': 7.12.5
-      '@babel/types': 7.12.6
+      '@babel/types': 7.12.1
       debug: 4.2.0
       globals: 11.12.0
       lodash: 4.17.20
@@ -982,14 +982,6 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
     resolution:
       integrity: sha512-0feqjgEJSRLm2V0kEUaV2dw7ukVPjRujYMqNdcqHsIyXmf0VO8PGF5hcva/+5U/9Yfbf3Fck+P5JTJ5MlXPlsQ==
-  /@graphql-typed-document-node/core/3.1.0_graphql@15.3.0:
-    dependencies:
-      graphql: 15.3.0
-    dev: true
-    peerDependencies:
-      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-    resolution:
-      integrity: sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==
   /@graphql-typed-document-node/core/3.1.0_graphql@15.4.0:
     dependencies:
       graphql: 15.4.0
@@ -1080,20 +1072,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-9bVao7LvyorRGZCw0VmH/dr7Og+NdjYSsKAxB43OQoComFbBgsEpoR9JW6+qSq/ogwVBg8GI2MfAlk4SYI4OLg==
-  /@types/lodash/4.14.162:
+  /@types/lodash/4.14.165:
     dev: true
     resolution:
-      integrity: sha512-alvcho1kRUnnD1Gcl4J+hK0eencvzq9rmzvFPRmP5rPHx9VVsJj6bKLTATPVf9ktgv4ujzh7T+XWKp+jhuODig==
+      integrity: sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
   /@types/mkdirp/1.0.1:
     dependencies:
       '@types/node': 14.14.6
     dev: true
     resolution:
       integrity: sha512-HkGSK7CGAXncr8Qn/0VqNtExEE+PHMWb+qlR1faHMao7ng6P3tAaoWWBMdva0gL5h4zprjIO89GJOLXsMcDm1Q==
-  /@types/node/14.14.3:
-    dev: true
-    resolution:
-      integrity: sha512-33/L34xS7HVUx23e0wOT2V1qPF1IrHgQccdJVm9uXGTB9vFBrrzBtkQymT8VskeKOxjz55MSqMv0xuLq+u98WQ==
   /@types/node/14.14.6:
     dev: true
     resolution:
@@ -2053,9 +2041,10 @@ packages:
   /es-array-method-boxes-properly/1.0.0:
     resolution:
       integrity: sha512-wd6JXUmyHmt8T5a2xreUwKcGPq6f1f+WwIJkijUqiGcJz1qqnZgP6XIK+QyIWU5lT7imeNxUll48bziG+TSYcA==
-  /es-get-iterator/1.1.0:
+  /es-get-iterator/1.1.1:
     dependencies:
-      es-abstract: 1.17.7
+      call-bind: 1.0.0
+      get-intrinsic: 1.0.1
       has-symbols: 1.0.1
       is-arguments: 1.0.4
       is-map: 2.0.1
@@ -2063,7 +2052,7 @@ packages:
       is-string: 1.0.5
       isarray: 2.0.5
     resolution:
-      integrity: sha512-UfrmHuWQlNMTs35e1ypnvikg6jCz3SK8v8ImvmDsh36fCVUR1MqoFDiyn0/k52C8NqO3YsO8Oe0azeesNuqSsQ==
+      integrity: sha512-qorBw8Y7B15DVLaJWy6WdEV/ZkieBcu6QCq/xzWzGOKJqgG1j754vXRfZ3NY7HSShneqU43mPB4OkQBTkvHhFw==
   /es-to-primitive/1.2.1:
     dependencies:
       is-callable: 1.2.2
@@ -2251,7 +2240,7 @@ packages:
   /fastify-websocket/2.0.10:
     dependencies:
       fastify-plugin: 2.3.4
-      find-my-way: 3.0.4
+      find-my-way: 3.0.5
       ws: 7.3.1
     resolution:
       integrity: sha512-cESoKnOsq8DIeYOcnGQbRnNUqegXFUAkrEsVIu0vSyiVL2d1bJnsZo6LwA1W8P77fi2cYVodFBAm13gIY0k5Kg==
@@ -2263,7 +2252,7 @@ packages:
       fast-json-stringify: 2.2.9
       fastify-error: 0.2.0
       fastify-warning: 0.2.0
-      find-my-way: 3.0.4
+      find-my-way: 3.0.5
       flatstr: 1.0.12
       light-my-request: 4.2.1
       pino: 6.7.0
@@ -2350,7 +2339,7 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-Tq6PixE0w/VMFfCgbONnkiQIVol/JJL7nRMi20fqzA4NRs9AfeqMGeRdPi3wIhYkxjeBaWh2rxwapn5Tu3IqOQ==
-  /find-my-way/3.0.4:
+  /find-my-way/3.0.5:
     dependencies:
       fast-decode-uri-component: 1.0.1
       safe-regex2: 2.0.0
@@ -2358,7 +2347,7 @@ packages:
     engines:
       node: '>=10'
     resolution:
-      integrity: sha512-Trl/mNAVvTgCpo9ox6yixkwiZUvecKYUQZoAuMCBACsgGqv+FbWe+jE5sBA5+U8LIWrJk/cw8zPV53GPrjTnsw==
+      integrity: sha512-FweGg0cv1sBX8z7WhvBX5B5AECW4Zdh/NiB38Oa0qwSNIyPgRBCl/YjxuZn/rz38E/MMBHeVKJ22i7W3c626Gg==
   /find-up/3.0.0:
     dependencies:
       locate-path: 3.0.0
@@ -2625,14 +2614,6 @@ packages:
       graphql: 14.x || 15.x
     resolution:
       integrity: sha512-NHj65WSIUh8j7TBYgzWU0fqvLfxrqFDrLG8nZUh+IREZw50ljR6JXlXRkr52/fL/46wpItiQNLDrG+UZI+KmzA==
-  /graphql-tag/2.11.0_graphql@15.3.0:
-    dependencies:
-      graphql: 15.3.0
-    dev: true
-    peerDependencies:
-      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-    resolution:
-      integrity: sha512-VmsD5pJqWJnQZMUeRwrDhfgoyqcfwEkvtpANqcoUG8/tOLkwNgU9mzub/Mc78OJMhHjx7gfAMTxzdG43VGg3bA==
   /graphql-tag/2.11.0_graphql@15.4.0:
     dependencies:
       graphql: 15.4.0
@@ -2640,12 +2621,6 @@ packages:
       graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     resolution:
       integrity: sha512-VmsD5pJqWJnQZMUeRwrDhfgoyqcfwEkvtpANqcoUG8/tOLkwNgU9mzub/Mc78OJMhHjx7gfAMTxzdG43VGg3bA==
-  /graphql/15.3.0:
-    dev: false
-    engines:
-      node: '>= 10.x'
-    resolution:
-      integrity: sha512-GTCJtzJmkFLWRfFJuoo9RWWa/FfamUHgiFosxi/X1Ani4AVWbeyBenZTNX6dM+7WSbbFfTo/25eh0LLkwHMw2w==
   /graphql/15.4.0:
     engines:
       node: '>= 10.x'
@@ -3058,13 +3033,13 @@ packages:
   /isomorphic-fetch/2.2.1:
     dependencies:
       node-fetch: 1.7.3
-      whatwg-fetch: 3.4.1
+      whatwg-fetch: 3.5.0
     resolution:
       integrity: sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
   /isomorphic-fetch/3.0.0:
     dependencies:
       node-fetch: 2.6.1
-      whatwg-fetch: 3.4.1
+      whatwg-fetch: 3.5.0
     dev: true
     resolution:
       integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
@@ -3149,7 +3124,7 @@ packages:
       integrity: sha512-3Q6tudGN05kbkDQDI4CqjaBf4qf85w6W6GnuZDtUVYwKgtC1q8yxYX7CZed7N+tLzQqS6roujWvszf13T+n9aw==
   /iterate-value/1.0.2:
     dependencies:
-      es-get-iterator: 1.1.0
+      es-get-iterator: 1.1.1
       iterate-iterator: 1.0.1
     resolution:
       integrity: sha512-A6fMAio4D2ot2r/TYzr4yUWrmwNdsN5xL7+HUiyACE4DXm+q8HtPcnFTp+NnW3k4N05tZ7FVYFFb2CR13NxyHQ==
@@ -3531,22 +3506,6 @@ packages:
       fastify: 3.7.0
       get-port: 5.1.1
       graphql: 15.4.0
-      mercurius: 6.4.0
-      ws: 7.3.1
-    dev: true
-    peerDependencies:
-      fastify: ^3.6.0
-      graphql: ^15.3.0
-      mercurius: ^6.1.1
-    resolution:
-      integrity: sha512-aNj8QYD88nrC74H8CczVQ3Ij0aKZfboq5pyrxRa5N3XV2f1GgsMOLH/2qi6vdrZm1XULFK1BkI0A4k8yOuTZHQ==
-  /mercurius-integration-testing/3.1.2_ff64d2c6ca56e06203c753ebfc566f7d:
-    dependencies:
-      '@graphql-typed-document-node/core': 3.1.0_graphql@15.3.0
-      cookie: 0.4.1
-      fastify: 3.7.0
-      get-port: 5.1.1
-      graphql: 15.3.0
       mercurius: 6.4.0
       ws: 7.3.1
     dev: true
@@ -5085,13 +5044,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
-  /typescript/4.0.3:
-    dev: true
-    engines:
-      node: '>=4.2.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
   /typescript/4.0.5:
     dev: true
     engines:
@@ -5216,9 +5168,9 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-i4yhcllSP4wrpoPMU2N0TQ/q0O94LRG/eUQjEAamRltjQ1oT1PFFKOG4i877OlJgCG8rw6LrrowJp+TYCEWF7Q==
-  /whatwg-fetch/3.4.1:
+  /whatwg-fetch/3.5.0:
     resolution:
-      integrity: sha512-sofZVzE1wKwO+EYPbWfiwzaKovWiZXf4coEzjGP9b2GBVgQRLQUZ2QcuPpQExGDAW5GItpEm6Tl4OU5mywnAoQ==
+      integrity: sha512-jXkLtsR42xhXg7akoDKvKWE40eJeI+2KZqcp2h3NsOrRnDvtWX36KcKl30dy+hxECivdk2BVUHVNrPtoMBUx6A==
   /which-module/2.0.0:
     resolution:
       integrity: sha1-2e8H3Od7mQK4o6j6SzHD4/fm6Ho=

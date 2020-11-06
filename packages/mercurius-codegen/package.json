@@ -47,5 +47,10 @@
     "fastify": "^3.7.0",
     "graphql": "^15.4.0",
     "mercurius": "^6.4.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "typescript": "^4.0.5"
+    }
   }
 }

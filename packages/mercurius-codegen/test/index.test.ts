@@ -179,5 +179,6 @@ codegenMercurius(app, {
     scalars: {
       DateTime: 'Date',
     },
+    defaultMapper: 'DeepPartial<{T}>',
   },
 }).catch(console.error)
