@@ -4,6 +4,10 @@
 
 All the examples are available in the [examples folder](./examples/)
 
+## Libraries
+
+- [Mercurius Codegen](./packages/mercurius-codegen/README.md) - Integration with [GraphQL Code Generator](https://graphql-code-generator.com/) to get automatic type-safety and autocompletion.
+
 ## Contributing
 
 This project uses [pnpm workspaces](https://pnpm.js.org/en/workspaces)

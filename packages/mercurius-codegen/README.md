@@ -1,5 +1,7 @@
 # mercurius-codegen
 
+[![npm version](https://badge.fury.io/js/mercurius-codegen.svg)](https://badge.fury.io/js/mercurius-codegen)
+
 Get full type-safety and autocompletion for [mercurius](http://mercurius.dev/) with [TypeScript](https://www.typescriptlang.org/) using [GraphQL Code Generator](https://graphql-code-generator.com/) seamlessly while you code.
 
 ```sh
@@ -40,9 +42,9 @@ mercuriusCodegen(app, {
   targetPath: './src/generated/graphql.ts',
 })
 
-//Then it will automatically generate the file, 
-// and without doing anything special, 
-// the resolvers are going to be typed, 
+// Then it will automatically generate the file,
+// and without doing anything special,
+// the resolvers are going to be typed,
 // or if your resolvers are in different files...
 
 app.listen(8000)
