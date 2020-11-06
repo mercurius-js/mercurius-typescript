@@ -99,6 +99,10 @@ interface CodegenMercuriusOptions {
    *    }
    * }
    * ```
+   * @default
+   * codegenConfig: {
+   *    defaultMapper: "DeepPartial<{T}>"
+   * }
    */
   codegenConfig?: CodegenPluginsConfig
   /**
