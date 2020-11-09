@@ -64,18 +64,27 @@ export async function generateCode(
   )
   const { parse, printSchema } = await import('graphql')
   const { format, resolveConfig } = await import('prettier')
+  const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
 
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
 
   let code = preImportCode || ''
 
+  code += `
+  import { MercuriusContext } from "mercurius";
+  import { FastifyReply } from "fastify";
+  `
+
   code += await codegen({
-    config: codegenConfig,
+    config: Object.assign({}, codegenConfig, {
+      namingConvention: 'keep',
+    } as CodegenPluginsConfig),
     documents: [],
     filename: 'mercurius.generated.ts',
     pluginMap: {
       typescript: typescriptPlugin,
       typescriptResolvers: typescriptResolversPlugin,
+      mercuriusLoaders: MercuriusLoadersPlugin,
     },
     plugins: [
       {
@@ -83,6 +92,9 @@ export async function generateCode(
       },
       {
         typescriptResolvers: {},
+      },
+      {
+        mercuriusLoaders: {},
       },
     ],
     schema: parse(printSchema(schema)),
@@ -101,7 +113,8 @@ export async function generateCode(
   type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
 
   declare module "mercurius" {
-      interface IResolvers extends Resolvers<import("mercurius").MercuriusContext> { }
+      interface IResolvers extends Resolvers<MercuriusContext> { }
+      interface MercuriusLoaders extends Loaders { }
   }
   `
 

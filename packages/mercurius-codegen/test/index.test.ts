@@ -22,12 +22,47 @@ app.register(mercurius, {
     scalar DateTime
     type Query {
         hello(greetings: String): String!
+        aHuman: Human!
+    }
+    type Human {
+      name: String!
+      father: Human
+      hasSon(name: String): Boolean
+      sons(name: String!): [Human]!
+      confirmedSonsNullable(name: String!): [Human!]
+      confirmedSonsNonNullItems(name: String!): [Human!]!
+      sonNames: [String]
+      nonNullssonNames: [String!]!
     }
     `,
   resolvers: {
     Query: {
       hello(_root, { greetings }, _ctx) {
         return greetings || 'Hello world!'
+      },
+    },
+  },
+  loaders: {
+    Human: {
+      name(queries, _ctx) {
+        return queries.map(({ obj, params }) => {
+          return 'name'
+        })
+      },
+      father(queries, _ctx) {
+        queries.map(({ obj, params }) => {})
+        return [
+          {
+            name: 'asd',
+          },
+        ]
+      },
+      hasSon: {
+        async loader(queries, _ctx) {
+          return queries.map((value, key) => {
+            return true
+          })
+        },
       },
     },
   },
@@ -171,14 +206,16 @@ tap.test('respects "disable" flag', async (t) => {
   )
 })
 
-codegenMercurius(app, {
-  targetPath: './test/generated.ts',
-  disable: false,
-  silent: true,
-  codegenConfig: {
-    scalars: {
-      DateTime: 'Date',
+if (!false) {
+  codegenMercurius(app, {
+    targetPath: './test/generated.ts',
+    disable: false,
+    silent: true,
+    codegenConfig: {
+      scalars: {
+        DateTime: 'Date',
+      },
+      defaultMapper: 'DeepPartial<{T}>',
     },
-    defaultMapper: 'DeepPartial<{T}>',
-  },
-}).catch(console.error)
+  }).catch(console.error)
+}
