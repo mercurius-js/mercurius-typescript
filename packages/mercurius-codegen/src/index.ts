@@ -53,7 +53,8 @@ interface CodegenMercuriusOptions {
 export async function generateCode(
   schema: GraphQLSchema,
   codegenConfig: CodegenPluginsConfig = { defaultMapper: 'DeepPartial<{T}>' },
-  preImportCode?: string
+  preImportCode?: string,
+  silent?: boolean
 ) {
   // It's not actually worth it to use Promise.all() because it's being transpiled to sync requires anyways
 
@@ -74,6 +75,16 @@ export async function generateCode(
   import { MercuriusContext } from "mercurius";
   import { FastifyReply } from "fastify";
   `
+
+  if (
+    codegenConfig.namingConvention != null &&
+    codegenConfig.namingConvention !== 'keep'
+  ) {
+    if (!silent)
+      console.warn(
+        `namingConvention "${codegenConfig.namingConvention}" is not supported! it has been set to "keep" automatically.`
+      )
+  }
 
   code += await codegen({
     config: Object.assign({}, codegenConfig, {
@@ -168,7 +179,7 @@ export async function codegenMercurius(
     setImmediate(() => {
       const schema = app.graphql.schema
 
-      generateCode(schema, codegenConfig, preImportCode)
+      generateCode(schema, codegenConfig, preImportCode, silent)
         .then((code) => {
           writeGeneratedCode({
             code,

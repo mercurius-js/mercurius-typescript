@@ -206,16 +206,74 @@ tap.test('respects "disable" flag', async (t) => {
   )
 })
 
-if (!false) {
-  codegenMercurius(app, {
-    targetPath: './test/generated.ts',
-    disable: false,
-    silent: true,
-    codegenConfig: {
-      scalars: {
-        DateTime: 'Date',
+tap.test(
+  'warns about unsupported namingConvention, respecting silent',
+  async (t) => {
+    t.plan(2)
+
+    const namingConvention = 'pascal-case'
+
+    const tempTargetPath = await tmp.file()
+
+    const prevConsoleLog = console.log
+
+    const mockConsoleLog = (message: string) => {
+      t.ok(message)
+    }
+
+    console.log = mockConsoleLog
+
+    t.tearDown(() => {
+      console.log = prevConsoleLog
+    })
+
+    const prevConsoleWarn = console.warn
+
+    const mockConsoleWarn = (message: string) => {
+      t.equal(
+        message,
+        `namingConvention "${namingConvention}" is not supported! it has been set to "keep" automatically.`
+      )
+    }
+
+    console.warn = mockConsoleWarn
+
+    t.tearDown(() => {
+      console.warn = prevConsoleWarn
+    })
+
+    t.tearDown(async () => {
+      await tempTargetPath.cleanup()
+    })
+
+    await codegenMercurius(app, {
+      targetPath: tempTargetPath.path,
+      disable: false,
+      silent: false,
+      codegenConfig: {
+        namingConvention,
       },
-      defaultMapper: 'DeepPartial<{T}>',
+    })
+
+    await codegenMercurius(app, {
+      targetPath: tempTargetPath.path,
+      disable: false,
+      silent: true,
+      codegenConfig: {
+        namingConvention,
+      },
+    })
+  }
+)
+
+codegenMercurius(app, {
+  targetPath: './test/generated.ts',
+  disable: false,
+  silent: true,
+  codegenConfig: {
+    scalars: {
+      DateTime: 'Date',
     },
-  }).catch(console.error)
-}
+    defaultMapper: 'DeepPartial<{T}>',
+  },
+}).catch(console.error)
