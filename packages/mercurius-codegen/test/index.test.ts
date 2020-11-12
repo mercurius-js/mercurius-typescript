@@ -2,6 +2,7 @@ import './generated'
 
 import Fastify from 'fastify'
 import fs from 'fs'
+import { parse, print } from 'graphql'
 import mercurius from 'mercurius'
 import tap from 'tap'
 import tmp from 'tmp-promise'
@@ -9,6 +10,7 @@ import tmp from 'tmp-promise'
 import {
   codegenMercurius,
   generateCode,
+  gql,
   writeGeneratedCode,
 } from '../src/index'
 
@@ -265,6 +267,26 @@ tap.test(
     })
   }
 )
+
+tap.test('gql helper', (t) => {
+  t.plan(2)
+
+  const a = gql`
+    query A {
+      hello
+    }
+  `
+
+  const b = gql`
+    query B {
+      hello
+    }
+    ${a}
+  `
+
+  t.matchSnapshot(print(parse(a)))
+  t.matchSnapshot(print(parse(b)))
+})
 
 codegenMercurius(app, {
   targetPath: './test/generated.ts',

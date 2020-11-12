@@ -21,7 +21,7 @@ interface CodegenMercuriusOptions {
    */
   targetPath: string
   /**
-   * Disable the code generation, by default is `process.env.NODE_ENV === 'production'`
+   * Disable the code generation manually, by default is `process.env.NODE_ENV === 'production'`
    */
   disable?: boolean
   /**
@@ -31,13 +31,12 @@ interface CodegenMercuriusOptions {
   /**
    * Specify GraphQL Code Generator configuration
    * @example
-   * ```js
    * codegenConfig: {
    *    scalars: {
    *        DateTime: "Date",
-   *    }
+   *    },
+   *    defaultMapper: "DeepPartial<{T}>"
    * }
-   * ```
    * @default
    * codegenConfig: {
    *    defaultMapper: "DeepPartial<{T}>"
@@ -199,3 +198,11 @@ export async function codegenMercurius(
 }
 
 export default codegenMercurius
+
+export function gql(chunks: TemplateStringsArray, ...variables: any[]): string {
+  return chunks.reduce(
+    (accumulator, chunk, index) =>
+      `${accumulator}${chunk}${index in variables ? variables[index] : ''}`,
+    ''
+  )
+}

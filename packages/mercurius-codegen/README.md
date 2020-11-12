@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/mercurius-codegen.svg)](https://badge.fury.io/js/mercurius-codegen)
 
-Get full type-safety and autocompletion for [mercurius](http://mercurius.dev/) with [TypeScript](https://www.typescriptlang.org/) using [GraphQL Code Generator](https://graphql-code-generator.com/) seamlessly while you code.
+Get full type-safety and autocompletion for [Mercurius](http://mercurius.dev/) using [TypeScript](https://www.typescriptlang.org/) and [GraphQL Code Generator](https://graphql-code-generator.com/) seamlessly while you code.
 
 ```sh
 pnpm add mercurius-codegen
@@ -14,20 +14,21 @@ npm install mercurius-codegen
 
 ## Usage
 
+> **For convenience**, this package also exports a _fake_ `gql` tag that gives tooling support for _"prettier formatting"_ and _"IDE syntax highlighting"_. **It's completely optional**.
+
 ```ts
-// src/index.ts
 import Fastify from 'fastify'
 import mercurius from 'mercurius'
-import mercuriusCodegen from 'mercurius-codegen'
+import mercuriusCodegen, { gql } from 'mercurius-codegen'
 
 const app = Fastify()
 
 app.register(mercurius, {
-  schema: `
+  schema: gql`
     type Query {
-        hello(greetings: String!): String!
+      hello(greetings: String!): String!
     }
-    `,
+  `,
   resolvers: {
     Query: {
       hello(_root, { greetings }) {
@@ -40,7 +41,7 @@ app.register(mercurius, {
 
 mercuriusCodegen(app, {
   targetPath: './src/generated/graphql.ts',
-})
+}).catch(console.error)
 
 // Then it will automatically generate the file,
 // and without doing anything special,
@@ -64,15 +65,34 @@ export const resolvers: IResolvers = {
 }
 ```
 
-> By default it disables itself if NODE_ENV is 'production'
+It also gives type-safety for [Mercurius Loaders](https://mercurius.dev/#/docs/loaders):
 
-> It automatically uses [prettier](https://prettier.io/) resolving the most nearby config for you
+```ts
+import { MercuriusLoaders } from 'mercurius'
+
+// Fully typed!
+export const loaders: MercuriusLoaders = {
+  Dog: {
+    async owner(queries, ctx) {
+      // queries & ctx are typed accordingly
+      return queries.map(({ obj, params }) => {
+        // obj & params are typed accordingly
+        return owners[obj.name]
+      })
+    },
+  },
+}
+```
+
+> By default it disables itself if `NODE_ENV` is **'production'**
+
+> It automatically uses [prettier](https://prettier.io/) resolving the most nearby config for you.
 
 ### Options
 
-There are a couple extra options to be specified
+There are a couple extra options that can be specified:
 
-````ts
+```ts
 interface CodegenMercuriusOptions {
   /**
    * Specify the target path of the code generation.
@@ -82,7 +102,7 @@ interface CodegenMercuriusOptions {
    */
   targetPath: string
   /**
-   * Disable the code generation manully, by default it's `process.env.NODE_ENV === 'production'`
+   * Disable the code generation manually, by default it's `process.env.NODE_ENV === 'production'`
    */
   disable?: boolean
   /**
@@ -92,13 +112,12 @@ interface CodegenMercuriusOptions {
   /**
    * Specify GraphQL Code Generator configuration
    * @example
-   * ```js
    * codegenConfig: {
    *    scalars: {
    *        DateTime: "Date",
-   *    }
+   *    },
+   *    defaultMapper: "DeepPartial<{T}>"
    * }
-   * ```
    * @default
    * codegenConfig: {
    *    defaultMapper: "DeepPartial<{T}>"
@@ -119,12 +138,13 @@ mercuriusCodegen(app, {
     scalars: {
       DateTime: 'Date',
     },
+    defaultMapper: 'DeepPartial<{T}>',
   },
   preImportCode: `
   // Here you can put any code and it will be added at very beginning of the file
   `,
-})
-````
+}).catch(console.error)
+```
 
 ## License
 

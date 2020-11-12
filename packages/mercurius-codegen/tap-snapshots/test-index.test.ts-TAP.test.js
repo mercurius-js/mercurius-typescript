@@ -347,3 +347,21 @@ declare module 'mercurius' {
 }
 
 `
+
+exports[`test/index.test.ts TAP gql helper > must match snapshot 1`] = `
+query A {
+  hello
+}
+
+`
+
+exports[`test/index.test.ts TAP gql helper > must match snapshot 2`] = `
+query B {
+  hello
+}
+
+query A {
+  hello
+}
+
+`

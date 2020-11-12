@@ -1,10 +1,11 @@
-import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import {
-  GraphQLScalarType,
-  GraphQLObjectType,
-  GraphQLNonNull,
   GraphQLList,
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLScalarType,
 } from 'graphql'
+
+import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 
 export const MercuriusLoadersPlugin: CodegenPlugin = {
   async plugin(schema) {
