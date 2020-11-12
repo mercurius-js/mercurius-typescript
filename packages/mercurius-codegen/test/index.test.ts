@@ -2,6 +2,7 @@ import './generated'
 
 import Fastify from 'fastify'
 import fs from 'fs'
+import { parse, print } from 'graphql'
 import mercurius from 'mercurius'
 import tap from 'tap'
 import tmp from 'tmp-promise'
@@ -9,6 +10,7 @@ import tmp from 'tmp-promise'
 import {
   codegenMercurius,
   generateCode,
+  gql,
   writeGeneratedCode,
 } from '../src/index'
 
@@ -22,12 +24,47 @@ app.register(mercurius, {
     scalar DateTime
     type Query {
         hello(greetings: String): String!
+        aHuman: Human!
+    }
+    type Human {
+      name: String!
+      father: Human
+      hasSon(name: String): Boolean
+      sons(name: String!): [Human]!
+      confirmedSonsNullable(name: String!): [Human!]
+      confirmedSonsNonNullItems(name: String!): [Human!]!
+      sonNames: [String]
+      nonNullssonNames: [String!]!
     }
     `,
   resolvers: {
     Query: {
       hello(_root, { greetings }, _ctx) {
         return greetings || 'Hello world!'
+      },
+    },
+  },
+  loaders: {
+    Human: {
+      name(queries, _ctx) {
+        return queries.map(({ obj, params }) => {
+          return 'name'
+        })
+      },
+      father(queries, _ctx) {
+        queries.map(({ obj, params }) => {})
+        return [
+          {
+            name: 'asd',
+          },
+        ]
+      },
+      hasSon: {
+        async loader(queries, _ctx) {
+          return queries.map((value, key) => {
+            return true
+          })
+        },
       },
     },
   },
@@ -169,6 +206,86 @@ tap.test('respects "disable" flag', async (t) => {
     }),
     ''
   )
+})
+
+tap.test(
+  'warns about unsupported namingConvention, respecting silent',
+  async (t) => {
+    t.plan(2)
+
+    const namingConvention = 'pascal-case'
+
+    const tempTargetPath = await tmp.file()
+
+    const prevConsoleLog = console.log
+
+    const mockConsoleLog = (message: string) => {
+      t.ok(message)
+    }
+
+    console.log = mockConsoleLog
+
+    t.tearDown(() => {
+      console.log = prevConsoleLog
+    })
+
+    const prevConsoleWarn = console.warn
+
+    const mockConsoleWarn = (message: string) => {
+      t.equal(
+        message,
+        `namingConvention "${namingConvention}" is not supported! it has been set to "keep" automatically.`
+      )
+    }
+
+    console.warn = mockConsoleWarn
+
+    t.tearDown(() => {
+      console.warn = prevConsoleWarn
+    })
+
+    t.tearDown(async () => {
+      await tempTargetPath.cleanup()
+    })
+
+    await codegenMercurius(app, {
+      targetPath: tempTargetPath.path,
+      disable: false,
+      silent: false,
+      codegenConfig: {
+        namingConvention,
+      },
+    })
+
+    await codegenMercurius(app, {
+      targetPath: tempTargetPath.path,
+      disable: false,
+      silent: true,
+      codegenConfig: {
+        namingConvention,
+      },
+    })
+  }
+)
+
+tap.test('gql helper', (t) => {
+  t.plan(2)
+
+  const a = gql`
+    query A {
+      hello
+    }
+  `
+
+  const b = gql`
+    query B {
+      hello
+    }
+    ${a}
+  `
+
+  t.matchSnapshot(print(parse(a)))
+  t.matchSnapshot(print(parse(b)))
 })
 
 codegenMercurius(app, {

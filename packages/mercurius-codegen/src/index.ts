@@ -21,7 +21,7 @@ interface CodegenMercuriusOptions {
    */
   targetPath: string
   /**
-   * Disable the code generation, by default is `process.env.NODE_ENV === 'production'`
+   * Disable the code generation manually, by default is `process.env.NODE_ENV === 'production'`
    */
   disable?: boolean
   /**
@@ -31,13 +31,12 @@ interface CodegenMercuriusOptions {
   /**
    * Specify GraphQL Code Generator configuration
    * @example
-   * ```js
    * codegenConfig: {
    *    scalars: {
    *        DateTime: "Date",
-   *    }
+   *    },
+   *    defaultMapper: "DeepPartial<{T}>"
    * }
-   * ```
    * @default
    * codegenConfig: {
    *    defaultMapper: "DeepPartial<{T}>"
@@ -53,7 +52,8 @@ interface CodegenMercuriusOptions {
 export async function generateCode(
   schema: GraphQLSchema,
   codegenConfig: CodegenPluginsConfig = { defaultMapper: 'DeepPartial<{T}>' },
-  preImportCode?: string
+  preImportCode?: string,
+  silent?: boolean
 ) {
   // It's not actually worth it to use Promise.all() because it's being transpiled to sync requires anyways
 
@@ -64,18 +64,37 @@ export async function generateCode(
   )
   const { parse, printSchema } = await import('graphql')
   const { format, resolveConfig } = await import('prettier')
+  const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
 
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
 
   let code = preImportCode || ''
 
+  code += `
+  import { MercuriusContext } from "mercurius";
+  import { FastifyReply } from "fastify";
+  `
+
+  if (
+    codegenConfig.namingConvention != null &&
+    codegenConfig.namingConvention !== 'keep'
+  ) {
+    if (!silent)
+      console.warn(
+        `namingConvention "${codegenConfig.namingConvention}" is not supported! it has been set to "keep" automatically.`
+      )
+  }
+
   code += await codegen({
-    config: codegenConfig,
+    config: Object.assign({}, codegenConfig, {
+      namingConvention: 'keep',
+    } as CodegenPluginsConfig),
     documents: [],
     filename: 'mercurius.generated.ts',
     pluginMap: {
       typescript: typescriptPlugin,
       typescriptResolvers: typescriptResolversPlugin,
+      mercuriusLoaders: MercuriusLoadersPlugin,
     },
     plugins: [
       {
@@ -83,6 +102,9 @@ export async function generateCode(
       },
       {
         typescriptResolvers: {},
+      },
+      {
+        mercuriusLoaders: {},
       },
     ],
     schema: parse(printSchema(schema)),
@@ -101,7 +123,8 @@ export async function generateCode(
   type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
 
   declare module "mercurius" {
-      interface IResolvers extends Resolvers<import("mercurius").MercuriusContext> { }
+      interface IResolvers extends Resolvers<MercuriusContext> { }
+      interface MercuriusLoaders extends Loaders { }
   }
   `
 
@@ -155,7 +178,7 @@ export async function codegenMercurius(
     setImmediate(() => {
       const schema = app.graphql.schema
 
-      generateCode(schema, codegenConfig, preImportCode)
+      generateCode(schema, codegenConfig, preImportCode, silent)
         .then((code) => {
           writeGeneratedCode({
             code,
@@ -175,3 +198,11 @@ export async function codegenMercurius(
 }
 
 export default codegenMercurius
+
+export function gql(chunks: TemplateStringsArray, ...variables: any[]): string {
+  return chunks.reduce(
+    (accumulator, chunk, index) =>
+      `${accumulator}${chunk}${index in variables ? variables[index] : ''}`,
+    ''
+  )
+}

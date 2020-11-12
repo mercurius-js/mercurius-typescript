@@ -73,6 +73,7 @@ importers:
   packages/mercurius-codegen:
     dependencies:
       '@graphql-codegen/core': 1.17.8_graphql@15.4.0
+      '@graphql-codegen/plugin-helpers': 1.18.1_graphql@15.4.0
       '@graphql-codegen/typescript': 1.17.11_graphql@15.4.0
       '@graphql-codegen/typescript-resolvers': 1.17.10_graphql@15.4.0
       mkdirp: 1.0.4
@@ -90,6 +91,7 @@ importers:
       typescript: 4.0.5
     specifiers:
       '@graphql-codegen/core': ^1.17.8
+      '@graphql-codegen/plugin-helpers': ^1.18.1
       '@graphql-codegen/typescript': ^1.17.11
       '@graphql-codegen/typescript-resolvers': ^1.17.10
       '@types/mkdirp': ^1.0.1

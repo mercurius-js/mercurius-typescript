@@ -6,6 +6,8 @@
  */
 'use strict'
 exports[`test/index.test.ts TAP generates code > code 1`] = `
+import { MercuriusContext } from 'mercurius'
+import { FastifyReply } from 'fastify'
 import {
   GraphQLResolveInfo,
   GraphQLScalarType,
@@ -32,10 +34,39 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query'
   hello: Scalars['String']
+  aHuman: Human
 }
 
-export type QueryHelloArgs = {
+export type QueryhelloArgs = {
   greetings?: Maybe<Scalars['String']>
+}
+
+export type Human = {
+  __typename?: 'Human'
+  name: Scalars['String']
+  father?: Maybe<Human>
+  hasSon?: Maybe<Scalars['Boolean']>
+  sons: Array<Maybe<Human>>
+  confirmedSonsNullable?: Maybe<Array<Human>>
+  confirmedSonsNonNullItems: Array<Human>
+  sonNames?: Maybe<Array<Maybe<Scalars['String']>>>
+  nonNullssonNames: Array<Scalars['String']>
+}
+
+export type HumanhasSonArgs = {
+  name?: Maybe<Scalars['String']>
+}
+
+export type HumansonsArgs = {
+  name: Scalars['String']
+}
+
+export type HumanconfirmedSonsNullableArgs = {
+  name: Scalars['String']
+}
+
+export type HumanconfirmedSonsNonNullItemsArgs = {
+  name: Scalars['String']
 }
 
 export type ResolverTypeWrapper<T> = Promise<T> | T
@@ -157,6 +188,7 @@ export type ResolversTypes = {
   DateTime: ResolverTypeWrapper<DeepPartial<Scalars['DateTime']>>
   Query: ResolverTypeWrapper<{}>
   String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
+  Human: ResolverTypeWrapper<DeepPartial<Human>>
   Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
 }
 
@@ -165,6 +197,7 @@ export type ResolversParentTypes = {
   DateTime: DeepPartial<Scalars['DateTime']>
   Query: {}
   String: DeepPartial<Scalars['String']>
+  Human: DeepPartial<Human>
   Boolean: DeepPartial<Scalars['Boolean']>
 }
 
@@ -181,13 +214,58 @@ export type QueryResolvers<
     ResolversTypes['String'],
     ParentType,
     ContextType,
-    RequireFields<QueryHelloArgs, never>
+    RequireFields<QueryhelloArgs, never>
   >
+  aHuman?: Resolver<ResolversTypes['Human'], ParentType, ContextType>
+}
+
+export type HumanResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
+> = {
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  father?: Resolver<Maybe<ResolversTypes['Human']>, ParentType, ContextType>
+  hasSon?: Resolver<
+    Maybe<ResolversTypes['Boolean']>,
+    ParentType,
+    ContextType,
+    RequireFields<HumanhasSonArgs, never>
+  >
+  sons?: Resolver<
+    Array<Maybe<ResolversTypes['Human']>>,
+    ParentType,
+    ContextType,
+    RequireFields<HumansonsArgs, 'name'>
+  >
+  confirmedSonsNullable?: Resolver<
+    Maybe<Array<ResolversTypes['Human']>>,
+    ParentType,
+    ContextType,
+    RequireFields<HumanconfirmedSonsNullableArgs, 'name'>
+  >
+  confirmedSonsNonNullItems?: Resolver<
+    Array<ResolversTypes['Human']>,
+    ParentType,
+    ContextType,
+    RequireFields<HumanconfirmedSonsNonNullItemsArgs, 'name'>
+  >
+  sonNames?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['String']>>>,
+    ParentType,
+    ContextType
+  >
+  nonNullssonNames?: Resolver<
+    Array<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
 export type Resolvers<ContextType = any> = {
   DateTime?: GraphQLScalarType
   Query?: QueryResolvers<ContextType>
+  Human?: HumanResolvers<ContextType>
 }
 
 /**
@@ -196,6 +274,62 @@ export type Resolvers<ContextType = any> = {
  */
 export type IResolvers<ContextType = any> = Resolvers<ContextType>
 
+type Loader<TReturn, TObj, TParams, TContext> = (
+  queries: Array<{
+    obj: DeepPartial<TObj>
+    params: TParams
+  }>,
+  context: TContext & {
+    reply: FastifyReply
+  }
+) => Array<DeepPartial<TReturn>> | Promise<Array<DeepPartial<TReturn>>>
+type LoaderResolver<TReturn, TObj, TParams, TContext> =
+  | Loader<TReturn, TObj, TParams, TContext>
+  | {
+      loader: Loader<TReturn, TObj, TParams, TContext>
+      opts?: {
+        cache?: boolean
+      }
+    }
+export interface Loaders<
+  TContext = MercuriusContext & { reply: FastifyReply }
+> {
+  Human?: {
+    name?: LoaderResolver<Scalars['String'], Human, {}, TContext>
+    father?: LoaderResolver<Maybe<Human>, Human, {}, TContext>
+    hasSon?: LoaderResolver<
+      Maybe<Scalars['Boolean']>,
+      Human,
+      HumanhasSonArgs,
+      TContext
+    >
+    sons?: LoaderResolver<Array<Human>, Human, HumansonsArgs, TContext>
+    confirmedSonsNullable?: LoaderResolver<
+      Maybe<Array<Human>>,
+      Human,
+      HumanconfirmedSonsNullableArgs,
+      TContext
+    >
+    confirmedSonsNonNullItems?: LoaderResolver<
+      Array<Human>,
+      Human,
+      HumanconfirmedSonsNonNullItemsArgs,
+      TContext
+    >
+    sonNames?: LoaderResolver<
+      Maybe<Array<Maybe<Scalars['String']>>>,
+      Human,
+      {},
+      TContext
+    >
+    nonNullssonNames?: LoaderResolver<
+      Array<Scalars['String']>,
+      Human,
+      {},
+      TContext
+    >
+  }
+}
 export type DeepPartial<T> = T extends Function
   ? T
   : T extends Array<infer U>
@@ -208,8 +342,26 @@ interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
 type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> }
 
 declare module 'mercurius' {
-  interface IResolvers
-    extends Resolvers<import('mercurius').MercuriusContext> {}
+  interface IResolvers extends Resolvers<MercuriusContext> {}
+  interface MercuriusLoaders extends Loaders {}
+}
+
+`
+
+exports[`test/index.test.ts TAP gql helper > must match snapshot 1`] = `
+query A {
+  hello
+}
+
+`
+
+exports[`test/index.test.ts TAP gql helper > must match snapshot 2`] = `
+query B {
+  hello
+}
+
+query A {
+  hello
 }
 
 `
