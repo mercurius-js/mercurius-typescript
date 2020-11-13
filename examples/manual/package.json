@@ -1,5 +1,5 @@
 {
-  "name": "mercurius-typescript",
+  "name": "manual-example",
   "version": "1.0.0",
   "private": true,
   "description": "Mercurius basic example using only included types",

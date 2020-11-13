@@ -1,5 +1,5 @@
 {
-  "name": "graphql-codegen",
+  "name": "codegen-example",
   "version": "1.0.0",
   "private": true,
   "description": "Mercurius + GraphQL Code Generator example",
@@ -10,22 +10,17 @@
   "author": "PabloSz",
   "main": "dist/index.js",
   "scripts": {
-    "build": "graphql-codegen && tsc",
-    "prepare": "graphql-codegen && tsc",
+    "build": "tsc",
+    "prepare": "tsc",
     "test": "tap --100"
   },
   "dependencies": {
-    "@graphql-tools/load-files": "^6.2.4",
     "fastify": "^3.7.0",
     "graphql": "^15.4.0",
-    "mercurius": "^6.4.0"
+    "mercurius": "^6.4.0",
+    "mercurius-codegen": "workspace:^1.1.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.19.0",
-    "@graphql-codegen/typed-document-node": "^1.17.9",
-    "@graphql-codegen/typescript": "^1.17.11",
-    "@graphql-codegen/typescript-operations": "^1.17.8",
-    "@graphql-codegen/typescript-resolvers": "^1.17.10",
     "@graphql-typed-document-node/core": "^3.1.0",
     "@types/node": "^14.14.6",
     "@types/tap": "^14.10.1",
