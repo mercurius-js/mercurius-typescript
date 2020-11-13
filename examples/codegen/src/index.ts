@@ -33,6 +33,7 @@ app.register(mercurius, {
 
 mercuriusCodegen(app, {
   targetPath: './src/graphql/generated.ts',
+  operationsGlob: './src/graphql/operations/*.gql',
 })
 
 // app.listen(8000)

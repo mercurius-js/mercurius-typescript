@@ -5,6 +5,7 @@ import {
   GraphQLScalarType,
   GraphQLScalarTypeConfig,
 } from 'graphql'
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
@@ -321,6 +322,33 @@ export interface Loaders<
       TContext
     >
   }
+}
+export type AQueryVariables = Exact<{ [key: string]: never }>
+
+export type AQuery = { __typename?: 'Query' } & Pick<Query, 'hello'>
+
+export const ADocument: DocumentNode<AQuery, AQueryVariables> = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'A' },
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'hello' },
+            arguments: [],
+            directives: [],
+          },
+        ],
+      },
+    },
+  ],
 }
 export type DeepPartial<T> = T extends Function
   ? T

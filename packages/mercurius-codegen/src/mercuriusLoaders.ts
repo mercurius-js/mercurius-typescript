@@ -1,14 +1,14 @@
-import {
-  GraphQLList,
-  GraphQLNonNull,
-  GraphQLObjectType,
-  GraphQLScalarType,
-} from 'graphql'
-
-import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
+import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 
 export const MercuriusLoadersPlugin: CodegenPlugin = {
   async plugin(schema) {
+    const {
+      GraphQLList,
+      GraphQLNonNull,
+      GraphQLObjectType,
+      GraphQLScalarType,
+    } = await import('graphql')
+
     const schemaConfig = schema.toConfig()
 
     const queryType = schema.getQueryType()

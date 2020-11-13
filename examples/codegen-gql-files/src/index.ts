@@ -1,15 +1,14 @@
 import Fastify from 'fastify'
-import mercurius from 'mercurius'
+import mercurius, { IResolvers } from 'mercurius'
+import mercuriusCodegen from 'mercurius-codegen'
 
 import { loadFilesSync } from '@graphql-tools/load-files'
-
-import { Resolvers } from './graphql/schema'
 
 const schema = loadFilesSync('src/graphql/schema/**/*.gql', {}).map(String)
 
 export const app = Fastify()
 
-const resolvers: Resolvers = {
+const resolvers: IResolvers = {
   Query: {
     Hello(_root, _args, _ctx, _info) {
       return 'world'
@@ -25,6 +24,11 @@ const resolvers: Resolvers = {
 app.register(mercurius, {
   schema,
   resolvers,
+})
+
+mercuriusCodegen(app, {
+  targetPath: './src/graphql/generated.ts',
+  operationsGlob: './src/graphql/operations/*.gql',
 })
 
 // app.listen(8000)
