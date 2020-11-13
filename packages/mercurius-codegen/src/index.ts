@@ -4,6 +4,8 @@ import { GraphQLSchema } from 'graphql'
 
 import { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
 import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
+import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
+import type { Source } from '@graphql-tools/utils'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
   TypeScriptResolversPluginConfig
@@ -17,7 +19,7 @@ interface CodegenMercuriusOptions {
    * Specify the target path of the code generation.
    *
    * Relative to the directory of the executed script if targetPath isn't absolute
-   * @example './src/generated/graphql.ts'
+   * @example './src/graphql/generated.ts'
    */
   targetPath: string
   /**
@@ -47,13 +49,18 @@ interface CodegenMercuriusOptions {
    * Add code in the beginning of the generated code
    */
   preImportCode?: string
+  /**
+   * Operations glob patterns
+   */
+  operationsGlob?: string[] | string
 }
 
 export async function generateCode(
   schema: GraphQLSchema,
   codegenConfig: CodegenPluginsConfig = { defaultMapper: 'DeepPartial<{T}>' },
   preImportCode?: string,
-  silent?: boolean
+  silent?: boolean,
+  operationsGlob?: string[] | string
 ) {
   // It's not actually worth it to use Promise.all() because it's being transpiled to sync requires anyways
 
@@ -62,11 +69,34 @@ export async function generateCode(
   const typescriptResolversPlugin = await import(
     '@graphql-codegen/typescript-resolvers'
   )
+  const operationsPlugins = operationsGlob
+    ? {
+        typescriptOperations: await import(
+          '@graphql-codegen/typescript-operations'
+        ),
+        typedDocumentNode: await import('@graphql-codegen/typed-document-node'),
+      }
+    : null
   const { parse, printSchema } = await import('graphql')
   const { format, resolveConfig } = await import('prettier')
   const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
+  const { loadFiles } = await import('@graphql-tools/load-files')
+  const {} = await import('@graphql-tools/utils')
 
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
+
+  const documents = operationsGlob
+    ? loadFiles(operationsGlob).then((operations) =>
+        operations.map((op) => {
+          const operationString = String(op)
+          const operationSource: Source = {
+            document: parse(operationString),
+            schema,
+          }
+          return operationSource
+        })
+      )
+    : ([] as [])
 
   let code = preImportCode || ''
 
@@ -89,12 +119,17 @@ export async function generateCode(
     config: Object.assign({}, codegenConfig, {
       namingConvention: 'keep',
     } as CodegenPluginsConfig),
-    documents: [],
+    documents: await documents,
     filename: 'mercurius.generated.ts',
-    pluginMap: {
-      typescript: typescriptPlugin,
-      typescriptResolvers: typescriptResolversPlugin,
-      mercuriusLoaders: MercuriusLoadersPlugin,
+    pluginMap: Object.assign(
+      {
+        typescript: typescriptPlugin,
+        typescriptResolvers: typescriptResolversPlugin,
+        mercuriusLoaders: MercuriusLoadersPlugin,
+      },
+      operationsPlugins
+    ) as {
+      [name: string]: CodegenPlugin<any>
     },
     plugins: [
       {
@@ -106,6 +141,14 @@ export async function generateCode(
       {
         mercuriusLoaders: {},
       },
+      ...(operationsPlugins
+        ? [
+            {
+              typescriptOperations: {},
+            },
+            { typedDocumentNode: {} },
+          ]
+        : []),
     ],
     schema: parse(printSchema(schema)),
   })
@@ -164,6 +207,7 @@ export async function codegenMercurius(
     silent,
     codegenConfig,
     preImportCode,
+    operationsGlob,
   }: CodegenMercuriusOptions
 ): Promise<void> {
   if (disable) return
@@ -178,7 +222,7 @@ export async function codegenMercurius(
     setImmediate(() => {
       const schema = app.graphql.schema
 
-      generateCode(schema, codegenConfig, preImportCode, silent)
+      generateCode(schema, codegenConfig, preImportCode, silent, operationsGlob)
         .then((code) => {
           writeGeneratedCode({
             code,

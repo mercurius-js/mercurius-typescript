@@ -288,8 +288,30 @@ tap.test('gql helper', (t) => {
   t.matchSnapshot(print(parse(b)))
 })
 
+tap.test('operations', async (t) => {
+  t.plan(1)
+
+  const tempTargetPath = await tmp.file()
+
+  t.tearDown(async () => {
+    await tempTargetPath.cleanup()
+  })
+  await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    operationsGlob: ['./test/operations/*.gql'],
+    silent: true,
+  })
+
+  const generatedCode = await readFile(tempTargetPath.path, {
+    encoding: 'utf-8',
+  })
+
+  t.matchSnapshot(generatedCode)
+})
+
 codegenMercurius(app, {
   targetPath: './test/generated.ts',
+  operationsGlob: ['./test/operations/*.gql'],
   disable: false,
   silent: true,
   codegenConfig: {

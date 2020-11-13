@@ -40,7 +40,7 @@ app.register(mercurius, {
 })
 
 mercuriusCodegen(app, {
-  targetPath: './src/generated/graphql.ts',
+  targetPath: './src/graphql/generated.ts',
 }).catch(console.error)
 
 // Then it will automatically generate the file,
@@ -88,6 +88,47 @@ export const loaders: MercuriusLoaders = {
 
 > It automatically uses [prettier](https://prettier.io/) resolving the most nearby config for you.
 
+### Operations
+
+**mercurius-codegen** also supports giving it GraphQL Operation files, basically client `queries`, `mutations` or `subscriptions`, and it creates [Typed Document Nodes](https://github.com/dotansimha/graphql-typed-document-node), that later can be used by other libraries, like for example [mercurius-integration-testing](https://github.com/mercurius-js/mercurius-integration-testing) (_that has native support for typed document nodes_), and then be able to have end-to-end type-safety and auto-completion.
+
+```ts
+import mercuriusCodegen from 'mercurius-codegen'
+
+mercuriusCodegen(app, {
+  targetPath: './src/graphql/generated.ts',
+  // You can also specify an array of globs
+  operationsGlob: './src/graphql/operations/*.gql',
+}).catch(console.error)
+```
+
+> /your-project/src/graphql/operations/example.gql
+
+```graphql
+query hello {
+  HelloWorld
+}
+```
+
+Then, for example, in your tests:
+
+```ts
+import { createMercuriusTestClient } from 'mercurius-integration-testing'
+
+import { helloDocument } from '../src/graphql/generated'
+import { app } from '../src/server'
+
+// ...
+
+const client = createMercuriusTestClient(app)
+
+const response = await client.query(helloDocument)
+
+// response is completely typed!
+```
+
+> Keep in mind that you can always call `mercuriusCodegen` multiple times for different environments and different paths if you prefer to keep the production code as light as possible (which is generally a good practice).
+
 ### Options
 
 There are a couple extra options that can be specified:
@@ -98,7 +139,7 @@ interface CodegenMercuriusOptions {
    * Specify the target path of the code generation.
    *
    * Relative to the directory of the executed script if targetPath isn't absolute
-   * @example './src/generated/graphql.ts'
+   * @example './src/graphql/generated.ts'
    */
   targetPath: string
   /**
@@ -128,10 +169,15 @@ interface CodegenMercuriusOptions {
    * Add code in the beginning of the generated code
    */
   preImportCode?: string
+  /**
+   * Operations glob patterns
+   */
+  operationsGlob?: string[] | string
 }
 
 mercuriusCodegen(app, {
-  targetPath: './src/generated/graphql.ts',
+  targetPath: './src/graphql/generated.ts',
+  operationsGlob: ['./src/graphql/operations/*.gql'],
   disable: false,
   silent: true,
   codegenConfig: {

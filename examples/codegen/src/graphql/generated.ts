@@ -1,6 +1,7 @@
 import { MercuriusContext } from 'mercurius'
 import { FastifyReply } from 'fastify'
 import { GraphQLResolveInfo } from 'graphql'
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
@@ -215,6 +216,93 @@ type LoaderResolver<TReturn, TObj, TParams, TContext> =
 export interface Loaders<
   TContext = MercuriusContext & { reply: FastifyReply }
 > {}
+export type addMutationVariables = Exact<{
+  x: Scalars['Int']
+  y: Scalars['Int']
+}>
+
+export type addMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'add'>
+
+export type helloQueryVariables = Exact<{ [key: string]: never }>
+
+export type helloQuery = { __typename?: 'Query' } & Pick<Query, 'Hello'>
+
+export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'add' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'x' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+          directives: [],
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'y' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+          },
+          directives: [],
+        },
+      ],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'add' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'x' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'x' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'y' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'y' } },
+              },
+            ],
+            directives: [],
+          },
+        ],
+      },
+    },
+  ],
+}
+export const helloDocument: DocumentNode<helloQuery, helloQueryVariables> = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'hello' },
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'Hello' },
+            arguments: [],
+            directives: [],
+          },
+        ],
+      },
+    },
+  ],
+}
 export type DeepPartial<T> = T extends Function
   ? T
   : T extends Array<infer U>
