@@ -14,11 +14,9 @@
   "dependencies": {
     "fastify": "^3.7.0",
     "graphql": "^15.3.0",
-    "lodash": "^4.17.20",
     "mercurius": "^6.4.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.162",
     "@types/node": "^14.14.3",
     "@types/tap": "^14.10.1",
     "graphql-tag": "^2.11.0",

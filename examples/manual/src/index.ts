@@ -1,5 +1,4 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
-import { isEqual } from 'lodash'
 import mercurius, {
   IFieldResolver,
   IResolvers,
@@ -21,6 +20,19 @@ declare module 'mercurius' {
     extends PromiseType<ReturnType<typeof buildContext>> {}
 }
 
+const schema = `
+type Query {
+  helloTyped: String!
+  helloInline: String!
+}
+type Subscription {
+  newNotification: String!
+}
+type Mutation {
+  createNotification(message: String!): Boolean!
+}
+`
+
 const helloTyped: IFieldResolver<
   {} /** Root */,
   MercuriusContext /** Context */,
@@ -41,32 +53,26 @@ const helloTyped: IFieldResolver<
   return 'world'
 }
 
-const isContextAsDefined: IFieldResolver<{}, MercuriusContext, {}> = (
-  root,
-  args,
-  ctx,
-  info
-) => {
-  return (
-    isEqual(root, {}) &&
-    isEqual(args, {}) &&
-    ctx.pubsub === app.graphql.pubsub &&
-    ctx.app === app &&
-    info.parentType.name === 'Query'
-  )
-}
-
 const NOTIFICATION = 'notification'
 
 const resolvers: IResolvers = {
   Query: {
     helloTyped,
-    helloInline: ((root) => {
+    helloInline: (root: {}, args: {}, ctx, info) => {
       // {}
       root
+
+      // {}
+      args
+
+      // string | undefined
+      ctx.authorization
+
+      // string <=> Query
+      info.parentType.name
+
       return 'world'
-    }) as IFieldResolver<{}>,
-    isContextAsDefined,
+    },
   },
   Mutation: {
     createNotification(_root, { message }: { message: string }, { pubsub }) {
@@ -89,19 +95,7 @@ const resolvers: IResolvers = {
 }
 
 app.register(mercurius, {
-  schema: `
-    type Query {
-      helloTyped: String!
-      helloInline: String!
-      isContextAsDefined: Boolean!
-    }
-    type Subscription {
-      newNotification: String!
-    }
-    type Mutation {
-      createNotification(message: String!): Boolean!
-    }
-    `,
+  schema,
   resolvers,
   context: buildContext,
   subscription: true,

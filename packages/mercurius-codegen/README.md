@@ -92,6 +92,8 @@ export const loaders: MercuriusLoaders = {
 
 **mercurius-codegen** also supports giving it GraphQL Operation files, basically client `queries`, `mutations` or `subscriptions`, and it creates [Typed Document Nodes](https://github.com/dotansimha/graphql-typed-document-node), that later can be used by other libraries, like for example [mercurius-integration-testing](https://github.com/mercurius-js/mercurius-integration-testing) (_that has native support for typed document nodes_), and then be able to have end-to-end type-safety and auto-completion.
 
+> You might need to install `@graphql-typed-document-node/core` manually in your project.
+
 ```ts
 import mercuriusCodegen from 'mercurius-codegen'
 

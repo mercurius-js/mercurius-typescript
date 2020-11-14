@@ -1,9 +1,8 @@
 import { createMercuriusTestClient } from 'mercurius-integration-testing'
 import tap from 'tap'
 
-import { helloDocument, addDocument } from '../src/graphql/generated'
-
 import { app } from '../src'
+import { addDocument, helloDocument } from '../src/graphql/generated'
 
 tap.test('works', async (t) => {
   t.plan(4)

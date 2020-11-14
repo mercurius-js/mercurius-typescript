@@ -4,7 +4,8 @@ import { GraphQLSchema } from 'graphql'
 
 import { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
 import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
-import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
+
+import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
@@ -81,7 +82,6 @@ export async function generateCode(
   const { format, resolveConfig } = await import('prettier')
   const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
   const { loadFiles } = await import('@graphql-tools/load-files')
-  const {} = await import('@graphql-tools/utils')
 
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
 
@@ -146,7 +146,9 @@ export async function generateCode(
             {
               typescriptOperations: {},
             },
-            { typedDocumentNode: {} },
+            {
+              typedDocumentNode: {},
+            },
           ]
         : []),
     ],

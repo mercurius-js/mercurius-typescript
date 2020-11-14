@@ -9,7 +9,7 @@ tap.tearDown(async () => {
 })
 
 tap.test('query', async (t) => {
-  t.plan(2)
+  t.plan(1)
   const client = createMercuriusTestClient(app)
 
   await client
@@ -32,20 +32,6 @@ tap.test('query', async (t) => {
           helloInline: 'world',
         },
       })
-    })
-
-  await client
-    .query<{
-      isContextAsDefined: boolean
-    }>(
-      gql`
-        query {
-          isContextAsDefined
-        }
-      `
-    )
-    .then(({ data: { isContextAsDefined } }) => {
-      t.equal(isContextAsDefined, true)
     })
 })
 

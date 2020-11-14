@@ -1,4 +1,4 @@
-import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
+import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 
 export const MercuriusLoadersPlugin: CodegenPlugin = {
   async plugin(schema) {

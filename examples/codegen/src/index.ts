@@ -15,12 +15,39 @@ const schema = gql`
 
 const resolvers: IResolvers = {
   Query: {
-    Hello(_root, _args, _ctx, _info) {
+    Hello(root, args, ctx, info) {
+      // {}
+      root
+
+      // {}
+      args
+
+      // MercuriusContext
+      ctx
+
+      // GraphQLResolveInfo
+      info
+
       return 'world'
     },
   },
   Mutation: {
-    add(_root, { x, y }, _ctx, _info) {
+    add(root, { x, y }, ctx, info) {
+      // {}
+      root
+
+      // number
+      x
+
+      // number
+      y
+
+      // MercuriusContext
+      ctx
+
+      // GraphQLResolveInfo
+      info
+
       return x + y
     },
   },

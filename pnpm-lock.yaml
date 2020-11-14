@@ -19,7 +19,6 @@ importers:
       '@types/node': 14.14.6
       '@types/tap': 14.10.1
       mercurius-integration-testing: 3.1.2_cbb373faf98868ca4b612dffec515304
-      prettier: 2.1.2
       tap: 14.10.8
       typescript: 4.0.5
     specifiers:
@@ -31,7 +30,6 @@ importers:
       mercurius: ^6.4.0
       mercurius-codegen: 'workspace:^1.1.0'
       mercurius-integration-testing: ^3.1.2
-      prettier: ^2.1.2
       tap: ^14.10.8
       typescript: ^4.0.5
   examples/codegen-gql-files:
@@ -46,7 +44,6 @@ importers:
       '@types/node': 14.14.6
       '@types/tap': 14.10.1
       mercurius-integration-testing: 3.1.2_cbb373faf98868ca4b612dffec515304
-      prettier: 2.1.2
       tap: 14.10.8
       typescript: 4.0.5
     specifiers:
@@ -59,17 +56,14 @@ importers:
       mercurius: ^6.4.0
       mercurius-codegen: 'workspace:^1.1.0'
       mercurius-integration-testing: ^3.1.2
-      prettier: ^2.1.2
       tap: ^14.10.8
       typescript: ^4.0.5
   examples/manual:
     dependencies:
       fastify: 3.7.0
       graphql: 15.4.0
-      lodash: 4.17.20
       mercurius: 6.4.0
     devDependencies:
-      '@types/lodash': 4.14.165
       '@types/node': 14.14.6
       '@types/tap': 14.10.1
       graphql-tag: 2.11.0_graphql@15.4.0
@@ -77,13 +71,11 @@ importers:
       tap: 14.10.8
       typescript: 4.0.5
     specifiers:
-      '@types/lodash': ^4.14.162
       '@types/node': ^14.14.3
       '@types/tap': ^14.10.1
       fastify: ^3.7.0
       graphql: ^15.3.0
       graphql-tag: ^2.11.0
-      lodash: ^4.17.20
       mercurius: ^6.4.0
       mercurius-integration-testing: ^3.1.2
       tap: ^14.10.8
@@ -97,11 +89,11 @@ importers:
       '@graphql-codegen/typescript-operations': 1.17.9_graphql@15.4.0
       '@graphql-codegen/typescript-resolvers': 1.17.10_graphql@15.4.0
       '@graphql-tools/load-files': 6.2.4_graphql@15.4.0
-      '@graphql-tools/utils': 7.0.2_graphql@15.4.0
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
       mkdirp: 1.0.4
       prettier: 2.1.2
     devDependencies:
+      '@graphql-tools/utils': 7.0.2_graphql@15.4.0
       '@types/mkdirp': 1.0.1
       '@types/node': 14.14.6
       '@types/prettier': 2.1.5
@@ -139,7 +131,6 @@ packages:
   /@ardatan/aggregate-error/0.0.6:
     dependencies:
       tslib: 2.0.3
-    dev: false
     engines:
       node: '>=8'
     resolution:
@@ -749,7 +740,6 @@ packages:
       camel-case: 4.1.1
       graphql: 15.4.0
       tslib: 2.0.3
-    dev: false
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0
     resolution:
@@ -785,10 +775,6 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-1V9XOY4rDW0rehzbrcqAmHnz8e7SKvX27gh8Gt2WgB0+pdzdiLV83p72kZPU+jvMbS1qU5mauP2iOvO8rhmurQ==
-  /@types/lodash/4.14.165:
-    dev: true
-    resolution:
-      integrity: sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
   /@types/minimatch/3.0.3:
     dev: true
     resolution:
@@ -1140,7 +1126,6 @@ packages:
     dependencies:
       pascal-case: 3.1.1
       tslib: 1.14.1
-    dev: false
     resolution:
       integrity: sha512-7fa2WcG4fYFkclIvEmxBbTvmibwF2/agfEBc6q3lOpVu0A13ltLsA+Hr/8Hp6kp5f+G7hKi6t8lys6XxP+1K6Q==
   /camelcase/5.3.1:
@@ -2628,7 +2613,6 @@ packages:
   /lower-case/2.0.1:
     dependencies:
       tslib: 1.14.1
-    dev: false
     resolution:
       integrity: sha512-LiWgfDLLb1dwbFQZsSglpRj+1ctGnayXz3Uv0/WO8n558JycT5fg6zkNcnW0G68Nn0aEldTFeEfmjCfmqry/rQ==
   /lru-cache/4.1.5:
@@ -2820,7 +2804,6 @@ packages:
     dependencies:
       lower-case: 2.0.1
       tslib: 1.14.1
-    dev: false
     resolution:
       integrity: sha512-ehY/mVQCf9BL0gKfsJBvFJen+1V//U+0HQMPrWct40ixE4jnv0bfvxDbWtAHL9EcaPEOJHVVYKoQn1TlZUB8Tw==
   /node-fetch/1.7.3:
@@ -3081,7 +3064,6 @@ packages:
     dependencies:
       no-case: 3.0.3
       tslib: 1.14.1
-    dev: false
     resolution:
       integrity: sha512-XIeHKqIrsquVTQL2crjq3NfJUxmdLasn3TYOU0VBM+UX2a6ztAWBlJQBePLGY7VHW8+2dRadeIPK5+KImwTxQA==
   /path-case/3.0.3:
@@ -4028,11 +4010,9 @@ packages:
     resolution:
       integrity: sha512-ISJJGgkIpDdBhWVu3jufsWpK3Rzo7bdiIXJjQc0ynKxVOVcg2oIrf2H2cejminGrptVc6q6/uynAHNCuWGbpVA==
   /tslib/1.14.1:
-    dev: false
     resolution:
       integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
   /tslib/2.0.3:
-    dev: false
     resolution:
       integrity: sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
   /tunnel-agent/0.6.0:
