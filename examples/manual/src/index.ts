@@ -51,17 +51,14 @@ const helloTyped: IFieldResolver<
   MercuriusContext /** Context */,
   {} /** Args */
 > = (root, args, ctx, info) => {
-  // string | undefined
-  ctx.authorization
-
-  // string
-  info.parentType.name
-
-  // {}
-  args
-
-  // {}
+  // root ~ {}
   root
+  // args ~ {}
+  args
+  // ctx.authorization ~ string | undefined
+  ctx.authorization
+  // info ~ GraphQLResolveInfo
+  info
 
   return 'world'
 }
@@ -91,17 +88,14 @@ const resolvers: IResolvers = {
   Query: {
     helloTyped,
     helloInline: (root: {}, args: {}, ctx, info) => {
-      // {}
+      // root ~ {}
       root
-
-      // {}
+      // args ~ {}
       args
-
-      // string | undefined
+      // ctx.authorization ~ string | undefined
       ctx.authorization
-
-      // string <=> Query
-      info.parentType.name
+      // info ~ GraphQLResolveInfo
+      info
 
       return 'world'
     },

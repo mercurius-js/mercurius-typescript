@@ -44,7 +44,16 @@ const NOTIFICATION = 'notification'
 
 const resolvers: IResolvers = {
   Query: {
-    Hello(_root, _args, _ctx, _info) {
+    Hello(root, args, ctx, info) {
+      // root ~ {}
+      root
+      // args ~ {}
+      args
+      // ctx.authorization ~ string | undefined
+      ctx.authorization
+      // info ~ GraphQLResolveInfo
+      info
+
       return 'world'
     },
     dogs() {
@@ -52,7 +61,18 @@ const resolvers: IResolvers = {
     },
   },
   Mutation: {
-    add(_root, { x, y }, _ctx, _info) {
+    add(root, { x, y }, ctx, info) {
+      // root ~ {}
+      root
+      // x ~ string
+      x
+      // x ~ string
+      y
+      // ctx.authorization ~ string | undefined
+      ctx.authorization
+      // info ~ GraphQLResolveInfo
+      info
+
       return x + y
     },
     createNotification(_root, { message }, { pubsub }) {

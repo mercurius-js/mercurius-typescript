@@ -66,16 +66,13 @@ const NOTIFICATION = 'notification'
 const resolvers: IResolvers = {
   Query: {
     Hello(root, args, ctx, info) {
-      // {}
+      // root ~ {}
       root
-
-      // {}
+      // args ~ {}
       args
-
-      // MercuriusContext
-      ctx
-
-      // GraphQLResolveInfo
+      // ctx.authorization ~ string | undefined
+      ctx.authorization
+      // info ~ GraphQLResolveInfo
       info
 
       return 'world'
@@ -86,19 +83,15 @@ const resolvers: IResolvers = {
   },
   Mutation: {
     add(root, { x, y }, ctx, info) {
-      // {}
+      // root ~ {}
       root
-
-      // number
+      // x ~ number
       x
-
-      // number
+      // x ~ number
       y
-
-      // MercuriusContext
-      ctx
-
-      // GraphQLResolveInfo
+      // ctx.authorization ~ string | undefined
+      ctx.authorization
+      // info ~ GraphQLResolveInfo
       info
 
       return x + y
