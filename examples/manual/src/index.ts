@@ -3,6 +3,7 @@ import mercurius, {
   IFieldResolver,
   IResolvers,
   MercuriusContext,
+  MercuriusLoaders,
 } from 'mercurius'
 
 export const app = Fastify()
@@ -21,13 +22,25 @@ declare module 'mercurius' {
 }
 
 const schema = `
+type Human {
+  name: String!
+}
+
+type Dog {
+  name: String!
+  owner: Human
+}
+
 type Query {
   helloTyped: String!
   helloInline: String!
+  dogs: [Dog!]!
 }
+
 type Subscription {
   newNotification: String!
 }
+
 type Mutation {
   createNotification(message: String!): Boolean!
 }
@@ -55,6 +68,25 @@ const helloTyped: IFieldResolver<
 
 const NOTIFICATION = 'notification'
 
+const dogs = [
+  { name: 'Max' },
+  { name: 'Charlie' },
+  { name: 'Buddy' },
+  { name: 'Max' },
+]
+
+const owners: Record<string, { name: string }> = {
+  Max: {
+    name: 'Jennifer',
+  },
+  Charlie: {
+    name: 'Sarah',
+  },
+  Buddy: {
+    name: 'Tracy',
+  },
+}
+
 const resolvers: IResolvers = {
   Query: {
     helloTyped,
@@ -73,6 +105,7 @@ const resolvers: IResolvers = {
 
       return 'world'
     },
+    dogs: (_root, _args, _ctx_, _info) => dogs,
   },
   Mutation: {
     createNotification(_root, { message }: { message: string }, { pubsub }) {
@@ -94,11 +127,22 @@ const resolvers: IResolvers = {
   },
 }
 
+const loaders: MercuriusLoaders = {
+  Dog: {
+    async owner(queries, _ctx) {
+      return queries.map(
+        ({ obj }: { obj: { name: string } }) => owners[obj.name]
+      )
+    },
+  },
+}
+
 app.register(mercurius, {
   schema,
   resolvers,
   context: buildContext,
   subscription: true,
+  loaders,
 })
 
 // app.listen(8000)

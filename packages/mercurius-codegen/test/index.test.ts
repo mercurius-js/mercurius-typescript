@@ -3,7 +3,8 @@ import './generated'
 import Fastify from 'fastify'
 import fs from 'fs'
 import { parse, print } from 'graphql'
-import mercurius from 'mercurius'
+import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
+import path from 'path'
 import tap from 'tap'
 import tmp from 'tmp-promise'
 
@@ -19,55 +20,61 @@ const { readFile } = fs.promises
 const appWithoutMercurius = Fastify()
 const app = Fastify()
 
-app.register(mercurius, {
-  schema: `
-    scalar DateTime
-    type Query {
-        hello(greetings: String): String!
-        aHuman: Human!
-    }
-    type Human {
-      name: String!
-      father: Human
-      hasSon(name: String): Boolean
-      sons(name: String!): [Human]!
-      confirmedSonsNullable(name: String!): [Human!]
-      confirmedSonsNonNullItems(name: String!): [Human!]!
-      sonNames: [String]
-      nonNullssonNames: [String!]!
-    }
-    `,
-  resolvers: {
-    Query: {
-      hello(_root, { greetings }, _ctx) {
-        return greetings || 'Hello world!'
-      },
+const schema = gql`
+  scalar DateTime
+  type Query {
+    hello(greetings: String): String!
+    aHuman: Human!
+  }
+  type Human {
+    name: String!
+    father: Human
+    hasSon(name: String): Boolean
+    sons(name: String!): [Human]!
+    confirmedSonsNullable(name: String!): [Human!]
+    confirmedSonsNonNullItems(name: String!): [Human!]!
+    sonNames: [String]
+    nonNullssonNames: [String!]!
+  }
+`
+
+const resolvers: IResolvers = {
+  Query: {
+    hello(_root, { greetings }, _ctx) {
+      return greetings || 'Hello world!'
     },
   },
-  loaders: {
-    Human: {
-      name(queries, _ctx) {
-        return queries.map(({ obj, params }) => {
-          return 'name'
+}
+
+const loaders: MercuriusLoaders = {
+  Human: {
+    async name(queries, _ctx) {
+      return queries.map(({ obj, params }) => {
+        return 'name'
+      })
+    },
+    async father(queries, _ctx) {
+      queries.map(({ obj, params }) => {})
+      return [
+        {
+          name: 'asd',
+        },
+      ]
+    },
+    hasSon: {
+      async loader(queries, _ctx) {
+        return queries.map((value, key) => {
+          return true
         })
       },
-      father(queries, _ctx) {
-        queries.map(({ obj, params }) => {})
-        return [
-          {
-            name: 'asd',
-          },
-        ]
-      },
-      hasSon: {
-        async loader(queries, _ctx) {
-          return queries.map((value, key) => {
-            return true
-          })
-        },
-      },
     },
   },
+}
+
+app.register(mercurius, {
+  schema,
+  resolvers,
+  loaders,
 })
 
 let generatedCode: string
@@ -286,6 +293,35 @@ tap.test('gql helper', (t) => {
 
   t.matchSnapshot(print(parse(a)))
   t.matchSnapshot(print(parse(b)))
+})
+
+tap.test('non existing file', async (t) => {
+  t.plan(1)
+
+  const tempTargetDir = await tmp.dir({
+    unsafeCleanup: true,
+  })
+
+  t.tearDown(async () => {
+    await tempTargetDir.cleanup()
+  })
+
+  const targetPath = path.join(tempTargetDir.path, './genCode.ts')
+
+  const code = `
+  console.log("hello world");
+  `
+
+  await writeGeneratedCode({
+    code,
+    targetPath,
+  })
+
+  const writtenCode = await readFile(targetPath, {
+    encoding: 'utf-8',
+  })
+
+  t.equal(writtenCode, code)
 })
 
 tap.test('operations', async (t) => {

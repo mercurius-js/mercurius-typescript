@@ -2,12 +2,22 @@ import { createMercuriusTestClient } from 'mercurius-integration-testing'
 import tap from 'tap'
 
 import { app } from '../src'
-import { addDocument, helloDocument } from '../src/graphql/generated'
+import {
+  addDocument,
+  createNotificationDocument,
+  dogsDocument,
+  helloDocument,
+  newNotificationDocument,
+} from '../src/graphql/generated'
 
-tap.test('works', async (t) => {
+const client = createMercuriusTestClient(app)
+
+tap.tearDown(async () => {
+  await app.close()
+})
+
+tap.test('hello works', async (t) => {
   t.plan(4)
-
-  const client = createMercuriusTestClient(app)
 
   await client.query(helloDocument).then((response) => {
     t.equal(response.data.Hello, 'world')
@@ -25,4 +35,56 @@ tap.test('works', async (t) => {
       t.equal(response.data.add, 3)
       t.equal(response.errors, undefined)
     })
+})
+
+tap.test('query with loaders', async (t) => {
+  const response = await client.query(dogsDocument)
+
+  t.equivalent(response, {
+    data: {
+      dogs: [
+        { name: 'Max', owner: { name: 'Jennifer' } },
+        { name: 'Charlie', owner: { name: 'Sarah' } },
+        { name: 'Buddy', owner: { name: 'Tracy' } },
+        { name: 'Max', owner: { name: 'Jennifer' } },
+      ],
+    },
+  })
+
+  t.done()
+})
+
+tap.test('subscription', async (t) => {
+  t.plan(2)
+  const notificationMessage = 'Hello World'
+
+  const client = createMercuriusTestClient(app)
+
+  await new Promise<void>(async (resolve) => {
+    await client.subscribe({
+      query: newNotificationDocument,
+      onData(response) {
+        t.equivalent(response, {
+          data: {
+            newNotification: notificationMessage,
+          },
+        })
+
+        resolve()
+      },
+    })
+    await client
+      .mutate(createNotificationDocument, {
+        variables: {
+          message: notificationMessage,
+        },
+      })
+      .then((response) => {
+        t.equivalent(response, {
+          data: {
+            createNotification: true,
+          },
+        })
+      })
+  })
 })

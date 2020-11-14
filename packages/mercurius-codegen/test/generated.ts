@@ -269,13 +269,13 @@ export type IResolvers<ContextType = any> = Resolvers<ContextType>
 
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
-    obj: DeepPartial<TObj>
+    obj: TObj
     params: TParams
   }>,
   context: TContext & {
     reply: FastifyReply
   }
-) => Array<DeepPartial<TReturn>> | Promise<Array<DeepPartial<TReturn>>>
+) => Promise<Array<DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {

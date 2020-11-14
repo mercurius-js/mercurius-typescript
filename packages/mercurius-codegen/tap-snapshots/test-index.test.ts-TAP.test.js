@@ -17,6 +17,12 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>
 export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X]
 } &
@@ -86,13 +92,6 @@ export type StitchingResolver<TResult, TParent, TContext, TArgs> =
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | StitchingResolver<TResult, TParent, TContext, TArgs>
-
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo
-) => Promise<TResult> | TResult
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -185,20 +184,20 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  DateTime: ResolverTypeWrapper<DeepPartial<Scalars['DateTime']>>
+  DateTime: ResolverTypeWrapper<Scalars['DateTime']>
   Query: ResolverTypeWrapper<{}>
-  String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
-  Human: ResolverTypeWrapper<DeepPartial<Human>>
-  Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
+  String: ResolverTypeWrapper<Scalars['String']>
+  Human: ResolverTypeWrapper<Human>
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  DateTime: DeepPartial<Scalars['DateTime']>
+  DateTime: Scalars['DateTime']
   Query: {}
-  String: DeepPartial<Scalars['String']>
-  Human: DeepPartial<Human>
-  Boolean: DeepPartial<Scalars['Boolean']>
+  String: Scalars['String']
+  Human: Human
+  Boolean: Scalars['Boolean']
 }
 
 export interface DateTimeScalarConfig
@@ -276,13 +275,13 @@ export type IResolvers<ContextType = any> = Resolvers<ContextType>
 
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
-    obj: DeepPartial<TObj>
+    obj: TObj
     params: TParams
   }>,
   context: TContext & {
     reply: FastifyReply
   }
-) => Array<DeepPartial<TReturn>> | Promise<Array<DeepPartial<TReturn>>>
+) => Promise<Array<DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {
@@ -379,6 +378,12 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>
 export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X]
 } &
@@ -448,13 +453,6 @@ export type StitchingResolver<TResult, TParent, TContext, TArgs> =
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | StitchingResolver<TResult, TParent, TContext, TArgs>
-
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo
-) => Promise<TResult> | TResult
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -547,20 +545,20 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  DateTime: ResolverTypeWrapper<DeepPartial<Scalars['DateTime']>>
+  DateTime: ResolverTypeWrapper<Scalars['DateTime']>
   Query: ResolverTypeWrapper<{}>
-  String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
-  Human: ResolverTypeWrapper<DeepPartial<Human>>
-  Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
+  String: ResolverTypeWrapper<Scalars['String']>
+  Human: ResolverTypeWrapper<Human>
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  DateTime: DeepPartial<Scalars['DateTime']>
+  DateTime: Scalars['DateTime']
   Query: {}
-  String: DeepPartial<Scalars['String']>
-  Human: DeepPartial<Human>
-  Boolean: DeepPartial<Scalars['Boolean']>
+  String: Scalars['String']
+  Human: Human
+  Boolean: Scalars['Boolean']
 }
 
 export interface DateTimeScalarConfig
@@ -638,13 +636,13 @@ export type IResolvers<ContextType = any> = Resolvers<ContextType>
 
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
-    obj: DeepPartial<TObj>
+    obj: TObj
     params: TParams
   }>,
   context: TContext & {
     reply: FastifyReply
   }
-) => Array<DeepPartial<TReturn>> | Promise<Array<DeepPartial<TReturn>>>
+) => Promise<Array<DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {

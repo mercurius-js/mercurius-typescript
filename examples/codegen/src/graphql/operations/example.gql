@@ -5,3 +5,20 @@ mutation add($x: Int!, $y: Int!) {
 query hello {
   Hello
 }
+
+query dogs {
+  dogs {
+    name
+    owner {
+      name
+    }
+  }
+}
+
+mutation createNotification($message: String!) {
+  createNotification(message: $message)
+}
+
+subscription newNotification {
+  newNotification
+}

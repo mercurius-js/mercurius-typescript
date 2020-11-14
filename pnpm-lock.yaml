@@ -10,76 +10,76 @@ importers:
       pretty-quick: ^3.1.0
   examples/codegen:
     dependencies:
-      fastify: 3.7.0
+      fastify: 3.8.0
       graphql: 15.4.0
       mercurius: 6.4.0
       mercurius-codegen: 'link:../../packages/mercurius-codegen'
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
-      '@types/node': 14.14.6
+      '@types/node': 14.14.7
       '@types/tap': 14.10.1
-      mercurius-integration-testing: 3.1.2_cbb373faf98868ca4b612dffec515304
+      mercurius-integration-testing: 3.1.2_295da868926add62dc89af97d49884d6
       tap: 14.10.8
       typescript: 4.0.5
     specifiers:
       '@graphql-typed-document-node/core': ^3.1.0
-      '@types/node': ^14.14.6
+      '@types/node': ^14.14.7
       '@types/tap': ^14.10.1
-      fastify: ^3.7.0
+      fastify: ^3.8.0
       graphql: ^15.4.0
       mercurius: ^6.4.0
-      mercurius-codegen: 'workspace:^1.1.0'
+      mercurius-codegen: 'workspace:^1.1.3'
       mercurius-integration-testing: ^3.1.2
       tap: ^14.10.8
       typescript: ^4.0.5
   examples/codegen-gql-files:
     dependencies:
       '@graphql-tools/load-files': 6.2.4_graphql@15.4.0
-      fastify: 3.7.0
+      fastify: 3.8.0
       graphql: 15.4.0
       mercurius: 6.4.0
       mercurius-codegen: 'link:../../packages/mercurius-codegen'
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
-      '@types/node': 14.14.6
+      '@types/node': 14.14.7
       '@types/tap': 14.10.1
-      mercurius-integration-testing: 3.1.2_cbb373faf98868ca4b612dffec515304
+      mercurius-integration-testing: 3.1.2_295da868926add62dc89af97d49884d6
       tap: 14.10.8
       typescript: 4.0.5
     specifiers:
       '@graphql-tools/load-files': ^6.2.4
       '@graphql-typed-document-node/core': ^3.1.0
-      '@types/node': ^14.14.6
+      '@types/node': ^14.14.7
       '@types/tap': ^14.10.1
-      fastify: ^3.7.0
+      fastify: ^3.8.0
       graphql: ^15.4.0
       mercurius: ^6.4.0
-      mercurius-codegen: 'workspace:^1.1.0'
+      mercurius-codegen: 'workspace:^1.1.3'
       mercurius-integration-testing: ^3.1.2
       tap: ^14.10.8
       typescript: ^4.0.5
   examples/manual:
     dependencies:
-      fastify: 3.7.0
+      fastify: 3.8.0
       graphql: 15.4.0
       mercurius: 6.4.0
     devDependencies:
-      '@types/node': 14.14.6
+      '@types/node': 14.14.7
       '@types/tap': 14.10.1
       graphql-tag: 2.11.0_graphql@15.4.0
-      mercurius-integration-testing: 3.1.2_cbb373faf98868ca4b612dffec515304
+      mercurius-integration-testing: 3.1.2_295da868926add62dc89af97d49884d6
       tap: 14.10.8
       typescript: 4.0.5
     specifiers:
-      '@types/node': ^14.14.3
+      '@types/node': ^14.14.7
       '@types/tap': ^14.10.1
-      fastify: ^3.7.0
-      graphql: ^15.3.0
+      fastify: ^3.8.0
+      graphql: ^15.4.0
       graphql-tag: ^2.11.0
       mercurius: ^6.4.0
       mercurius-integration-testing: ^3.1.2
       tap: ^14.10.8
-      typescript: ^4.0.3
+      typescript: ^4.0.5
   packages/mercurius-codegen:
     dependencies:
       '@graphql-codegen/core': 1.17.8_graphql@15.4.0
@@ -95,10 +95,10 @@ importers:
     devDependencies:
       '@graphql-tools/utils': 7.0.2_graphql@15.4.0
       '@types/mkdirp': 1.0.1
-      '@types/node': 14.14.6
+      '@types/node': 14.14.7
       '@types/prettier': 2.1.5
       '@types/tap': 14.10.1
-      fastify: 3.7.0
+      fastify: 3.8.0
       graphql: 15.4.0
       mercurius: 6.4.0
       tap: 14.10.8
@@ -115,10 +115,10 @@ importers:
       '@graphql-tools/utils': ^7.0.2
       '@graphql-typed-document-node/core': ^3.1.0
       '@types/mkdirp': ^1.0.1
-      '@types/node': ^14.14.6
+      '@types/node': ^14.14.7
       '@types/prettier': ^2.1.5
       '@types/tap': ^14.10.1
-      fastify: ^3.7.0
+      fastify: ^3.8.0
       graphql: ^15.4.0
       mercurius: ^6.4.0
       mkdirp: ^1.0.4
@@ -155,7 +155,7 @@ packages:
       gensync: 1.0.0-beta.2
       json5: 2.1.3
       lodash: 4.17.20
-      resolve: 1.18.1
+      resolve: 1.19.0
       semver: 5.7.1
       source-map: 0.5.7
     engines:
@@ -781,14 +781,14 @@ packages:
       integrity: sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
   /@types/mkdirp/1.0.1:
     dependencies:
-      '@types/node': 14.14.6
+      '@types/node': 14.14.7
     dev: true
     resolution:
       integrity: sha512-HkGSK7CGAXncr8Qn/0VqNtExEE+PHMWb+qlR1faHMao7ng6P3tAaoWWBMdva0gL5h4zprjIO89GJOLXsMcDm1Q==
-  /@types/node/14.14.6:
+  /@types/node/14.14.7:
     dev: true
     resolution:
-      integrity: sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
+      integrity: sha512-Zw1vhUSQZYw+7u5dAwNbIA9TuTotpzY/OF7sJM9FqPOF3SPjKnxrjoTktXDZgUjybf4cWVBP7O8wvKdSaGHweg==
   /@types/parse-json/4.0.0:
     dev: true
     resolution:
@@ -799,7 +799,7 @@ packages:
       integrity: sha512-UEyp8LwZ4Dg30kVU2Q3amHHyTn1jEdhCIE59ANed76GaT1Vp76DD3ZWSAxgCrw6wJ0TqeoBpqmfUHiUDPs//HQ==
   /@types/tap/14.10.1:
     dependencies:
-      '@types/node': 14.14.6
+      '@types/node': 14.14.7
     dev: true
     resolution:
       integrity: sha512-+B+qsPyxMhg0I7NHw68uL0uEM4eXkLS/sfwVWnzRHuIZxV44EM/v0hDD0sqxdmFKI8sh9H8mxsP4pxJsvnIygQ==
@@ -1674,14 +1674,14 @@ packages:
     dependencies:
       ajv: 6.12.6
       deepmerge: 4.2.2
-      string-similarity: 4.0.2
+      string-similarity: 4.0.3
     resolution:
       integrity: sha512-xY6gyjmHN3AK1Y15BCbMpeO9+dea5ePVsp3BouHCdukcx0hOHbXwFhRodhcI0NpZIgDChSeAKkHW9YjKvhwKBA==
   /fast-json-stringify/2.2.9:
     dependencies:
       ajv: 6.12.6
       deepmerge: 4.2.2
-      string-similarity: 4.0.2
+      string-similarity: 4.0.3
     engines:
       node: '>= 10.0.0'
     resolution:
@@ -1716,14 +1716,14 @@ packages:
   /fastify-warning/0.2.0:
     resolution:
       integrity: sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==
-  /fastify-websocket/2.0.10:
+  /fastify-websocket/2.0.11:
     dependencies:
-      fastify-plugin: 2.3.4
+      fastify-plugin: 3.0.0
       find-my-way: 3.0.5
-      ws: 7.3.1
+      ws: 7.4.0
     resolution:
-      integrity: sha512-cESoKnOsq8DIeYOcnGQbRnNUqegXFUAkrEsVIu0vSyiVL2d1bJnsZo6LwA1W8P77fi2cYVodFBAm13gIY0k5Kg==
-  /fastify/3.7.0:
+      integrity: sha512-0K9S7DJAtWdohsjFpGPxZ7SzPUi5aqeExYWoU9kNlTqIos8d5beeBYY/9s/1RhelZ4HJ+PDHgQ5LV4IGSzInTA==
+  /fastify/3.8.0:
     dependencies:
       abstract-logging: 2.0.1
       ajv: 6.12.6
@@ -1733,7 +1733,7 @@ packages:
       fastify-warning: 0.2.0
       find-my-way: 3.0.5
       flatstr: 1.0.12
-      light-my-request: 4.2.1
+      light-my-request: 4.3.0
       pino: 6.7.0
       proxy-addr: 2.0.6
       readable-stream: 3.6.0
@@ -1744,7 +1744,7 @@ packages:
     engines:
       node: '>=10.16.0'
     resolution:
-      integrity: sha512-xmiR1TOSNXXNHfEvBwhWlyj158q59vZkPLIKQ71f7qJG5QMPqCbeYUUFRaDKTaLFhRqmLLFprBpJsO5nbSMiPQ==
+      integrity: sha512-w57/uvyQWzF/KSr9CbWQ5nfTqSSfYcmrems9Lc3VvtrAF7EsLbfZQBQZul6xwvE1uEfxA4nGdoUKqpU7xiv7cw==
   /fastparallel/2.4.0:
     dependencies:
       reusify: 1.0.4
@@ -1836,15 +1836,15 @@ packages:
   /flatstr/1.0.12:
     resolution:
       integrity: sha512-4zPxDyhCyiN2wIAtSLI6gc82/EjqZc1onI4Mz/l0pWrAlsSfYH/2ZIcU+e3oA2wDwbzIWNKwa23F8rh6+DRWkw==
-  /flow-parser/0.137.0:
+  /flow-parser/0.138.0:
     dev: true
     engines:
       node: '>=0.4.0'
     resolution:
-      integrity: sha512-i3KXJZ8lhlQI0n+BoZzIeH/rv+fNvAiu1i9/s64MklBV+HuhFbycUML7367J2eng0gapLnwvYPFNaPZys8POsA==
-  /flow-remove-types/2.137.0:
+      integrity: sha512-LFnTyjrv39UvCWl8NOcpByr/amj8a5k5z7isO2wv4T43nNrUnHQwX3rarTz9zcpHXkDAQv6X4MfQ4ZzJUptpbw==
+  /flow-remove-types/2.138.0:
     dependencies:
-      flow-parser: 0.137.0
+      flow-parser: 0.138.0
       pirates: 3.0.2
       vlq: 0.2.3
     dev: true
@@ -1852,7 +1852,7 @@ packages:
       node: '>=4'
     hasBin: true
     resolution:
-      integrity: sha512-Ubj3M8kKv6rA5mxy9qVxKoZZ8COcFknUvwjUb1uxObrOLOhhZYeIrs//P6EUzd14cVKzhxPQ2Ey7b0DESq7VcA==
+      integrity: sha512-gWZYpCAcpX5SD7j1S5DrWLWm+ir5LXkkRTrCokTdO5aW6M1cqQmHN5lxwoQTqkP8PfgXI8ILD810TL9CvexpgA==
   /foreground-child/1.5.6:
     dependencies:
       cross-spawn: 4.0.2
@@ -2542,7 +2542,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-6w1GtUER68VhrLTECO+TY73I9+A=
-  /light-my-request/4.2.1:
+  /light-my-request/4.3.0:
     dependencies:
       ajv: 6.12.6
       cookie: 0.4.1
@@ -2550,7 +2550,7 @@ packages:
       readable-stream: 3.6.0
       set-cookie-parser: 2.4.6
     resolution:
-      integrity: sha512-33FZvX/418IEy0sXldsLiJifbS/ruttcVveTbbZ8sQVR2VSFPA39hBu/iF/hVkt/1V0N7CdTQg4jiiVPdGgW8A==
+      integrity: sha512-WrEvI7V41ZbEUe0bsfuS170QrYSVADKA0JiWyK/lVtm4Ra26pl9CYKBdlr823/s37N2wMJze8YNkHbg11aZWAw==
   /lines-and-columns/1.1.6:
     dev: true
     resolution:
@@ -2641,11 +2641,11 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=
-  /mercurius-integration-testing/3.1.2_cbb373faf98868ca4b612dffec515304:
+  /mercurius-integration-testing/3.1.2_295da868926add62dc89af97d49884d6:
     dependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
       cookie: 0.4.1
-      fastify: 3.7.0
+      fastify: 3.8.0
       get-port: 5.1.1
       graphql: 15.4.0
       mercurius: 6.4.0
@@ -2663,7 +2663,7 @@ packages:
       events.on: 1.0.1
       fastify-plugin: 2.3.4
       fastify-static: 3.3.0
-      fastify-websocket: 2.0.10
+      fastify-websocket: 2.0.11
       graphql: 15.4.0
       graphql-jit: 0.4.3_graphql@15.4.0
       http-errors: 1.8.0
@@ -2673,7 +2673,7 @@ packages:
       readable-stream: 3.6.0
       single-user-cache: 0.3.1
       tiny-lru: 7.0.6
-      ws: 7.3.1
+      ws: 7.4.0
     resolution:
       integrity: sha512-zvuuLij+F+OQCkZzQEC5LRdMmLKXaqPzol62AW5m66xhJxgqBEY1F/PM4T/Ejkh/L2bCcwRt2jruYw4l9OmocQ==
   /merge-source-map/1.1.0:
@@ -2826,7 +2826,7 @@ packages:
   /normalize-package-data/2.5.0:
     dependencies:
       hosted-git-info: 2.8.8
-      resolve: 1.18.1
+      resolve: 1.19.0
       semver: 5.7.1
       validate-npm-package-license: 3.0.4
     dev: true
@@ -3446,12 +3446,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==
-  /resolve/1.18.1:
+  /resolve/1.19.0:
     dependencies:
       is-core-module: 2.1.0
       path-parse: 1.0.6
     resolution:
-      integrity: sha512-lDfCPaMKfOJXjy0dPayzPdF1phampNWr3qFCjAu+rw/qbQmr5jWH5xN2hwh9QKfw9E5v4hwV7A+jrCmL8yjjqA==
+      integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==
   /ret/0.2.2:
     engines:
       node: '>=4'
@@ -3706,20 +3706,22 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-HXXqVUq7+pcKeLqqZj6mHFUMvXtOJt1uoUx09pFW6011inTMxqI8BA8PM95myrIyyKwdnzjdFjLiE6KBPVtJIg==
-  /stack-utils/1.0.2:
+  /stack-utils/1.0.3:
+    dependencies:
+      escape-string-regexp: 2.0.0
     dev: true
     engines:
-      node: '>=0.10.0'
+      node: '>=8'
     resolution:
-      integrity: sha512-MTX+MeG5U994cazkjd/9KNAapsHnibjMLnfXodlkXw76JEea0UiNzrqidzo1emMwk7w5Qhc9jd4Bn9TBb1MFwA==
+      integrity: sha512-WldO+YmqhEpjp23eHZRhOT1NQF51STsbxZ+/AdpFD+EhheFxAe5d0WoK4DQVJkSHacPrJJX3OqRAl9CgHf78pg==
   /statuses/1.5.0:
     engines:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
-  /string-similarity/4.0.2:
+  /string-similarity/4.0.3:
     resolution:
-      integrity: sha512-eCsPPyoQBgY4TMpVD6DVfO7pLrimUONriaO4Xjp3WPUW0YnNLqdHgRj23xotLlqrL90eJhBeq3zdAJf2mQgfBQ==
+      integrity: sha512-QEwJzNFCqq+5AGImk5z4vbsEPTN/+gtyKfXBVLBcbPBRPNganZGfQnIuf9yJ+GiwSnD65sT8xrw/uwU1Q1WmfQ==
   /string-width/1.0.2:
     dependencies:
       code-point-at: 1.1.0
@@ -3890,7 +3892,7 @@ packages:
       diff: 4.0.2
       esm: 3.2.25
       findit: 2.0.0
-      flow-remove-types: 2.137.0
+      flow-remove-types: 2.138.0
       foreground-child: 1.5.6
       fs-exists-cached: 1.0.0
       function-loop: 1.0.2
@@ -3909,7 +3911,7 @@ packages:
       rimraf: 2.7.1
       signal-exit: 3.0.3
       source-map-support: 0.5.19
-      stack-utils: 1.0.2
+      stack-utils: 1.0.3
       tap-mocha-reporter: 5.0.1
       tap-parser: 10.1.0
       tap-yaml: 1.0.0
@@ -4205,6 +4207,7 @@ packages:
     resolution:
       integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==
   /ws/7.3.1:
+    dev: true
     engines:
       node: '>=8.3.0'
     peerDependencies:
@@ -4217,6 +4220,19 @@ packages:
         optional: true
     resolution:
       integrity: sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
+  /ws/7.4.0:
+    engines:
+      node: '>=8.3.0'
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    resolution:
+      integrity: sha512-kyFwXuV/5ymf+IXhS6f0+eAFvydbaBW3zjpT6hUdAh/hbVjTIB5EHBGi0bPoCLSK2wcuz3BrEkB9LrYv1Nm4NQ==
   /xtend/4.0.2:
     engines:
       node: '>=0.4'

@@ -6,6 +6,12 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>
 export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X]
 } &
@@ -19,9 +25,21 @@ export type Scalars = {
   Float: number
 }
 
+export type Dog = {
+  __typename?: 'Dog'
+  name: Scalars['String']
+  owner?: Maybe<Human>
+}
+
+export type Human = {
+  __typename?: 'Human'
+  name: Scalars['String']
+}
+
 export type Mutation = {
   __typename?: 'Mutation'
   add: Scalars['Int']
+  createNotification: Scalars['Boolean']
 }
 
 export type MutationaddArgs = {
@@ -29,9 +47,19 @@ export type MutationaddArgs = {
   y: Scalars['Int']
 }
 
+export type MutationcreateNotificationArgs = {
+  message: Scalars['String']
+}
+
 export type Query = {
   __typename?: 'Query'
   Hello: Scalars['String']
+  dogs: Array<Dog>
+}
+
+export type Subscription = {
+  __typename?: 'Subscription'
+  newNotification: Scalars['String']
 }
 
 export type ResolverTypeWrapper<T> = Promise<T> | T
@@ -51,13 +79,6 @@ export type StitchingResolver<TResult, TParent, TContext, TArgs> =
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | StitchingResolver<TResult, TParent, TContext, TArgs>
-
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo
-) => Promise<TResult> | TResult
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -150,20 +171,43 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  Dog: ResolverTypeWrapper<Dog>
+  String: ResolverTypeWrapper<Scalars['String']>
+  Human: ResolverTypeWrapper<Human>
   Mutation: ResolverTypeWrapper<{}>
-  Int: ResolverTypeWrapper<DeepPartial<Scalars['Int']>>
+  Int: ResolverTypeWrapper<Scalars['Int']>
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>
   Query: ResolverTypeWrapper<{}>
-  String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
-  Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
+  Subscription: ResolverTypeWrapper<{}>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  Dog: Dog
+  String: Scalars['String']
+  Human: Human
   Mutation: {}
-  Int: DeepPartial<Scalars['Int']>
+  Int: Scalars['Int']
+  Boolean: Scalars['Boolean']
   Query: {}
-  String: DeepPartial<Scalars['String']>
-  Boolean: DeepPartial<Scalars['Boolean']>
+  Subscription: {}
+}
+
+export type DogResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Dog'] = ResolversParentTypes['Dog']
+> = {
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  owner?: Resolver<Maybe<ResolversTypes['Human']>, ParentType, ContextType>
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+}
+
+export type HumanResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
+> = {
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
 export type MutationResolvers<
@@ -176,6 +220,12 @@ export type MutationResolvers<
     ContextType,
     RequireFields<MutationaddArgs, 'x' | 'y'>
   >
+  createNotification?: Resolver<
+    ResolversTypes['Boolean'],
+    ParentType,
+    ContextType,
+    RequireFields<MutationcreateNotificationArgs, 'message'>
+  >
 }
 
 export type QueryResolvers<
@@ -183,11 +233,27 @@ export type QueryResolvers<
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
   Hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  dogs?: Resolver<Array<ResolversTypes['Dog']>, ParentType, ContextType>
+}
+
+export type SubscriptionResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']
+> = {
+  newNotification?: SubscriptionResolver<
+    ResolversTypes['String'],
+    'newNotification',
+    ParentType,
+    ContextType
+  >
 }
 
 export type Resolvers<ContextType = any> = {
+  Dog?: DogResolvers<ContextType>
+  Human?: HumanResolvers<ContextType>
   Mutation?: MutationResolvers<ContextType>
   Query?: QueryResolvers<ContextType>
+  Subscription?: SubscriptionResolvers<ContextType>
 }
 
 /**
@@ -198,13 +264,13 @@ export type IResolvers<ContextType = any> = Resolvers<ContextType>
 
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
-    obj: DeepPartial<TObj>
+    obj: TObj
     params: TParams
   }>,
   context: TContext & {
     reply: FastifyReply
   }
-) => Array<DeepPartial<TReturn>> | Promise<Array<DeepPartial<TReturn>>>
+) => Promise<Array<DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {
@@ -215,7 +281,16 @@ type LoaderResolver<TReturn, TObj, TParams, TContext> =
     }
 export interface Loaders<
   TContext = MercuriusContext & { reply: FastifyReply }
-> {}
+> {
+  Dog?: {
+    name?: LoaderResolver<Scalars['String'], Dog, {}, TContext>
+    owner?: LoaderResolver<Maybe<Human>, Dog, {}, TContext>
+  }
+
+  Human?: {
+    name?: LoaderResolver<Scalars['String'], Human, {}, TContext>
+  }
+}
 export type helloQueryVariables = Exact<{ [key: string]: never }>
 
 export type helloQuery = { __typename?: 'Query' } & Pick<Query, 'Hello'>
@@ -226,6 +301,33 @@ export type addMutationVariables = Exact<{
 }>
 
 export type addMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'add'>
+
+export type dogsQueryVariables = Exact<{ [key: string]: never }>
+
+export type dogsQuery = { __typename?: 'Query' } & {
+  dogs: Array<
+    { __typename?: 'Dog' } & Pick<Dog, 'name'> & {
+        owner?: Maybe<{ __typename?: 'Human' } & Pick<Human, 'name'>>
+      }
+  >
+}
+
+export type createNotificationMutationVariables = Exact<{
+  message: Scalars['String']
+}>
+
+export type createNotificationMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'createNotification'
+>
+
+export type newNotificationSubscriptionVariables = Exact<{
+  [key: string]: never
+}>
+
+export type newNotificationSubscription = {
+  __typename?: 'Subscription'
+} & Pick<Subscription, 'newNotification'>
 
 export const helloDocument: DocumentNode<helloQuery, helloQueryVariables> = {
   kind: 'Document',
@@ -296,6 +398,134 @@ export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
                 value: { kind: 'Variable', name: { kind: 'Name', value: 'y' } },
               },
             ],
+            directives: [],
+          },
+        ],
+      },
+    },
+  ],
+}
+export const dogsDocument: DocumentNode<dogsQuery, dogsQueryVariables> = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'dogs' },
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'dogs' },
+            arguments: [],
+            directives: [],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'name' },
+                  arguments: [],
+                  directives: [],
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'owner' },
+                  arguments: [],
+                  directives: [],
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'name' },
+                        arguments: [],
+                        directives: [],
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+}
+export const createNotificationDocument: DocumentNode<
+  createNotificationMutation,
+  createNotificationMutationVariables
+> = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'mutation',
+      name: { kind: 'Name', value: 'createNotification' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'message' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'String' },
+            },
+          },
+          directives: [],
+        },
+      ],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'createNotification' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'message' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'message' },
+                },
+              },
+            ],
+            directives: [],
+          },
+        ],
+      },
+    },
+  ],
+}
+export const newNotificationDocument: DocumentNode<
+  newNotificationSubscription,
+  newNotificationSubscriptionVariables
+> = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'subscription',
+      name: { kind: 'Name', value: 'newNotification' },
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'newNotification' },
+            arguments: [],
             directives: [],
           },
         ],

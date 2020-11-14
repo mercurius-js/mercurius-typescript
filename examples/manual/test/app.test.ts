@@ -4,13 +4,14 @@ import tap from 'tap'
 
 import { app } from '../src'
 
+const client = createMercuriusTestClient(app)
+
 tap.tearDown(async () => {
   await app.close()
 })
 
 tap.test('query', async (t) => {
   t.plan(1)
-  const client = createMercuriusTestClient(app)
 
   await client
     .query<{
@@ -88,4 +89,30 @@ tap.test('subscription', async (t) => {
         })
       })
   })
+})
+
+tap.test('loaders', async (t) => {
+  const response = await client.query(gql`
+    query {
+      dogs {
+        name
+        owner {
+          name
+        }
+      }
+    }
+  `)
+
+  t.equivalent(response, {
+    data: {
+      dogs: [
+        { name: 'Max', owner: { name: 'Jennifer' } },
+        { name: 'Charlie', owner: { name: 'Sarah' } },
+        { name: 'Buddy', owner: { name: 'Tracy' } },
+        { name: 'Max', owner: { name: 'Jennifer' } },
+      ],
+    },
+  })
+
+  t.done()
 })

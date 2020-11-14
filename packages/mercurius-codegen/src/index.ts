@@ -38,11 +38,11 @@ interface CodegenMercuriusOptions {
    *    scalars: {
    *        DateTime: "Date",
    *    },
-   *    defaultMapper: "DeepPartial<{T}>"
+   *    customResolverFn: "(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>"
    * }
    * @default
    * codegenConfig: {
-   *    defaultMapper: "DeepPartial<{T}>"
+   *    customResolverFn: "(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>"
    * }
    */
   codegenConfig?: CodegenPluginsConfig
@@ -58,7 +58,10 @@ interface CodegenMercuriusOptions {
 
 export async function generateCode(
   schema: GraphQLSchema,
-  codegenConfig: CodegenPluginsConfig = { defaultMapper: 'DeepPartial<{T}>' },
+  codegenConfig: CodegenPluginsConfig = {
+    customResolverFn:
+      '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>',
+  },
   preImportCode?: string,
   silent?: boolean,
   operationsGlob?: string[] | string
@@ -193,6 +196,18 @@ export async function writeGeneratedCode({
   targetPath = resolve(targetPath)
 
   await mkdirp(dirname(targetPath))
+
+  const fileExists = fs.existsSync(targetPath)
+
+  if (fileExists) {
+    const existingCode = await fs.promises.readFile(targetPath, {
+      encoding: 'utf-8',
+    })
+
+    if (existingCode === code) {
+      return targetPath
+    }
+  }
 
   await fs.promises.writeFile(targetPath, code, {
     encoding: 'utf-8',

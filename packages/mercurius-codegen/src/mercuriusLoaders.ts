@@ -18,13 +18,13 @@ export const MercuriusLoadersPlugin: CodegenPlugin = {
     let code = `
     type Loader<TReturn, TObj, TParams, TContext> = (
         queries: Array<{
-          obj: DeepPartial<TObj>;
+          obj: TObj;
           params: TParams;
         }>,
         context: TContext & {
           reply: FastifyReply;
         }
-      ) => Array<DeepPartial<TReturn>> | Promise<Array<DeepPartial<TReturn>>>;
+      ) => Promise<Array<DeepPartial<TReturn>>>;
     type LoaderResolver<TReturn, TObj, TParams, TContext> = 
     Loader<TReturn, TObj, TParams, TContext> | {
         loader: Loader<TReturn, TObj, TParams, TContext>;
