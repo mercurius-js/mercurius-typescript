@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14
       - name: Setup pnpm
-        uses: pnpm/action-setup@v1.2.0
+        uses: pnpm/action-setup@v1.2.1
         with:
           version: latest
       - run: pnpm i
