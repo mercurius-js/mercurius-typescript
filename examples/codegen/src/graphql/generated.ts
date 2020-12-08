@@ -6,6 +6,10 @@ export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> }
 export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
@@ -344,7 +348,6 @@ export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
             kind: 'NonNullType',
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
           },
-          directives: [],
         },
         {
           kind: 'VariableDefinition',
@@ -353,10 +356,8 @@ export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
             kind: 'NonNullType',
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
           },
-          directives: [],
         },
       ],
-      directives: [],
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
@@ -375,7 +376,6 @@ export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
                 value: { kind: 'Variable', name: { kind: 'Name', value: 'y' } },
               },
             ],
-            directives: [],
           },
         ],
       },
@@ -389,18 +389,9 @@ export const helloDocument: DocumentNode<helloQuery, helloQueryVariables> = {
       kind: 'OperationDefinition',
       operation: 'query',
       name: { kind: 'Name', value: 'hello' },
-      variableDefinitions: [],
-      directives: [],
       selectionSet: {
         kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'Hello' },
-            arguments: [],
-            directives: [],
-          },
-        ],
+        selections: [{ kind: 'Field', name: { kind: 'Name', value: 'Hello' } }],
       },
     },
   ],
@@ -412,39 +403,23 @@ export const dogsDocument: DocumentNode<dogsQuery, dogsQueryVariables> = {
       kind: 'OperationDefinition',
       operation: 'query',
       name: { kind: 'Name', value: 'dogs' },
-      variableDefinitions: [],
-      directives: [],
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
           {
             kind: 'Field',
             name: { kind: 'Name', value: 'dogs' },
-            arguments: [],
-            directives: [],
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'name' },
-                  arguments: [],
-                  directives: [],
-                },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'owner' },
-                  arguments: [],
-                  directives: [],
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'name' },
-                        arguments: [],
-                        directives: [],
-                      },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                     ],
                   },
                 },
@@ -480,10 +455,8 @@ export const createNotificationDocument: DocumentNode<
               name: { kind: 'Name', value: 'String' },
             },
           },
-          directives: [],
         },
       ],
-      directives: [],
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
@@ -500,7 +473,6 @@ export const createNotificationDocument: DocumentNode<
                 },
               },
             ],
-            directives: [],
           },
         ],
       },
@@ -517,17 +489,10 @@ export const newNotificationDocument: DocumentNode<
       kind: 'OperationDefinition',
       operation: 'subscription',
       name: { kind: 'Name', value: 'newNotification' },
-      variableDefinitions: [],
-      directives: [],
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'newNotification' },
-            arguments: [],
-            directives: [],
-          },
+          { kind: 'Field', name: { kind: 'Name', value: 'newNotification' } },
         ],
       },
     },
