@@ -332,11 +332,16 @@ tap.test('operations', async (t) => {
   t.tearDown(async () => {
     await tempTargetPath.cleanup()
   })
-  await codegenMercurius(app, {
+  const unsubscribe = await codegenMercurius(app, {
     targetPath: tempTargetPath.path,
     operationsGlob: ['./test/operations/*.gql'],
     silent: true,
+    watchOptions: {
+      enableWatching: true,
+    },
   })
+
+  t.tearDown(unsubscribe)
 
   const generatedCode = await readFile(tempTargetPath.path, {
     encoding: 'utf-8',
