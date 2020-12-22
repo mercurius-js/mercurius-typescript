@@ -1,12 +1,22 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import mercuriusCodegen from 'mercurius-codegen'
-
-import { loadFilesSync } from '@graphql-tools/load-files'
-
-const schema = loadFilesSync('src/graphql/schema/**/*.gql', {}).map(String)
+import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
 
 export const app = Fastify()
+
+const { schema } = loadSchemaFiles({
+  app,
+  schemaPath: 'src/graphql/schema/**/*.gql',
+  watchOptions: {
+    enabled: process.env.NODE_ENV === 'development',
+    onChange() {
+      mercuriusCodegen(app, {
+        targetPath: './src/graphql/generated.ts',
+        operationsGlob: './src/graphql/operations/*.gql',
+      }).catch(console.error)
+    },
+  },
+})
 
 const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
   return {
@@ -113,6 +123,9 @@ app.register(mercurius, {
 mercuriusCodegen(app, {
   targetPath: './src/graphql/generated.ts',
   operationsGlob: './src/graphql/operations/*.gql',
-})
+  watchOptions: {
+    enabled: process.env.NODE_ENV === 'development',
+  },
+}).catch(console.error)
 
 // app.listen(8000)

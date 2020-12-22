@@ -21,8 +21,9 @@
     "dist"
   ],
   "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
     "prepare": "tsc",
-    "test": "tap --100 test/index.test.ts"
+    "test": "tap test/index.test.ts"
   },
   "dependencies": {
     "@graphql-codegen/core": "^1.17.9",
@@ -45,7 +46,7 @@
     "@types/tap": "^14.10.1",
     "fastify": "^3.9.2",
     "graphql": "^15.4.0",
-    "mercurius": "^6.5.0",
+    "mercurius": "^6.7.0",
     "tap": "^14.11.0",
     "tmp-promise": "^3.0.2",
     "typescript": "^4.1.3",

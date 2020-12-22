@@ -12,73 +12,85 @@ importers:
     dependencies:
       fastify: 3.9.2
       graphql: 15.4.0
-      mercurius: 6.5.0
+      mercurius: 6.7.0
       mercurius-codegen: 'link:../../packages/mercurius-codegen'
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
       '@types/node': 14.14.14
       '@types/tap': 14.10.1
-      mercurius-integration-testing: 3.1.2_e42cba883f1e1e05f8e4e9356bd3f27d
+      cross-env: 7.0.3
+      mercurius-integration-testing: 3.1.2_c5625da39396a226d910f0febe49fd2f
       tap: 14.11.0
+      tsc-watch: 4.2.9_typescript@4.1.3
       typescript: 4.1.3
     specifiers:
       '@graphql-typed-document-node/core': ^3.1.0
       '@types/node': ^14.14.14
       '@types/tap': ^14.10.1
+      cross-env: ^7.0.3
       fastify: ^3.9.2
       graphql: ^15.4.0
-      mercurius: ^6.5.0
+      mercurius: ^6.7.0
       mercurius-codegen: 'workspace:^1.2.0'
       mercurius-integration-testing: ^3.1.2
       tap: ^14.11.0
+      tsc-watch: ^4.2.9
       typescript: ^4.1.3
   examples/codegen-gql-files:
     dependencies:
       '@graphql-tools/load-files': 6.2.5_graphql@15.4.0
       fastify: 3.9.2
       graphql: 15.4.0
-      mercurius: 6.5.0
+      mercurius: 6.7.0
       mercurius-codegen: 'link:../../packages/mercurius-codegen'
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
       '@types/node': 14.14.14
       '@types/tap': 14.10.1
-      mercurius-integration-testing: 3.1.2_e42cba883f1e1e05f8e4e9356bd3f27d
+      cross-env: 7.0.3
+      mercurius-integration-testing: 3.1.2_c5625da39396a226d910f0febe49fd2f
       tap: 14.11.0
+      tsc-watch: 4.2.9_typescript@4.1.3
       typescript: 4.1.3
     specifiers:
       '@graphql-tools/load-files': ^6.2.5
       '@graphql-typed-document-node/core': ^3.1.0
       '@types/node': ^14.14.14
       '@types/tap': ^14.10.1
+      cross-env: ^7.0.3
       fastify: ^3.9.2
       graphql: ^15.4.0
-      mercurius: ^6.5.0
+      mercurius: ^6.7.0
       mercurius-codegen: 'workspace:^1.2.0'
       mercurius-integration-testing: ^3.1.2
       tap: ^14.11.0
+      tsc-watch: ^4.2.9
       typescript: ^4.1.3
   examples/manual:
     dependencies:
       fastify: 3.9.2
       graphql: 15.4.0
-      mercurius: 6.5.0
+      mercurius: 6.7.0
     devDependencies:
       '@types/node': 14.14.14
       '@types/tap': 14.10.1
+      cross-env: 7.0.3
       graphql-tag: 2.11.0_graphql@15.4.0
-      mercurius-integration-testing: 3.1.2_e42cba883f1e1e05f8e4e9356bd3f27d
+      mercurius-integration-testing: 3.1.2_c5625da39396a226d910f0febe49fd2f
       tap: 14.11.0
+      tsc-watch: 4.2.9_typescript@4.1.3
       typescript: 4.1.3
     specifiers:
       '@types/node': ^14.14.14
       '@types/tap': ^14.10.1
+      cross-env: ^7.0.3
       fastify: ^3.9.2
       graphql: ^15.4.0
       graphql-tag: ^2.11.0
-      mercurius: ^6.5.0
+      mercurius: ^6.7.0
       mercurius-integration-testing: ^3.1.2
       tap: ^14.11.0
+      tsc-watch: ^4.2.9
       typescript: ^4.1.3
   packages/mercurius-codegen:
     dependencies:
@@ -101,7 +113,7 @@ importers:
       '@types/tap': 14.10.1
       fastify: 3.9.2
       graphql: 15.4.0
-      mercurius: 6.5.0
+      mercurius: 6.7.0
       tap: 14.11.0
       tmp-promise: 3.0.2
       typescript: 4.1.3
@@ -123,7 +135,7 @@ importers:
       chokidar: ^3.4.3
       fastify: ^3.9.2
       graphql: ^15.4.0
-      mercurius: ^6.5.0
+      mercurius: ^6.7.0
       mkdirp: ^1.0.4
       prettier: ^2.2.1
       tap: ^14.11.0
@@ -871,7 +883,6 @@ packages:
     resolution:
       integrity: sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==
   /ansi-regex/5.0.0:
-    dev: false
     engines:
       node: '>=8'
     resolution:
@@ -1366,6 +1377,17 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-fmvV4caBnofhPe8kOcitBwSn2f39QLjnAnGq3gO9dfd75mUytzKNZB1hde6QHunW2Rt+OwuBOMc3i1tNElbszA==
+  /cross-env/7.0.3:
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
+    engines:
+      node: '>=10.14'
+      npm: '>=6'
+      yarn: '>=1'
+    hasBin: true
+    resolution:
+      integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
   /cross-fetch/3.0.6:
     dependencies:
       node-fetch: 2.6.1
@@ -1496,6 +1518,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==
+  /duplexer/0.1.2:
+    dev: true
+    resolution:
+      integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
   /ecc-jsbn/0.1.2:
     dependencies:
       jsbn: 0.1.1
@@ -1625,6 +1651,18 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+  /event-stream/3.3.4:
+    dependencies:
+      duplexer: 0.1.2
+      from: 0.1.7
+      map-stream: 0.1.0
+      pause-stream: 0.0.11
+      split: 0.3.3
+      stream-combiner: 0.0.4
+      through: 2.3.8
+    dev: true
+    resolution:
+      integrity: sha1-SrTJoPWlTbkzi0w02Gv86PSzVXE=
   /events-to-array/1.1.2:
     dev: true
     resolution:
@@ -1893,6 +1931,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+  /from/0.1.7:
+    dev: true
+    resolution:
+      integrity: sha1-g8YK/Fi5xWmXAH7Rp2izqzA6RP4=
   /fs-exists-cached/1.0.0:
     dev: true
     resolution:
@@ -2611,14 +2653,18 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=
-  /mercurius-integration-testing/3.1.2_e42cba883f1e1e05f8e4e9356bd3f27d:
+  /map-stream/0.1.0:
+    dev: true
+    resolution:
+      integrity: sha1-5WqpTEyAVaFkBKBnS3jyFffI4ZQ=
+  /mercurius-integration-testing/3.1.2_c5625da39396a226d910f0febe49fd2f:
     dependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.4.0
       cookie: 0.4.1
       fastify: 3.9.2
       get-port: 5.1.1
       graphql: 15.4.0
-      mercurius: 6.5.0
+      mercurius: 6.7.0
       ws: 7.4.1
     dev: true
     peerDependencies:
@@ -2627,7 +2673,7 @@ packages:
       mercurius: ^6.1.1
     resolution:
       integrity: sha512-aNj8QYD88nrC74H8CczVQ3Ij0aKZfboq5pyrxRa5N3XV2f1GgsMOLH/2qi6vdrZm1XULFK1BkI0A4k8yOuTZHQ==
-  /mercurius/6.5.0:
+  /mercurius/6.7.0:
     dependencies:
       end-of-stream: 1.4.4
       events.on: 1.0.1
@@ -2645,7 +2691,7 @@ packages:
       tiny-lru: 7.0.6
       ws: 7.4.1
     resolution:
-      integrity: sha512-xOUhNez0XX7Yg7a+91AJ43iH4zvuYsfecjq1qDazDuR1HXJsmk4BfJ2u4hVd0q/7B8ZbvVK77cqI6cMPxdYiJw==
+      integrity: sha512-iLUkgteX081nknWt2jzpxE6uym3HYjoJK4n8BkkEIR//1bpj68LBZQTq3Yhg7/82aMYNiUtELgFoGnJtaP4iwQ==
   /merge-source-map/1.1.0:
     dependencies:
       source-map: 0.6.1
@@ -2776,6 +2822,10 @@ packages:
       tslib: 2.0.3
     resolution:
       integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==
+  /node-cleanup/2.1.2:
+    dev: true
+    resolution:
+      integrity: sha1-esGavSl+Caf3KnFUXZUbUX5N3iw=
   /node-fetch/2.6.1:
     dev: false
     engines:
@@ -3114,6 +3164,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+  /pause-stream/0.0.11:
+    dependencies:
+      through: 2.3.8
+    dev: true
+    resolution:
+      integrity: sha1-/lo0sMvOErWqaitAPuLnO2AvFEU=
   /performance-now/2.1.0:
     dev: true
     resolution:
@@ -3235,6 +3291,15 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-dh/frvCBVmSsDYzw6n926jv974gddhkFPfiN8hPOi30Wax25QZyZEGveluCgliBnqmuM+UJmBErbAUFIoDbjOw==
+  /ps-tree/1.2.0:
+    dependencies:
+      event-stream: 3.3.4
+    dev: true
+    engines:
+      node: '>= 0.10'
+    hasBin: true
+    resolution:
+      integrity: sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==
   /pseudomap/1.0.2:
     dev: true
     resolution:
@@ -3662,6 +3727,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-U+MTEOO0AiDzxwFvoa4JVnMV6mZlJKk2sBLt90s7G0Gd0Mlknc7kxEn3nuDPNZRta7O2uy8oLcZLVT+4sqNZHQ==
+  /split/0.3.3:
+    dependencies:
+      through: 2.3.8
+    dev: true
+    resolution:
+      integrity: sha1-zQ7qXmOiEd//frDwkcQTPi0N0o8=
   /sprintf-js/1.0.3:
     dev: true
     resolution:
@@ -3696,6 +3767,18 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+  /stream-combiner/0.0.4:
+    dependencies:
+      duplexer: 0.1.2
+    dev: true
+    resolution:
+      integrity: sha1-TV5DPBhSYd3mI8o/RMWGvPXErRQ=
+  /string-argv/0.1.2:
+    dev: true
+    engines:
+      node: '>=0.6.19'
+    resolution:
+      integrity: sha512-mBqPGEOMNJKXRo7z0keX0wlAhbBAjilUdPW13nN0PecVryZxdHIeM7TqbsSUA7VYuS00HGC6mojP7DlQzfa9ZA==
   /string-similarity/4.0.3:
     resolution:
       integrity: sha512-QEwJzNFCqq+5AGImk5z4vbsEPTN/+gtyKfXBVLBcbPBRPNganZGfQnIuf9yJ+GiwSnD65sT8xrw/uwU1Q1WmfQ==
@@ -3782,7 +3865,6 @@ packages:
   /strip-ansi/6.0.0:
     dependencies:
       ansi-regex: 5.0.0
-    dev: false
     engines:
       node: '>=8'
     resolution:
@@ -3923,6 +4005,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-M+oxtseCFO3EDtAaGH7iiej3CBkzXqFMbzqYAACdzKui4eZA+pq3tZEwChvOdNfa7xxy8BfbmgJSIr43cC/+2g==
+  /through/2.3.8:
+    dev: true
+    resolution:
+      integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
   /tiny-lru/7.0.6:
     engines:
       node: '>=6'
@@ -3988,6 +4074,22 @@ packages:
       typescript: '>=2.7'
     resolution:
       integrity: sha512-ISJJGgkIpDdBhWVu3jufsWpK3Rzo7bdiIXJjQc0ynKxVOVcg2oIrf2H2cejminGrptVc6q6/uynAHNCuWGbpVA==
+  /tsc-watch/4.2.9_typescript@4.1.3:
+    dependencies:
+      cross-spawn: 7.0.3
+      node-cleanup: 2.1.2
+      ps-tree: 1.2.0
+      string-argv: 0.1.2
+      strip-ansi: 6.0.0
+      typescript: 4.1.3
+    dev: true
+    engines:
+      node: '>=8.17.0'
+    hasBin: true
+    peerDependencies:
+      typescript: '*'
+    resolution:
+      integrity: sha512-DlTaoDs74+KUpyWr7dCGhuscAUKCz6CiFduBN7R9RbLJSSN1moWdwoCLASE7+zLgGvV5AwXfYDiEMAsPGaO+Vw==
   /tslib/1.14.1:
     dev: false
     resolution:

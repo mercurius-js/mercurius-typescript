@@ -1,14 +1,11 @@
 import type {} from 'mercurius'
-import { FastifyInstance } from 'fastify'
-import { GraphQLSchema } from 'graphql'
-
-import { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
-import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
-import { MercuriusLoadersPlugin } from './mercuriusLoaders'
-
+import type { FastifyInstance } from 'fastify'
+import type { GraphQLSchema } from 'graphql'
+import type { WatchOptions as ChokidarOptions } from 'chokidar'
+import type { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
+import type { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
-import type { WatchOptions as ChokidarOptions } from 'chokidar'
 
 export { MercuriusLoadersPlugin as plugin }
 
@@ -210,7 +207,7 @@ export async function writeGeneratedCode({
 }: {
   code: string
   targetPath: string
-}) {
+}): Promise<string | null> {
   const { default: mkdirp } = await import('mkdirp')
   const fs = await import('fs')
   const { resolve, dirname } = await import('path')
@@ -226,7 +223,7 @@ export async function writeGeneratedCode({
       encoding: 'utf-8',
     })
 
-    if (existingCode === code) return targetPath
+    if (existingCode === code) return null
   }
 
   await fs.promises.writeFile(targetPath, code, {
@@ -234,6 +231,112 @@ export async function writeGeneratedCode({
   })
 
   return targetPath
+}
+
+export interface LoadSchemaOptions {
+  /**
+   * Fastify instance that will be registered with Mercurius
+   */
+  app: FastifyInstance
+  /**
+   * Schema files glob patterns
+   */
+  schemaPath: string | string[]
+  /**
+   * Watch options
+   */
+  watchOptions?: {
+    /**
+     * Enable file watching
+     * @default false
+     */
+    enabled?: boolean
+    /**
+     * Custom function to be executed after schema change
+     */
+    onChange?: (schema: GraphQLSchema) => void
+    /**
+     * Extra Chokidar options to be passed
+     */
+    chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+  }
+  /**
+   * Don't notify to the console
+   */
+  silent?: boolean
+}
+
+export function loadSchemaFiles({
+  app,
+  watchOptions = {},
+  schemaPath,
+  silent,
+}: LoadSchemaOptions) {
+  const { buildSchema }: typeof import('graphql') = require('graphql')
+  const {
+    loadFilesSync,
+  }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
+  const { watch }: typeof import('chokidar') = require('chokidar')
+
+  const log = (...message: Parameters<typeof console['log']>) =>
+    silent ? undefined : console.log(...message)
+
+  function loadSchemaFiles() {
+    const schema = loadFilesSync(schemaPath, {})
+      .map((v) => String(v).trim())
+      .filter(Boolean)
+
+    if (!schema.length) {
+      const err = Error('No GraphQL Schema files found!')
+
+      Error.captureStackTrace(err, loadSchemaFiles)
+
+      throw err
+    }
+
+    return schema
+  }
+
+  const schema = loadSchemaFiles()
+
+  let closeWatcher: () => void = () => undefined
+
+  if (watchOptions.enabled) {
+    const watcher = watch(schemaPath, {
+      ...(watchOptions.chokidarOptions || {}),
+      ignoreInitial: true,
+    })
+
+    closeWatcher = () => {
+      watcher.close()
+    }
+
+    process.on('beforeExit', closeWatcher)
+
+    const listener = (
+      eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+      changedPath: string
+    ) => {
+      log(
+        `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`
+      )
+
+      const schemaFiles = loadSchemaFiles()
+
+      const schema = buildSchema(schemaFiles.join('\n'))
+
+      app.graphql.replaceSchema(schema)
+
+      watchOptions.onChange?.(schema)
+    }
+
+    watcher.on('all', listener)
+  }
+
+  return {
+    schema,
+    closeWatcher,
+  }
 }
 
 export async function codegenMercurius(
@@ -308,9 +411,11 @@ export async function codegenMercurius(
                   targetPath,
                 })
                   .then((absoluteTargetPath) => {
-                    log(
-                      `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
-                    )
+                    if (absoluteTargetPath) {
+                      log(
+                        `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                      )
+                    }
                   })
                   .catch(console.error)
               })
@@ -331,7 +436,11 @@ export async function codegenMercurius(
             targetPath,
           })
             .then((absoluteTargetPath) => {
-              log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
+              if (absoluteTargetPath) {
+                log(
+                  `[mercurius-codegen] Code generated at ${absoluteTargetPath}`
+                )
+              }
 
               watchExecute()
                 .then((closeWatcher) => {
