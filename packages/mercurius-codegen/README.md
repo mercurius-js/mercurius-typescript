@@ -145,7 +145,9 @@ interface CodegenMercuriusOptions {
    */
   targetPath: string
   /**
-   * Disable the code generation manually, by default is `process.env.NODE_ENV === 'production'`
+   * Disable the code generation manually
+   *
+   * @default process.env.NODE_ENV === 'production'
    */
   disable?: boolean
   /**
@@ -159,11 +161,6 @@ interface CodegenMercuriusOptions {
    *    scalars: {
    *        DateTime: "Date",
    *    },
-   *    customResolverFn: "(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>"
-   * }
-   * @default
-   * codegenConfig: {
-   *    customResolverFn: "(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>"
    * }
    */
   codegenConfig?: CodegenPluginsConfig
@@ -175,6 +172,21 @@ interface CodegenMercuriusOptions {
    * Operations glob patterns
    */
   operationsGlob?: string[] | string
+  /**
+   * Watch Options for operations GraphQL files
+   */
+  watchOptions?: {
+    /**
+     * Enable file watching
+     *
+     * @default false
+     */
+    enabled?: boolean
+    /**
+     * Extra Chokidar options to be passed
+     */
+    chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+  }
 }
 
 mercuriusCodegen(app, {
@@ -186,12 +198,13 @@ mercuriusCodegen(app, {
     scalars: {
       DateTime: 'Date',
     },
-    customResolverFn:
-      '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>',
   },
   preImportCode: `
   // Here you can put any code and it will be added at very beginning of the file
   `,
+  watchOptions: {
+    enabled: true,
+  },
 }).catch(console.error)
 ```
 

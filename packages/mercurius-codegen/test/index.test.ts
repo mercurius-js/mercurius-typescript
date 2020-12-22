@@ -1,5 +1,6 @@
 import './generated'
 
+import assert from 'assert'
 import Fastify from 'fastify'
 import fs from 'fs'
 import { parse, print } from 'graphql'
@@ -7,6 +8,7 @@ import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import path from 'path'
 import tap from 'tap'
 import tmp from 'tmp-promise'
+import waitForExpect from 'wait-for-expect'
 
 import {
   codegenMercurius,
@@ -202,10 +204,12 @@ tap.test('respects "disable" flag', async (t) => {
     await tempTargetPath.cleanup()
   })
 
-  await codegenMercurius(app, {
+  const { closeWatcher } = await codegenMercurius(app, {
     targetPath: tempTargetPath.path,
     disable: true,
   })
+
+  closeWatcher()
 
   t.equal(
     await readFile(tempTargetPath.path, {
@@ -325,29 +329,60 @@ tap.test('non existing file', async (t) => {
 })
 
 tap.test('operations', async (t) => {
-  t.plan(1)
+  t.plan(4)
 
   const tempTargetPath = await tmp.file()
 
   t.tearDown(async () => {
     await tempTargetPath.cleanup()
   })
-  const unsubscribe = await codegenMercurius(app, {
+  const { closeWatcher } = await codegenMercurius(app, {
     targetPath: tempTargetPath.path,
     operationsGlob: ['./test/operations/*.gql'],
     silent: true,
     watchOptions: {
-      enableWatching: true,
+      enabled: true,
     },
   })
 
-  t.tearDown(unsubscribe)
+  t.tearDown(closeWatcher)
 
   const generatedCode = await readFile(tempTargetPath.path, {
     encoding: 'utf-8',
   })
 
   t.matchSnapshot(generatedCode)
+
+  t.assert(generatedCode.includes('BDocument') === false)
+
+  await fs.promises.writeFile(
+    './test/operations/temp.gql',
+    `
+  query B {
+    hello
+  }
+  `
+  )
+
+  t.tearDown(() => {
+    fs.rmSync('./test/operations/temp.gql')
+  })
+
+  await waitForExpect(async () => {
+    const generatedCode = await readFile(tempTargetPath.path, {
+      encoding: 'utf-8',
+    })
+
+    assert(generatedCode.includes('BDocument'))
+  })
+
+  const generatedCode2 = await readFile(tempTargetPath.path, {
+    encoding: 'utf-8',
+  })
+
+  t.assert(generatedCode2.includes('BDocument'))
+
+  t.matchSnapshot(generatedCode2)
 })
 
 codegenMercurius(app, {

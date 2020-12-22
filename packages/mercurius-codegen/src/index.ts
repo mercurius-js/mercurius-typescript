@@ -7,19 +7,13 @@ import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-res
 
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
+import type { WatchOptions as ChokidarOptions } from 'chokidar'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
   TypeScriptResolversPluginConfig
 
 export interface CodegenPluginsConfig extends MidCodegenPluginsConfig {
   [k: string]: unknown
-}
-
-interface WatchOptions {
-  /**
-   * Enable file watching
-   */
-  enableWatching?: boolean
 }
 
 interface CodegenMercuriusOptions {
@@ -31,7 +25,9 @@ interface CodegenMercuriusOptions {
    */
   targetPath: string
   /**
-   * Disable the code generation manually, by default is `process.env.NODE_ENV === 'production'`
+   * Disable the code generation manually
+   *
+   * @default process.env.NODE_ENV === 'production'
    */
   disable?: boolean
   /**
@@ -45,11 +41,6 @@ interface CodegenMercuriusOptions {
    *    scalars: {
    *        DateTime: "Date",
    *    },
-   *    customResolverFn: "(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>"
-   * }
-   * @default
-   * codegenConfig: {
-   *    customResolverFn: "(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>"
    * }
    */
   codegenConfig?: CodegenPluginsConfig
@@ -62,17 +53,25 @@ interface CodegenMercuriusOptions {
    */
   operationsGlob?: string[] | string
   /**
-   * Watch Options
+   * Watch Options for operations GraphQL files
    */
-  watchOptions?: WatchOptions
+  watchOptions?: {
+    /**
+     * Enable file watching
+     *
+     * @default false
+     */
+    enabled?: boolean
+    /**
+     * Extra Chokidar options to be passed
+     */
+    chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+  }
 }
 
 export async function generateCode(
   schema: GraphQLSchema,
-  codegenConfig: CodegenPluginsConfig = {
-    customResolverFn:
-      '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>',
-  },
+  codegenConfig: CodegenPluginsConfig = {},
   preImportCode?: string,
   silent?: boolean,
   operationsGlob?: string[] | string
@@ -101,14 +100,16 @@ export async function generateCode(
 
   const documents = operationsGlob
     ? loadFiles(operationsGlob).then((operations) =>
-        operations.map((op) => {
-          const operationString = String(op)
-          const operationSource: Source = {
-            document: parse(operationString),
-            schema,
-          }
-          return operationSource
-        })
+        operations
+          .map((op) => String(op).trim())
+          .filter(Boolean)
+          .map((operationString) => {
+            const operationSource: Source = {
+              document: parse(operationString),
+              schema,
+            }
+            return operationSource
+          })
       )
     : ([] as [])
 
@@ -123,16 +124,24 @@ export async function generateCode(
     codegenConfig.namingConvention != null &&
     codegenConfig.namingConvention !== 'keep'
   ) {
-    if (!silent)
+    if (!silent) {
       console.warn(
         `namingConvention "${codegenConfig.namingConvention}" is not supported! it has been set to "keep" automatically.`
       )
+    }
   }
 
   code += await codegen({
-    config: Object.assign({}, codegenConfig, {
-      namingConvention: 'keep',
-    } as CodegenPluginsConfig),
+    config: Object.assign(
+      {
+        customResolverFn:
+          '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>',
+      },
+      codegenConfig,
+      {
+        namingConvention: 'keep',
+      } as CodegenPluginsConfig
+    ),
     documents: await documents,
     filename: 'mercurius.generated.ts',
     pluginMap: Object.assign(
@@ -215,9 +224,7 @@ export async function writeGeneratedCode({
       encoding: 'utf-8',
     })
 
-    if (existingCode === code) {
-      return targetPath
-    }
+    if (existingCode === code) return targetPath
   }
 
   await fs.promises.writeFile(targetPath, code, {
@@ -238,8 +245,14 @@ export async function codegenMercurius(
     operationsGlob,
     watchOptions,
   }: CodegenMercuriusOptions
-): Promise<() => void> {
-  if (disable) return () => undefined
+): Promise<{
+  closeWatcher: () => void
+}> {
+  const noopCloseWatcher = () => undefined
+  if (disable)
+    return {
+      closeWatcher: noopCloseWatcher,
+    }
 
   await app.ready()
 
@@ -247,33 +260,39 @@ export async function codegenMercurius(
     throw Error('Mercurius is not registered in Fastify Instance!')
   }
 
-  return new Promise((resolve, reject) => {
+  return new Promise<{ closeWatcher: () => void }>((resolve, reject) => {
+    const log = (...message: Parameters<typeof console['log']>) =>
+      silent ? undefined : console.log(...message)
+
     setImmediate(() => {
       const schema = app.graphql.schema
 
       async function watchExecute() {
-        const { enableWatching } = watchOptions || {}
+        const { enabled = false, chokidarOptions = {} } = watchOptions || {}
 
-        if (operationsGlob && enableWatching) {
-          if (!silent)
-            console.log('[mercurius-codegen] Watching for changes...')
+        if (operationsGlob && enabled) {
+          log(`[mercurius-codegen] Watching for changes in ${operationsGlob}`)
 
           const { watch } = await import('chokidar')
 
           const watcher = watch(operationsGlob, {
+            ...chokidarOptions,
             ignoreInitial: true,
           })
 
-          const watcherClose = () => {
+          const closeWatcher = () => {
             watcher.close()
           }
-          process.on('beforeExit', watcherClose)
+          process.on('beforeExit', closeWatcher)
 
-          const onChange = (changedPath: string) => {
-            if (!silent)
-              console.log(
-                `[mercurius-codegen] ${changedPath} has changed, re-generating...`
-              )
+          const listener = (
+            eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+            changedPath: string
+          ) => {
+            log(
+              `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`
+            )
+
             generateCode(
               schema,
               codegenConfig,
@@ -287,57 +306,40 @@ export async function codegenMercurius(
                   targetPath,
                 })
                   .then((absoluteTargetPath) => {
-                    if (!silent) {
-                      console.log(
-                        `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
-                      )
-                    }
+                    log(
+                      `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                    )
                   })
                   .catch(console.error)
               })
               .catch(console.error)
           }
-          watcher.on('all', onChange)
+          watcher.on('all', listener)
 
-          return watcherClose
+          return closeWatcher
         }
 
-        return () => undefined
+        return noopCloseWatcher
       }
 
-      watchExecute()
-        .then((watcherClose) => {
-          generateCode(
-            schema,
-            codegenConfig,
-            preImportCode,
-            silent,
-            operationsGlob
-          )
-            .then((code) => {
-              writeGeneratedCode({
-                code,
-                targetPath,
-              })
-                .then((absoluteTargetPath) => {
-                  resolve(() => {
-                    watcherClose()
+      generateCode(schema, codegenConfig, preImportCode, silent, operationsGlob)
+        .then((code) => {
+          writeGeneratedCode({
+            code,
+            targetPath,
+          })
+            .then((absoluteTargetPath) => {
+              log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
+
+              watchExecute()
+                .then((closeWatcher) => {
+                  resolve({
+                    closeWatcher,
                   })
-                  if (!silent) {
-                    console.log(
-                      `[mercurius-codegen] Code generated at ${absoluteTargetPath}`
-                    )
-                  }
                 })
-                .catch((err) => {
-                  reject(err)
-                  watcherClose()
-                })
+                .catch(reject)
             })
-            .catch((err) => {
-              reject(err)
-              watcherClose()
-            })
+            .catch(reject)
         })
         .catch(reject)
     })

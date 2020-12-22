@@ -14,6 +14,12 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
   { [SubKey in K]?: Maybe<T[SubKey]> }
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
   { [SubKey in K]: Maybe<T[SubKey]> }
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>
 export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X]
 } &
@@ -83,13 +89,6 @@ export type StitchingResolver<TResult, TParent, TContext, TArgs> =
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | StitchingResolver<TResult, TParent, TContext, TArgs>
-
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo
-) => Promise<TResult> | TResult
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,

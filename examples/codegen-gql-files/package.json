@@ -19,7 +19,7 @@
     "fastify": "^3.9.2",
     "graphql": "^15.4.0",
     "mercurius": "^6.5.0",
-    "mercurius-codegen": "workspace:^1.1.4"
+    "mercurius-codegen": "workspace:^1.2.0"
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.1.0",
