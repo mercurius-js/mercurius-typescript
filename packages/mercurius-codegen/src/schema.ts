@@ -1,6 +1,4 @@
 import type { WatchOptions as ChokidarOptions } from 'chokidar'
-import type { FastifyInstance } from 'fastify'
-import type { GraphQLSchema } from 'graphql'
 import { existsSync, promises } from 'fs'
 import { resolve } from 'path'
 
@@ -30,7 +28,7 @@ export interface WatchOptions {
   /**
    * Custom function to be executed after schema change
    */
-  onChange?: (schema: GraphQLSchema) => void
+  onChange?: (schema: string[]) => void
   /**
    * Extra Chokidar options to be passed
    */
@@ -38,18 +36,6 @@ export interface WatchOptions {
 }
 
 export interface LoadSchemaOptions {
-  /**
-   * Fastify instance that will be registered with Mercurius
-   */
-  app: FastifyInstance
-  /**
-   * Schema files glob patterns
-   */
-  schemaPath: string | string[]
-  /**
-   * Federation schema
-   */
-  federation?: boolean
   /**
    * Watch options
    */
@@ -72,14 +58,10 @@ declare global {
   }
 }
 
-export function loadSchemaFiles({
-  app,
-  watchOptions = {},
-  prebuild = {},
-  schemaPath,
-  silent,
-  federation,
-}: LoadSchemaOptions) {
+export function loadSchemaFiles(
+  schemaPath: string | string[],
+  { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {}
+) {
   const {
     enabled: prebuildEnabled = process.env.NODE_ENV === 'production',
   } = prebuild
@@ -147,10 +129,6 @@ export function loadSchemaFiles({
 
   if (watchOptions.enabled) {
     const { watch }: typeof import('chokidar') = require('chokidar')
-    const buildFederatedSchema: (
-      schema: string
-    ) => GraphQLSchema = require('mercurius/lib/federation')
-    const { buildSchema }: typeof import('graphql') = require('graphql')
 
     const watcher = watch(schemaPath, {
       ...(watchOptions.chokidarOptions || {}),
@@ -177,15 +155,13 @@ export function loadSchemaFiles({
         )
       }
 
-      const schemaString = loadSchemaFiles().join('\n')
+      try {
+        const schema = loadSchemaFiles()
 
-      const schema = federation
-        ? buildFederatedSchema(schemaString)
-        : buildSchema(schemaString)
-
-      app.graphql.replaceSchema(schema)
-
-      watchOptions.onChange?.(schema)
+        watchOptions.onChange?.(schema)
+      } catch (err) {
+        console.error(err)
+      }
     }
 
     watcher.on('all', listener)

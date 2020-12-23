@@ -4,9 +4,7 @@ import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
 
 export const app = Fastify()
 
-const { schema } = loadSchemaFiles({
-  app,
-  schemaPath: 'src/graphql/schema/**/*.gql',
+const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
   watchOptions: {
     enabled: process.env.NODE_ENV === 'development',
     onChange() {

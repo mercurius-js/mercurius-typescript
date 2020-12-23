@@ -189,7 +189,7 @@ export { gql } from './utils'
 export { CodegenPluginsConfig, generateCode, writeGeneratedCode } from './code'
 
 export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
-  opts
-) => require('./schema').loadSchemaFiles(opts)
+  ...args
+) => require('./schema').loadSchemaFiles(...args)
 
 export { LoadSchemaOptions } from './schema'
