@@ -110,10 +110,12 @@ importers:
       '@types/mkdirp': 1.0.1
       '@types/node': 14.14.14
       '@types/prettier': 2.1.5
+      '@types/proxyquire': 1.3.28
       '@types/tap': 14.10.1
       fastify: 3.9.2
       graphql: 15.4.0
       mercurius: 6.7.0
+      proxyquire: 2.1.3
       tap: 14.11.0
       tmp-promise: 3.0.2
       typescript: 4.1.3
@@ -131,6 +133,7 @@ importers:
       '@types/mkdirp': ^1.0.1
       '@types/node': ^14.14.14
       '@types/prettier': ^2.1.5
+      '@types/proxyquire': ^1.3.28
       '@types/tap': ^14.10.1
       chokidar: ^3.4.3
       fastify: ^3.9.2
@@ -138,6 +141,7 @@ importers:
       mercurius: ^6.7.0
       mkdirp: ^1.0.4
       prettier: ^2.2.1
+      proxyquire: ^2.1.3
       tap: ^14.11.0
       tmp-promise: ^3.0.2
       typescript: ^4.1.3
@@ -839,6 +843,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-UEyp8LwZ4Dg30kVU2Q3amHHyTn1jEdhCIE59ANed76GaT1Vp76DD3ZWSAxgCrw6wJ0TqeoBpqmfUHiUDPs//HQ==
+  /@types/proxyquire/1.3.28:
+    dev: true
+    resolution:
+      integrity: sha512-SQaNzWQ2YZSr7FqAyPPiA3FYpux2Lqh3HWMZQk47x3xbMCqgC/w0dY3dw9rGqlweDDkrySQBcaScXWeR+Yb11Q==
   /@types/tap/14.10.1:
     dependencies:
       '@types/node': 14.14.14
@@ -1826,6 +1834,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-dJd4PiDOFuhe7vk4F80Mba83Vr2QuK86FoxtgPmzBqEJahncp+13YCmfoa53KHCo6OnlXLG7eeMWPfB5CrpVKg==
+  /fill-keys/1.0.2:
+    dependencies:
+      is-object: 1.0.2
+      merge-descriptors: 1.0.1
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-mo+jb06K1jTjv2tPPIiCVRRS6yA=
   /fill-range/7.0.1:
     dependencies:
       to-regex-range: 5.0.1
@@ -2314,6 +2331,10 @@ packages:
       node: '>=0.12.0'
     resolution:
       integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
+  /is-object/1.0.2:
+    dev: true
+    resolution:
+      integrity: sha512-2rRIahhZr2UWb45fIOuvZGpFtz0TyOZLf32KxBbSoUCeZR495zCKlWUKKUByk3geS2eAs7ZAABt0Y/Rx0GiQGA==
   /is-property/1.0.2:
     resolution:
       integrity: sha1-V/4cTkhHTt1lsJkR8msc1Ald2oQ=
@@ -2692,6 +2713,10 @@ packages:
       ws: 7.4.1
     resolution:
       integrity: sha512-iLUkgteX081nknWt2jzpxE6uym3HYjoJK4n8BkkEIR//1bpj68LBZQTq3Yhg7/82aMYNiUtELgFoGnJtaP4iwQ==
+  /merge-descriptors/1.0.1:
+    dev: true
+    resolution:
+      integrity: sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
   /merge-source-map/1.1.0:
     dependencies:
       source-map: 0.6.1
@@ -2773,6 +2798,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+  /module-not-found-error/1.0.1:
+    dev: true
+    resolution:
+      integrity: sha1-z4tP9PKWQGdNbN0CsOO8UjwrvcA=
   /mqemitter/4.4.0:
     dependencies:
       fastparallel: 2.4.0
@@ -3291,6 +3320,14 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-dh/frvCBVmSsDYzw6n926jv974gddhkFPfiN8hPOi30Wax25QZyZEGveluCgliBnqmuM+UJmBErbAUFIoDbjOw==
+  /proxyquire/2.1.3:
+    dependencies:
+      fill-keys: 1.0.2
+      module-not-found-error: 1.0.1
+      resolve: 1.19.0
+    dev: true
+    resolution:
+      integrity: sha512-BQWfCqYM+QINd+yawJz23tbBM40VIGXOdDw3X344KcclI/gtBbdWF6SlQ4nK/bYhF9d27KYug9WzljHC6B9Ysg==
   /ps-tree/1.2.0:
     dependencies:
       event-stream: 3.3.4

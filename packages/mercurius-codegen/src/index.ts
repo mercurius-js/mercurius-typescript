@@ -56,6 +56,14 @@ interface CodegenMercuriusOptions {
   }
 }
 
+declare global {
+  namespace NodeJS {
+    interface Global {
+      mercuriusOperationsWatchCleanup?: () => void
+    }
+  }
+}
+
 export async function codegenMercurius(
   app: FastifyInstance,
   {
@@ -104,10 +112,15 @@ export async function codegenMercurius(
             ignoreInitial: true,
           })
 
+          if (typeof global.mercuriusOperationsWatchCleanup === 'function') {
+            global.mercuriusOperationsWatchCleanup()
+          }
+
           const closeWatcher = () => {
             watcher.close()
           }
-          process.on('beforeExit', closeWatcher)
+
+          global.mercuriusOperationsWatchCleanup = closeWatcher
 
           const listener = (
             eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
@@ -123,22 +136,18 @@ export async function codegenMercurius(
               preImportCode,
               silent,
               operationsGlob
-            )
-              .then((code) => {
-                writeGeneratedCode({
-                  code,
-                  targetPath,
-                })
-                  .then((absoluteTargetPath) => {
-                    if (absoluteTargetPath) {
-                      log(
-                        `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
-                      )
-                    }
-                  })
-                  .catch(console.error)
-              })
-              .catch(console.error)
+            ).then((code) => {
+              writeGeneratedCode({
+                code,
+                targetPath,
+              }).then((absoluteTargetPath) => {
+                if (absoluteTargetPath) {
+                  log(
+                    `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                  )
+                }
+              }, console.error)
+            }, console.error)
           }
           watcher.on('all', listener)
 
@@ -148,30 +157,28 @@ export async function codegenMercurius(
         return noopCloseWatcher
       }
 
-      generateCode(schema, codegenConfig, preImportCode, silent, operationsGlob)
-        .then((code) => {
-          writeGeneratedCode({
-            code,
-            targetPath,
-          })
-            .then((absoluteTargetPath) => {
-              if (absoluteTargetPath) {
-                log(
-                  `[mercurius-codegen] Code generated at ${absoluteTargetPath}`
-                )
-              }
+      generateCode(
+        schema,
+        codegenConfig,
+        preImportCode,
+        silent,
+        operationsGlob
+      ).then((code) => {
+        writeGeneratedCode({
+          code,
+          targetPath,
+        }).then((absoluteTargetPath) => {
+          if (absoluteTargetPath) {
+            log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
+          }
 
-              watchExecute()
-                .then((closeWatcher) => {
-                  resolve({
-                    closeWatcher,
-                  })
-                })
-                .catch(reject)
+          watchExecute().then((closeWatcher) => {
+            resolve({
+              closeWatcher,
             })
-            .catch(reject)
-        })
-        .catch(reject)
+          }, reject)
+        }, reject)
+      }, reject)
     })
   })
 }
@@ -180,4 +187,9 @@ export default codegenMercurius
 
 export { gql } from './utils'
 export { CodegenPluginsConfig, generateCode, writeGeneratedCode } from './code'
-export { LoadSchemaOptions, loadSchemaFiles } from './schema'
+
+export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
+  opts
+) => require('./schema').loadSchemaFiles(opts)
+
+export { LoadSchemaOptions } from './schema'

@@ -1,6 +1,41 @@
 import type { WatchOptions as ChokidarOptions } from 'chokidar'
 import type { FastifyInstance } from 'fastify'
 import type { GraphQLSchema } from 'graphql'
+import { existsSync, promises } from 'fs'
+import { resolve } from 'path'
+
+let prebuiltSchema: string[] | undefined
+
+const buildJSONPath = resolve('./mercurius-schema.json')
+
+if (existsSync(buildJSONPath)) {
+  prebuiltSchema = require(buildJSONPath)
+}
+
+export interface PrebuildOptions {
+  /**
+   * Enable use pre-built schema if found.
+   *
+   * @default process.env.NODE_ENV === "production"
+   */
+  enabled?: boolean
+}
+
+export interface WatchOptions {
+  /**
+   * Enable file watching
+   * @default false
+   */
+  enabled?: boolean
+  /**
+   * Custom function to be executed after schema change
+   */
+  onChange?: (schema: GraphQLSchema) => void
+  /**
+   * Extra Chokidar options to be passed
+   */
+  chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+}
 
 export interface LoadSchemaOptions {
   /**
@@ -18,44 +53,42 @@ export interface LoadSchemaOptions {
   /**
    * Watch options
    */
-  watchOptions?: {
-    /**
-     * Enable file watching
-     * @default false
-     */
-    enabled?: boolean
-    /**
-     * Custom function to be executed after schema change
-     */
-    onChange?: (schema: GraphQLSchema) => void
-    /**
-     * Extra Chokidar options to be passed
-     */
-    chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
-  }
+  watchOptions?: WatchOptions
+  /**
+   * Pre-build options
+   */
+  prebuild?: PrebuildOptions
   /**
    * Don't notify to the console
    */
   silent?: boolean
 }
 
+declare global {
+  namespace NodeJS {
+    interface Global {
+      mercuriusLoadSchemaWatchCleanup?: () => void
+    }
+  }
+}
+
 export function loadSchemaFiles({
   app,
   watchOptions = {},
+  prebuild = {},
   schemaPath,
   silent,
   federation,
 }: LoadSchemaOptions) {
-  const buildFederatedSchema: (
-    schema: string
-  ) => GraphQLSchema = require('mercurius/lib/federation')
-  const { buildSchema }: typeof import('graphql') = require('graphql')
   const {
-    loadFilesSync,
-  }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
-  const { watch }: typeof import('chokidar') = require('chokidar')
+    enabled: prebuildEnabled = process.env.NODE_ENV === 'production',
+  } = prebuild
 
   function loadSchemaFiles() {
+    const {
+      loadFilesSync,
+    }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
+
     const schema = loadFilesSync(schemaPath, {})
       .map((v) => String(v).trim())
       .filter(Boolean)
@@ -68,24 +101,71 @@ export function loadSchemaFiles({
       throw err
     }
 
+    const schemaString = JSON.stringify(schema, null, 2)
+
+    if (existsSync(buildJSONPath)) {
+      promises
+        .readFile(buildJSONPath, {
+          encoding: 'utf-8',
+        })
+        .then((existingSchema) => {
+          if (existingSchema === schemaString) return
+
+          promises
+            .writeFile(buildJSONPath, schemaString, {
+              encoding: 'utf-8',
+            })
+            .catch(console.error)
+        })
+        .catch(console.error)
+    } else {
+      promises
+        .writeFile(buildJSONPath, schemaString, {
+          encoding: 'utf-8',
+        })
+        .catch(console.error)
+    }
+
     return schema
   }
 
-  const schema = loadSchemaFiles()
+  let schema: string[] | undefined
+
+  if (prebuildEnabled && prebuiltSchema) {
+    if (
+      Array.isArray(prebuiltSchema) &&
+      prebuiltSchema.length &&
+      prebuiltSchema.every((v) => typeof v === 'string')
+    ) {
+      schema = prebuiltSchema
+    }
+  }
+
+  if (!schema) schema = loadSchemaFiles()
 
   let closeWatcher: () => void = () => undefined
 
   if (watchOptions.enabled) {
+    const { watch }: typeof import('chokidar') = require('chokidar')
+    const buildFederatedSchema: (
+      schema: string
+    ) => GraphQLSchema = require('mercurius/lib/federation')
+    const { buildSchema }: typeof import('graphql') = require('graphql')
+
     const watcher = watch(schemaPath, {
       ...(watchOptions.chokidarOptions || {}),
       ignoreInitial: true,
     })
 
+    if (typeof global.mercuriusLoadSchemaWatchCleanup === 'function') {
+      global.mercuriusLoadSchemaWatchCleanup()
+    }
+
     closeWatcher = () => {
       watcher.close()
     }
 
-    process.on('beforeExit', closeWatcher)
+    global.mercuriusLoadSchemaWatchCleanup = closeWatcher
 
     const listener = (
       eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
