@@ -2,6 +2,6 @@
   "type Dog {\n  name: String!\n  owner: Human\n}",
   "type Human {\n  name: String!\n}",
   "type Mutation {\n  add(x: Int!, y: Int!): Int!\n  createNotification(message: String!): Boolean!\n}",
-  "type Query {\r\n  Hello: String!\r\n  dogs: [Dog!]!\r\n}",
+  "type Query {\n  Hello: String!\n  dogs: [Dog!]!\n}",
   "type Subscription {\n  newNotification: String!\n}"
 ]
