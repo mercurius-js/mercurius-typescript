@@ -4,8 +4,11 @@ import type { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
 import type { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
+
 import { existsSync, promises as fsPromises } from 'fs'
-import { resolve, dirname } from 'path'
+import { dirname, resolve } from 'path'
+
+import { formatPrettier } from './prettier'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
   TypeScriptResolversPluginConfig
@@ -35,14 +38,11 @@ export async function generateCode(
       }
     : null
   const { parse, printSchema } = await import('graphql')
-  const { format, resolveConfig } = await import('prettier')
   const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
   const { loadFiles } = await import('@graphql-tools/load-files')
 
-  const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
-
   const documents = operationsGlob
-    ? loadFiles(operationsGlob).then((operations) =>
+    ? await loadFiles(operationsGlob).then((operations) =>
         operations
           .map((op) => String(op).trim())
           .filter(Boolean)
@@ -85,7 +85,7 @@ export async function generateCode(
         namingConvention: 'keep',
       } as CodegenPluginsConfig
     ),
-    documents: await documents,
+    documents,
     filename: 'mercurius.generated.ts',
     pluginMap: Object.assign(
       {
@@ -139,10 +139,7 @@ export async function generateCode(
     }
     `
 
-  return format(
-    code,
-    Object.assign({ parser: 'typescript' }, await prettierConfig)
-  )
+  return await formatPrettier(code, 'typescript')
 }
 
 export async function writeGeneratedCode({

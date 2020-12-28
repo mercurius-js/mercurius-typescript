@@ -1,6 +1,9 @@
-import type { WatchOptions as ChokidarOptions } from 'chokidar'
+import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
 import { existsSync, promises } from 'fs'
 import { resolve } from 'path'
+
+import { formatPrettier } from './prettier'
+import { deferredPromise } from './utils'
 
 let prebuiltSchema: string[] | undefined
 
@@ -32,7 +35,7 @@ export interface WatchOptions {
   /**
    * Extra Chokidar options to be passed
    */
-  chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+  chokidarOptions?: ChokidarOptions
   /**
    * Unique watch instance
    *
@@ -70,6 +73,9 @@ export function loadSchemaFiles(
   schemaPath: string | string[],
   { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {}
 ) {
+  const log = (...message: Parameters<typeof console['log']>) =>
+    silent ? undefined : console.log(...message)
+
   const {
     enabled: prebuildEnabled = process.env.NODE_ENV === 'production',
   } = prebuild
@@ -91,30 +97,31 @@ export function loadSchemaFiles(
       throw err
     }
 
-    const schemaString = JSON.stringify(schema, null, 2)
+    const schemaStringPromise = formatPrettier(JSON.stringify(schema), 'json')
 
-    if (existsSync(buildJSONPath)) {
-      promises
-        .readFile(buildJSONPath, {
-          encoding: 'utf-8',
-        })
-        .then((existingSchema) => {
-          if (existingSchema === schemaString) return
+    schemaStringPromise.then((schemaString) => {
+      if (existsSync(buildJSONPath)) {
+        promises
+          .readFile(buildJSONPath, {
+            encoding: 'utf-8',
+          })
+          .then((existingSchema) => {
+            if (existingSchema === schemaString) return
 
-          promises
-            .writeFile(buildJSONPath, schemaString, {
-              encoding: 'utf-8',
-            })
-            .catch(console.error)
-        })
-        .catch(console.error)
-    } else {
-      promises
-        .writeFile(buildJSONPath, schemaString, {
-          encoding: 'utf-8',
-        })
-        .catch(console.error)
-    }
+            promises
+              .writeFile(buildJSONPath, schemaString, {
+                encoding: 'utf-8',
+              })
+              .catch(console.error)
+          }, console.error)
+      } else {
+        promises
+          .writeFile(buildJSONPath, schemaString, {
+            encoding: 'utf-8',
+          })
+          .catch(console.error)
+      }
+    }, console.error)
 
     return schema
   }
@@ -137,17 +144,21 @@ export function loadSchemaFiles(
 
   const {
     enabled: watchEnabled = false,
-    chokidarOptions = {},
+    chokidarOptions,
     uniqueWatch = true,
   } = watchOptions
+
+  let watcherPromise: Promise<FSWatcher | undefined>
 
   if (watchEnabled) {
     const { watch }: typeof import('chokidar') = require('chokidar')
 
-    const watcher = watch(schemaPath, {
-      ...chokidarOptions,
-      ignoreInitial: true,
-    })
+    const watcher = watch(schemaPath, chokidarOptions)
+
+    const watcherToResolve = deferredPromise<FSWatcher | undefined>()
+    watcherPromise = watcherToResolve.promise
+
+    let isReady = false
 
     let closed = false
     closeWatcher = async () => {
@@ -166,15 +177,23 @@ export function loadSchemaFiles(
       global.mercuriusLoadSchemaWatchCleanup = closeWatcher
     }
 
+    watcher.on('ready', () => {
+      isReady = true
+      log(`[mercurius-codegen] Watching for changes in ${schemaPath}`)
+      watcherToResolve.resolve(watcher)
+    })
+
+    watcher.on('error', watcherToResolve.reject)
+
     const listener = (
       eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
       changedPath: string
     ) => {
-      if (!silent) {
-        console.log(
-          `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`
-        )
-      }
+      if (!isReady) return
+
+      log(
+        `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`
+      )
 
       try {
         const schema = loadSchemaFiles()
@@ -186,10 +205,13 @@ export function loadSchemaFiles(
     }
 
     watcher.on('all', listener)
+  } else {
+    watcherPromise = Promise.resolve(undefined)
   }
 
   return {
     schema,
     closeWatcher,
+    watcher: watcherPromise,
   }
 }

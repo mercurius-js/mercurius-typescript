@@ -432,13 +432,13 @@ tap.test('load schema files', async (t) => {
   const changePromise = new Promise<string[]>((resolve, reject) => {
     const timeout = setTimeout(() => {
       reject(Error('Change promise timed out'))
-    }, 10000)
+    }, 2000)
     resolveChangePromise = (value) => {
       clearTimeout(timeout)
       resolve(value)
     }
   })
-  const { schema, closeWatcher } = loadSchemaFiles(
+  const { schema, closeWatcher, watcher } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -447,6 +447,9 @@ tap.test('load schema files', async (t) => {
         onChange(schema) {
           resolveChangePromise(schema)
         },
+        chokidarOptions: {
+          // usePolling: true,
+        },
       },
     }
   )
@@ -454,6 +457,8 @@ tap.test('load schema files', async (t) => {
   t.tearDown(() => void closeWatcher())
 
   t.matchSnapshot(schema)
+
+  await watcher
 
   await writeFile(
     path.join(tempTargetDir.path, 'b.gql'),

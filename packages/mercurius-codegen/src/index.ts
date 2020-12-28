@@ -1,7 +1,9 @@
 import type {} from 'mercurius'
 import type { FastifyInstance } from 'fastify'
-import type { WatchOptions as ChokidarOptions } from 'chokidar'
+import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
 import type { CodegenPluginsConfig } from './code'
+
+import { deferredPromise } from './utils'
 
 interface CodegenMercuriusOptions {
   /**
@@ -52,7 +54,7 @@ interface CodegenMercuriusOptions {
     /**
      * Extra Chokidar options to be passed
      */
-    chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+    chokidarOptions?: ChokidarOptions
     /**
      * Unique watch instance
      *
@@ -85,11 +87,13 @@ export async function codegenMercurius(
   }: CodegenMercuriusOptions
 ): Promise<{
   closeWatcher: () => Promise<boolean>
+  watcher: Promise<FSWatcher | undefined>
 }> {
   const noopCloseWatcher = async () => false
   if (disable)
     return {
       closeWatcher: noopCloseWatcher,
+      watcher: Promise.resolve(undefined),
     }
 
   await app.ready()
@@ -100,111 +104,120 @@ export async function codegenMercurius(
 
   const { generateCode, writeGeneratedCode } = await import('./code')
 
-  return new Promise<{ closeWatcher: () => Promise<boolean> }>(
-    (resolve, reject) => {
-      const log = (...message: Parameters<typeof console['log']>) =>
-        silent ? undefined : console.log(...message)
+  return new Promise((resolve, reject) => {
+    const log = (...message: Parameters<typeof console['log']>) =>
+      silent ? undefined : console.log(...message)
 
-      setImmediate(() => {
-        const schema = app.graphql.schema
+    setImmediate(() => {
+      const schema = app.graphql.schema
 
-        async function watchExecute() {
-          const {
-            enabled: watchEnabled = false,
-            chokidarOptions = {},
-            uniqueWatch = true,
-          } = watchOptions || {}
+      async function watchExecute() {
+        const {
+          enabled: watchEnabled = false,
+          chokidarOptions,
+          uniqueWatch = true,
+        } = watchOptions || {}
 
-          if (watchEnabled && operationsGlob) {
+        if (watchEnabled && operationsGlob) {
+          const { watch } = await import('chokidar')
+
+          let watcherPromise = deferredPromise<FSWatcher | undefined>()
+
+          const watcher = watch(operationsGlob, chokidarOptions)
+
+          let isReady = false
+
+          watcher.on('ready', () => {
+            isReady = true
             log(`[mercurius-codegen] Watching for changes in ${operationsGlob}`)
+            watcherPromise.resolve(watcher)
+          })
 
-            const { watch } = await import('chokidar')
+          watcher.on('error', watcherPromise.reject)
 
-            const watcher = watch(operationsGlob, {
-              ...chokidarOptions,
-              ignoreInitial: true,
-            })
+          let closed = false
 
-            let closed = false
+          const closeWatcher = async () => {
+            if (closed) return false
 
-            const closeWatcher = async () => {
-              if (closed) return false
-
-              closed = true
-              await watcher.close()
-              return true
-            }
-
-            if (uniqueWatch) {
-              if (
-                typeof global.mercuriusOperationsWatchCleanup === 'function'
-              ) {
-                global.mercuriusOperationsWatchCleanup()
-              }
-
-              global.mercuriusOperationsWatchCleanup = closeWatcher
-            }
-
-            const listener = (
-              eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-              changedPath: string
-            ) => {
-              log(
-                `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`
-              )
-
-              generateCode(
-                schema,
-                codegenConfig,
-                preImportCode,
-                silent,
-                operationsGlob
-              ).then((code) => {
-                writeGeneratedCode({
-                  code,
-                  targetPath,
-                }).then((absoluteTargetPath) => {
-                  if (absoluteTargetPath) {
-                    log(
-                      `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
-                    )
-                  }
-                }, console.error)
-              }, console.error)
-            }
-            watcher.on('all', listener)
-
-            return closeWatcher
+            closed = true
+            await watcher.close()
+            return true
           }
 
-          return noopCloseWatcher
-        }
-
-        generateCode(
-          schema,
-          codegenConfig,
-          preImportCode,
-          silent,
-          operationsGlob
-        ).then((code) => {
-          writeGeneratedCode({
-            code,
-            targetPath,
-          }).then((absoluteTargetPath) => {
-            if (absoluteTargetPath) {
-              log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
+          if (uniqueWatch) {
+            if (typeof global.mercuriusOperationsWatchCleanup === 'function') {
+              global.mercuriusOperationsWatchCleanup()
             }
 
-            watchExecute().then((closeWatcher) => {
-              resolve({
-                closeWatcher,
-              })
-            }, reject)
+            global.mercuriusOperationsWatchCleanup = closeWatcher
+          }
+
+          const listener = (
+            eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+            changedPath: string
+          ) => {
+            if (!isReady) return
+
+            log(
+              `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`
+            )
+
+            generateCode(
+              schema,
+              codegenConfig,
+              preImportCode,
+              silent,
+              operationsGlob
+            ).then((code) => {
+              writeGeneratedCode({
+                code,
+                targetPath,
+              }).then((absoluteTargetPath) => {
+                if (absoluteTargetPath) {
+                  log(
+                    `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                  )
+                }
+              }, console.error)
+            }, console.error)
+          }
+          watcher.on('all', listener)
+
+          return {
+            closeWatcher,
+            watcher: watcherPromise.promise,
+          }
+        }
+
+        return {
+          closeWatcher: noopCloseWatcher,
+          watcher: Promise.resolve(undefined),
+        }
+      }
+
+      generateCode(
+        schema,
+        codegenConfig,
+        preImportCode,
+        silent,
+        operationsGlob
+      ).then((code) => {
+        writeGeneratedCode({
+          code,
+          targetPath,
+        }).then((absoluteTargetPath) => {
+          if (absoluteTargetPath) {
+            log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
+          }
+
+          watchExecute().then((watchResult) => {
+            resolve(watchResult)
           }, reject)
         }, reject)
-      })
-    }
-  )
+      }, reject)
+    })
+  })
 }
 
 export default codegenMercurius
