@@ -4,7 +4,7 @@ import { resolve } from 'path'
 
 let prebuiltSchema: string[] | undefined
 
-const buildJSONPath = resolve('./mercurius-schema.json')
+export const buildJSONPath = resolve('./mercurius-schema.json')
 
 if (existsSync(buildJSONPath)) {
   prebuiltSchema = require(buildJSONPath)
@@ -33,6 +33,14 @@ export interface WatchOptions {
    * Extra Chokidar options to be passed
    */
   chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+  /**
+   * Unique watch instance
+   *
+   * `Specially useful for hot module replacement environments, preventing memory leaks`
+   *
+   * @default true
+   */
+  uniqueWatch?: boolean
 }
 
 export interface LoadSchemaOptions {
@@ -125,25 +133,38 @@ export function loadSchemaFiles(
 
   if (!schema) schema = loadSchemaFiles()
 
-  let closeWatcher: () => void = () => undefined
+  let closeWatcher = async () => false
 
-  if (watchOptions.enabled) {
+  const {
+    enabled: watchEnabled = false,
+    chokidarOptions = {},
+    uniqueWatch = true,
+  } = watchOptions
+
+  if (watchEnabled) {
     const { watch }: typeof import('chokidar') = require('chokidar')
 
     const watcher = watch(schemaPath, {
-      ...(watchOptions.chokidarOptions || {}),
+      ...chokidarOptions,
       ignoreInitial: true,
     })
 
-    if (typeof global.mercuriusLoadSchemaWatchCleanup === 'function') {
-      global.mercuriusLoadSchemaWatchCleanup()
+    let closed = false
+    closeWatcher = async () => {
+      if (closed) return false
+
+      closed = true
+      await watcher.close()
+      return true
     }
 
-    closeWatcher = () => {
-      watcher.close()
-    }
+    if (uniqueWatch) {
+      if (typeof global.mercuriusLoadSchemaWatchCleanup === 'function') {
+        global.mercuriusLoadSchemaWatchCleanup()
+      }
 
-    global.mercuriusLoadSchemaWatchCleanup = closeWatcher
+      global.mercuriusLoadSchemaWatchCleanup = closeWatcher
+    }
 
     const listener = (
       eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',

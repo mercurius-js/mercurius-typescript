@@ -15,10 +15,17 @@ import {
   generateCode,
   gql,
   writeGeneratedCode,
-  plugin,
+  loadSchemaFiles,
 } from '../src/index'
+import { buildJSONPath } from '../src/schema'
 
-const { readFile } = fs.promises
+const { readFile, writeFile, rm } = fs.promises
+
+tap.tearDown(async () => {
+  await rm(buildJSONPath, {
+    force: true,
+  })
+})
 
 const appWithoutMercurius = Fastify()
 const app = Fastify()
@@ -330,7 +337,7 @@ tap.test('non existing file', async (t) => {
 })
 
 tap.test('operations', async (t) => {
-  t.plan(4)
+  t.plan(6)
 
   const tempTargetPath = await tmp.file()
 
@@ -346,7 +353,7 @@ tap.test('operations', async (t) => {
     },
   })
 
-  t.tearDown(closeWatcher)
+  t.tearDown(() => void closeWatcher())
 
   const generatedCode = await readFile(tempTargetPath.path, {
     encoding: 'utf-8',
@@ -384,17 +391,82 @@ tap.test('operations', async (t) => {
   t.assert(generatedCode2.includes('BDocument'))
 
   t.matchSnapshot(generatedCode2)
-})
 
-tap.test('generates code via plugin', async (t) => {
-  await app.ready()
-  const pluginOutput = await plugin.plugin(app.graphql.schema, [], {
-    namespacedImportName: 'TP_Types',
+  // Closing previous watcher
+  const { closeWatcher: closeWatcher2 } = await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    operationsGlob: ['./test/operations/*.gql'],
+    silent: true,
+    watchOptions: {
+      enabled: true,
+    },
   })
 
-  t.matchSnapshot(pluginOutput.toString(), 'pluginOutput')
+  t.equals(await closeWatcher(), false)
+  t.equals(await closeWatcher2(), true)
 
-  t.done()
+  t.tearDown(() => void closeWatcher2())
+})
+
+tap.test('load schema files', async (t) => {
+  t.plan(2)
+  const tempTargetDir = await tmp.dir({
+    unsafeCleanup: true,
+  })
+
+  t.tearDown(async () => {
+    await tempTargetDir.cleanup()
+  })
+
+  await writeFile(
+    path.join(tempTargetDir.path, 'a.gql'),
+    gql`
+      type Query {
+        hello: String!
+      }
+    `
+  )
+
+  let resolveChangePromise: (value: string[]) => void
+
+  const changePromise = new Promise<string[]>((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      reject(Error('Change promise timed out'))
+    }, 10000)
+    resolveChangePromise = (value) => {
+      clearTimeout(timeout)
+      resolve(value)
+    }
+  })
+  const { schema, closeWatcher } = loadSchemaFiles(
+    path.join(tempTargetDir.path, '*.gql'),
+    {
+      silent: true,
+      watchOptions: {
+        enabled: true,
+        onChange(schema) {
+          resolveChangePromise(schema)
+        },
+      },
+    }
+  )
+
+  t.tearDown(() => void closeWatcher())
+
+  t.matchSnapshot(schema)
+
+  await writeFile(
+    path.join(tempTargetDir.path, 'b.gql'),
+    gql`
+      extend type Query {
+        hello2: String!
+      }
+    `
+  )
+
+  const schema2 = await changePromise
+
+  t.matchSnapshot(schema2)
 })
 
 codegenMercurius(app, {

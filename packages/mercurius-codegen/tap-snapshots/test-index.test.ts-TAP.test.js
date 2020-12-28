@@ -394,6 +394,19 @@ query A {
 
 `
 
+exports[`test/index.test.ts TAP load schema files > must match snapshot 1`] = `
+Array [
+  "type Query {\\n        hello: String!\\n      }",
+]
+`
+
+exports[`test/index.test.ts TAP load schema files > must match snapshot 2`] = `
+Array [
+  "type Query {\\n        hello: String!\\n      }",
+  "extend type Query {\\n        hello2: String!\\n      }",
+]
+`
+
 exports[`test/index.test.ts TAP operations > must match snapshot 1`] = `
 import { MercuriusContext } from 'mercurius'
 import { FastifyReply } from 'fastify'

@@ -53,6 +53,14 @@ interface CodegenMercuriusOptions {
      * Extra Chokidar options to be passed
      */
     chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+    /**
+     * Unique watch instance
+     *
+     * `Specially useful for hot module replacement environments, preventing memory leaks`
+     *
+     * @default true
+     */
+    uniqueWatch?: boolean
   }
 }
 
@@ -76,9 +84,9 @@ export async function codegenMercurius(
     watchOptions,
   }: CodegenMercuriusOptions
 ): Promise<{
-  closeWatcher: () => void
+  closeWatcher: () => Promise<boolean>
 }> {
-  const noopCloseWatcher = () => undefined
+  const noopCloseWatcher = async () => false
   if (disable)
     return {
       closeWatcher: noopCloseWatcher,
@@ -92,95 +100,111 @@ export async function codegenMercurius(
 
   const { generateCode, writeGeneratedCode } = await import('./code')
 
-  return new Promise<{ closeWatcher: () => void }>((resolve, reject) => {
-    const log = (...message: Parameters<typeof console['log']>) =>
-      silent ? undefined : console.log(...message)
+  return new Promise<{ closeWatcher: () => Promise<boolean> }>(
+    (resolve, reject) => {
+      const log = (...message: Parameters<typeof console['log']>) =>
+        silent ? undefined : console.log(...message)
 
-    setImmediate(() => {
-      const schema = app.graphql.schema
+      setImmediate(() => {
+        const schema = app.graphql.schema
 
-      async function watchExecute() {
-        const { enabled = false, chokidarOptions = {} } = watchOptions || {}
+        async function watchExecute() {
+          const {
+            enabled: watchEnabled = false,
+            chokidarOptions = {},
+            uniqueWatch = true,
+          } = watchOptions || {}
 
-        if (operationsGlob && enabled) {
-          log(`[mercurius-codegen] Watching for changes in ${operationsGlob}`)
+          if (watchEnabled && operationsGlob) {
+            log(`[mercurius-codegen] Watching for changes in ${operationsGlob}`)
 
-          const { watch } = await import('chokidar')
+            const { watch } = await import('chokidar')
 
-          const watcher = watch(operationsGlob, {
-            ...chokidarOptions,
-            ignoreInitial: true,
-          })
+            const watcher = watch(operationsGlob, {
+              ...chokidarOptions,
+              ignoreInitial: true,
+            })
 
-          if (typeof global.mercuriusOperationsWatchCleanup === 'function') {
-            global.mercuriusOperationsWatchCleanup()
-          }
+            let closed = false
 
-          const closeWatcher = () => {
-            watcher.close()
-          }
+            const closeWatcher = async () => {
+              if (closed) return false
 
-          global.mercuriusOperationsWatchCleanup = closeWatcher
+              closed = true
+              await watcher.close()
+              return true
+            }
 
-          const listener = (
-            eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-            changedPath: string
-          ) => {
-            log(
-              `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`
-            )
+            if (uniqueWatch) {
+              if (
+                typeof global.mercuriusOperationsWatchCleanup === 'function'
+              ) {
+                global.mercuriusOperationsWatchCleanup()
+              }
 
-            generateCode(
-              schema,
-              codegenConfig,
-              preImportCode,
-              silent,
-              operationsGlob
-            ).then((code) => {
-              writeGeneratedCode({
-                code,
-                targetPath,
-              }).then((absoluteTargetPath) => {
-                if (absoluteTargetPath) {
-                  log(
-                    `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
-                  )
-                }
+              global.mercuriusOperationsWatchCleanup = closeWatcher
+            }
+
+            const listener = (
+              eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+              changedPath: string
+            ) => {
+              log(
+                `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`
+              )
+
+              generateCode(
+                schema,
+                codegenConfig,
+                preImportCode,
+                silent,
+                operationsGlob
+              ).then((code) => {
+                writeGeneratedCode({
+                  code,
+                  targetPath,
+                }).then((absoluteTargetPath) => {
+                  if (absoluteTargetPath) {
+                    log(
+                      `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                    )
+                  }
+                }, console.error)
               }, console.error)
-            }, console.error)
-          }
-          watcher.on('all', listener)
+            }
+            watcher.on('all', listener)
 
-          return closeWatcher
+            return closeWatcher
+          }
+
+          return noopCloseWatcher
         }
 
-        return noopCloseWatcher
-      }
+        generateCode(
+          schema,
+          codegenConfig,
+          preImportCode,
+          silent,
+          operationsGlob
+        ).then((code) => {
+          writeGeneratedCode({
+            code,
+            targetPath,
+          }).then((absoluteTargetPath) => {
+            if (absoluteTargetPath) {
+              log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
+            }
 
-      generateCode(
-        schema,
-        codegenConfig,
-        preImportCode,
-        silent,
-        operationsGlob
-      ).then((code) => {
-        writeGeneratedCode({
-          code,
-          targetPath,
-        }).then((absoluteTargetPath) => {
-          if (absoluteTargetPath) {
-            log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
-          }
-
-          watchExecute().then((closeWatcher) => {
-            resolve({
-              closeWatcher,
-            })
+            watchExecute().then((closeWatcher) => {
+              resolve({
+                closeWatcher,
+              })
+            }, reject)
           }, reject)
         }, reject)
-      }, reject)
-    })
-  })
+      })
+    }
+  )
 }
 
 export default codegenMercurius
