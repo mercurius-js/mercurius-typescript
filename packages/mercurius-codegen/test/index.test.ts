@@ -18,6 +18,7 @@ import {
   loadSchemaFiles,
 } from '../src/index'
 import { buildJSONPath } from '../src/schema'
+import mkdirp from 'mkdirp'
 
 const { readFile, writeFile, rm } = fs.promises
 
@@ -410,8 +411,20 @@ tap.test('operations', async (t) => {
 
 tap.test('load schema files', async (t) => {
   t.plan(2)
+
+  await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema'))
+
+  t.tearDown(async () => {
+    await rm(path.join(process.cwd(), 'tmp'), {
+      force: true,
+      recursive: true,
+    })
+  })
+
   const tempTargetDir = await tmp.dir({
     unsafeCleanup: true,
+    dir: 'load-schema',
+    tmpdir: path.join(process.cwd(), 'tmp'),
   })
 
   t.tearDown(async () => {
