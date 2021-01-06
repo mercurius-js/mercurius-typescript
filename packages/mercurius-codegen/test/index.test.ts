@@ -337,7 +337,7 @@ tap.test('non existing file', async (t) => {
   t.equal(writtenCode, code)
 })
 
-tap.test('operations', async (t) => {
+tap.test('operations with watching', async (t) => {
   t.plan(6)
 
   const tempTargetPath = await tmp.file()
@@ -409,8 +409,8 @@ tap.test('operations', async (t) => {
   t.tearDown(() => void closeWatcher2())
 })
 
-tap.test('load schema files', async (t) => {
-  t.plan(2)
+tap.test('load schema files with watching', async (t) => {
+  t.plan(3)
 
   await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema'))
 
@@ -425,10 +425,6 @@ tap.test('load schema files', async (t) => {
     unsafeCleanup: true,
     dir: 'load-schema',
     tmpdir: path.join(process.cwd(), 'tmp'),
-  })
-
-  t.tearDown(async () => {
-    await tempTargetDir.cleanup()
   })
 
   await writeFile(
@@ -469,7 +465,7 @@ tap.test('load schema files', async (t) => {
 
   t.tearDown(() => void closeWatcher())
 
-  t.matchSnapshot(schema)
+  t.matchSnapshot(schema.join('\n'))
 
   await watcher
 
@@ -485,6 +481,138 @@ tap.test('load schema files', async (t) => {
   const schema2 = await changePromise
 
   t.matchSnapshot(schema2)
+
+  const { closeWatcher: closeWatcher2 } = loadSchemaFiles(
+    path.join(tempTargetDir.path, '*.gql'),
+    {
+      silent: true,
+      watchOptions: {
+        enabled: true,
+        onChange(schema) {
+          resolveChangePromise(schema)
+        },
+        chokidarOptions: {
+          // usePolling: true,
+        },
+      },
+    }
+  )
+
+  t.tearDown(() => void closeWatcher2())
+
+  const noWatcher = loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
+
+  t.matchSnapshot(noWatcher.schema.join('\n'))
+})
+
+tap.test('load schema watching error handling', async (t) => {
+  t.plan(4)
+
+  await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema-errors'))
+
+  t.tearDown(async () => {
+    await rm(path.join(process.cwd(), 'tmp'), {
+      force: true,
+      recursive: true,
+    })
+  })
+
+  const tempTargetDir = await tmp.dir({
+    unsafeCleanup: true,
+    dir: 'load-schema-errors',
+    tmpdir: path.join(process.cwd(), 'tmp'),
+  })
+
+  await writeFile(
+    path.join(tempTargetDir.path, 'a.gql'),
+    gql`
+      type Query {
+        hello: String!
+      }
+    `
+  )
+
+  let resolveChangePromise: (value: string[]) => void
+
+  const changePromise = new Promise<string[]>((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      reject(Error('Change promise timed out'))
+    }, 2000)
+    resolveChangePromise = (value) => {
+      clearTimeout(timeout)
+      resolve(value)
+    }
+  })
+  const { schema, closeWatcher, watcher } = loadSchemaFiles(
+    path.join(tempTargetDir.path, '*.gql'),
+    {
+      silent: true,
+      watchOptions: {
+        enabled: true,
+        onChange(schema) {
+          resolveChangePromise(schema)
+
+          throw Error('expected error')
+        },
+      },
+    }
+  )
+
+  t.tearDown(() => void closeWatcher())
+  await watcher
+
+  t.matchSnapshot(schema.join('\n'))
+
+  const prevConsoleError = console.error
+
+  let called = false
+  console.error = (err: any) => {
+    t.deepEqual(err, Error('expected error'))
+    called = true
+  }
+
+  t.tearDown(() => {
+    console.error = prevConsoleError
+  })
+
+  await writeFile(
+    path.join(tempTargetDir.path, 'b.gql'),
+    gql`
+      extend type Query {
+        hello2: String!
+      }
+    `
+  )
+
+  const schema2 = await changePromise
+
+  console.error = prevConsoleError
+
+  t.matchSnapshot(schema2.join('\n'))
+
+  t.equals(called, true)
+})
+
+tap.test('load schema with no files', async (t) => {
+  t.plan(1)
+  await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema-throw'))
+
+  t.tearDown(async () => {
+    await rm(path.join(process.cwd(), 'tmp'), {
+      force: true,
+      recursive: true,
+    })
+  })
+
+  const tempTargetDir = await tmp.dir({
+    unsafeCleanup: true,
+    dir: 'load-schema-throw',
+    tmpdir: path.join(process.cwd(), 'tmp'),
+  })
+
+  t.throws(() => {
+    loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
+  }, Error('No GraphQL Schema files found!'))
 })
 
 codegenMercurius(app, {

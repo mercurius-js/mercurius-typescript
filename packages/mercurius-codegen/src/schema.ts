@@ -153,7 +153,10 @@ export function loadSchemaFiles(
   if (watchEnabled) {
     const { watch }: typeof import('chokidar') = require('chokidar')
 
-    const watcher = watch(schemaPath, chokidarOptions)
+    const watcher = watch(
+      schemaPath,
+      Object.assign({ useFsEvents: false } as ChokidarOptions, chokidarOptions)
+    )
 
     const watcherToResolve = deferredPromise<FSWatcher | undefined>()
     watcherPromise = watcherToResolve.promise

@@ -123,7 +123,15 @@ export async function codegenMercurius(
 
           let watcherPromise = deferredPromise<FSWatcher | undefined>()
 
-          const watcher = watch(operationsGlob, chokidarOptions)
+          const watcher = watch(
+            operationsGlob,
+            Object.assign(
+              {
+                useFsEvents: false,
+              } as ChokidarOptions,
+              chokidarOptions
+            )
+          )
 
           let isReady = false
 

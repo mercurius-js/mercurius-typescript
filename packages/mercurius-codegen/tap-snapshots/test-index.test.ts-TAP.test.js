@@ -394,20 +394,56 @@ query A {
 
 `
 
-exports[`test/index.test.ts TAP load schema files > must match snapshot 1`] = `
-Array [
-  "type Query {\\n        hello: String!\\n      }",
-]
+exports[
+  `test/index.test.ts TAP load schema files with watching > must match snapshot 1`
+] = `
+type Query {
+        hello: String!
+      }
 `
 
-exports[`test/index.test.ts TAP load schema files > must match snapshot 2`] = `
+exports[
+  `test/index.test.ts TAP load schema files with watching > must match snapshot 2`
+] = `
 Array [
   "type Query {\\n        hello: String!\\n      }",
   "extend type Query {\\n        hello2: String!\\n      }",
 ]
 `
 
-exports[`test/index.test.ts TAP operations > must match snapshot 1`] = `
+exports[
+  `test/index.test.ts TAP load schema files with watching > must match snapshot 3`
+] = `
+type Query {
+        hello: String!
+      }
+extend type Query {
+        hello2: String!
+      }
+`
+
+exports[
+  `test/index.test.ts TAP load schema watching error handling > must match snapshot 1`
+] = `
+type Query {
+        hello: String!
+      }
+`
+
+exports[
+  `test/index.test.ts TAP load schema watching error handling > must match snapshot 2`
+] = `
+type Query {
+        hello: String!
+      }
+extend type Query {
+        hello2: String!
+      }
+`
+
+exports[
+  `test/index.test.ts TAP operations with watching > must match snapshot 1`
+] = `
 import { MercuriusContext } from 'mercurius'
 import { FastifyReply } from 'fastify'
 import {
@@ -772,7 +808,9 @@ declare module 'mercurius' {
 
 `
 
-exports[`test/index.test.ts TAP operations > must match snapshot 2`] = `
+exports[
+  `test/index.test.ts TAP operations with watching > must match snapshot 2`
+] = `
 import { MercuriusContext } from 'mercurius'
 import { FastifyReply } from 'fastify'
 import {
