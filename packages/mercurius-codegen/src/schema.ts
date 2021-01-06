@@ -86,7 +86,7 @@ export function loadSchemaFiles(
     }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
 
     const schema = loadFilesSync(schemaPath, {})
-      .map((v) => String(v).trim())
+      .map((v) => String(v).trim().replace(/\r\n/g, '\n'))
       .filter(Boolean)
 
     if (!schema.length) {

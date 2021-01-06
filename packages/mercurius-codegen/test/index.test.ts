@@ -1,12 +1,14 @@
 import './generated'
 
 import assert from 'assert'
+import test from 'ava'
 import Fastify from 'fastify'
 import fs from 'fs'
 import { parse, print } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
+import mkdirp from 'mkdirp'
 import path from 'path'
-import tap from 'tap'
+import rimraf from 'rimraf'
 import tmp from 'tmp-promise'
 import waitForExpect from 'wait-for-expect'
 
@@ -14,17 +16,25 @@ import {
   codegenMercurius,
   generateCode,
   gql,
-  writeGeneratedCode,
   loadSchemaFiles,
+  writeGeneratedCode,
 } from '../src/index'
 import { buildJSONPath } from '../src/schema'
-import mkdirp from 'mkdirp'
 
 const { readFile, writeFile, rm } = fs.promises
 
-tap.tearDown(async () => {
+test.after.always(async () => {
   await rm(buildJSONPath, {
     force: true,
+  })
+
+  await new Promise<void>((resolve, reject) => {
+    rimraf('./tmp', (err) => {
+      if (err) {
+        return reject(err)
+      }
+      resolve()
+    })
   })
 })
 
@@ -89,91 +99,87 @@ app.register(mercurius, {
 })
 
 let generatedCode: string
-tap
-  .test('generates code', async (t) => {
-    await app.ready()
-    generatedCode = await generateCode(app.graphql.schema)
 
-    t.matchSnapshot(generatedCode, 'code')
+test.serial('generates code', async (t) => {
+  await app.ready()
+  generatedCode = await generateCode(app.graphql.schema)
 
-    t.done()
-  })
-  .then(() => {
-    tap.test('integrates with mercurius', async (t) => {
-      t.plan(2)
-      const tempTargetPath = await tmp.file()
+  t.snapshot(generatedCode, 'code')
+})
+test.serial('integrates with mercurius', async (t) => {
+  t.plan(2)
+  const tempTargetPath = await tmp.file()
 
-      const prevConsoleLog = console.log
+  const prevConsoleLog = console.log
 
-      const mockConsoleLog = (message: string) => {
-        t.assert(message.includes('Code generated at'))
-      }
+  const mockConsoleLog = (message: string) => {
+    t.assert(message.includes('Code generated at'))
+  }
 
-      console.log = mockConsoleLog
+  console.log = mockConsoleLog
 
-      t.tearDown(() => {
-        console.log = prevConsoleLog
-      })
-
-      t.tearDown(async () => {
-        await tempTargetPath.cleanup()
-      })
-
-      await codegenMercurius(app, {
-        targetPath: tempTargetPath.path,
-        disable: false,
-        silent: false,
-      })
-
-      t.equals(
-        generatedCode,
-        await readFile(tempTargetPath.path, {
-          encoding: 'utf-8',
-        })
-      )
-    })
-
-    tap.test('integrates with mercurius and respects silent', async (t) => {
-      t.plan(1)
-      const tempTargetPath = await tmp.file()
-
-      const prevConsoleLog = console.log
-
-      const mockConsoleLog = () => {
-        t.bailout("shouldn't reach it")
-      }
-
-      console.log = mockConsoleLog
-
-      t.tearDown(() => {
-        console.log = prevConsoleLog
-      })
-
-      t.tearDown(async () => {
-        await tempTargetPath.cleanup()
-      })
-
-      await codegenMercurius(app, {
-        targetPath: tempTargetPath.path,
-        disable: false,
-        silent: true,
-      })
-
-      t.equals(
-        generatedCode,
-        await readFile(tempTargetPath.path, {
-          encoding: 'utf-8',
-        })
-      )
-    })
+  t.teardown(() => {
+    console.log = prevConsoleLog
   })
 
-tap.test('writes generated code', async (t) => {
+  t.teardown(async () => {
+    await tempTargetPath.cleanup()
+  })
+
+  await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    disable: false,
+    silent: false,
+  })
+
+  t.is(
+    generatedCode,
+    await readFile(tempTargetPath.path, {
+      encoding: 'utf-8',
+    })
+  )
+})
+
+test.serial('integrates with mercurius and respects silent', async (t) => {
+  t.plan(1)
+  const tempTargetPath = await tmp.file()
+
+  const prevConsoleLog = console.log
+
+  const mockConsoleLog = () => {
+    t.fail("shouldn't reach it")
+  }
+
+  console.log = mockConsoleLog
+
+  t.teardown(() => {
+    console.log = prevConsoleLog
+  })
+
+  t.teardown(async () => {
+    await tempTargetPath.cleanup()
+  })
+
+  await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    disable: false,
+    silent: true,
+  })
+
+  t.is(
+    generatedCode,
+    await readFile(tempTargetPath.path, {
+      encoding: 'utf-8',
+    })
+  )
+})
+
+test('writes generated code', async (t) => {
   t.plan(1)
   const code = 'console.log("hello world")'
   const tempTargetPath = await tmp.file()
 
-  t.tearDown(async () => {
+  t.teardown(async () => {
     await tempTargetPath.cleanup()
   })
 
@@ -182,7 +188,7 @@ tap.test('writes generated code', async (t) => {
     targetPath: tempTargetPath.path,
   })
 
-  t.equals(
+  t.is(
     code,
     await readFile(tempTargetPath.path, {
       encoding: 'utf-8',
@@ -190,26 +196,26 @@ tap.test('writes generated code', async (t) => {
   )
 })
 
-tap.test('detects fastify instance without mercurius', async (t) => {
+test('detects fastify instance without mercurius', async (t) => {
   t.plan(1)
   const tempTargetPath = await tmp.file()
 
-  t.tearDown(async () => {
+  t.teardown(async () => {
     await tempTargetPath.cleanup()
   })
 
   await codegenMercurius(appWithoutMercurius, {
     targetPath: tempTargetPath.path,
   }).catch((err) => {
-    t.equal(err.message, 'Mercurius is not registered in Fastify Instance!')
+    t.is(err.message, 'Mercurius is not registered in Fastify Instance!')
   })
 })
 
-tap.test('respects "disable" flag', async (t) => {
+test('respects "disable" flag', async (t) => {
   t.plan(1)
   const tempTargetPath = await tmp.file()
 
-  t.tearDown(async () => {
+  t.teardown(async () => {
     await tempTargetPath.cleanup()
   })
 
@@ -220,7 +226,7 @@ tap.test('respects "disable" flag', async (t) => {
 
   closeWatcher()
 
-  t.equal(
+  t.is(
     await readFile(tempTargetPath.path, {
       encoding: 'utf-8',
     }),
@@ -228,67 +234,64 @@ tap.test('respects "disable" flag', async (t) => {
   )
 })
 
-tap.test(
-  'warns about unsupported namingConvention, respecting silent',
-  async (t) => {
-    t.plan(2)
+test('warns about unsupported namingConvention, respecting silent', async (t) => {
+  t.plan(2)
 
-    const namingConvention = 'pascal-case'
+  const namingConvention = 'pascal-case'
 
-    const tempTargetPath = await tmp.file()
+  const tempTargetPath = await tmp.file()
 
-    const prevConsoleLog = console.log
+  const prevConsoleLog = console.log
 
-    const mockConsoleLog = (message: string) => {
-      t.ok(message)
-    }
-
-    console.log = mockConsoleLog
-
-    t.tearDown(() => {
-      console.log = prevConsoleLog
-    })
-
-    const prevConsoleWarn = console.warn
-
-    const mockConsoleWarn = (message: string) => {
-      t.equal(
-        message,
-        `namingConvention "${namingConvention}" is not supported! it has been set to "keep" automatically.`
-      )
-    }
-
-    console.warn = mockConsoleWarn
-
-    t.tearDown(() => {
-      console.warn = prevConsoleWarn
-    })
-
-    t.tearDown(async () => {
-      await tempTargetPath.cleanup()
-    })
-
-    await codegenMercurius(app, {
-      targetPath: tempTargetPath.path,
-      disable: false,
-      silent: false,
-      codegenConfig: {
-        namingConvention,
-      },
-    })
-
-    await codegenMercurius(app, {
-      targetPath: tempTargetPath.path,
-      disable: false,
-      silent: true,
-      codegenConfig: {
-        namingConvention,
-      },
-    })
+  const mockConsoleLog = (message: string) => {
+    t.truthy(message)
   }
-)
 
-tap.test('gql helper', (t) => {
+  console.log = mockConsoleLog
+
+  t.teardown(() => {
+    console.log = prevConsoleLog
+  })
+
+  const prevConsoleWarn = console.warn
+
+  const mockConsoleWarn = (message: string) => {
+    t.is(
+      message,
+      `namingConvention "${namingConvention}" is not supported! it has been set to "keep" automatically.`
+    )
+  }
+
+  console.warn = mockConsoleWarn
+
+  t.teardown(() => {
+    console.warn = prevConsoleWarn
+  })
+
+  t.teardown(async () => {
+    await tempTargetPath.cleanup()
+  })
+
+  await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    disable: false,
+    silent: false,
+    codegenConfig: {
+      namingConvention,
+    },
+  })
+
+  await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    disable: false,
+    silent: true,
+    codegenConfig: {
+      namingConvention,
+    },
+  })
+})
+
+test('gql helper', (t) => {
   t.plan(2)
 
   const a = gql`
@@ -304,18 +307,18 @@ tap.test('gql helper', (t) => {
     ${a}
   `
 
-  t.matchSnapshot(print(parse(a)))
-  t.matchSnapshot(print(parse(b)))
+  t.snapshot(print(parse(a)))
+  t.snapshot(print(parse(b)))
 })
 
-tap.test('non existing file', async (t) => {
+test('non existing file', async (t) => {
   t.plan(1)
 
   const tempTargetDir = await tmp.dir({
     unsafeCleanup: true,
   })
 
-  t.tearDown(async () => {
+  t.teardown(async () => {
     await tempTargetDir.cleanup()
   })
 
@@ -334,15 +337,15 @@ tap.test('non existing file', async (t) => {
     encoding: 'utf-8',
   })
 
-  t.equal(writtenCode, code)
+  t.is(writtenCode, code)
 })
 
-tap.test('operations with watching', async (t) => {
+test('operations with watching', async (t) => {
   t.plan(6)
 
   const tempTargetPath = await tmp.file()
 
-  t.tearDown(async () => {
+  t.teardown(async () => {
     await tempTargetPath.cleanup()
   })
   const { closeWatcher } = await codegenMercurius(app, {
@@ -354,26 +357,26 @@ tap.test('operations with watching', async (t) => {
     },
   })
 
-  t.tearDown(() => void closeWatcher())
+  t.teardown(() => void closeWatcher())
 
   const generatedCode = await readFile(tempTargetPath.path, {
     encoding: 'utf-8',
   })
 
-  t.matchSnapshot(generatedCode)
+  t.snapshot(generatedCode)
 
   t.assert(generatedCode.includes('BDocument') === false)
 
   await fs.promises.writeFile(
     './test/operations/temp.gql',
+    gql`
+      query B {
+        hello
+      }
     `
-  query B {
-    hello
-  }
-  `
   )
 
-  t.tearDown(() => {
+  t.teardown(() => {
     fs.rmSync('./test/operations/temp.gql')
   })
 
@@ -391,7 +394,7 @@ tap.test('operations with watching', async (t) => {
 
   t.assert(generatedCode2.includes('BDocument'))
 
-  t.matchSnapshot(generatedCode2)
+  t.snapshot(generatedCode2)
 
   // Closing previous watcher
   const { closeWatcher: closeWatcher2 } = await codegenMercurius(app, {
@@ -403,28 +406,25 @@ tap.test('operations with watching', async (t) => {
     },
   })
 
-  t.equals(await closeWatcher(), false)
-  t.equals(await closeWatcher2(), true)
+  t.is(await closeWatcher(), false)
+  t.is(await closeWatcher2(), true)
 
-  t.tearDown(() => void closeWatcher2())
+  t.teardown(() => void closeWatcher2())
 })
 
-tap.test('load schema files with watching', async (t) => {
+test.serial('load schema files with watching', async (t) => {
   t.plan(3)
 
   await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema'))
-
-  t.tearDown(async () => {
-    await rm(path.join(process.cwd(), 'tmp'), {
-      force: true,
-      recursive: true,
-    })
-  })
 
   const tempTargetDir = await tmp.dir({
     unsafeCleanup: true,
     dir: 'load-schema',
     tmpdir: path.join(process.cwd(), 'tmp'),
+  })
+
+  t.teardown(async () => {
+    await tempTargetDir.cleanup()
   })
 
   await writeFile(
@@ -441,7 +441,7 @@ tap.test('load schema files with watching', async (t) => {
   const changePromise = new Promise<string[]>((resolve, reject) => {
     const timeout = setTimeout(() => {
       reject(Error('Change promise timed out'))
-    }, 2000)
+    }, 20000)
     resolveChangePromise = (value) => {
       clearTimeout(timeout)
       resolve(value)
@@ -463,9 +463,9 @@ tap.test('load schema files with watching', async (t) => {
     }
   )
 
-  t.tearDown(() => void closeWatcher())
+  t.teardown(() => void closeWatcher())
 
-  t.matchSnapshot(schema.join('\n'))
+  t.snapshot(schema.join('\n'))
 
   await watcher
 
@@ -480,7 +480,7 @@ tap.test('load schema files with watching', async (t) => {
 
   const schema2 = await changePromise
 
-  t.matchSnapshot(schema2)
+  t.snapshot(schema2)
 
   const { closeWatcher: closeWatcher2 } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
@@ -498,29 +498,26 @@ tap.test('load schema files with watching', async (t) => {
     }
   )
 
-  t.tearDown(() => void closeWatcher2())
+  t.teardown(() => void closeWatcher2())
 
   const noWatcher = loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
 
-  t.matchSnapshot(noWatcher.schema.join('\n'))
+  t.snapshot(noWatcher.schema.join('\n'))
 })
 
-tap.test('load schema watching error handling', async (t) => {
+test('load schema watching error handling', async (t) => {
   t.plan(4)
 
   await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema-errors'))
-
-  t.tearDown(async () => {
-    await rm(path.join(process.cwd(), 'tmp'), {
-      force: true,
-      recursive: true,
-    })
-  })
 
   const tempTargetDir = await tmp.dir({
     unsafeCleanup: true,
     dir: 'load-schema-errors',
     tmpdir: path.join(process.cwd(), 'tmp'),
+  })
+
+  t.teardown(async () => {
+    await tempTargetDir.cleanup()
   })
 
   await writeFile(
@@ -558,10 +555,10 @@ tap.test('load schema watching error handling', async (t) => {
     }
   )
 
-  t.tearDown(() => void closeWatcher())
+  t.teardown(() => void closeWatcher())
   await watcher
 
-  t.matchSnapshot(schema.join('\n'))
+  t.snapshot(schema.join('\n'))
 
   const prevConsoleError = console.error
 
@@ -571,7 +568,7 @@ tap.test('load schema watching error handling', async (t) => {
     called = true
   }
 
-  t.tearDown(() => {
+  t.teardown(() => {
     console.error = prevConsoleError
   })
 
@@ -588,21 +585,14 @@ tap.test('load schema watching error handling', async (t) => {
 
   console.error = prevConsoleError
 
-  t.matchSnapshot(schema2.join('\n'))
+  t.snapshot(schema2.join('\n'))
 
-  t.equals(called, true)
+  t.is(called, true)
 })
 
-tap.test('load schema with no files', async (t) => {
+test('load schema with no files', async (t) => {
   t.plan(1)
   await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema-throw'))
-
-  t.tearDown(async () => {
-    await rm(path.join(process.cwd(), 'tmp'), {
-      force: true,
-      recursive: true,
-    })
-  })
 
   const tempTargetDir = await tmp.dir({
     unsafeCleanup: true,
@@ -610,9 +600,18 @@ tap.test('load schema with no files', async (t) => {
     tmpdir: path.join(process.cwd(), 'tmp'),
   })
 
-  t.throws(() => {
-    loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
-  }, Error('No GraphQL Schema files found!'))
+  t.teardown(async () => {
+    await tempTargetDir.cleanup()
+  })
+
+  t.throws(
+    () => {
+      loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
+    },
+    {
+      message: 'No GraphQL Schema files found!',
+    }
+  )
 })
 
 codegenMercurius(app, {
