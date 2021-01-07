@@ -8,6 +8,7 @@ import { parse, print } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import mkdirp from 'mkdirp'
 import path from 'path'
+import proxyquire from 'proxyquire'
 import rimraf from 'rimraf'
 import tmp from 'tmp-promise'
 import waitForExpect from 'wait-for-expect'
@@ -19,6 +20,7 @@ import {
   loadSchemaFiles,
   writeGeneratedCode,
 } from '../src/index'
+import { formatPrettier } from '../src/prettier'
 import { buildJSONPath } from '../src/schema'
 
 const { readFile, writeFile, rm } = fs.promises
@@ -505,7 +507,7 @@ test.serial('load schema files with watching', async (t) => {
   t.snapshot(noWatcher.schema.join('\n'))
 })
 
-test('load schema watching error handling', async (t) => {
+test.serial('load schema watching error handling', async (t) => {
   t.plan(4)
 
   await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema-errors'))
@@ -590,7 +592,7 @@ test('load schema watching error handling', async (t) => {
   t.is(called, true)
 })
 
-test('load schema with no files', async (t) => {
+test.serial('load schema with no files', async (t) => {
   t.plan(1)
   await mkdirp(path.join(process.cwd(), 'tmp', 'load-schema-throw'))
 
@@ -612,6 +614,42 @@ test('load schema with no files', async (t) => {
       message: 'No GraphQL Schema files found!',
     }
   )
+})
+
+test.serial('pre-built schema', async (t) => {
+  rimraf.sync(buildJSONPath)
+
+  await fs.promises.writeFile(
+    buildJSONPath,
+    JSON.stringify([
+      await formatPrettier(
+        gql`
+          type Query {
+            hello: String!
+          }
+        `,
+        'graphql'
+      ),
+    ]).replace(/\r\n/g, '\n'),
+    {
+      encoding: 'utf-8',
+    }
+  )
+
+  const {
+    loadSchemaFiles,
+  }: typeof import('../src/schema') = proxyquire.noPreserveCache()(
+    '../src/schema',
+    {}
+  )
+
+  const { schema } = loadSchemaFiles('./test/operations/*.gql', {
+    prebuild: {
+      enabled: true,
+    },
+  })
+
+  t.snapshot(schema)
 })
 
 codegenMercurius(app, {
