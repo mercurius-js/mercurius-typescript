@@ -4,10 +4,13 @@ import { GraphQLSchema } from 'graphql'
 
 import { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
 import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
+import { MercuriusLoadersPlugin } from './mercuriusLoaders'
 
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
 import type { WatchOptions as ChokidarOptions } from 'chokidar'
+
+export { MercuriusLoadersPlugin as plugin }
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
   TypeScriptResolversPluginConfig
@@ -93,7 +96,6 @@ export async function generateCode(
     : null
   const { parse, printSchema } = await import('graphql')
   const { format, resolveConfig } = await import('prettier')
-  const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
   const { loadFiles } = await import('@graphql-tools/load-files')
 
   const prettierConfig = resolveConfig(process.cwd()).then((config) => config)
