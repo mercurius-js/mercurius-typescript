@@ -133,7 +133,7 @@ const response = await client.query(helloDocument)
 
 ### Options
 
-There are a couple extra options that can be specified:
+There are some extra options that can be specified:
 
 ```ts
 interface CodegenMercuriusOptions {
@@ -185,7 +185,15 @@ interface CodegenMercuriusOptions {
     /**
      * Extra Chokidar options to be passed
      */
-    chokidarOptions?: Omit<ChokidarOptions, 'ignoreInitial'>
+    chokidarOptions?: ChokidarOptions
+    /**
+     * Unique watch instance
+     *
+     * `Specially useful for hot module replacement environments, preventing memory leaks`
+     *
+     * @default true
+     */
+    uniqueWatch?: boolean
   }
 }
 
@@ -208,6 +216,89 @@ mercuriusCodegen(app, {
 }).catch(console.error)
 ```
 
+### GraphQL Schema from files
+
+As shown in the [**examples/codegen-gql-files**](/examples/codegen-gql-files/src/index.ts), you can load all your schema type definitions directly from GraphQL _.gql_ files, and this library gives you a function that eases that process, allowing you to get the schema from files, watch for changes and preloading the schema for production environments.
+
+- Usage options
+
+```ts
+export interface LoadSchemaOptions {
+  /**
+   * Watch options
+   */
+  watchOptions?: {
+    /**
+     * Enable file watching
+     * @default false
+     */
+    enabled?: boolean
+    /**
+     * Custom function to be executed after schema change
+     */
+    onChange?: (schema: string[]) => void
+    /**
+     * Extra Chokidar options to be passed
+     */
+    chokidarOptions?: ChokidarOptions
+    /**
+     * Unique watch instance
+     *
+     * `Specially useful for hot module replacement environments, preventing memory leaks`
+     *
+     * @default true
+     */
+    uniqueWatch?: boolean
+  }
+  /**
+   * Pre-build options
+   */
+  prebuild?: {
+    /**
+     * Enable use pre-built schema if found.
+     *
+     * @default process.env.NODE_ENV === "production"
+     */
+    enabled?: boolean
+  }
+  /**
+   * Don't notify to the console
+   */
+  silent?: boolean
+}
+```
+
+```ts
+import Fastify from 'fastify'
+import mercurius from 'mercurius'
+import { buildSchema } from 'graphql'
+import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
+
+const app = Fastify()
+
+const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
+  watchOptions: {
+    enabled: process.env.NODE_ENV === 'development',
+    onChange(schema) {
+      app.graphql.replaceSchema(buildSchema(schema.join('\n')))
+      app.graphql.defineResolvers(resolvers)
+
+      mercuriusCodegen(app, {
+        targetPath: './src/graphql/generated.ts',
+        operationsGlob: './src/graphql/operations/*.gql',
+      }).catch(console.error)
+    },
+  },
+})
+
+app.register(mercurius, {
+  schema,
+  // ....
+})
+```
+
 ## License
 
 MIT
+
+---

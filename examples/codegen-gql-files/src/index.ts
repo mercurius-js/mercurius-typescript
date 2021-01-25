@@ -1,13 +1,17 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
+import { buildSchema } from 'graphql'
 
 export const app = Fastify()
 
 const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
   watchOptions: {
     enabled: process.env.NODE_ENV === 'development',
-    onChange() {
+    onChange(schema) {
+      app.graphql.replaceSchema(buildSchema(schema.join('\n')))
+      app.graphql.defineResolvers(resolvers)
+
       mercuriusCodegen(app, {
         targetPath: './src/graphql/generated.ts',
         operationsGlob: './src/graphql/operations/*.gql',
