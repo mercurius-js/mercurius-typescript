@@ -1,7 +1,9 @@
-import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
+import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 
-export const MercuriusLoadersPlugin: CodegenPlugin = {
-  async plugin(schema, documents, config) {
+export const MercuriusLoadersPlugin: CodegenPlugin<{
+  namespacedImportName?: string
+}> = {
+  async plugin(schema, _documents, config) {
     const namespacedImportPrefix = config.namespacedImportName
       ? `${config.namespacedImportName}.`
       : ''

@@ -19,6 +19,7 @@ import {
   gql,
   loadSchemaFiles,
   writeGeneratedCode,
+  plugin,
 } from '../src/index'
 import { formatPrettier } from '../src/prettier'
 import { buildJSONPath } from '../src/schema'
@@ -101,6 +102,16 @@ app.register(mercurius, {
 })
 
 let generatedCode: string
+
+test('generates code via plugin', async (t) => {
+  t.plan(1)
+  await app.ready()
+  const pluginOutput = await plugin.plugin(app.graphql.schema, [], {
+    namespacedImportName: 'TP_Types',
+  })
+
+  t.snapshot(pluginOutput.toString(), 'pluginOutput')
+})
 
 test.serial('generates code', async (t) => {
   await app.ready()
