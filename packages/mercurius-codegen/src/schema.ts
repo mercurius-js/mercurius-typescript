@@ -201,7 +201,7 @@ export function loadSchemaFiles(
       try {
         const schema = loadSchemaFiles()
 
-        watchOptions.onChange?.(schema)
+        if (watchOptions.onChange) watchOptions.onChange(schema)
       } catch (err) {
         console.error(err)
       }

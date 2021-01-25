@@ -343,7 +343,7 @@ test('non existing file', async (t) => {
 })
 
 test('operations with watching', async (t) => {
-  t.plan(6)
+  t.plan(7)
 
   const tempTargetPath = await tmp.file()
 
@@ -359,7 +359,9 @@ test('operations with watching', async (t) => {
     },
   })
 
-  t.teardown(() => void closeWatcher())
+  t.teardown(async () => {
+    await closeWatcher()
+  })
 
   const generatedCode = await readFile(tempTargetPath.path, {
     encoding: 'utf-8',
@@ -411,7 +413,24 @@ test('operations with watching', async (t) => {
   t.is(await closeWatcher(), false)
   t.is(await closeWatcher2(), true)
 
-  t.teardown(() => void closeWatcher2())
+  t.teardown(async () => {
+    await closeWatcher2()
+  })
+
+  const { closeWatcher: closeWatcher3 } = await codegenMercurius(app, {
+    targetPath: tempTargetPath.path,
+    operationsGlob: ['./test/operations/*.gql'],
+    silent: true,
+    watchOptions: {
+      enabled: true,
+      uniqueWatch: false,
+    },
+  })
+  t.teardown(async () => {
+    await closeWatcher3()
+  })
+
+  t.is(await closeWatcher3(), true)
 })
 
 test.serial('load schema files with watching', async (t) => {
@@ -465,7 +484,39 @@ test.serial('load schema files with watching', async (t) => {
     }
   )
 
-  t.teardown(() => void closeWatcher())
+  t.teardown(async () => {
+    await closeWatcher()
+  })
+
+  const { closeWatcher: closeIsolatedWatcher } = loadSchemaFiles(
+    path.join(tempTargetDir.path, '*.gql'),
+    {
+      silent: false,
+      watchOptions: {
+        enabled: true,
+        uniqueWatch: false,
+      },
+    }
+  )
+
+  t.teardown(async () => {
+    await closeIsolatedWatcher()
+  })
+
+  const { closeWatcher: closeNoWatcher } = loadSchemaFiles(
+    path.join(tempTargetDir.path, '*.gql'),
+    {
+      silent: true,
+      watchOptions: {
+        enabled: false,
+        uniqueWatch: false,
+      },
+    }
+  )
+
+  t.teardown(async () => {
+    await closeNoWatcher()
+  })
 
   t.snapshot(schema.join('\n'))
 
@@ -500,7 +551,9 @@ test.serial('load schema files with watching', async (t) => {
     }
   )
 
-  t.teardown(() => void closeWatcher2())
+  t.teardown(async () => {
+    await closeWatcher2()
+  })
 
   const noWatcher = loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
 
@@ -650,6 +703,26 @@ test.serial('pre-built schema', async (t) => {
   })
 
   t.snapshot(schema)
+
+  const {
+    loadSchemaFiles: loadSchemaFilesManipulated,
+  }: typeof import('../src/schema') = proxyquire.noPreserveCache()(
+    '../src/schema',
+    {
+      [buildJSONPath]: [123],
+    }
+  )
+
+  const { schema: schemaPreloadManipulated } = loadSchemaFilesManipulated(
+    './test/operations/*.gql',
+    {
+      prebuild: {
+        enabled: true,
+      },
+    }
+  )
+
+  t.snapshot(schemaPreloadManipulated)
 })
 
 codegenMercurius(app, {

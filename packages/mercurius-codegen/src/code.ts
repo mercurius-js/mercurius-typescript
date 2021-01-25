@@ -148,7 +148,7 @@ export async function writeGeneratedCode({
 }: {
   code: string
   targetPath: string
-}): Promise<string | null> {
+}) {
   const { default: mkdirp } = await import('mkdirp')
 
   targetPath = resolve(targetPath)
@@ -162,7 +162,7 @@ export async function writeGeneratedCode({
       encoding: 'utf-8',
     })
 
-    if (existingCode === code) return null
+    if (existingCode === code) return targetPath
   }
 
   await fsPromises.writeFile(targetPath, code, {

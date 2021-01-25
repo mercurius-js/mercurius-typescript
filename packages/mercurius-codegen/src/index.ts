@@ -182,11 +182,9 @@ export async function codegenMercurius(
                 code,
                 targetPath,
               }).then((absoluteTargetPath) => {
-                if (absoluteTargetPath) {
-                  log(
-                    `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
-                  )
-                }
+                log(
+                  `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                )
               }, console.error)
             }, console.error)
           }
@@ -215,9 +213,7 @@ export async function codegenMercurius(
           code,
           targetPath,
         }).then((absoluteTargetPath) => {
-          if (absoluteTargetPath) {
-            log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
-          }
+          log(`[mercurius-codegen] Code generated at ${absoluteTargetPath}`)
 
           watchExecute().then((watchResult) => {
             resolve(watchResult)
