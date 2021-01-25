@@ -1,7 +1,11 @@
 import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 
 export const MercuriusLoadersPlugin: CodegenPlugin = {
-  async plugin(schema) {
+  async plugin(schema, documents, config) {
+    const namespacedImportPrefix = config.namespacedImportName
+      ? `${config.namespacedImportName}.`
+      : ''
+
     const {
       GraphQLList,
       GraphQLNonNull,
@@ -79,8 +83,14 @@ export const MercuriusLoadersPlugin: CodegenPlugin = {
             if (isNullable) {
               fieldTypeToReturn = `Maybe<${fieldTypeToReturn}>`
             }
-            typeCode[key] = `LoaderResolver<${fieldTypeToReturn},${type.name},${
-              hasArgs ? `${type.name}${value.name}Args` : '{}'
+            typeCode[
+              key
+            ] = `LoaderResolver<${fieldTypeToReturn},${namespacedImportPrefix}${
+              type.name
+            },${
+              hasArgs
+                ? `${namespacedImportPrefix}${type.name}${value.name}Args`
+                : '{}'
             }, TContext>`
           } else {
             let fieldTypeToReturn = isArray
@@ -91,8 +101,14 @@ export const MercuriusLoadersPlugin: CodegenPlugin = {
               fieldTypeToReturn = `Maybe<${fieldTypeToReturn}>`
             }
 
-            typeCode[key] = `LoaderResolver<${fieldTypeToReturn},${type.name},${
-              hasArgs ? `${type.name}${value.name}Args` : '{}'
+            typeCode[
+              key
+            ] = `LoaderResolver<${fieldTypeToReturn},${namespacedImportPrefix}${
+              type.name
+            },${
+              hasArgs
+                ? `${namespacedImportPrefix}${type.name}${value.name}Args`
+                : '{}'
             }, TContext>`
           }
         })

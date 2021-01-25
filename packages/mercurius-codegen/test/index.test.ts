@@ -15,6 +15,7 @@ import {
   generateCode,
   gql,
   writeGeneratedCode,
+  plugin,
 } from '../src/index'
 
 const { readFile } = fs.promises
@@ -383,6 +384,17 @@ tap.test('operations', async (t) => {
   t.assert(generatedCode2.includes('BDocument'))
 
   t.matchSnapshot(generatedCode2)
+})
+
+tap.test('generates code via plugin', async (t) => {
+  await app.ready()
+  const pluginOutput = await plugin.plugin(app.graphql.schema, [], {
+    namespacedImportName: 'TP_Types',
+  })
+
+  t.matchSnapshot(pluginOutput.toString(), 'pluginOutput')
+
+  t.done()
 })
 
 codegenMercurius(app, {
