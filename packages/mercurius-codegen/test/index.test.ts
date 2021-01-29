@@ -106,7 +106,7 @@ let generatedCode: string
 test('generates code via plugin', async (t) => {
   t.plan(1)
   await app.ready()
-  const pluginOutput = await plugin.plugin(app.graphql.schema, [], {
+  const pluginOutput = await plugin(app.graphql.schema, [], {
     namespacedImportName: 'TP_Types',
   })
 

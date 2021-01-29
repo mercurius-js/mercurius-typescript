@@ -6,7 +6,8 @@ import type { CodegenPluginsConfig } from './code'
 import { MercuriusLoadersPlugin } from './mercuriusLoaders'
 import { deferredPromise } from './utils'
 
-export { MercuriusLoadersPlugin as plugin }
+const { plugin } = MercuriusLoadersPlugin
+export { plugin }
 
 interface CodegenMercuriusOptions {
   /**
