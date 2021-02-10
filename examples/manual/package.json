@@ -14,18 +14,18 @@
     "test": "cross-env NODE_ENV=test tap --100"
   },
   "dependencies": {
-    "fastify": "^3.10.1",
-    "graphql": "^15.4.0",
-    "mercurius": "^6.10.0"
+    "fastify": "^3.11.0",
+    "graphql": "^15.5.0",
+    "mercurius": "^6.12.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.22",
-    "@types/tap": "^14.10.1",
+    "@types/node": "^14.14.25",
+    "@types/tap": "^14.10.2",
     "cross-env": "^7.0.3",
     "graphql-tag": "^2.11.0",
     "mercurius-integration-testing": "^3.1.2",
     "tap": "^14.11.0",
     "tsc-watch": "^4.2.9",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.4"
   }
 }

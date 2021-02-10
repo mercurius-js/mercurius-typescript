@@ -255,7 +255,7 @@ export type HumanResolvers<
     ParentType,
     ContextType
   >
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
 export type Resolvers<ContextType = any> = {

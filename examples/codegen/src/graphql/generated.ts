@@ -202,7 +202,7 @@ export type HumanResolvers<
   ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
 export type DogResolvers<
@@ -211,7 +211,7 @@ export type DogResolvers<
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   owner?: Resolver<Maybe<ResolversTypes['Human']>, ParentType, ContextType>
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
 export type QueryResolvers<

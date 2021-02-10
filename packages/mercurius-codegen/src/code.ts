@@ -83,6 +83,7 @@ export async function generateCode(
       codegenConfig,
       {
         namingConvention: 'keep',
+        internalResolversPrefix: '',
       } as CodegenPluginsConfig
     ),
     documents,

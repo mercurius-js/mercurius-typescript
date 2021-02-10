@@ -8,6 +8,7 @@ export const app = Fastify()
 const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
   watchOptions: {
     enabled: process.env.NODE_ENV === 'development',
+    /* istanbul ignore next */
     onChange(schema) {
       app.graphql.replaceSchema(buildSchema(schema.join('\n')))
       app.graphql.defineResolvers(resolvers)
