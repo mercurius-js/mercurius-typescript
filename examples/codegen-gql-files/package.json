@@ -20,8 +20,8 @@
     "@graphql-tools/load-files": "^6.2.5",
     "fastify": "^3.11.0",
     "graphql": "^15.5.0",
-    "mercurius": "^6.12.0",
-    "mercurius-codegen": "workspace:^1.3.1"
+    "mercurius": "^7.0.0",
+    "mercurius-codegen": "workspace:^1.3.3"
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.1.0",
@@ -31,6 +31,6 @@
     "mercurius-integration-testing": "^3.1.2",
     "tap": "^14.11.0",
     "tsc-watch": "^4.2.9",
-    "typescript": "^4.1.4"
+    "typescript": "^4.1.5"
   }
 }

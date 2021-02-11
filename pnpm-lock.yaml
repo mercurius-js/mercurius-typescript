@@ -12,17 +12,17 @@ importers:
     dependencies:
       fastify: 3.11.0
       graphql: 15.5.0
-      mercurius: 6.12.0
-      mercurius-codegen: link:../../packages/mercurius-codegen
+      mercurius: 7.0.0
+      mercurius-codegen: 'link:../../packages/mercurius-codegen'
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.5.0
       '@types/node': 14.14.25
       '@types/tap': 14.10.2
       cross-env: 7.0.3
-      mercurius-integration-testing: 3.1.2_68cc5e4fd02757c37ff9b811ef809747
+      mercurius-integration-testing: 3.1.2_f9f07bbc9574559519a997980ba53087
       tap: 14.11.0
-      tsc-watch: 4.2.9_typescript@4.1.4
-      typescript: 4.1.4
+      tsc-watch: 4.2.9_typescript@4.1.5
+      typescript: 4.1.5
     specifiers:
       '@graphql-typed-document-node/core': ^3.1.0
       '@types/node': ^14.14.25
@@ -30,28 +30,28 @@ importers:
       cross-env: ^7.0.3
       fastify: ^3.11.0
       graphql: ^15.5.0
-      mercurius: ^6.12.0
-      mercurius-codegen: workspace:^1.3.1
+      mercurius: ^7.0.0
+      mercurius-codegen: 'workspace:^1.3.3'
       mercurius-integration-testing: ^3.1.2
       tap: ^14.11.0
       tsc-watch: ^4.2.9
-      typescript: ^4.1.4
+      typescript: ^4.1.5
   examples/codegen-gql-files:
     dependencies:
       '@graphql-tools/load-files': 6.2.5_graphql@15.5.0
       fastify: 3.11.0
       graphql: 15.5.0
-      mercurius: 6.12.0
-      mercurius-codegen: link:../../packages/mercurius-codegen
+      mercurius: 7.0.0
+      mercurius-codegen: 'link:../../packages/mercurius-codegen'
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.5.0
       '@types/node': 14.14.25
       '@types/tap': 14.10.2
       cross-env: 7.0.3
-      mercurius-integration-testing: 3.1.2_68cc5e4fd02757c37ff9b811ef809747
+      mercurius-integration-testing: 3.1.2_f9f07bbc9574559519a997980ba53087
       tap: 14.11.0
-      tsc-watch: 4.2.9_typescript@4.1.4
-      typescript: 4.1.4
+      tsc-watch: 4.2.9_typescript@4.1.5
+      typescript: 4.1.5
     specifiers:
       '@graphql-tools/load-files': ^6.2.5
       '@graphql-typed-document-node/core': ^3.1.0
@@ -60,26 +60,26 @@ importers:
       cross-env: ^7.0.3
       fastify: ^3.11.0
       graphql: ^15.5.0
-      mercurius: ^6.12.0
-      mercurius-codegen: workspace:^1.3.1
+      mercurius: ^7.0.0
+      mercurius-codegen: 'workspace:^1.3.3'
       mercurius-integration-testing: ^3.1.2
       tap: ^14.11.0
       tsc-watch: ^4.2.9
-      typescript: ^4.1.4
+      typescript: ^4.1.5
   examples/manual:
     dependencies:
       fastify: 3.11.0
       graphql: 15.5.0
-      mercurius: 6.12.0
+      mercurius: 7.0.0
     devDependencies:
       '@types/node': 14.14.25
       '@types/tap': 14.10.2
       cross-env: 7.0.3
       graphql-tag: 2.11.0_graphql@15.5.0
-      mercurius-integration-testing: 3.1.2_68cc5e4fd02757c37ff9b811ef809747
+      mercurius-integration-testing: 3.1.2_f9f07bbc9574559519a997980ba53087
       tap: 14.11.0
-      tsc-watch: 4.2.9_typescript@4.1.4
-      typescript: 4.1.4
+      tsc-watch: 4.2.9_typescript@4.1.5
+      typescript: 4.1.5
     specifiers:
       '@types/node': ^14.14.25
       '@types/tap': ^14.10.2
@@ -87,19 +87,19 @@ importers:
       fastify: ^3.11.0
       graphql: ^15.5.0
       graphql-tag: ^2.11.0
-      mercurius: ^6.12.0
+      mercurius: ^7.0.0
       mercurius-integration-testing: ^3.1.2
       tap: ^14.11.0
       tsc-watch: ^4.2.9
-      typescript: ^4.1.4
+      typescript: ^4.1.5
   packages/mercurius-codegen:
     dependencies:
       '@graphql-codegen/core': 1.17.9_graphql@15.5.0
       '@graphql-codegen/plugin-helpers': 1.18.2_graphql@15.5.0
       '@graphql-codegen/typed-document-node': 1.18.2_graphql@15.5.0
-      '@graphql-codegen/typescript': 1.20.2_graphql@15.5.0
+      '@graphql-codegen/typescript': 1.21.0_graphql@15.5.0
       '@graphql-codegen/typescript-operations': 1.17.14_graphql@15.5.0
-      '@graphql-codegen/typescript-resolvers': 1.18.1_graphql@15.5.0
+      '@graphql-codegen/typescript-resolvers': 1.18.2_graphql@15.5.0
       '@graphql-tools/load-files': 6.2.5_graphql@15.5.0
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.5.0
       chokidar: 3.5.1
@@ -118,7 +118,7 @@ importers:
       cross-env: 7.0.3
       fastify: 3.11.0
       graphql: 15.5.0
-      mercurius: 6.12.0
+      mercurius: 7.0.0
       nodemon: 2.0.7
       nyc: 14.1.1
       open-cli: 6.0.1
@@ -126,17 +126,17 @@ importers:
       rimraf: 3.0.2
       serve: 11.3.2
       tmp-promise: 3.0.2
-      ts-node: 9.1.1_typescript@4.1.4
-      typescript: 4.1.4
+      ts-node: 9.1.1_typescript@4.1.5
+      typescript: 4.1.5
       wait-for-expect: 3.0.2
       wait-on: 5.2.1
     specifiers:
       '@graphql-codegen/core': ^1.17.9
       '@graphql-codegen/plugin-helpers': ^1.18.2
       '@graphql-codegen/typed-document-node': ^1.18.2
-      '@graphql-codegen/typescript': ^1.20.2
+      '@graphql-codegen/typescript': ^1.21.0
       '@graphql-codegen/typescript-operations': ^1.17.14
-      '@graphql-codegen/typescript-resolvers': ^1.18.1
+      '@graphql-codegen/typescript-resolvers': ^1.18.2
       '@graphql-tools/load-files': ^6.2.5
       '@graphql-tools/utils': ^7.2.5
       '@graphql-typed-document-node/core': ^3.1.0
@@ -152,7 +152,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^3.11.0
       graphql: ^15.5.0
-      mercurius: ^6.12.0
+      mercurius: ^7.0.0
       mkdirp: ^1.0.4
       nodemon: ^2.0.7
       nyc: 14.1.1
@@ -163,7 +163,7 @@ importers:
       serve: ^11.3.2
       tmp-promise: ^3.0.2
       ts-node: ^9.1.1
-      typescript: ^4.1.4
+      typescript: ^4.1.5
       wait-for-expect: ^3.0.2
       wait-on: ^5.2.1
 lockfileVersion: 5.2
@@ -481,8 +481,8 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-FW+WPjSR7hiUxMcKqyNjP05tQ2kmBCdpEpZHY1ARm96tGQCCBvXKnpjILtDplUnJ/eHZ0lALLM+d2lMFSpYJrQ==
-  /@babel/plugin-transform-member-expression-literals/7.12.13_@babel+core@7.12.13:
-    dependencies:
+  ? /@babel/plugin-transform-member-expression-literals/7.12.13_@babel+core@7.12.13
+  : dependencies:
       '@babel/core': 7.12.13
       '@babel/helper-plugin-utils': 7.12.13
     dev: false
@@ -655,7 +655,7 @@ packages:
   /@graphql-codegen/typed-document-node/1.18.2_graphql@15.5.0:
     dependencies:
       '@graphql-codegen/plugin-helpers': 1.18.2_graphql@15.5.0
-      '@graphql-codegen/visitor-plugin-common': 1.18.2_graphql@15.5.0
+      '@graphql-codegen/visitor-plugin-common': 1.18.3_graphql@15.5.0
       auto-bind: 4.0.0
       change-case: 4.1.2
       graphql: 15.5.0
@@ -668,8 +668,8 @@ packages:
   /@graphql-codegen/typescript-operations/1.17.14_graphql@15.5.0:
     dependencies:
       '@graphql-codegen/plugin-helpers': 1.18.2_graphql@15.5.0
-      '@graphql-codegen/typescript': 1.20.2_graphql@15.5.0
-      '@graphql-codegen/visitor-plugin-common': 1.18.2_graphql@15.5.0
+      '@graphql-codegen/typescript': 1.21.0_graphql@15.5.0
+      '@graphql-codegen/visitor-plugin-common': 1.18.3_graphql@15.5.0
       auto-bind: 4.0.0
       graphql: 15.5.0
       tslib: 2.1.0
@@ -678,24 +678,24 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     resolution:
       integrity: sha512-jf1KnkA0i5hQNwc7bdMg5G6305DMSeTGDJSDoFryA2Tt9czWxY78m10/6GueUWo3zP6FIEhW1QRSve8ewTKEMg==
-  /@graphql-codegen/typescript-resolvers/1.18.1_graphql@15.5.0:
+  /@graphql-codegen/typescript-resolvers/1.18.2_graphql@15.5.0:
     dependencies:
       '@graphql-codegen/plugin-helpers': 1.18.2_graphql@15.5.0
-      '@graphql-codegen/typescript': 1.20.2_graphql@15.5.0
-      '@graphql-codegen/visitor-plugin-common': 1.18.2_graphql@15.5.0
+      '@graphql-codegen/typescript': 1.21.0_graphql@15.5.0
+      '@graphql-codegen/visitor-plugin-common': 1.18.3_graphql@15.5.0
       '@graphql-tools/utils': 7.2.5_graphql@15.5.0
       auto-bind: 4.0.0
       graphql: 15.5.0
-      tslib: 2.0.3
+      tslib: 2.1.0
     dev: false
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     resolution:
-      integrity: sha512-McceX0PaNxVPAGJDkn0SXRDs28zAqy485O3/LBCycosvJtiJbmHCDSb9ZUkiySmfvNr3lBMHbqJftIZU7T/0mQ==
-  /@graphql-codegen/typescript/1.20.2_graphql@15.5.0:
+      integrity: sha512-aWfRR5y1gXCPUNK7zaUiSbmceqidvZ38mNHIBvXmZArRigyz1QZgN26kKpXjJjtFbPvROPnlGsYcZBReybvZXA==
+  /@graphql-codegen/typescript/1.21.0_graphql@15.5.0:
     dependencies:
       '@graphql-codegen/plugin-helpers': 1.18.2_graphql@15.5.0
-      '@graphql-codegen/visitor-plugin-common': 1.18.2_graphql@15.5.0
+      '@graphql-codegen/visitor-plugin-common': 1.18.3_graphql@15.5.0
       auto-bind: 4.0.0
       graphql: 15.5.0
       tslib: 2.1.0
@@ -703,8 +703,8 @@ packages:
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     resolution:
-      integrity: sha512-D/DMUz4O2UEoFucUVu2K2xoaMPAn68BwYGnCAKnSDqtFKsOEqmTjHFwcgyEnpucQ5xFeG0pKGMb1SlS2Go9J8Q==
-  /@graphql-codegen/visitor-plugin-common/1.18.2_graphql@15.5.0:
+      integrity: sha512-23YttnZ+87dA/3lbCvPKdsrpEOx142dCT9xSh6XkSeyCvn+vUtETN2MhamCYB87G7Nu2EcLDFKDZjgXH73f4fg==
+  /@graphql-codegen/visitor-plugin-common/1.18.3_graphql@15.5.0:
     dependencies:
       '@graphql-codegen/plugin-helpers': 1.18.2_graphql@15.5.0
       '@graphql-tools/optimize': 1.0.1_graphql@15.5.0
@@ -721,7 +721,7 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     resolution:
-      integrity: sha512-A8yBJGq7A7gxaVVXK4QXwV1ZpzZ64fH7U7JTGeq86o3jA7QNV2rmCRXCY0JttS2fu+olV18NjsWRwAXuAb1g9A==
+      integrity: sha512-6xJzt8hszCTKt3rTlcCURpuiAFuaiaZgStlVeRE1OrKEDiY1T3vwF3/7TonhfnEjqBWtZdMmXvNx3ArXkRUV4w==
   /@graphql-tools/load-files/6.2.5_graphql@15.5.0:
     dependencies:
       globby: 11.0.1
@@ -816,7 +816,7 @@ packages:
     dependencies:
       '@istanbuljs/schema': 0.1.2
       nyc: 14.1.1
-      ts-node: 9.1.1_typescript@4.1.4
+      ts-node: 9.1.1_typescript@4.1.5
     dev: true
     engines:
       node: '>=8'
@@ -2480,13 +2480,12 @@ packages:
   /fastify-warning/0.2.0:
     resolution:
       integrity: sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==
-  /fastify-websocket/2.1.0:
+  /fastify-websocket/3.0.0:
     dependencies:
       fastify-plugin: 3.0.0
-      find-my-way: 3.0.5
       ws: 7.4.3
     resolution:
-      integrity: sha512-u5zClCarOHctvzKq76Gc0rDwtWfU7pw+JGYETfSu77YzZ/uzXLDX4jB70vLliUc3nqK0zXFRDK2/KnEnfdF9Kw==
+      integrity: sha512-WD9vWoMP8cDVFfcJzLupZ9UHRLnWpxmQ9kdcPaIhilZLndXMbk7H4vHzQ0GSfpld8p6eopGuWr3MXpH5n2/CuA==
   /fastify/3.11.0:
     dependencies:
       abstract-logging: 2.0.1
@@ -3817,14 +3816,14 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-3YffViIt2QWgTy6Pale5QpopX/IvU3LPL03jOTqp6pGj3VjesdO/U8CuHMKpnQr4shCNCM5fd5XFFvIIl6JBHg==
-  /mercurius-integration-testing/3.1.2_68cc5e4fd02757c37ff9b811ef809747:
+  /mercurius-integration-testing/3.1.2_f9f07bbc9574559519a997980ba53087:
     dependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.5.0
       cookie: 0.4.1
       fastify: 3.11.0
       get-port: 5.1.1
       graphql: 15.5.0
-      mercurius: 6.12.0
+      mercurius: 7.0.0
       ws: 7.4.3
     dev: true
     peerDependencies:
@@ -3833,7 +3832,7 @@ packages:
       mercurius: ^6.1.1
     resolution:
       integrity: sha512-aNj8QYD88nrC74H8CczVQ3Ij0aKZfboq5pyrxRa5N3XV2f1GgsMOLH/2qi6vdrZm1XULFK1BkI0A4k8yOuTZHQ==
-  /mercurius/6.12.0:
+  /mercurius/7.0.0:
     dependencies:
       '@types/isomorphic-form-data': 2.0.0
       end-of-stream: 1.4.4
@@ -3841,7 +3840,7 @@ packages:
       fastify-error: 0.2.0
       fastify-plugin: 2.3.4
       fastify-static: 3.4.0
-      fastify-websocket: 2.1.0
+      fastify-websocket: 3.0.0
       graphql: 15.5.0
       graphql-jit: 0.5.0_graphql@15.5.0
       mqemitter: 4.4.0
@@ -3851,9 +3850,10 @@ packages:
       secure-json-parse: 2.3.0
       single-user-cache: 0.3.1
       tiny-lru: 7.0.6
+      undici: 3.3.1
       ws: 7.4.3
     resolution:
-      integrity: sha512-Dn7UuaN0UGvRoHtm37UPDf5KHuYvgBnOxEbORAf5tDW+MTYIM9cImerXIcq16hFEh/YV6yJ6GCL3JgRdjfHimA==
+      integrity: sha512-tAV6QtXefi7bea8J4dVKZLbMee+ZY0r4qtkc94NA9ZOX54R+spukQ+ZQQm9p8WnXo4Z8hMOIEzGk84++Hbr6iQ==
   /merge-descriptors/1.0.1:
     dev: true
     resolution:
@@ -5004,7 +5004,7 @@ packages:
       tough-cookie: 2.5.0
       tunnel-agent: 0.6.0
       uuid: 3.4.0
-    deprecated: request has been deprecated, see https://github.com/request/request/issues/3142
+    deprecated: 'request has been deprecated, see https://github.com/request/request/issues/3142'
     dev: true
     engines:
       node: '>= 6'
@@ -5658,8 +5658,8 @@ packages:
       tap-mocha-reporter: 5.0.1
       tcompare: 3.0.4
       trivial-deferred: 1.0.1
-      ts-node: 8.10.2_typescript@3.9.8
-      typescript: 3.9.8
+      ts-node: 8.10.2_typescript@3.9.9
+      typescript: 3.9.9
       which: 2.0.2
       write-file-atomic: 3.0.3
       yapool: 1.0.0
@@ -5822,13 +5822,13 @@ packages:
     dev: true
     resolution:
       integrity: sha1-N21NKdlR1jaKb3oK6FwvTV4GWPM=
-  /ts-node/8.10.2_typescript@3.9.8:
+  /ts-node/8.10.2_typescript@3.9.9:
     dependencies:
       arg: 4.1.3
       diff: 4.0.2
       make-error: 1.3.6
       source-map-support: 0.5.19
-      typescript: 3.9.8
+      typescript: 3.9.9
       yn: 3.1.1
     dev: true
     engines:
@@ -5838,14 +5838,14 @@ packages:
       typescript: '>=2.7'
     resolution:
       integrity: sha512-ISJJGgkIpDdBhWVu3jufsWpK3Rzo7bdiIXJjQc0ynKxVOVcg2oIrf2H2cejminGrptVc6q6/uynAHNCuWGbpVA==
-  /ts-node/9.1.1_typescript@4.1.4:
+  /ts-node/9.1.1_typescript@4.1.5:
     dependencies:
       arg: 4.1.3
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
       source-map-support: 0.5.19
-      typescript: 4.1.4
+      typescript: 4.1.5
       yn: 3.1.1
     dev: true
     engines:
@@ -5855,14 +5855,14 @@ packages:
       typescript: '>=2.7'
     resolution:
       integrity: sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==
-  /tsc-watch/4.2.9_typescript@4.1.4:
+  /tsc-watch/4.2.9_typescript@4.1.5:
     dependencies:
       cross-spawn: 7.0.3
       node-cleanup: 2.1.2
       ps-tree: 1.2.0
       string-argv: 0.1.2
       strip-ansi: 6.0.0
-      typescript: 4.1.4
+      typescript: 4.1.5
     dev: true
     engines:
       node: '>=8.17.0'
@@ -5926,20 +5926,20 @@ packages:
     dev: true
     resolution:
       integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
-  /typescript/3.9.8:
+  /typescript/3.9.9:
     dev: true
     engines:
       node: '>=4.2.0'
     hasBin: true
     resolution:
-      integrity: sha512-nDbnFkUZZjkQ92qwKX+C+jtk4OGfU8H9toSEs3uAsl8cxLjG2sqQm6leF/pLWvm9FAEJ6KHkYMAbHYaY2ITeVg==
-  /typescript/4.1.4:
+      integrity: sha512-kdMjTiekY+z/ubJCATUPlRDl39vXYiMV9iyeMuEuXZh2we6zz80uovNN2WlAxmmdE/Z/YQe+EbOEXB5RHEED3w==
+  /typescript/4.1.5:
     dev: true
     engines:
       node: '>=4.2.0'
     hasBin: true
     resolution:
-      integrity: sha512-+Uru0t8qIRgjuCpiSPpfGuhHecMllk5Zsazj5LZvVsEStEjmIRRBZe+jHjGQvsgS7M1wONy2PQXd67EMyV6acg==
+      integrity: sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
   /ua-parser-js/0.7.23:
     dev: false
     resolution:
@@ -5956,6 +5956,9 @@ packages:
     dev: true
     resolution:
       integrity: sha512-nrXZwwXrD/T/JXeygJqdCO6NZZ1L66HrxM/Z7mIq2oPanoN0F1nLx3lwJMu6AwJY69hdixaFQOuoYsMjE5/C2A==
+  /undici/3.3.1:
+    resolution:
+      integrity: sha512-hatYbCN8wHzaAdADQXRGTxWLDVDIUfIY7oqiGbBtVla3p8tQshPs57NL4x96wD2x0i6qvxGlaFUpVh1n4N6lJQ==
   /unicode-length/2.0.2:
     dependencies:
       punycode: 2.1.1
