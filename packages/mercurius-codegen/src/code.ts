@@ -37,9 +37,10 @@ export async function generateCode(
         typedDocumentNode: await import('@graphql-codegen/typed-document-node'),
       }
     : null
-  const { parse, printSchema } = await import('graphql')
+  const { parse } = await import('graphql')
   const { MercuriusLoadersPlugin } = await import('./mercuriusLoaders')
   const { loadFiles } = await import('@graphql-tools/load-files')
+  const { printSchemaWithDirectives } = await import('@graphql-tools/utils')
 
   const documents = operationsGlob
     ? await loadFiles(operationsGlob).then((operations) =>
@@ -77,6 +78,7 @@ export async function generateCode(
   code += await codegen({
     config: Object.assign(
       {
+        federation: true,
         customResolverFn:
           '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>',
       },
@@ -119,7 +121,7 @@ export async function generateCode(
           ]
         : []),
     ],
-    schema: parse(printSchema(schema)),
+    schema: parse(printSchemaWithDirectives(schema)),
   })
 
   code += `

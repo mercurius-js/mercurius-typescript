@@ -32,6 +32,7 @@ export type Scalars = {
   Int: number
   Float: number
   DateTime: Date
+  _FieldSet: any
 }
 
 export type Query = {
