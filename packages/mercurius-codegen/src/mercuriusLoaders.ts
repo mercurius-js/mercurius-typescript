@@ -119,8 +119,11 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
       }
     })
 
+    let hasLoaders = false
+
     code += `export interface Loaders<TContext = MercuriusContext & { reply: FastifyReply }> {`
     Object.entries(loaders).map(([key, value]) => {
+      hasLoaders = true
       code += `
       ${key}?: {
         ${Object.entries(value).reduce((acum, [key, value]) => {
@@ -133,6 +136,6 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
 
     code += `}`
 
-    return code
+    return hasLoaders ? code : 'export interface Loaders {};\n'
   },
 }

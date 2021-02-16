@@ -4,7 +4,7 @@ import assert from 'assert'
 import test from 'ava'
 import Fastify from 'fastify'
 import fs from 'fs'
-import { parse, print } from 'graphql'
+import { parse, print, buildSchema } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import mkdirp from 'mkdirp'
 import path from 'path'
@@ -19,7 +19,7 @@ import {
   gql,
   loadSchemaFiles,
   writeGeneratedCode,
-  plugin,
+  plugin as loadersPlugin,
 } from '../src/index'
 import { formatPrettier } from '../src/prettier'
 import { buildJSONPath } from '../src/schema'
@@ -106,7 +106,7 @@ let generatedCode: string
 test('generates code via plugin', async (t) => {
   t.plan(1)
   await app.ready()
-  const pluginOutput = await plugin(app.graphql.schema, [], {
+  const pluginOutput = await loadersPlugin(app.graphql.schema, [], {
     namespacedImportName: 'TP_Types',
   })
 
@@ -734,6 +734,18 @@ test.serial('pre-built schema', async (t) => {
   )
 
   t.snapshot(schemaPreloadManipulated)
+})
+
+test('no entities loaders give empty loaders', async (t) => {
+  const schema = buildSchema(`
+    type Query {
+      hello: String!
+    }
+  `)
+
+  const emptyLoaders = await loadersPlugin(schema, [], {})
+
+  t.snapshot(emptyLoaders.toString())
 })
 
 codegenMercurius(app, {
