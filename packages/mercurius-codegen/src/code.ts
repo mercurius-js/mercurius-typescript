@@ -59,11 +59,6 @@ export async function generateCode(
 
   let code = preImportCode || ''
 
-  code += `
-    import { MercuriusContext } from "mercurius";
-    import { FastifyReply } from "fastify";
-    `
-
   if (
     codegenConfig.namingConvention != null &&
     codegenConfig.namingConvention !== 'keep'
@@ -137,7 +132,7 @@ export async function generateCode(
     type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
   
     declare module "mercurius" {
-        interface IResolvers extends Resolvers<MercuriusContext> { }
+        interface IResolvers extends Resolvers<import("mercurius").MercuriusContext> { }
         interface MercuriusLoaders extends Loaders { }
     }
     `

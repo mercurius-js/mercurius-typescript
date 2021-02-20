@@ -28,7 +28,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
           params: TParams;
         }>,
         context: TContext & {
-          reply: FastifyReply;
+          reply: import("fastify").FastifyReply;
         }
       ) => Promise<Array<DeepPartial<TReturn>>>;
     type LoaderResolver<TReturn, TObj, TParams, TContext> = 
@@ -121,7 +121,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
 
     let hasLoaders = false
 
-    code += `export interface Loaders<TContext = MercuriusContext & { reply: FastifyReply }> {`
+    code += `export interface Loaders<TContext = import("mercurius").MercuriusContext & { reply: import("fastify").FastifyReply }> {`
     Object.entries(loaders).map(([key, value]) => {
       hasLoaders = true
       code += `

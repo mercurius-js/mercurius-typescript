@@ -1,5 +1,3 @@
-import { MercuriusContext } from 'mercurius'
-import { FastifyReply } from 'fastify'
 import { GraphQLResolveInfo } from 'graphql'
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
@@ -273,7 +271,7 @@ type Loader<TReturn, TObj, TParams, TContext> = (
     params: TParams
   }>,
   context: TContext & {
-    reply: FastifyReply
+    reply: import('fastify').FastifyReply
   }
 ) => Promise<Array<DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
@@ -285,7 +283,9 @@ type LoaderResolver<TReturn, TObj, TParams, TContext> =
       }
     }
 export interface Loaders<
-  TContext = MercuriusContext & { reply: FastifyReply }
+  TContext = import('mercurius').MercuriusContext & {
+    reply: import('fastify').FastifyReply
+  }
 > {
   Human?: {
     name?: LoaderResolver<Scalars['String'], Human, {}, TContext>
@@ -511,6 +511,7 @@ interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
 type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> }
 
 declare module 'mercurius' {
-  interface IResolvers extends Resolvers<MercuriusContext> {}
+  interface IResolvers
+    extends Resolvers<import('mercurius').MercuriusContext> {}
   interface MercuriusLoaders extends Loaders {}
 }
