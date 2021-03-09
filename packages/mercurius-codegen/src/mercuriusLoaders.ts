@@ -1,19 +1,25 @@
 import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 
+import type {
+  GraphQLField,
+  GraphQLNullableType,
+  GraphQLOutputType,
+} from 'graphql'
+
 export const MercuriusLoadersPlugin: CodegenPlugin<{
   namespacedImportName?: string
 }> = {
   async plugin(schema, _documents, config) {
-    const namespacedImportPrefix = config.namespacedImportName
-      ? `${config.namespacedImportName}.`
-      : ''
-
     const {
       GraphQLList,
       GraphQLNonNull,
       GraphQLObjectType,
       GraphQLScalarType,
     } = await import('graphql')
+
+    const namespacedImportPrefix = config.namespacedImportName
+      ? `${config.namespacedImportName}.`
+      : ''
 
     const schemaConfig = schema.toConfig()
 
@@ -41,6 +47,60 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
     `
     const loaders: Record<string, Record<string, string>> = {}
 
+    function fieldToType(
+      field: GraphQLField<unknown, unknown> | GraphQLOutputType,
+      typeAcumStart: string = '',
+      typeAcumEnd: string = ''
+    ): string {
+      let isNullable = true
+      let isArray = false
+      let nullableItems = true
+
+      let fieldType: GraphQLNullableType
+
+      if ('args' in field) {
+        fieldType = field.type
+      } else {
+        fieldType = field
+      }
+
+      if (fieldType instanceof GraphQLNonNull) {
+        isNullable = false
+        fieldType = fieldType.ofType
+      }
+
+      if (fieldType instanceof GraphQLList) {
+        fieldType = fieldType.ofType
+        isArray = true
+        if (fieldType instanceof GraphQLNonNull) {
+          nullableItems = false
+          fieldType = fieldType.ofType
+        }
+      }
+
+      if (isNullable) {
+        typeAcumStart += 'Maybe<'
+        typeAcumEnd += '>'
+      }
+
+      if (isArray) {
+        typeAcumStart += 'Array<'
+        typeAcumEnd += '>'
+        if (nullableItems && !(fieldType instanceof GraphQLList)) {
+          typeAcumStart += 'Maybe<'
+          typeAcumEnd += '>'
+        }
+      }
+
+      if (fieldType instanceof GraphQLList) {
+        return fieldToType(fieldType.ofType, typeAcumStart, typeAcumEnd)
+      } else if (fieldType instanceof GraphQLScalarType) {
+        return typeAcumStart + `Scalars["${fieldType.name}"]` + typeAcumEnd
+      } else {
+        return typeAcumStart + fieldType.name + typeAcumEnd
+      }
+    }
+
     schemaConfig.types.forEach((type) => {
       switch (type) {
         case queryType:
@@ -56,63 +116,17 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
 
         const typeCode: Record<string, string> = {}
         Object.entries(fields).forEach(([key, value]) => {
-          let isNullable = true
+          const tsType = fieldToType(value)
 
-          let isArray = false
-          let nullableItems = true
-          let fieldType = value.type
-          if (fieldType instanceof GraphQLNonNull) {
-            isNullable = false
-            fieldType = fieldType.ofType
-          }
-          if (fieldType instanceof GraphQLList) {
-            fieldType = fieldType.ofType
-
-            isArray = true
-            if (fieldType instanceof GraphQLNonNull) {
-              nullableItems = false
-              fieldType = fieldType.ofType
-            }
-          }
           const hasArgs = value.args.length > 0
-          if (fieldType instanceof GraphQLScalarType) {
-            let fieldTypeToReturn = isArray
-              ? nullableItems
-                ? `Array<Maybe<Scalars["${fieldType.name}"]>>`
-                : `Array<Scalars["${fieldType.name}"]>`
-              : `Scalars["${fieldType.name}"]`
 
-            if (isNullable) {
-              fieldTypeToReturn = `Maybe<${fieldTypeToReturn}>`
-            }
-            typeCode[
-              key
-            ] = `LoaderResolver<${fieldTypeToReturn},${namespacedImportPrefix}${
-              type.name
-            },${
-              hasArgs
-                ? `${namespacedImportPrefix}${type.name}${value.name}Args`
-                : '{}'
-            }, TContext>`
-          } else {
-            let fieldTypeToReturn = isArray
-              ? `Array<${fieldType.toString()}>`
-              : `${fieldType.toString()}`
-
-            if (isNullable) {
-              fieldTypeToReturn = `Maybe<${fieldTypeToReturn}>`
-            }
-
-            typeCode[
-              key
-            ] = `LoaderResolver<${fieldTypeToReturn},${namespacedImportPrefix}${
-              type.name
-            },${
-              hasArgs
-                ? `${namespacedImportPrefix}${type.name}${value.name}Args`
-                : '{}'
-            }, TContext>`
-          }
+          typeCode[key] = `LoaderResolver<${tsType},${namespacedImportPrefix}${
+            type.name
+          },${
+            hasArgs
+              ? `${namespacedImportPrefix}${type.name}${value.name}Args`
+              : '{}'
+          }, TContext>`
         })
 
         loaders[type.name] = typeCode

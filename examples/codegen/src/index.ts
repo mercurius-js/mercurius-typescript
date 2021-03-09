@@ -22,6 +22,10 @@ const schema = gql`
     name: String!
   }
 
+  type Foo {
+    bars: [[[Int]]]
+  }
+
   type Dog {
     name: String!
     owner: Human
@@ -30,6 +34,7 @@ const schema = gql`
   type Query {
     Hello: String!
     dogs: [Dog!]!
+    getFoo: Foo
   }
 
   type Mutation {

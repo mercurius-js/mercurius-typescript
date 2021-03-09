@@ -33,6 +33,11 @@ export type Human = {
   name: Scalars['String']
 }
 
+export type Foo = {
+  __typename?: 'Foo'
+  bars?: Maybe<Array<Maybe<Array<Maybe<Array<Maybe<Scalars['Int']>>>>>>>
+}
+
 export type Dog = {
   __typename?: 'Dog'
   name: Scalars['String']
@@ -43,6 +48,7 @@ export type Query = {
   __typename?: 'Query'
   Hello: Scalars['String']
   dogs: Array<Dog>
+  getFoo?: Maybe<Foo>
 }
 
 export type Mutation = {
@@ -176,10 +182,11 @@ export type DirectiveResolverFn<
 export type ResolversTypes = {
   Human: ResolverTypeWrapper<Human>
   String: ResolverTypeWrapper<Scalars['String']>
+  Foo: ResolverTypeWrapper<Foo>
+  Int: ResolverTypeWrapper<Scalars['Int']>
   Dog: ResolverTypeWrapper<Dog>
   Query: ResolverTypeWrapper<{}>
   Mutation: ResolverTypeWrapper<{}>
-  Int: ResolverTypeWrapper<Scalars['Int']>
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>
   Subscription: ResolverTypeWrapper<{}>
 }
@@ -188,10 +195,11 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Human: Human
   String: Scalars['String']
+  Foo: Foo
+  Int: Scalars['Int']
   Dog: Dog
   Query: {}
   Mutation: {}
-  Int: Scalars['Int']
   Boolean: Scalars['Boolean']
   Subscription: {}
 }
@@ -201,6 +209,18 @@ export type HumanResolvers<
   ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+}
+
+export type FooResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Foo'] = ResolversParentTypes['Foo']
+> = {
+  bars?: Resolver<
+    Maybe<Array<Maybe<Array<Maybe<Array<Maybe<ResolversTypes['Int']>>>>>>>,
+    ParentType,
+    ContextType
+  >
   isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
@@ -219,6 +239,7 @@ export type QueryResolvers<
 > = {
   Hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   dogs?: Resolver<Array<ResolversTypes['Dog']>, ParentType, ContextType>
+  getFoo?: Resolver<Maybe<ResolversTypes['Foo']>, ParentType, ContextType>
 }
 
 export type MutationResolvers<
@@ -253,6 +274,7 @@ export type SubscriptionResolvers<
 
 export type Resolvers<ContextType = any> = {
   Human?: HumanResolvers<ContextType>
+  Foo?: FooResolvers<ContextType>
   Dog?: DogResolvers<ContextType>
   Query?: QueryResolvers<ContextType>
   Mutation?: MutationResolvers<ContextType>
@@ -289,6 +311,15 @@ export interface Loaders<
 > {
   Human?: {
     name?: LoaderResolver<Scalars['String'], Human, {}, TContext>
+  }
+
+  Foo?: {
+    bars?: LoaderResolver<
+      Maybe<Array<Maybe<Array<Maybe<Scalars['Int']>>>>>,
+      Foo,
+      {},
+      TContext
+    >
   }
 
   Dog?: {

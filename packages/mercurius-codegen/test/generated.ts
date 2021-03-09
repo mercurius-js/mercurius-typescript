@@ -37,6 +37,7 @@ export type Query = {
   __typename?: 'Query'
   hello: Scalars['String']
   aHuman: Human
+  getNArray?: Maybe<NArray>
 }
 
 export type QueryhelloArgs = {
@@ -69,6 +70,11 @@ export type HumanconfirmedSonsNullableArgs = {
 
 export type HumanconfirmedSonsNonNullItemsArgs = {
   name: Scalars['String']
+}
+
+export type NArray = {
+  __typename?: 'NArray'
+  nArray?: Maybe<Array<Maybe<Array<Maybe<Array<Maybe<Scalars['Int']>>>>>>>
 }
 
 export type ResolverTypeWrapper<T> = Promise<T> | T
@@ -185,6 +191,8 @@ export type ResolversTypes = {
   String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
   Human: ResolverTypeWrapper<DeepPartial<Human>>
   Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
+  NArray: ResolverTypeWrapper<DeepPartial<NArray>>
+  Int: ResolverTypeWrapper<DeepPartial<Scalars['Int']>>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -194,6 +202,8 @@ export type ResolversParentTypes = {
   String: DeepPartial<Scalars['String']>
   Human: DeepPartial<Human>
   Boolean: DeepPartial<Scalars['Boolean']>
+  NArray: DeepPartial<NArray>
+  Int: DeepPartial<Scalars['Int']>
 }
 
 export interface DateTimeScalarConfig
@@ -212,6 +222,7 @@ export type QueryResolvers<
     RequireFields<QueryhelloArgs, never>
   >
   aHuman?: Resolver<ResolversTypes['Human'], ParentType, ContextType>
+  getNArray?: Resolver<Maybe<ResolversTypes['NArray']>, ParentType, ContextType>
 }
 
 export type HumanResolvers<
@@ -257,10 +268,23 @@ export type HumanResolvers<
   isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
+export type NArrayResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['NArray'] = ResolversParentTypes['NArray']
+> = {
+  nArray?: Resolver<
+    Maybe<Array<Maybe<Array<Maybe<Array<Maybe<ResolversTypes['Int']>>>>>>>,
+    ParentType,
+    ContextType
+  >
+  isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
+}
+
 export type Resolvers<ContextType = any> = {
   DateTime?: GraphQLScalarType
   Query?: QueryResolvers<ContextType>
   Human?: HumanResolvers<ContextType>
+  NArray?: NArrayResolvers<ContextType>
 }
 
 /**
@@ -300,7 +324,7 @@ export interface Loaders<
       HumanhasSonArgs,
       TContext
     >
-    sons?: LoaderResolver<Array<Human>, Human, HumansonsArgs, TContext>
+    sons?: LoaderResolver<Array<Maybe<Human>>, Human, HumansonsArgs, TContext>
     confirmedSonsNullable?: LoaderResolver<
       Maybe<Array<Human>>,
       Human,
@@ -322,6 +346,15 @@ export interface Loaders<
     nonNullssonNames?: LoaderResolver<
       Array<Scalars['String']>,
       Human,
+      {},
+      TContext
+    >
+  }
+
+  NArray?: {
+    nArray?: LoaderResolver<
+      Maybe<Array<Maybe<Array<Maybe<Scalars['Int']>>>>>,
+      NArray,
       {},
       TContext
     >

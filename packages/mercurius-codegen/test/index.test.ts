@@ -49,6 +49,7 @@ const schema = gql`
   type Query {
     hello(greetings: String): String!
     aHuman: Human!
+    getNArray: NArray
   }
   type Human {
     name: String!
@@ -59,6 +60,10 @@ const schema = gql`
     confirmedSonsNonNullItems(name: String!): [Human!]!
     sonNames: [String]
     nonNullssonNames: [String!]!
+  }
+
+  type NArray {
+    nArray: [[[Int]]]
   }
 `
 
