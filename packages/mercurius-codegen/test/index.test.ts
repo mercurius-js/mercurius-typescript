@@ -1,4 +1,4 @@
-import './generated'
+//import './generated'
 
 import assert from 'assert'
 import test from 'ava'
@@ -762,6 +762,5 @@ codegenMercurius(app, {
     scalars: {
       DateTime: 'Date',
     },
-    defaultMapper: 'DeepPartial<{T}>',
   },
 }).catch(console.error)

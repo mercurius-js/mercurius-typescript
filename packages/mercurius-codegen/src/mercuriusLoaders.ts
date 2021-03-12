@@ -36,7 +36,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<{
         context: TContext & {
           reply: import("fastify").FastifyReply;
         }
-      ) => Promise<Array<DeepPartial<TReturn>>>;
+      ) => Promise<Array<import("mercurius-codegen").DeepPartial<TReturn>>>;
     type LoaderResolver<TReturn, TObj, TParams, TContext> = 
     Loader<TReturn, TObj, TParams, TContext> | {
         loader: Loader<TReturn, TObj, TParams, TContext>;

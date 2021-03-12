@@ -75,7 +75,7 @@ export async function generateCode(
       {
         federation: true,
         customResolverFn:
-          '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>',
+          '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<import("mercurius-codegen").DeepPartial<TResult>> | import("mercurius-codegen").DeepPartial<TResult>',
       },
       codegenConfig,
       {
@@ -120,17 +120,6 @@ export async function generateCode(
   })
 
   code += `
-    export type DeepPartial<T> = T extends Function
-    ? T
-    : T extends Array<infer U>
-    ? _DeepPartialArray<U>
-    : T extends object
-    ? _DeepPartialObject<T>
-    : T | undefined;
-  
-    interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
-    type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
-  
     declare module "mercurius" {
         interface IResolvers extends Resolvers<import("mercurius").MercuriusContext> { }
         interface MercuriusLoaders extends Loaders { }

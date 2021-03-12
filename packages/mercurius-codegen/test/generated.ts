@@ -17,7 +17,9 @@ export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>
+) =>
+  | Promise<import('mercurius-codegen').DeepPartial<TResult>>
+  | import('mercurius-codegen').DeepPartial<TResult>
 export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X]
 } &
@@ -186,24 +188,24 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  DateTime: ResolverTypeWrapper<DeepPartial<Scalars['DateTime']>>
+  DateTime: ResolverTypeWrapper<Scalars['DateTime']>
   Query: ResolverTypeWrapper<{}>
-  String: ResolverTypeWrapper<DeepPartial<Scalars['String']>>
-  Human: ResolverTypeWrapper<DeepPartial<Human>>
-  Boolean: ResolverTypeWrapper<DeepPartial<Scalars['Boolean']>>
-  NArray: ResolverTypeWrapper<DeepPartial<NArray>>
-  Int: ResolverTypeWrapper<DeepPartial<Scalars['Int']>>
+  String: ResolverTypeWrapper<Scalars['String']>
+  Human: ResolverTypeWrapper<Human>
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>
+  NArray: ResolverTypeWrapper<NArray>
+  Int: ResolverTypeWrapper<Scalars['Int']>
 }
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  DateTime: DeepPartial<Scalars['DateTime']>
+  DateTime: Scalars['DateTime']
   Query: {}
-  String: DeepPartial<Scalars['String']>
-  Human: DeepPartial<Human>
-  Boolean: DeepPartial<Scalars['Boolean']>
-  NArray: DeepPartial<NArray>
-  Int: DeepPartial<Scalars['Int']>
+  String: Scalars['String']
+  Human: Human
+  Boolean: Scalars['Boolean']
+  NArray: NArray
+  Int: Scalars['Int']
 }
 
 export interface DateTimeScalarConfig
@@ -301,7 +303,7 @@ type Loader<TReturn, TObj, TParams, TContext> = (
   context: TContext & {
     reply: import('fastify').FastifyReply
   }
-) => Promise<Array<DeepPartial<TReturn>>>
+) => Promise<Array<import('mercurius-codegen').DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {
@@ -378,17 +380,6 @@ export const ADocument: DocumentNode<AQuery, AQueryVariables> = {
     },
   ],
 }
-export type DeepPartial<T> = T extends Function
-  ? T
-  : T extends Array<infer U>
-  ? _DeepPartialArray<U>
-  : T extends object
-  ? _DeepPartialObject<T>
-  : T | undefined
-
-interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
-type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> }
-
 declare module 'mercurius' {
   interface IResolvers
     extends Resolvers<import('mercurius').MercuriusContext> {}

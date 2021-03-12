@@ -230,7 +230,7 @@ export async function codegenMercurius(
 
 export default codegenMercurius
 
-export { gql } from './utils'
+export { gql, DeepPartial } from './utils'
 export { CodegenPluginsConfig, generateCode, writeGeneratedCode } from './code'
 
 export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (

@@ -13,7 +13,9 @@ export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => Promise<DeepPartial<TResult>> | DeepPartial<TResult>
+) =>
+  | Promise<import('mercurius-codegen').DeepPartial<TResult>>
+  | import('mercurius-codegen').DeepPartial<TResult>
 export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X]
 } &
@@ -295,7 +297,7 @@ type Loader<TReturn, TObj, TParams, TContext> = (
   context: TContext & {
     reply: import('fastify').FastifyReply
   }
-) => Promise<Array<DeepPartial<TReturn>>>
+) => Promise<Array<import('mercurius-codegen').DeepPartial<TReturn>>>
 type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {
@@ -530,17 +532,6 @@ export const newNotificationDocument: DocumentNode<
     },
   ],
 }
-export type DeepPartial<T> = T extends Function
-  ? T
-  : T extends Array<infer U>
-  ? _DeepPartialArray<U>
-  : T extends object
-  ? _DeepPartialObject<T>
-  : T | undefined
-
-interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
-type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> }
-
 declare module 'mercurius' {
   interface IResolvers
     extends Resolvers<import('mercurius').MercuriusContext> {}
