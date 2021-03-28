@@ -20,6 +20,7 @@ import {
   loadSchemaFiles,
   writeGeneratedCode,
   plugin as loadersPlugin,
+  PLazy,
 } from '../src/index'
 import { formatPrettier } from '../src/prettier'
 import { buildJSONPath } from '../src/schema'
@@ -327,6 +328,34 @@ test('gql helper', (t) => {
 
   t.snapshot(print(parse(a)))
   t.snapshot(print(parse(b)))
+})
+
+test('p-lazy helper', async (t) => {
+  let resolved = false
+  const lazyPromise = new PLazy<boolean>((resolve) => {
+    resolved = true
+    resolve(true)
+  })
+
+  t.is(resolved, false)
+
+  const value = await lazyPromise
+
+  t.is(value, true)
+  t.is(resolved, true)
+
+  let normalResolved = false
+  const normalPromise = new Promise<boolean>((resolve) => {
+    normalResolved = true
+    resolve(true)
+  })
+
+  t.is(normalResolved, true)
+
+  const normalValue = await normalPromise
+
+  t.is(normalValue, true)
+  t.is(normalResolved, true)
 })
 
 test('non existing file', async (t) => {

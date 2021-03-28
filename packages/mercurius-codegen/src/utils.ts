@@ -24,10 +24,12 @@ export function deferredPromise<T = unknown>() {
 export type DeepPartial<T> = T extends Function
   ? T
   : T extends Array<infer U>
-  ? _DeepPartialArray<U>
+  ? DeepPartialArray<U>
   : T extends object
-  ? _DeepPartialObject<T>
+  ? DeepPartialObject<T>
   : T | undefined
 
-interface _DeepPartialArray<T> extends Array<DeepPartial<T>> {}
-type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> }
+interface DeepPartialArray<T> extends Array<DeepPartial<T | Promise<T>>> {}
+type DeepPartialObject<T> = {
+  [P in keyof T]?: DeepPartial<T[P] | Promise<T[P]>>
+}

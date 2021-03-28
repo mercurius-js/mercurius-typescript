@@ -238,3 +238,5 @@ export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
 ) => require('./schema').loadSchemaFiles(...args)
 
 export { LoadSchemaOptions } from './schema'
+
+export { default as PLazy } from 'p-lazy'
