@@ -3,6 +3,8 @@ import type { FastifyInstance } from 'fastify'
 import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
 import type { CodegenPluginsConfig } from './code'
 
+import PLazy from 'p-lazy'
+
 import { MercuriusLoadersPlugin } from './mercuriusLoaders'
 import { deferredPromise } from './utils'
 
@@ -239,4 +241,4 @@ export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
 
 export { LoadSchemaOptions } from './schema'
 
-export { default as PLazy } from 'p-lazy'
+export { PLazy }
