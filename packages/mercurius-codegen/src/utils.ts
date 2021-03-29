@@ -1,3 +1,5 @@
+import PLazy from 'p-lazy'
+
 export function gql(chunks: TemplateStringsArray, ...variables: any[]): string {
   return chunks.reduce(
     (accumulator, chunk, index) =>
@@ -21,6 +23,29 @@ export function deferredPromise<T = unknown>() {
   }
 }
 
+export function LazyPromise<Value>(
+  fn: () => Value | Promise<Value>
+): Promise<Value> {
+  return new PLazy((resolve, reject) => {
+    try {
+      const value = fn()
+      if (value instanceof Promise) {
+        value.then(resolve, (err) => {
+          if (err instanceof Error) Error.captureStackTrace(err, LazyPromise)
+
+          reject(err)
+        })
+      } else resolve(value)
+    } catch (err) {
+      if (err instanceof Error) Error.captureStackTrace(err, LazyPromise)
+
+      reject(err)
+    }
+  })
+}
+
+type PossiblePromise<T> = T | Promise<T>
+
 export type DeepPartial<T> = T extends Function
   ? T
   : T extends Array<infer U>
@@ -29,7 +54,10 @@ export type DeepPartial<T> = T extends Function
   ? DeepPartialObject<T>
   : T | undefined
 
-interface DeepPartialArray<T> extends Array<DeepPartial<T | Promise<T>>> {}
+interface DeepPartialArray<T>
+  extends Array<PossiblePromise<DeepPartial<PossiblePromise<T>>>> {}
 type DeepPartialObject<T> = {
-  [P in keyof T]?: DeepPartial<T[P] | Promise<T[P]>>
+  [P in keyof T]?: PossiblePromise<DeepPartial<PossiblePromise<T[P]>>>
 }
+
+export { PLazy }

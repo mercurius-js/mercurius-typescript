@@ -21,6 +21,7 @@ import {
   writeGeneratedCode,
   plugin as loadersPlugin,
   PLazy,
+  LazyPromise,
 } from '../src/index'
 import { formatPrettier } from '../src/prettier'
 import { buildJSONPath } from '../src/schema'
@@ -356,6 +357,104 @@ test('p-lazy helper', async (t) => {
 
   t.is(normalValue, true)
   t.is(normalResolved, true)
+})
+
+test('LazyPromise helper', async (t) => {
+  let resolved = false
+  const lazyPromise = LazyPromise(() => {
+    resolved = true
+    return true
+  })
+
+  t.is(resolved, false)
+
+  const value = await lazyPromise
+
+  t.is(value, true)
+  t.is(resolved, true)
+
+  //
+
+  let resolved2 = false
+  const lazyPromise2 = LazyPromise(async () => {
+    resolved2 = true
+    return true
+  })
+
+  t.is(resolved2, false)
+
+  const value2 = await lazyPromise2
+
+  t.is(value2, true)
+  t.is(resolved2, true)
+
+  //
+
+  let resolved3 = false
+  const lazyPromise3 = LazyPromise(async () => {
+    resolved3 = true
+    throw Error('OK')
+  })
+
+  t.is(resolved3, false)
+
+  try {
+    await lazyPromise3
+  } catch (err) {
+    t.is(resolved3, true)
+    t.is(err.message, 'OK')
+  }
+
+  //
+
+  let resolved4 = false
+  const lazyPromise4 = LazyPromise(() => {
+    resolved4 = true
+    throw Error('OK')
+  })
+
+  t.is(resolved4, false)
+
+  try {
+    await lazyPromise4
+  } catch (err) {
+    t.is(resolved4, true)
+    t.is(err.message, 'OK')
+  }
+
+  //
+
+  let resolved5 = false
+  const lazyPromise5 = LazyPromise(() => {
+    resolved5 = true
+    throw { message: 'OK' }
+  })
+
+  t.is(resolved5, false)
+
+  try {
+    await lazyPromise5
+  } catch (err) {
+    t.is(resolved5, true)
+    t.is(err.message, 'OK')
+  }
+
+  //
+
+  let resolved6 = false
+  const lazyPromise6 = LazyPromise(async () => {
+    resolved6 = true
+    throw { message: 'OK' }
+  })
+
+  t.is(resolved6, false)
+
+  try {
+    await lazyPromise6
+  } catch (err) {
+    t.is(resolved6, true)
+    t.is(err.message, 'OK')
+  }
 })
 
 test('non existing file', async (t) => {

@@ -3,8 +3,6 @@ import type { FastifyInstance } from 'fastify'
 import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
 import type { CodegenPluginsConfig } from './code'
 
-import PLazy from 'p-lazy'
-
 import { MercuriusLoadersPlugin } from './mercuriusLoaders'
 import { deferredPromise } from './utils'
 
@@ -232,7 +230,7 @@ export async function codegenMercurius(
 
 export default codegenMercurius
 
-export { gql, DeepPartial } from './utils'
+export { gql, DeepPartial, LazyPromise, PLazy } from './utils'
 export { CodegenPluginsConfig, generateCode, writeGeneratedCode } from './code'
 
 export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
@@ -240,5 +238,3 @@ export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
 ) => require('./schema').loadSchemaFiles(...args)
 
 export { LoadSchemaOptions } from './schema'
-
-export { PLazy }

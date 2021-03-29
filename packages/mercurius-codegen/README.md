@@ -131,24 +131,24 @@ const response = await client.query(helloDocument)
 
 > Keep in mind that you can always call `mercuriusCodegen` multiple times for different environments and different paths if you prefer to keep the production code as light as possible (which is generally a good practice).
 
-## PLazy
+## LazyPromise
 
-This library also exports a very lightweight helper that is very useful for lazy resolution of promises, for example, preventing un-requested data to be fetched from a database, basically, it create a lazy promise that defers execution until it's awaited or when .then() or .catch() is called.
+This library also exports a very lightweight helper that is very useful for lazy resolution of promises, for example, to prevent un-requested data to be fetched from a database.
 
-> It's just a re-export from [p-lazy](https://github.com/sindresorhus/p-lazy)
+Basically, it create a lazy promise that defers execution until it's awaited or when .then() / .catch() is called, perfect for GraphQL Resolvers.
+
+> Internally it uses [p-lazy](https://github.com/sindresorhus/p-lazy), which is also re-exported from this library
 
 ```ts
-import { PLazy } from 'mercurius-codegen'
+import { LazyPromise } from 'mercurius-codegen'
 
 // ...
 
-const users = new PLazy<Users[]>((resolve, reject) => {
-  db.users
-    .findMany({
-      // ...
-    })
-    .then(resolve)
-    .catch(reject)
+// users == Promise<User[]>
+const users = LazyPromise(() => {
+  return db.users.findMany({
+    // ...
+  })
 })
 ```
 
