@@ -216,6 +216,15 @@ interface CodegenMercuriusOptions {
      */
     uniqueWatch?: boolean
   }
+  /**
+   * Write the resulting schema as a `.gql` or `.graphql` schema file.
+   *
+   * If `true`, it outputs to `./schema.gql`
+   * If a string it specified, it writes to that location
+   *
+   * @default false
+   */
+  outputSchema?: boolean | string
 }
 
 mercuriusCodegen(app, {
@@ -234,6 +243,7 @@ mercuriusCodegen(app, {
   watchOptions: {
     enabled: true,
   },
+  outputSchema: true,
 }).catch(console.error)
 ```
 

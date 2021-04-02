@@ -1,9 +1,10 @@
 import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
-import { existsSync, promises } from 'fs'
+import { existsSync } from 'fs'
 import { resolve } from 'path'
 
 import { formatPrettier } from './prettier'
 import { deferredPromise } from './utils'
+import { writeFileIfChanged } from './write'
 
 let prebuiltSchema: string[] | undefined
 
@@ -100,27 +101,7 @@ export function loadSchemaFiles(
     const schemaStringPromise = formatPrettier(JSON.stringify(schema), 'json')
 
     schemaStringPromise.then((schemaString) => {
-      if (existsSync(buildJSONPath)) {
-        promises
-          .readFile(buildJSONPath, {
-            encoding: 'utf-8',
-          })
-          .then((existingSchema) => {
-            if (existingSchema === schemaString) return
-
-            promises
-              .writeFile(buildJSONPath, schemaString, {
-                encoding: 'utf-8',
-              })
-              .catch(console.error)
-          }, console.error)
-      } else {
-        promises
-          .writeFile(buildJSONPath, schemaString, {
-            encoding: 'utf-8',
-          })
-          .catch(console.error)
-      }
+      writeFileIfChanged(buildJSONPath, schemaString).catch(console.error)
     }, console.error)
 
     return schema

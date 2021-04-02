@@ -68,6 +68,15 @@ interface CodegenMercuriusOptions {
      */
     uniqueWatch?: boolean
   }
+  /**
+   * Write the resulting schema as a `.gql` or `.graphql` schema file.
+   *
+   * If `true`, it outputs to `./schema.gql`
+   * If a string it specified, it writes to that location
+   *
+   * @default false
+   */
+  outputSchema?: boolean | string
 }
 
 declare global {
@@ -88,17 +97,19 @@ export async function codegenMercurius(
     preImportCode,
     operationsGlob,
     watchOptions,
+    outputSchema = false,
   }: CodegenMercuriusOptions
 ): Promise<{
   closeWatcher: () => Promise<boolean>
   watcher: Promise<FSWatcher | undefined>
 }> {
   const noopCloseWatcher = async () => false
-  if (disable)
+  if (disable) {
     return {
       closeWatcher: noopCloseWatcher,
       watcher: Promise.resolve(undefined),
     }
+  }
 
   await app.ready()
 
@@ -107,6 +118,7 @@ export async function codegenMercurius(
   }
 
   const { generateCode, writeGeneratedCode } = await import('./code')
+  const { writeOutputSchema } = await import('./outputSchema')
 
   return new Promise((resolve, reject) => {
     const log = (...message: Parameters<typeof console['log']>) =>
@@ -205,6 +217,8 @@ export async function codegenMercurius(
           watcher: Promise.resolve(undefined),
         }
       }
+
+      writeOutputSchema(app, outputSchema).catch(reject)
 
       generateCode(
         schema,

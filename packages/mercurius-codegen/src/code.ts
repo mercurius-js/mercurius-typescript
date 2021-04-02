@@ -5,10 +5,10 @@ import type { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescrip
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
 
-import { existsSync, promises as fsPromises } from 'fs'
 import { dirname, resolve } from 'path'
 
 import { formatPrettier } from './prettier'
+import { writeFileIfChanged } from './write'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
   TypeScriptResolversPluginConfig
@@ -142,19 +142,5 @@ export async function writeGeneratedCode({
 
   await mkdirp(dirname(targetPath))
 
-  const fileExists = existsSync(targetPath)
-
-  if (fileExists) {
-    const existingCode = await fsPromises.readFile(targetPath, {
-      encoding: 'utf-8',
-    })
-
-    if (existingCode === code) return targetPath
-  }
-
-  await fsPromises.writeFile(targetPath, code, {
-    encoding: 'utf-8',
-  })
-
-  return targetPath
+  return writeFileIfChanged(targetPath, code)
 }

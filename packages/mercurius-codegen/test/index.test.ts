@@ -23,6 +23,7 @@ import {
   PLazy,
   LazyPromise,
 } from '../src/index'
+import { writeOutputSchema } from '../src/outputSchema'
 import { formatPrettier } from '../src/prettier'
 import { buildJSONPath } from '../src/schema'
 
@@ -879,6 +880,39 @@ test('no entities loaders give empty loaders', async (t) => {
   const emptyLoaders = await loadersPlugin(schema, [], {})
 
   t.snapshot(emptyLoaders.toString())
+})
+
+test.serial('writes output schema', async (t) => {
+  t.plan(4)
+  await app.ready()
+  const tempTarget = await tmp.file()
+
+  t.teardown(() => {
+    return tempTarget.cleanup()
+  })
+  await writeOutputSchema(app, tempTarget.path)
+
+  t.snapshot(
+    await readFile(tempTarget.path, {
+      encoding: 'utf8',
+    })
+  )
+
+  t.is(fs.existsSync('schema.gql'), false)
+
+  await writeOutputSchema(app, true)
+
+  t.teardown(() => {
+    return fs.promises.unlink('schema.gql')
+  })
+
+  t.is(fs.existsSync('schema.gql'), true)
+
+  t.snapshot(
+    await readFile('schema.gql', {
+      encoding: 'utf8',
+    })
+  )
 })
 
 codegenMercurius(app, {

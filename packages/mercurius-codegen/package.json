@@ -1,6 +1,6 @@
 {
   "name": "mercurius-codegen",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "keywords": [
     "fastify",
     "graphql",
