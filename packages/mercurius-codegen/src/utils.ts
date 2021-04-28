@@ -1,4 +1,33 @@
-import PLazy from 'p-lazy'
+export class PLazy<ValueType> extends Promise<ValueType> {
+  private _executor
+  private _promise?: Promise<ValueType>
+
+  constructor(
+    executor: (
+      resolve: (value: ValueType) => void,
+      reject: (err: unknown) => void
+    ) => void
+  ) {
+    super((resolve: (v?: any) => void) => resolve())
+
+    this._executor = executor
+  }
+
+  then: Promise<ValueType>['then'] = (onFulfilled, onRejected) => {
+    this._promise = this._promise || new Promise(this._executor)
+    return this._promise.then(onFulfilled, onRejected)
+  }
+
+  catch: Promise<ValueType>['catch'] = (onRejected) => {
+    this._promise = this._promise || new Promise(this._executor)
+    return this._promise.catch(onRejected)
+  }
+
+  finally: Promise<ValueType>['finally'] = (onFinally) => {
+    this._promise = this._promise || new Promise(this._executor)
+    return this._promise.finally(onFinally)
+  }
+}
 
 export function gql(chunks: TemplateStringsArray, ...variables: any[]): string {
   return chunks.reduce(
@@ -59,5 +88,3 @@ interface DeepPartialArray<T>
 type DeepPartialObject<T> = {
   [P in keyof T]?: PossiblePromise<DeepPartial<PossiblePromise<T[P]>>>
 }
-
-export { PLazy }

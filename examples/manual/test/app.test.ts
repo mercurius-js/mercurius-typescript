@@ -6,7 +6,7 @@ import { app } from '../src'
 
 const client = createMercuriusTestClient(app)
 
-tap.tearDown(async () => {
+tap.teardown(async () => {
   await app.close()
 })
 
@@ -27,7 +27,7 @@ tap.test('query', async (t) => {
       `
     )
     .then((response) => {
-      t.equivalent(response, {
+      t.same(response, {
         data: {
           helloTyped: 'world',
           helloInline: 'world',
@@ -52,7 +52,7 @@ tap.test('subscription', async (t) => {
         }
       `,
       onData(response) {
-        t.equivalent(response, {
+        t.same(response, {
           data: {
             newNotification: notificationMessage,
           },
@@ -82,7 +82,7 @@ tap.test('subscription', async (t) => {
         }
       )
       .then((response) => {
-        t.equivalent(response, {
+        t.same(response, {
           data: {
             createNotification: true,
           },
@@ -103,7 +103,7 @@ tap.test('loaders', async (t) => {
     }
   `)
 
-  t.equivalent(response, {
+  t.same(response, {
     data: {
       dogs: [
         { name: 'Max', owner: { name: 'Jennifer' } },
@@ -114,5 +114,5 @@ tap.test('loaders', async (t) => {
     },
   })
 
-  t.done()
+  t.end()
 })

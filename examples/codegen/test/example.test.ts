@@ -12,7 +12,7 @@ import {
 
 const client = createMercuriusTestClient(app)
 
-tap.tearDown(async () => {
+tap.teardown(async () => {
   await app.close()
 })
 
@@ -40,7 +40,7 @@ tap.test('hello works', async (t) => {
 tap.test('query with loaders', async (t) => {
   const response = await client.query(dogsDocument)
 
-  t.equivalent(response, {
+  t.same(response, {
     data: {
       dogs: [
         { name: 'Max', owner: { name: 'Jennifer' } },
@@ -51,7 +51,7 @@ tap.test('query with loaders', async (t) => {
     },
   })
 
-  t.done()
+  t.end()
 })
 
 tap.test('subscription', async (t) => {
@@ -64,7 +64,7 @@ tap.test('subscription', async (t) => {
     await client.subscribe({
       query: newNotificationDocument,
       onData(response) {
-        t.equivalent(response, {
+        t.same(response, {
           data: {
             newNotification: notificationMessage,
           },
@@ -80,7 +80,7 @@ tap.test('subscription', async (t) => {
         },
       })
       .then((response) => {
-        t.equivalent(response, {
+        t.same(response, {
           data: {
             createNotification: true,
           },

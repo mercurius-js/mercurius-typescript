@@ -135,9 +135,9 @@ const response = await client.query(helloDocument)
 
 This library also exports a very lightweight helper that is very useful for lazy resolution of promises, for example, to prevent un-requested data to be fetched from a database.
 
-Basically, it create a lazy promise that defers execution until it's awaited or when .then() / .catch() is called, perfect for GraphQL Resolvers.
+Basically, it creates a lazy promise that defers execution until it's awaited or when .then() / .catch() is called, perfect for GraphQL Resolvers.
 
-> Internally it uses [p-lazy](https://github.com/sindresorhus/p-lazy), which is also re-exported from this library
+> Internally, it uses [p-lazy](https://github.com/sindresorhus/p-lazy), which is also re-exported from this library
 
 ```ts
 import { LazyPromise } from 'mercurius-codegen'
@@ -186,7 +186,7 @@ interface CodegenMercuriusOptions {
    */
   codegenConfig?: CodegenPluginsConfig
   /**
-   * Add code in the beginning of the generated code
+   * Add code at the beginning of the generated code
    */
   preImportCode?: string
   /**
@@ -210,7 +210,7 @@ interface CodegenMercuriusOptions {
     /**
      * Unique watch instance
      *
-     * `Specially useful for hot module replacement environments, preventing memory leaks`
+     * `Especially useful for hot module replacement environments, preventing memory leaks`
      *
      * @default true
      */
@@ -275,7 +275,7 @@ export interface LoadSchemaOptions {
     /**
      * Unique watch instance
      *
-     * `Specially useful for hot module replacement environments, preventing memory leaks`
+     * `Especially useful for hot module replacement environments, preventing memory leaks`
      *
      * @default true
      */
@@ -293,7 +293,7 @@ export interface LoadSchemaOptions {
     enabled?: boolean
   }
   /**
-   * Don't notify to the console
+   * Don't notify the console
    */
   silent?: boolean
 }

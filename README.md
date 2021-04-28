@@ -10,9 +10,9 @@ All the examples are available in the [examples folder](./examples/)
 
 ## Contributing
 
-This project uses [pnpm workspaces](https://pnpm.js.org/en/workspaces)
+This project uses [pnpm workspaces](https://pnpm.io/workspaces)
 
-But the examples are just basic Node.js packages, but for development and to test them yourself you will need to [install it](https://pnpm.js.org/en/installation) and then simply execute
+But the examples are just basic Node.js packages, but for development and to test them yourself, you will need to [install it](https://pnpm.io/installation) and then execute
 
 ```bash
 pnpm i
