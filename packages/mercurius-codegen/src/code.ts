@@ -74,9 +74,11 @@ export async function generateCode(
     config: Object.assign(
       {
         federation: true,
+        contextType: 'mercurius#MercuriusContext',
+        useTypeImports: true,
         customResolverFn:
           '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<import("mercurius-codegen").DeepPartial<TResult>> | import("mercurius-codegen").DeepPartial<TResult>',
-      },
+      } as CodegenPluginsConfig,
       codegenConfig,
       {
         namingConvention: 'keep',

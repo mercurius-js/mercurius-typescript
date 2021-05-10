@@ -1,9 +1,10 @@
-import {
+import type {
   GraphQLResolveInfo,
   GraphQLScalarType,
   GraphQLScalarTypeConfig,
 } from 'graphql'
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
+import type { MercuriusContext } from 'mercurius'
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
@@ -214,7 +215,7 @@ export interface DateTimeScalarConfig
 }
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
   hello?: Resolver<
@@ -228,7 +229,7 @@ export type QueryResolvers<
 }
 
 export type HumanResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
@@ -271,7 +272,7 @@ export type HumanResolvers<
 }
 
 export type NArrayResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['NArray'] = ResolversParentTypes['NArray']
 > = {
   nArray?: Resolver<
@@ -282,7 +283,7 @@ export type NArrayResolvers<
   isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = MercuriusContext> = {
   DateTime?: GraphQLScalarType
   Query?: QueryResolvers<ContextType>
   Human?: HumanResolvers<ContextType>
@@ -293,7 +294,7 @@ export type Resolvers<ContextType = any> = {
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>
+export type IResolvers<ContextType = MercuriusContext> = Resolvers<ContextType>
 
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{

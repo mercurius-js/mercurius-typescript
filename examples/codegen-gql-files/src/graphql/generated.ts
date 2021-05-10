@@ -1,5 +1,6 @@
-import { GraphQLResolveInfo } from 'graphql'
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
+import type { GraphQLResolveInfo } from 'graphql'
+import type { MercuriusContext } from 'mercurius'
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
@@ -199,7 +200,7 @@ export type ResolversParentTypes = {
 }
 
 export type DogResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Dog'] = ResolversParentTypes['Dog']
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
@@ -208,7 +209,7 @@ export type DogResolvers<
 }
 
 export type HumanResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
@@ -216,7 +217,7 @@ export type HumanResolvers<
 }
 
 export type MutationResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
 > = {
   add?: Resolver<
@@ -234,7 +235,7 @@ export type MutationResolvers<
 }
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
   Hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>
@@ -242,7 +243,7 @@ export type QueryResolvers<
 }
 
 export type SubscriptionResolvers<
-  ContextType = any,
+  ContextType = MercuriusContext,
   ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']
 > = {
   newNotification?: SubscriptionResolver<
@@ -253,7 +254,7 @@ export type SubscriptionResolvers<
   >
 }
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = MercuriusContext> = {
   Dog?: DogResolvers<ContextType>
   Human?: HumanResolvers<ContextType>
   Mutation?: MutationResolvers<ContextType>
@@ -265,7 +266,7 @@ export type Resolvers<ContextType = any> = {
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>
+export type IResolvers<ContextType = MercuriusContext> = Resolvers<ContextType>
 
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
