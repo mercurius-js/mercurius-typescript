@@ -337,7 +337,7 @@ export type newNotificationSubscription = {
   __typename?: 'Subscription'
 } & Pick<Subscription, 'newNotification'>
 
-export const helloDocument: DocumentNode<helloQuery, helloQueryVariables> = {
+export const helloDocument = {
   kind: 'Document',
   definitions: [
     {
@@ -350,8 +350,8 @@ export const helloDocument: DocumentNode<helloQuery, helloQueryVariables> = {
       },
     },
   ],
-}
-export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
+} as unknown as DocumentNode<helloQuery, helloQueryVariables>
+export const addDocument = {
   kind: 'Document',
   definitions: [
     {
@@ -399,8 +399,8 @@ export const addDocument: DocumentNode<addMutation, addMutationVariables> = {
       },
     },
   ],
-}
-export const dogsDocument: DocumentNode<dogsQuery, dogsQueryVariables> = {
+} as unknown as DocumentNode<addMutation, addMutationVariables>
+export const dogsDocument = {
   kind: 'Document',
   definitions: [
     {
@@ -434,11 +434,8 @@ export const dogsDocument: DocumentNode<dogsQuery, dogsQueryVariables> = {
       },
     },
   ],
-}
-export const createNotificationDocument: DocumentNode<
-  createNotificationMutation,
-  createNotificationMutationVariables
-> = {
+} as unknown as DocumentNode<dogsQuery, dogsQueryVariables>
+export const createNotificationDocument = {
   kind: 'Document',
   definitions: [
     {
@@ -482,11 +479,11 @@ export const createNotificationDocument: DocumentNode<
       },
     },
   ],
-}
-export const newNotificationDocument: DocumentNode<
-  newNotificationSubscription,
-  newNotificationSubscriptionVariables
-> = {
+} as unknown as DocumentNode<
+  createNotificationMutation,
+  createNotificationMutationVariables
+>
+export const newNotificationDocument = {
   kind: 'Document',
   definitions: [
     {
@@ -501,7 +498,10 @@ export const newNotificationDocument: DocumentNode<
       },
     },
   ],
-}
+} as unknown as DocumentNode<
+  newNotificationSubscription,
+  newNotificationSubscriptionVariables
+>
 declare module 'mercurius' {
   interface IResolvers
     extends Resolvers<import('mercurius').MercuriusContext> {}

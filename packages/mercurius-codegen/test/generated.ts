@@ -367,7 +367,7 @@ export type AQueryVariables = Exact<{ [key: string]: never }>
 
 export type AQuery = { __typename?: 'Query' } & Pick<Query, 'hello'>
 
-export const ADocument: DocumentNode<AQuery, AQueryVariables> = {
+export const ADocument = {
   kind: 'Document',
   definitions: [
     {
@@ -380,7 +380,7 @@ export const ADocument: DocumentNode<AQuery, AQueryVariables> = {
       },
     },
   ],
-}
+} as unknown as DocumentNode<AQuery, AQueryVariables>
 declare module 'mercurius' {
   interface IResolvers
     extends Resolvers<import('mercurius').MercuriusContext> {}

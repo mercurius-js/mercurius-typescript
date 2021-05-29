@@ -78,11 +78,11 @@ export async function generateCode(
         useTypeImports: true,
         customResolverFn:
           '(parent: TParent, args: TArgs, context: TContext, info: GraphQLResolveInfo) => Promise<import("mercurius-codegen").DeepPartial<TResult>> | import("mercurius-codegen").DeepPartial<TResult>',
+        internalResolversPrefix: '',
       } as CodegenPluginsConfig,
       codegenConfig,
       {
         namingConvention: 'keep',
-        internalResolversPrefix: '',
       } as CodegenPluginsConfig
     ),
     documents,
