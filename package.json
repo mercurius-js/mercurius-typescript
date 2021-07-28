@@ -15,7 +15,8 @@
   "author": "PabloSz",
   "scripts": {
     "prepare": "husky install",
-    "test": "pnpm test --recursive --no-bail --stream"
+    "test": "pnpm test --recursive --no-bail --stream",
+    "clean": "rimraf \"**/{node_modules,dist,coverage,.nyc_output}\""
   },
   "husky": {
     "hooks": {
@@ -23,13 +24,17 @@
     }
   },
   "devDependencies": {
+    "@types/node": "^16.4.6",
+    "esbuild": "^0.12.16",
     "husky": "^7.0.1",
     "prettier": "^2.3.2",
-    "pretty-quick": "^3.1.1"
+    "pretty-quick": "^3.1.1",
+    "rimraf": "^3.0.2"
   },
   "pnpm": {
     "overrides": {
-      "@types/node": "^15.14.1"
+      "esbuild": "^0.12.16",
+      "@types/node": "^16.4.6"
     }
   }
 }

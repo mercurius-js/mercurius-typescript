@@ -62,12 +62,8 @@ export interface LoadSchemaOptions {
   silent?: boolean
 }
 
-declare global {
-  namespace NodeJS {
-    interface Global {
-      mercuriusLoadSchemaWatchCleanup?: () => void
-    }
-  }
+declare const global: typeof globalThis & {
+  mercuriusLoadSchemaWatchCleanup?: () => void
 }
 
 export function loadSchemaFiles(
@@ -77,9 +73,8 @@ export function loadSchemaFiles(
   const log = (...message: Parameters<typeof console['log']>) =>
     silent ? undefined : console.log(...message)
 
-  const {
-    enabled: prebuildEnabled = process.env.NODE_ENV === 'production',
-  } = prebuild
+  const { enabled: prebuildEnabled = process.env.NODE_ENV === 'production' } =
+    prebuild
 
   function loadSchemaFiles() {
     const {

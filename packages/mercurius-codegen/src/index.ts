@@ -9,6 +9,8 @@ import { deferredPromise } from './utils'
 const { plugin } = MercuriusLoadersPlugin
 export { plugin }
 
+export type {} from '@graphql-codegen/plugin-helpers'
+
 interface CodegenMercuriusOptions {
   /**
    * Specify the target path of the code generation.
@@ -79,12 +81,8 @@ interface CodegenMercuriusOptions {
   outputSchema?: boolean | string
 }
 
-declare global {
-  namespace NodeJS {
-    interface Global {
-      mercuriusOperationsWatchCleanup?: () => void
-    }
-  }
+declare const global: typeof globalThis & {
+  mercuriusOperationsWatchCleanup?: () => void
 }
 
 export async function codegenMercurius(

@@ -6,6 +6,8 @@ import type {
   GraphQLOutputType,
 } from 'graphql'
 
+export type {} from '@graphql-codegen/plugin-helpers'
+
 export const MercuriusLoadersPlugin: CodegenPlugin<{
   namespacedImportName?: string
 }> = {
