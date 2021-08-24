@@ -4,6 +4,7 @@ import type { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
 import type { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
+import type { MercuriusLoadersPluginConfig } from './mercuriusLoaders'
 
 import { dirname, resolve } from 'path'
 
@@ -11,7 +12,8 @@ import { formatPrettier } from './prettier'
 import { writeFileIfChanged } from './write'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
-  TypeScriptResolversPluginConfig
+  TypeScriptResolversPluginConfig &
+  MercuriusLoadersPluginConfig
 
 export interface CodegenPluginsConfig extends MidCodegenPluginsConfig {
   [k: string]: unknown

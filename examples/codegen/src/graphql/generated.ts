@@ -318,7 +318,7 @@ export interface Loaders<
   }
 > {
   Human?: {
-    name?: LoaderResolver<Scalars['String'], Human, {}, TContext>
+    name?: LoaderResolver<Scalars['String'], never, {}, TContext>
   }
 
   Foo?: {

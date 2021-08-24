@@ -139,6 +139,11 @@ app.register(mercurius, {
 mercuriusCodegen(app, {
   targetPath: './src/graphql/generated.ts',
   operationsGlob: './src/graphql/operations/*.gql',
+  codegenConfig: {
+    loadersCustomParentTypes: {
+      Human: 'never',
+    },
+  },
 }).catch(console.error)
 
 // app.listen(8000)
