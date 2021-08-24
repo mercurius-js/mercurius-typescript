@@ -79,23 +79,9 @@ export type ResolverTypeWrapper<T> = Promise<T> | T
 export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>
 }
-
-export type LegacyStitchingResolver<TResult, TParent, TContext, TArgs> = {
-  fragment: string
-  resolve: ResolverFn<TResult, TParent, TContext, TArgs>
-}
-
-export type NewStitchingResolver<TResult, TParent, TContext, TArgs> = {
-  selectionSet: string
-  resolve: ResolverFn<TResult, TParent, TContext, TArgs>
-}
-export type StitchingResolver<TResult, TParent, TContext, TArgs> =
-  | LegacyStitchingResolver<TResult, TParent, TContext, TArgs>
-  | NewStitchingResolver<TResult, TParent, TContext, TArgs>
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | ResolverWithResolve<TResult, TParent, TContext, TArgs>
-  | StitchingResolver<TResult, TParent, TContext, TArgs>
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -289,12 +275,6 @@ export type Resolvers<ContextType = MercuriusContext> = {
   Subscription?: SubscriptionResolvers<ContextType>
 }
 
-/**
- * @deprecated
- * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
- */
-export type IResolvers<ContextType = MercuriusContext> = Resolvers<ContextType>
-
 type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
     obj: TObj
@@ -340,30 +320,31 @@ export type addMutationVariables = Exact<{
   y: Scalars['Int']
 }>
 
-export type addMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'add'>
+export type addMutation = { __typename?: 'Mutation'; add: number }
 
 export type helloQueryVariables = Exact<{ [key: string]: never }>
 
-export type helloQuery = { __typename?: 'Query' } & Pick<Query, 'Hello'>
+export type helloQuery = { __typename?: 'Query'; Hello: string }
 
 export type dogsQueryVariables = Exact<{ [key: string]: never }>
 
-export type dogsQuery = { __typename?: 'Query' } & {
-  dogs: Array<
-    { __typename?: 'Dog' } & Pick<Dog, 'name'> & {
-        owner?: Maybe<{ __typename?: 'Human' } & Pick<Human, 'name'>>
-      }
-  >
+export type dogsQuery = {
+  __typename?: 'Query'
+  dogs: Array<{
+    __typename?: 'Dog'
+    name: string
+    owner?: Maybe<{ __typename?: 'Human'; name: string }>
+  }>
 }
 
 export type createNotificationMutationVariables = Exact<{
   message: Scalars['String']
 }>
 
-export type createNotificationMutation = { __typename?: 'Mutation' } & Pick<
-  Mutation,
-  'createNotification'
->
+export type createNotificationMutation = {
+  __typename?: 'Mutation'
+  createNotification: boolean
+}
 
 export type newNotificationSubscriptionVariables = Exact<{
   [key: string]: never
@@ -371,7 +352,8 @@ export type newNotificationSubscriptionVariables = Exact<{
 
 export type newNotificationSubscription = {
   __typename?: 'Subscription'
-} & Pick<Subscription, 'newNotification'>
+  newNotification: string
+}
 
 export const addDocument = {
   kind: 'Document',
