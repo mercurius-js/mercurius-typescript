@@ -6,10 +6,13 @@ Get full type-safety and autocompletion for [Mercurius](http://mercurius.dev/) u
 
 ```sh
 pnpm add mercurius-codegen
+pnpm add -D prettier
 # or
 yarn add mercurius-codegen
+yarn add -D prettier
 # or
 npm install mercurius-codegen
+npm install -D prettier
 ```
 
 ## Usage
