@@ -17,21 +17,21 @@
     "test": "cross-env NODE_ENV=test tap --node-arg=--require=esbuild-register"
   },
   "dependencies": {
-    "fastify": "^3.21.0",
-    "graphql": "^15.5.3",
-    "mercurius": "^8.2.1",
+    "fastify": "^3.21.6",
+    "graphql": "^15.6.0",
+    "mercurius": "^8.4.2",
     "mercurius-codegen": "workspace:*"
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.1.0",
-    "@types/node": "^16.9.1",
+    "@types/node": "^16.9.6",
     "@types/tap": "^15.0.5",
     "cross-env": "^7.0.3",
     "esbuild-register": "^3.0.0",
     "mercurius-integration-testing": "^3.2.0",
-    "prettier": "^2.4.0",
-    "tap": "^15.0.9",
-    "tsup": "^4.14.0",
-    "typescript": "^4.4.2"
+    "prettier": "^2.4.1",
+    "tap": "^15.0.10",
+    "tsup": "^5.2.0",
+    "typescript": "^4.4.3"
   }
 }

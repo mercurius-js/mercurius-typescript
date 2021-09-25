@@ -24,17 +24,17 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^16.9.1",
-    "esbuild": "^0.12.26",
+    "@types/node": "^16.9.6",
+    "esbuild": "^0.13.2",
     "husky": "^7.0.2",
-    "prettier": "^2.4.0",
+    "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
     "rimraf": "^3.0.2"
   },
   "pnpm": {
     "overrides": {
-      "esbuild": ">=0.12.26",
-      "@types/node": ">=16.9.1"
+      "esbuild": ">=0.13.2",
+      "@types/node": ">=16.9.6"
     }
   }
 }
