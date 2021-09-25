@@ -25,9 +25,10 @@ import {
 } from '../src/index'
 import { writeOutputSchema } from '../src/outputSchema'
 import { formatPrettier } from '../src/prettier'
-import { buildJSONPath } from '../src/schema'
 
 const { readFile, writeFile, rm } = fs.promises
+
+const buildJSONPath = path.resolve('./mercurius-schema.json')
 
 test.after.always(async () => {
   await rm(buildJSONPath, {
@@ -834,12 +835,8 @@ test.serial('pre-built schema', async (t) => {
     }
   )
 
-  const {
-    loadSchemaFiles,
-  }: typeof import('../src/schema') = proxyquire.noPreserveCache()(
-    '../src/schema',
-    {}
-  )
+  const { loadSchemaFiles }: typeof import('../src/schema') =
+    proxyquire.noPreserveCache()('../src/schema', {})
 
   const { schema } = loadSchemaFiles('./test/operations/*.gql', {
     prebuild: {

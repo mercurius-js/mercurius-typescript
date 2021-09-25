@@ -6,14 +6,6 @@ import { formatPrettier } from './prettier'
 import { deferredPromise } from './utils'
 import { writeFileIfChanged } from './write'
 
-let prebuiltSchema: string[] | undefined
-
-export const buildJSONPath = resolve('./mercurius-schema.json')
-
-if (existsSync(buildJSONPath)) {
-  prebuiltSchema = require(buildJSONPath)
-}
-
 export interface PrebuildOptions {
   /**
    * Enable use pre-built schema if found.
@@ -21,6 +13,12 @@ export interface PrebuildOptions {
    * @default process.env.NODE_ENV === "production"
    */
   enabled?: boolean
+
+  /**
+   * @default
+   * "./mercurius-schema.json"
+   */
+  targetPath?: string
 }
 
 export interface WatchOptions {
@@ -66,6 +64,10 @@ declare const global: typeof globalThis & {
   mercuriusLoadSchemaWatchCleanup?: () => void
 }
 
+function isValidSchemaList(v: unknown): v is Array<string> {
+  return Array.isArray(v) && !!v.length && v.every((v) => typeof v === 'string')
+}
+
 export function loadSchemaFiles(
   schemaPath: string | string[],
   { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {}
@@ -73,8 +75,12 @@ export function loadSchemaFiles(
   const log = (...message: Parameters<typeof console['log']>) =>
     silent ? undefined : console.log(...message)
 
-  const { enabled: prebuildEnabled = process.env.NODE_ENV === 'production' } =
-    prebuild
+  const {
+    enabled: prebuildEnabled = process.env.NODE_ENV === 'production',
+    targetPath: prebuiltSchemaPathOption = './mercurius-schema.json',
+  } = prebuild
+
+  const prebuiltSchemaPath = resolve(prebuiltSchemaPathOption)
 
   function loadSchemaFiles() {
     const {
@@ -96,7 +102,7 @@ export function loadSchemaFiles(
     const schemaStringPromise = formatPrettier(JSON.stringify(schema), 'json')
 
     schemaStringPromise.then((schemaString) => {
-      writeFileIfChanged(buildJSONPath, schemaString).catch(console.error)
+      writeFileIfChanged(prebuiltSchemaPath, schemaString).catch(console.error)
     }, console.error)
 
     return schema
@@ -104,13 +110,12 @@ export function loadSchemaFiles(
 
   let schema: string[] | undefined
 
-  if (prebuildEnabled && prebuiltSchema) {
-    if (
-      Array.isArray(prebuiltSchema) &&
-      prebuiltSchema.length &&
-      prebuiltSchema.every((v) => typeof v === 'string')
-    ) {
-      schema = prebuiltSchema
+  if (prebuildEnabled) {
+    if (existsSync(prebuiltSchemaPath)) {
+      const prebuiltSchema = require(prebuiltSchemaPath)
+      if (isValidSchemaList(prebuiltSchema)) {
+        schema = prebuiltSchema
+      }
     }
   }
 

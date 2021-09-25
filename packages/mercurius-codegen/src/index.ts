@@ -249,4 +249,4 @@ export const loadSchemaFiles: typeof import('./schema').loadSchemaFiles = (
   ...args
 ) => require('./schema').loadSchemaFiles(...args)
 
-export { LoadSchemaOptions } from './schema'
+export type { LoadSchemaOptions, PrebuildOptions } from './schema'
