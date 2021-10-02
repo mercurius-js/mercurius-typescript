@@ -10,6 +10,7 @@ import { dirname, resolve } from 'path'
 
 import { formatPrettier } from './prettier'
 import { writeFileIfChanged } from './write'
+import { toGraphQLString } from './utils'
 
 type MidCodegenPluginsConfig = TypeScriptPluginConfig &
   TypeScriptResolversPluginConfig &
@@ -47,7 +48,7 @@ export async function generateCode(
   const documents = operationsGlob
     ? await loadFiles(operationsGlob).then((operations) =>
         operations
-          .map((op) => String(op).trim())
+          .map((op) => String(toGraphQLString(op)).trim())
           .filter(Boolean)
           .map((operationString) => {
             const operationSource: Source = {

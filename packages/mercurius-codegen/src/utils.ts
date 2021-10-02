@@ -1,3 +1,7 @@
+import { ASTNode, print } from 'graphql'
+
+export const toGraphQLString = (v: string | ASTNode) =>
+  typeof v === 'string' ? v : print(v)
 export class PLazy<ValueType> extends Promise<ValueType> {
   private _executor
   private _promise?: Promise<ValueType>
