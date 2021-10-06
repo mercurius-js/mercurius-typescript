@@ -71,6 +71,6 @@
     "fastify": "^3.8.0",
     "graphql": "*",
     "mercurius": "^8.0.0 || ^7.0.0 || ^6.4.0",
-    "prettier": "^2.4.0"
+    "prettier": "^2.4.1"
   }
 }
