@@ -16,7 +16,10 @@
   "scripts": {
     "prepare": "husky install",
     "test": "pnpm test --recursive --no-bail --stream",
-    "clean": "rimraf \"**/{node_modules,dist,coverage,.nyc_output}\""
+    "clean": "rimraf \"**/{node_modules,dist,coverage,.nyc_output}\"",
+    "ci:release": "pnpm pretty && pnpm -r publish --access public --no-git-checks",
+    "pretty": "prettier --write \"**/*.{ts,json}\"",
+    "ci:version": "pnpm pretty && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts && pnpm update -r mercurius-codegen"
   },
   "husky": {
     "hooks": {
@@ -24,8 +27,9 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^16.9.6",
-    "esbuild": "^0.13.2",
+    "@changesets/cli": "^2.17.0",
+    "@types/node": "^16.10.3",
+    "esbuild": "^0.13.4",
     "husky": "^7.0.2",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",

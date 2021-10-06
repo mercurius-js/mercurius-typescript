@@ -1,5 +1,5 @@
 {
-  "name": "codegen-gql-files-example",
+  "name": "example-codegen-gql-files",
   "version": "1.0.0",
   "private": true,
   "description": "Mercurius + GraphQL Code Generator example",
@@ -17,22 +17,22 @@
     "test": "cross-env NODE_ENV=test tap --node-arg=--require=esbuild-register"
   },
   "dependencies": {
-    "@graphql-tools/load-files": "^6.4.0",
-    "fastify": "^3.21.6",
-    "graphql": "^15.6.0",
-    "mercurius": "^8.4.2",
+    "@graphql-tools/load-files": "~6.4.0",
+    "fastify": "^3.22.0",
+    "graphql": "^15.6.1",
+    "mercurius": "^8.5.0",
     "mercurius-codegen": "workspace:*"
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.1.0",
-    "@types/node": "^16.9.6",
+    "@types/node": "^16.10.3",
     "@types/tap": "^15.0.5",
     "cross-env": "^7.0.3",
     "esbuild-register": "^3.0.0",
     "mercurius-integration-testing": "^3.2.0",
     "prettier": "^2.4.1",
     "tap": "^15.0.10",
-    "tsup": "^5.2.0",
+    "tsup": "^5.3.0",
     "typescript": "^4.4.3"
   },
   "tap": {

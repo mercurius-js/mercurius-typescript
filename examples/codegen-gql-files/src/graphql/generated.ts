@@ -303,7 +303,7 @@ export type dogsQuery = {
   dogs: Array<{
     __typename?: 'Dog'
     name: string
-    owner?: Maybe<{ __typename?: 'Human'; name: string }>
+    owner?: { __typename?: 'Human'; name: string } | null | undefined
   }>
 }
 

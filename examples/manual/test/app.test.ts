@@ -71,7 +71,7 @@ tap.test('subscription', async (t) => {
         }
       >(
         gql`
-          mutation($message: String!) {
+          mutation ($message: String!) {
             createNotification(message: $message)
           }
         `,
