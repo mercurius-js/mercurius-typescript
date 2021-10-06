@@ -3,7 +3,7 @@ import { existsSync } from 'fs'
 import { resolve } from 'path'
 
 import { formatPrettier } from './prettier'
-import { deferredPromise } from './utils'
+import { deferredPromise, toGraphQLString } from './utils'
 import { writeFileIfChanged } from './write'
 
 export interface PrebuildOptions {
@@ -88,7 +88,9 @@ export function loadSchemaFiles(
     }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
 
     const schema = loadFilesSync(schemaPath, {})
-      .map((v) => String(v).trim().replace(/\r\n/g, '\n'))
+      .map((v) => {
+        return String(toGraphQLString(v)).trim().replace(/\r\n/g, '\n')
+      })
       .filter(Boolean)
 
     if (!schema.length) {

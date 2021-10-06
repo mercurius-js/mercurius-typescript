@@ -17,7 +17,7 @@
     "test": "cross-env NODE_ENV=test tap --node-arg=--require=esbuild-register"
   },
   "dependencies": {
-    "@graphql-tools/load-files": "~6.4.0",
+    "@graphql-tools/load-files": "^6.5.1",
     "fastify": "^3.22.0",
     "graphql": "^15.6.1",
     "mercurius": "^8.5.0",
