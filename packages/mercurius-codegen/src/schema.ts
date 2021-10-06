@@ -15,10 +15,11 @@ export interface PrebuildOptions {
   enabled?: boolean
 
   /**
+   * If "targetPath" is set to `null`, pre-built schema generation is disabled
    * @default
    * "./mercurius-schema.json"
    */
-  targetPath?: string
+  targetPath?: string | null
 }
 
 export interface WatchOptions {
@@ -80,7 +81,8 @@ export function loadSchemaFiles(
     targetPath: prebuiltSchemaPathOption = './mercurius-schema.json',
   } = prebuild
 
-  const prebuiltSchemaPath = resolve(prebuiltSchemaPathOption)
+  const prebuiltSchemaPath =
+    prebuiltSchemaPathOption != null ? resolve(prebuiltSchemaPathOption) : null
 
   function loadSchemaFiles() {
     const {
@@ -101,6 +103,8 @@ export function loadSchemaFiles(
       throw err
     }
 
+    if (prebuiltSchemaPath == null) return schema
+
     const schemaStringPromise = formatPrettier(JSON.stringify(schema), 'json')
 
     schemaStringPromise.then((schemaString) => {
@@ -112,7 +116,7 @@ export function loadSchemaFiles(
 
   let schema: string[] | undefined
 
-  if (prebuildEnabled) {
+  if (prebuiltSchemaPath != null && prebuildEnabled) {
     if (existsSync(prebuiltSchemaPath)) {
       const prebuiltSchema = require(prebuiltSchemaPath)
       if (isValidSchemaList(prebuiltSchema)) {
