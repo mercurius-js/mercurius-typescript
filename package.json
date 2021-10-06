@@ -14,12 +14,12 @@
   "license": "MIT",
   "author": "PabloSz",
   "scripts": {
-    "prepare": "husky install",
-    "test": "pnpm test --recursive --no-bail --stream",
-    "clean": "rimraf \"**/{node_modules,dist,coverage,.nyc_output}\"",
     "ci:release": "pnpm pretty && pnpm -r publish --access public --no-git-checks",
+    "ci:version": "pnpm pretty && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts && pnpm update -r mercurius-codegen",
+    "clean": "pnpm dlx rimraf \"**/{node_modules,dist,coverage,.nyc_output}\"",
+    "prepare": "husky install",
     "pretty": "prettier --write \"**/*.{ts,json}\"",
-    "ci:version": "pnpm pretty && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts && pnpm update -r mercurius-codegen"
+    "test": "pnpm test --recursive --no-bail --stream"
   },
   "husky": {
     "hooks": {
