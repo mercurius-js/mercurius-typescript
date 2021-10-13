@@ -134,7 +134,7 @@ importers:
       '@graphql-codegen/typescript-operations': ^2.1.6
       '@graphql-codegen/typescript-resolvers': ^2.3.0
       '@graphql-tools/load-files': ^6.5.1
-      '@graphql-tools/utils': ^8.2.5
+      '@graphql-tools/utils': ^8.3.0
       '@graphql-typed-document-node/core': ^3.1.0
       '@istanbuljs/nyc-config-typescript': ^1.0.1
       '@types/mkdirp': ^1.0.2
@@ -172,7 +172,7 @@ importers:
       '@graphql-codegen/typescript-operations': 2.1.6_graphql@15.6.1
       '@graphql-codegen/typescript-resolvers': 2.3.0_graphql@15.6.1
       '@graphql-tools/load-files': 6.5.1_graphql@15.6.1
-      '@graphql-tools/utils': 8.2.5_graphql@15.6.1
+      '@graphql-tools/utils': 8.3.0_graphql@15.6.1
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.6.1
       chokidar: 3.5.2
       mkdirp: 1.0.4
@@ -1084,6 +1084,15 @@ packages:
 
   /@graphql-tools/utils/8.2.5_graphql@15.6.1:
     resolution: {integrity: sha512-k/Rktklhy22dQfbJLKiLGfQymQCTr6Rd2BilC7g2Yk6wFSzVLYr8jeXNoTD+/p61XBQzBjTVayskvaMvNS3BDg==}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 15.6.1
+      tslib: 2.3.1
+    dev: false
+
+  /@graphql-tools/utils/8.3.0_graphql@15.6.1:
+    resolution: {integrity: sha512-ksE0RxS0AFllo6KIJjvQsRgcUAzoyZUgUrDbCngv4SaQwyX9YxTfddTLN4uQmbiZB9h25fPp/Xgeyaa3ARCzgg==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
