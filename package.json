@@ -30,7 +30,7 @@
     "@changesets/cli": "^2.17.0",
     "@types/node": "^16.10.3",
     "changesets-github-release": "^0.0.4",
-    "esbuild": "^0.13.4",
+    "esbuild": "^0.13.5",
     "husky": "^7.0.2",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
