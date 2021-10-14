@@ -19,7 +19,7 @@
     "mercurius": "^8.6.0"
   },
   "devDependencies": {
-    "@types/node": "^16.10.8",
+    "@types/node": "^16.10.9",
     "@types/tap": "^15.0.5",
     "cross-env": "^7.0.3",
     "esbuild-register": "^3.0.0",
