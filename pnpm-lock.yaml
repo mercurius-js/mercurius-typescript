@@ -40,7 +40,7 @@ importers:
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
       tap: ^15.0.10
-      tsup: ^5.4.0
+      tsup: ^5.4.1
       typescript: ^4.4.4
     dependencies:
       fastify: 3.22.0
@@ -56,7 +56,7 @@ importers:
       mercurius-integration-testing: 3.2.0_dcf7604a09f9fb4003a6b482101f6f5b
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
-      tsup: 5.4.0_typescript@4.4.4
+      tsup: 5.4.1_typescript@4.4.4
       typescript: 4.4.4
 
   examples/codegen-gql-files:
@@ -74,7 +74,7 @@ importers:
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
       tap: ^15.0.10
-      tsup: ^5.4.0
+      tsup: ^5.4.1
       typescript: ^4.4.4
     dependencies:
       '@graphql-tools/load-files': 6.5.1_graphql@15.6.1
@@ -91,7 +91,7 @@ importers:
       mercurius-integration-testing: 3.2.0_dcf7604a09f9fb4003a6b482101f6f5b
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
-      tsup: 5.4.0_typescript@4.4.4
+      tsup: 5.4.1_typescript@4.4.4
       typescript: 4.4.4
 
   examples/manual:
@@ -107,7 +107,7 @@ importers:
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
       tap: ^15.0.10
-      tsup: ^5.4.0
+      tsup: ^5.4.1
       typescript: ^4.4.4
     dependencies:
       fastify: 3.22.0
@@ -122,7 +122,7 @@ importers:
       mercurius-integration-testing: 3.2.0_dcf7604a09f9fb4003a6b482101f6f5b
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
-      tsup: 5.4.0_typescript@4.4.4
+      tsup: 5.4.1_typescript@4.4.4
       typescript: 4.4.4
 
   packages/mercurius-codegen:
@@ -6469,8 +6469,8 @@ packages:
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
 
-  /tsup/5.4.0_typescript@4.4.4:
-    resolution: {integrity: sha512-wm52TUJzDCvF9dJ3TxYtoJg8L7EjSYsOsH+jZhMMXfk1qZn6CdxFStwzMnwhyducdMBXHQNl7wZn+ioIhJoCHA==}
+  /tsup/5.4.1_typescript@4.4.4:
+    resolution: {integrity: sha512-A2uGsLy3P4swe7UHAPJGOPIXBn/fXnm0SpGutvks7nVDsK8HP315Hddf7jjiVYhA4D39QhD9ehnQcmJbL19zcQ==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
