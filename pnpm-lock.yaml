@@ -148,7 +148,7 @@ importers:
       mercurius: ^8.6.0
       mercurius-codegen: workspace:*
       mkdirp: ^1.0.4
-      nodemon: ^2.0.13
+      nodemon: ^2.0.14
       nyc: 15.1.0
       open-cli: ^7.0.1
       prettier: ^2.4.1
@@ -187,7 +187,7 @@ importers:
       graphql: 15.6.1
       mercurius: 8.6.0
       mercurius-codegen: 'link:'
-      nodemon: 2.0.13
+      nodemon: 2.0.14
       nyc: 15.1.0
       open-cli: 7.0.1
       prettier: 2.4.1
@@ -4628,8 +4628,8 @@ packages:
   /node-releases/2.0.0:
     resolution: {integrity: sha512-aA87l0flFYMzCHpTM3DERFSYxc6lv/BltdbRTOMZuxZ0cwZCD3mejE5n9vLhSJCN++/eOqr77G1IO5uXxlQYWA==}
 
-  /nodemon/2.0.13:
-    resolution: {integrity: sha512-UMXMpsZsv1UXUttCn6gv8eQPhn6DR4BW+txnL3IN5IHqrCwcrT/yWHfL35UsClGXknTH79r5xbu+6J1zNHuSyA==}
+  /nodemon/2.0.14:
+    resolution: {integrity: sha512-frcpDx+PviKEQRSYzwhckuO2zoHcBYLHI754RE9z5h1RGtrngerc04mLpQQCPWBkH/2ObrX7We9YiwVSYZpFJQ==}
     engines: {node: '>=8.10.0'}
     hasBin: true
     requiresBuild: true

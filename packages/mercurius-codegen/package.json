@@ -56,7 +56,7 @@
     "graphql": "^15.6.1",
     "mercurius": "^8.6.0",
     "mercurius-codegen": "workspace:*",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.14",
     "nyc": "15.1.0",
     "open-cli": "^7.0.1",
     "prettier": "^2.4.1",
