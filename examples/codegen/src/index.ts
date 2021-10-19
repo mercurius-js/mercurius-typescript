@@ -2,7 +2,9 @@ import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import mercuriusCodegen, { gql } from 'mercurius-codegen'
 
-export const app = Fastify()
+export const app = Fastify({
+  logger: true,
+})
 
 const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
   return {
@@ -145,5 +147,3 @@ mercuriusCodegen(app, {
     },
   },
 }).catch(console.error)
-
-// app.listen(8000)
