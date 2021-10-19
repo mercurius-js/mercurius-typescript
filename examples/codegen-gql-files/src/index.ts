@@ -3,7 +3,9 @@ import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
 import { buildSchema } from 'graphql'
 
-export const app = Fastify()
+export const app = Fastify({
+  logger: true,
+})
 
 const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
   watchOptions: {

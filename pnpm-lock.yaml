@@ -65,8 +65,9 @@ importers:
       '@graphql-typed-document-node/core': ^3.1.0
       '@types/node': '>=16.10.9'
       '@types/tap': ^15.0.5
+      bob-tsm: ^0.2.2
       cross-env: ^7.0.3
-      esbuild-register: ^3.0.0
+      esbuild: ^0.13.8
       fastify: ^3.22.0
       graphql: ^15.6.1
       mercurius: ^8.6.0
@@ -74,7 +75,6 @@ importers:
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
       tap: ^15.0.10
-      tsup: ^5.4.1
       typescript: ^4.4.4
     dependencies:
       '@graphql-tools/load-files': 6.5.1_graphql@15.6.1
@@ -86,12 +86,12 @@ importers:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.6.1
       '@types/node': 16.10.9
       '@types/tap': 15.0.5
+      bob-tsm: 0.2.2_esbuild@0.13.8
       cross-env: 7.0.3
-      esbuild-register: 3.0.0_esbuild@0.13.6
+      esbuild: 0.13.8
       mercurius-integration-testing: 3.2.0_dcf7604a09f9fb4003a6b482101f6f5b
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
-      tsup: 5.4.1_typescript@4.4.4
       typescript: 4.4.4
 
   examples/manual:
