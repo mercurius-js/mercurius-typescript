@@ -7,11 +7,9 @@
   "author": "PabloSz",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsup-node --watch --onSuccess \"cross-env NODE_ENV=development node dist/index.js\" src/index.ts",
-    "prepare": "tsc",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
-    "test": "cross-env NODE_ENV=test tap --node-arg=--require=esbuild-register"
+    "dev": "cross-env NODE_ENV=development bob-tsm --cjs --watch=src src/listen.ts",
+    "start": "cross-env NODE_ENV=production bob-tsm --cjs src/listen.ts",
+    "test": "cross-env NODE_ENV=test tap --node-arg=--require=bob-tsm"
   },
   "dependencies": {
     "fastify": "^3.22.0",
@@ -19,15 +17,15 @@
     "mercurius": "^8.6.0"
   },
   "devDependencies": {
-    "@types/node": "^16.10.9",
+    "@types/node": "^16.11.1",
     "@types/tap": "^15.0.5",
+    "bob-tsm": "^0.2.2",
     "cross-env": "^7.0.3",
-    "esbuild-register": "^3.0.0",
+    "esbuild": "^0.13.8",
     "graphql-tag": "^2.12.5",
     "mercurius-integration-testing": "^3.2.0",
     "prettier": "^2.4.1",
     "tap": "^15.0.10",
-    "tsup": "^5.4.1",
     "typescript": "^4.4.4"
   }
 }

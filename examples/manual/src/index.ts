@@ -6,7 +6,9 @@ import mercurius, {
   MercuriusLoaders,
 } from 'mercurius'
 
-export const app = Fastify()
+export const app = Fastify({
+  logger: true,
+})
 
 const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
   return {
@@ -138,5 +140,3 @@ app.register(mercurius, {
   subscription: true,
   loaders,
 })
-
-// app.listen(8000)
