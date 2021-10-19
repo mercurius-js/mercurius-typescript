@@ -54,9 +54,9 @@
     "changesets-github-release": "^0.0.4",
     "concurrently": "^6.3.0",
     "cross-env": "^7.0.3",
-    "fastify": "^3.22.0",
+    "fastify": "^3.22.1",
     "graphql": "^15.6.1",
-    "mercurius": "^8.6.0",
+    "mercurius": "^8.7.0",
     "mercurius-codegen": "workspace:*",
     "nyc": "15.1.0",
     "open-cli": "^7.0.1",
@@ -71,7 +71,7 @@
     "wait-on": "^6.0.0"
   },
   "peerDependencies": {
-    "fastify": "^3.22.0",
+    "fastify": "^3.22.1",
     "graphql": "*",
     "mercurius": "^8.0.0 || ^7.0.0 || ^6.4.0",
     "prettier": "^2.4.1"
