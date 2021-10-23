@@ -3,7 +3,7 @@ import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
 import mercuriusCodegen, { gql } from 'mercurius-codegen'
 
 export const app = Fastify({
-  logger: true,
+  logger: process.env.NODE_ENV !== 'test',
 })
 
 const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {

@@ -10,8 +10,8 @@
   "author": "PabloSz",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development bob-tsm --cjs --watch=src src/listen.ts",
-    "start": "cross-env NODE_ENV=production bob-tsm --cjs src/listen.ts",
+    "dev": "bob-tsm --node-env=dev --cjs --watch=src src/listen.ts",
+    "start": "bob-tsm --node-env=prod --cjs src/listen.ts",
     "test": "cross-env NODE_ENV=test tap --node-arg=--require=bob-tsm"
   },
   "dependencies": {
@@ -25,7 +25,7 @@
     "@graphql-typed-document-node/core": "^3.1.0",
     "@types/node": "^16.11.1",
     "@types/tap": "^15.0.5",
-    "bob-tsm": "^0.3.0",
+    "bob-tsm": "^0.3.1",
     "cross-env": "^7.0.3",
     "esbuild": "^0.13.8",
     "mercurius-integration-testing": "^3.2.0",
