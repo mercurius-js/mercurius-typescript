@@ -32,7 +32,7 @@ importers:
       esbuild: ^0.13.9
       fastify: ^3.22.1
       graphql: ^15.6.1
-      mercurius: ^8.7.0
+      mercurius: ^8.8.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
@@ -41,7 +41,7 @@ importers:
     dependencies:
       fastify: 3.22.1
       graphql: 15.6.1
-      mercurius: 8.7.0
+      mercurius: 8.8.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.6.1
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 0.3.1_esbuild@0.13.9
       cross-env: 7.0.3
       esbuild: 0.13.9
-      mercurius-integration-testing: 3.2.0_ef54e61c7f6cbfd66f77fc32ad47a499
+      mercurius-integration-testing: 3.2.0_d2e8534300a2bf88cc685552e8e5c4ac
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
       typescript: 4.4.4
@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.13.9
       fastify: ^3.22.1
       graphql: ^15.6.1
-      mercurius: ^8.7.0
+      mercurius: ^8.8.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
@@ -76,7 +76,7 @@ importers:
       '@graphql-tools/load-files': 6.5.1_graphql@15.6.1
       fastify: 3.22.1
       graphql: 15.6.1
-      mercurius: 8.7.0
+      mercurius: 8.8.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.6.1
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 0.3.1_esbuild@0.13.9
       cross-env: 7.0.3
       esbuild: 0.13.9
-      mercurius-integration-testing: 3.2.0_ef54e61c7f6cbfd66f77fc32ad47a499
+      mercurius-integration-testing: 3.2.0_d2e8534300a2bf88cc685552e8e5c4ac
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
       typescript: 4.4.4
@@ -100,7 +100,7 @@ importers:
       fastify: ^3.22.1
       graphql: ^15.6.1
       graphql-tag: ^2.12.5
-      mercurius: ^8.7.0
+      mercurius: ^8.8.0
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
       tap: ^15.0.10
@@ -108,7 +108,7 @@ importers:
     dependencies:
       fastify: 3.22.1
       graphql: 15.6.1
-      mercurius: 8.7.0
+      mercurius: 8.8.0
     devDependencies:
       '@types/node': 16.11.1
       '@types/tap': 15.0.5
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.13.9
       graphql-tag: 2.12.5_graphql@15.6.1
-      mercurius-integration-testing: 3.2.0_ef54e61c7f6cbfd66f77fc32ad47a499
+      mercurius-integration-testing: 3.2.0_d2e8534300a2bf88cc685552e8e5c4ac
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
       typescript: 4.4.4
@@ -146,7 +146,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^3.22.1
       graphql: ^15.6.1
-      mercurius: ^8.7.0
+      mercurius: ^8.8.0
       mercurius-codegen: workspace:*
       mkdirp: ^1.0.4
       nyc: 15.1.0
@@ -186,7 +186,7 @@ importers:
       cross-env: 7.0.3
       fastify: 3.22.1
       graphql: 15.6.1
-      mercurius: 8.7.0
+      mercurius: 8.8.0
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.0.1
@@ -4428,7 +4428,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/3.2.0_ef54e61c7f6cbfd66f77fc32ad47a499:
+  /mercurius-integration-testing/3.2.0_d2e8534300a2bf88cc685552e8e5c4ac:
     resolution: {integrity: sha512-XGqwBuRqi0X6rfFXLNfB/uJ+08nQqeVJJtWWrdJf+UoklAOv8H27P0beldHl18xOBAcA1IUykdOpcwLGJ5Of3g==}
     peerDependencies:
       fastify: ^3.7.0
@@ -4440,15 +4440,15 @@ packages:
       fastify: 3.22.1
       get-port: 5.1.1
       graphql: 15.6.1
-      mercurius: 8.7.0
+      mercurius: 8.8.0
       ws: 7.5.5
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius/8.7.0:
-    resolution: {integrity: sha512-pfUk4oRRnxyxq270O2+ga6gkdCw6F6bAHq3NQkjey0dMkgL+zowXghKwDGYICJuQRGumLqJ7biwEwMgONJMKPQ==}
+  /mercurius/8.8.0:
+    resolution: {integrity: sha512-P69GlC+fWtREWnV6MXUYty6T7+mda/EeNVJWWBnMbFfxFWs4nQ1H/Km1IaiL8Lzzp89Upln0342UMpypQF9q7g==}
     dependencies:
       '@types/isomorphic-form-data': 2.0.0
       end-of-stream: 1.4.4
