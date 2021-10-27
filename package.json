@@ -16,7 +16,7 @@
   "scripts": {
     "ci:release": "pnpm pretty && pnpm -r publish --access public --no-git-checks",
     "ci:version": "pnpm pretty && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts && pnpm update -r mercurius-codegen",
-    "clean": "pnpm dlx rimraf \"**/{node_modules,dist,coverage,.nyc_output}\"",
+    "clean": "pnpm dlx rimraf \"**/{node_modules,dist,coverage,.nyc_output}\" pnpm-lock.yaml && pnpm i",
     "prepare": "husky install",
     "pretty": "prettier --write \"**/*.{ts,json}\"",
     "test": "pnpm test --recursive --no-bail --stream"
