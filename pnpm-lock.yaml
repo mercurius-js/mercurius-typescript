@@ -30,7 +30,7 @@ importers:
       bob-tsm: ^0.3.3
       cross-env: ^7.0.3
       esbuild: ^0.13.12
-      fastify: ^3.22.1
+      fastify: ^3.23.0
       graphql: ^15.7.2
       mercurius: ^8.8.0
       mercurius-codegen: workspace:*
@@ -39,7 +39,7 @@ importers:
       tap: ^15.0.10
       typescript: ^4.4.4
     dependencies:
-      fastify: 3.22.1
+      fastify: 3.23.0
       graphql: 15.7.2
       mercurius: 8.8.0
       mercurius-codegen: link:../../packages/mercurius-codegen
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 0.3.3_esbuild@0.13.12
       cross-env: 7.0.3
       esbuild: 0.13.12
-      mercurius-integration-testing: 3.2.0_916424827bc3f0a0900ba32be7627bfe
+      mercurius-integration-testing: 3.2.0_9e1d726a6ed0023af159ba639c5aa05d
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
       typescript: 4.4.4
@@ -64,7 +64,7 @@ importers:
       bob-tsm: ^0.3.3
       cross-env: ^7.0.3
       esbuild: ^0.13.12
-      fastify: ^3.22.1
+      fastify: ^3.23.0
       graphql: ^15.7.2
       mercurius: ^8.8.0
       mercurius-codegen: workspace:*
@@ -74,7 +74,7 @@ importers:
       typescript: ^4.4.4
     dependencies:
       '@graphql-tools/load-files': 6.5.2_graphql@15.7.2
-      fastify: 3.22.1
+      fastify: 3.23.0
       graphql: 15.7.2
       mercurius: 8.8.0
       mercurius-codegen: link:../../packages/mercurius-codegen
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 0.3.3_esbuild@0.13.12
       cross-env: 7.0.3
       esbuild: 0.13.12
-      mercurius-integration-testing: 3.2.0_916424827bc3f0a0900ba32be7627bfe
+      mercurius-integration-testing: 3.2.0_9e1d726a6ed0023af159ba639c5aa05d
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
       typescript: 4.4.4
@@ -97,7 +97,7 @@ importers:
       bob-tsm: ^0.3.3
       cross-env: ^7.0.3
       esbuild: ^0.13.12
-      fastify: ^3.22.1
+      fastify: ^3.23.0
       graphql: ^15.7.2
       graphql-tag: ^2.12.5
       mercurius: ^8.8.0
@@ -106,7 +106,7 @@ importers:
       tap: ^15.0.10
       typescript: ^4.4.4
     dependencies:
-      fastify: 3.22.1
+      fastify: 3.23.0
       graphql: 15.7.2
       mercurius: 8.8.0
     devDependencies:
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.13.12
       graphql-tag: 2.12.5_graphql@15.7.2
-      mercurius-integration-testing: 3.2.0_916424827bc3f0a0900ba32be7627bfe
+      mercurius-integration-testing: 3.2.0_9e1d726a6ed0023af159ba639c5aa05d
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
       typescript: 4.4.4
@@ -144,7 +144,7 @@ importers:
       chokidar: ^3.5.2
       concurrently: ^6.3.0
       cross-env: ^7.0.3
-      fastify: ^3.22.1
+      fastify: ^3.23.0
       graphql: ^15.7.2
       mercurius: ^8.8.0
       mercurius-codegen: workspace:*
@@ -184,7 +184,7 @@ importers:
       changesets-github-release: 0.0.4
       concurrently: 6.3.0
       cross-env: 7.0.3
-      fastify: 3.22.1
+      fastify: 3.23.0
       graphql: 15.7.2
       mercurius: 8.8.0
       mercurius-codegen: 'link:'
@@ -3071,8 +3071,8 @@ packages:
       - bufferutil
       - utf-8-validate
 
-  /fastify/3.22.1:
-    resolution: {integrity: sha512-TeA4+TzI7VuJrjTNqoxtSXwPEYfCwpT8j9Z3j9WrL8nrt+1bE9G0rP9hLJyvbg4it56p68YsHVhKOee69xyfmA==}
+  /fastify/3.23.0:
+    resolution: {integrity: sha512-uiZcwAFL+ike2vq39QGUD3y3ocyvjdSpMqwA0umQ/HX7roHOBD51NLczNTuEgS+M8Wh0KQLKzDEJoNUDqRqodA==}
     dependencies:
       '@fastify/ajv-compiler': 1.1.0
       abstract-logging: 2.0.1
@@ -4424,7 +4424,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/3.2.0_916424827bc3f0a0900ba32be7627bfe:
+  /mercurius-integration-testing/3.2.0_9e1d726a6ed0023af159ba639c5aa05d:
     resolution: {integrity: sha512-XGqwBuRqi0X6rfFXLNfB/uJ+08nQqeVJJtWWrdJf+UoklAOv8H27P0beldHl18xOBAcA1IUykdOpcwLGJ5Of3g==}
     peerDependencies:
       fastify: ^3.7.0
@@ -4433,7 +4433,7 @@ packages:
     dependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.7.2
       cookie: 0.4.1
-      fastify: 3.22.1
+      fastify: 3.23.0
       get-port: 5.1.1
       graphql: 15.7.2
       mercurius: 8.8.0
