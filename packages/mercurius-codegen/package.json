@@ -33,7 +33,7 @@
     "@graphql-codegen/core": "^2.3.0",
     "@graphql-codegen/plugin-helpers": "^2.3.1",
     "@graphql-codegen/typed-document-node": "^2.2.0",
-    "@graphql-codegen/typescript": "^2.3.0",
+    "@graphql-codegen/typescript": "^2.3.1",
     "@graphql-codegen/typescript-operations": "^2.2.0",
     "@graphql-codegen/typescript-resolvers": "^2.4.0",
     "@graphql-tools/load-files": "^6.5.2",
