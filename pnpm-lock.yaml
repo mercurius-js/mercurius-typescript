@@ -99,7 +99,7 @@ importers:
       esbuild: ^0.13.12
       fastify: ^3.23.0
       graphql: ^15.7.2
-      graphql-tag: ^2.12.5
+      graphql-tag: ^2.12.6
       mercurius: ^8.8.0
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
@@ -115,7 +115,7 @@ importers:
       bob-tsm: 0.3.3_esbuild@0.13.12
       cross-env: 7.0.3
       esbuild: 0.13.12
-      graphql-tag: 2.12.5_graphql@15.7.2
+      graphql-tag: 2.12.6_graphql@15.7.2
       mercurius-integration-testing: 3.2.0_9e1d726a6ed0023af159ba639c5aa05d
       prettier: 2.4.1
       tap: 15.0.10_typescript@4.4.4
@@ -3482,6 +3482,17 @@ packages:
     dependencies:
       graphql: 15.7.2
       tslib: 2.3.1
+    dev: false
+
+  /graphql-tag/2.12.6_graphql@15.7.2:
+    resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 15.7.2
+      tslib: 2.3.1
+    dev: true
 
   /graphql/15.7.2:
     resolution: {integrity: sha512-AnnKk7hFQFmU/2I9YSQf3xw44ctnSFCfp3zE0N6W174gqe9fWG/2rKaKxROK7CcI3XtERpjEKFqts8o319Kf7A==}
