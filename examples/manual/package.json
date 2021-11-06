@@ -22,7 +22,7 @@
     "bob-tsm": "^0.3.3",
     "cross-env": "^7.0.3",
     "esbuild": "^0.13.12",
-    "graphql-tag": "^2.12.5",
+    "graphql-tag": "^2.12.6",
     "mercurius-integration-testing": "^3.2.0",
     "prettier": "^2.4.1",
     "tap": "^15.0.10",
