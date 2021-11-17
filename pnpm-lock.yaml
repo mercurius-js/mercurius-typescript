@@ -24,7 +24,7 @@ importers:
 
   examples/codegen:
     specifiers:
-      '@graphql-typed-document-node/core': ^3.1.0
+      '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^16.11.7
       '@types/tap': ^15.0.5
       bob-tsm: ^0.3.5
@@ -44,7 +44,7 @@ importers:
       mercurius: 8.8.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
-      '@graphql-typed-document-node/core': 3.1.0_graphql@15.7.2
+      '@graphql-typed-document-node/core': 3.1.1_graphql@15.7.2
       '@types/node': 16.11.7
       '@types/tap': 15.0.5
       bob-tsm: 0.3.5_esbuild@0.13.14
@@ -58,7 +58,7 @@ importers:
   examples/codegen-gql-files:
     specifiers:
       '@graphql-tools/load-files': ^6.5.2
-      '@graphql-typed-document-node/core': ^3.1.0
+      '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^16.11.7
       '@types/tap': ^15.0.5
       bob-tsm: ^0.3.5
@@ -79,7 +79,7 @@ importers:
       mercurius: 8.8.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
-      '@graphql-typed-document-node/core': 3.1.0_graphql@15.7.2
+      '@graphql-typed-document-node/core': 3.1.1_graphql@15.7.2
       '@types/node': 16.11.7
       '@types/tap': 15.0.5
       bob-tsm: 0.3.5_esbuild@0.13.14
@@ -131,7 +131,7 @@ importers:
       '@graphql-codegen/typescript-resolvers': ^2.4.0
       '@graphql-tools/load-files': ^6.5.2
       '@graphql-tools/utils': ^8.5.3
-      '@graphql-typed-document-node/core': ^3.1.0
+      '@graphql-typed-document-node/core': ^3.1.1
       '@istanbuljs/nyc-config-typescript': ^1.0.1
       '@types/mkdirp': ^1.0.2
       '@types/node': ^16.11.7
@@ -169,7 +169,7 @@ importers:
       '@graphql-codegen/typescript-resolvers': 2.4.0_graphql@15.7.2
       '@graphql-tools/load-files': 6.5.2_graphql@15.7.2
       '@graphql-tools/utils': 8.5.3_graphql@15.7.2
-      '@graphql-typed-document-node/core': 3.1.0_graphql@15.7.2
+      '@graphql-typed-document-node/core': 3.1.1_graphql@15.7.2
       chokidar: 3.5.2
       mkdirp: 1.0.4
     devDependencies:
@@ -1094,6 +1094,14 @@ packages:
     resolution: {integrity: sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+    dependencies:
+      graphql: 15.7.2
+    dev: true
+
+  /@graphql-typed-document-node/core/3.1.1_graphql@15.7.2:
+    resolution: {integrity: sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 15.7.2
 
