@@ -6,6 +6,7 @@ import type {
 import type { MercuriusContext } from 'mercurius'
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
+export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
@@ -45,7 +46,7 @@ export type Query = {
 }
 
 export type QueryhelloArgs = {
-  greetings?: Maybe<Scalars['String']>
+  greetings?: InputMaybe<Scalars['String']>
 }
 
 export type Human = {
@@ -61,7 +62,7 @@ export type Human = {
 }
 
 export type HumanhasSonArgs = {
-  name?: Maybe<Scalars['String']>
+  name?: InputMaybe<Scalars['String']>
 }
 
 export type HumansonsArgs = {
@@ -95,7 +96,7 @@ export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => AsyncIterator<TResult> | Promise<AsyncIterator<TResult>>
+) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>
 
 export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
