@@ -1,7 +1,7 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
-import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
 import { buildSchema } from 'graphql'
+import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
+import { codegenMercurius, loadSchemaFiles } from 'mercurius-codegen'
 
 export const app = Fastify({
   logger: true,
@@ -14,7 +14,7 @@ const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
       app.graphql.replaceSchema(buildSchema(schema.join('\n')))
       app.graphql.defineResolvers(resolvers)
 
-      mercuriusCodegen(app, {
+      codegenMercurius(app, {
         targetPath: './src/graphql/generated.ts',
         operationsGlob: './src/graphql/operations/*.gql',
       }).catch(console.error)
@@ -124,7 +124,7 @@ app.register(mercurius, {
   subscription: true,
 })
 
-mercuriusCodegen(app, {
+codegenMercurius(app, {
   targetPath: './src/graphql/generated.ts',
   operationsGlob: './src/graphql/operations/*.gql',
   watchOptions: {

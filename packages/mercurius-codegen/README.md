@@ -22,7 +22,7 @@ npm install -D prettier
 ```ts
 import Fastify from 'fastify'
 import mercurius from 'mercurius'
-import mercuriusCodegen, { gql } from 'mercurius-codegen'
+import { codegenMercurius, gql } from 'mercurius-codegen'
 
 const app = Fastify()
 
@@ -42,7 +42,7 @@ app.register(mercurius, {
   },
 })
 
-mercuriusCodegen(app, {
+codegenMercurius(app, {
   targetPath: './src/graphql/generated.ts',
 }).catch(console.error)
 
@@ -98,9 +98,9 @@ export const loaders: MercuriusLoaders = {
 > You might need to install `@graphql-typed-document-node/core` manually in your project.
 
 ```ts
-import mercuriusCodegen from 'mercurius-codegen'
+import { codegenMercurius } from 'mercurius-codegen'
 
-mercuriusCodegen(app, {
+codegenMercurius(app, {
   targetPath: './src/graphql/generated.ts',
   // You can also specify an array of globs
   operationsGlob: './src/graphql/operations/*.gql',
@@ -132,7 +132,7 @@ const response = await client.query(helloDocument)
 // response is completely typed!
 ```
 
-> Keep in mind that you can always call `mercuriusCodegen` multiple times for different environments and different paths if you prefer to keep the production code as light as possible (which is generally a good practice).
+> Keep in mind that you can always call `codegenMercurius` multiple times for different environments and different paths if you prefer to keep the production code as light as possible (which is generally a good practice).
 
 ## LazyPromise
 
@@ -230,7 +230,7 @@ interface CodegenMercuriusOptions {
   outputSchema?: boolean | string
 }
 
-mercuriusCodegen(app, {
+codegenMercurius(app, {
   targetPath: './src/graphql/generated.ts',
   operationsGlob: ['./src/graphql/operations/*.gql'],
   disable: false,
@@ -306,7 +306,7 @@ export interface LoadSchemaOptions {
 import Fastify from 'fastify'
 import mercurius from 'mercurius'
 import { buildSchema } from 'graphql'
-import mercuriusCodegen, { loadSchemaFiles } from 'mercurius-codegen'
+import { codegenMercurius, loadSchemaFiles } from 'mercurius-codegen'
 
 const app = Fastify()
 
@@ -317,7 +317,7 @@ const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
       app.graphql.replaceSchema(buildSchema(schema.join('\n')))
       app.graphql.defineResolvers(resolvers)
 
-      mercuriusCodegen(app, {
+      codegenMercurius(app, {
         targetPath: './src/graphql/generated.ts',
         operationsGlob: './src/graphql/operations/*.gql',
       }).catch(console.error)

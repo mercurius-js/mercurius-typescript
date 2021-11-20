@@ -1,6 +1,6 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import mercuriusCodegen, { gql } from 'mercurius-codegen'
+import { codegenMercurius, gql } from 'mercurius-codegen'
 
 export const app = Fastify({
   logger: process.env.NODE_ENV !== 'test',
@@ -138,7 +138,7 @@ app.register(mercurius, {
   subscription: true,
 })
 
-mercuriusCodegen(app, {
+codegenMercurius(app, {
   targetPath: './src/graphql/generated.ts',
   operationsGlob: './src/graphql/operations/*.gql',
   codegenConfig: {
