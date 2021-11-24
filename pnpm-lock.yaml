@@ -32,7 +32,7 @@ importers:
       esbuild: ^0.13.15
       fastify: ^3.24.0
       graphql: ^15.7.2
-      mercurius: ^8.9.1
+      mercurius: ^8.10.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
@@ -41,7 +41,7 @@ importers:
     dependencies:
       fastify: 3.24.0
       graphql: 15.7.2
-      mercurius: 8.9.1
+      mercurius: 8.10.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@15.7.2
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 0.3.5_esbuild@0.13.15
       cross-env: 7.0.3
       esbuild: 0.13.15
-      mercurius-integration-testing: 3.2.0_65f1cedc181e7028834d30a8b6437fb3
+      mercurius-integration-testing: 3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8
       prettier: 2.4.1
       tap: 15.1.2_typescript@4.5.2
       typescript: 4.5.2
@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.13.15
       fastify: ^3.24.0
       graphql: ^15.7.2
-      mercurius: ^8.9.1
+      mercurius: ^8.10.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
@@ -76,7 +76,7 @@ importers:
       '@graphql-tools/load-files': 6.5.2_graphql@15.7.2
       fastify: 3.24.0
       graphql: 15.7.2
-      mercurius: 8.9.1
+      mercurius: 8.10.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@15.7.2
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 0.3.5_esbuild@0.13.15
       cross-env: 7.0.3
       esbuild: 0.13.15
-      mercurius-integration-testing: 3.2.0_65f1cedc181e7028834d30a8b6437fb3
+      mercurius-integration-testing: 3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8
       prettier: 2.4.1
       tap: 15.1.2_typescript@4.5.2
       typescript: 4.5.2
@@ -100,7 +100,7 @@ importers:
       fastify: ^3.24.0
       graphql: ^15.7.2
       graphql-tag: ^2.12.6
-      mercurius: ^8.9.1
+      mercurius: ^8.10.0
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.4.1
       tap: ^15.1.2
@@ -108,7 +108,7 @@ importers:
     dependencies:
       fastify: 3.24.0
       graphql: 15.7.2
-      mercurius: 8.9.1
+      mercurius: 8.10.0
     devDependencies:
       '@types/node': 16.11.10
       '@types/tap': 15.0.5
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.13.15
       graphql-tag: 2.12.6_graphql@15.7.2
-      mercurius-integration-testing: 3.2.0_65f1cedc181e7028834d30a8b6437fb3
+      mercurius-integration-testing: 3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8
       prettier: 2.4.1
       tap: 15.1.2_typescript@4.5.2
       typescript: 4.5.2
@@ -146,7 +146,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^3.24.0
       graphql: ^15.7.2
-      mercurius: ^8.9.1
+      mercurius: ^8.10.0
       mercurius-codegen: workspace:*
       mkdirp: ^1.0.4
       nyc: 15.1.0
@@ -186,7 +186,7 @@ importers:
       cross-env: 7.0.3
       fastify: 3.24.0
       graphql: 15.7.2
-      mercurius: 8.9.1
+      mercurius: 8.10.0
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.0.1
@@ -2605,6 +2605,7 @@ packages:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
       once: 1.4.0
+    dev: true
 
   /enquirer/2.3.6:
     resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
@@ -4349,7 +4350,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/3.2.0_65f1cedc181e7028834d30a8b6437fb3:
+  /mercurius-integration-testing/3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8:
     resolution: {integrity: sha512-XGqwBuRqi0X6rfFXLNfB/uJ+08nQqeVJJtWWrdJf+UoklAOv8H27P0beldHl18xOBAcA1IUykdOpcwLGJ5Of3g==}
     peerDependencies:
       fastify: ^3.7.0
@@ -4361,18 +4362,17 @@ packages:
       fastify: 3.24.0
       get-port: 5.1.1
       graphql: 15.7.2
-      mercurius: 8.9.1
+      mercurius: 8.10.0
       ws: 7.5.5
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius/8.9.1:
-    resolution: {integrity: sha512-hiq09Iu1Il+vLQfn4f7ZB1miM4Gc3ixYVBr7OMruSehJ+pqlLZjZ/OFvVQ/XtSdfEcsFLq3Z47X9Hv23Ty9Nsw==}
+  /mercurius/8.10.0:
+    resolution: {integrity: sha512-qnbAyO0vJphrpcCmf5pIqt77eeNtvaLRXTMbnicP9YgIZM+HYoX9eYzru7DxjB4LC40VxyKJl7k8Eby/RXtrFA==}
     dependencies:
       '@types/isomorphic-form-data': 2.0.0
-      end-of-stream: 1.4.4
       events.on: 1.0.1
       fastify-error: 0.3.1
       fastify-plugin: 3.0.0
