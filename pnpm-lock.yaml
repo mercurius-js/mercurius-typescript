@@ -36,7 +36,7 @@ importers:
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.5.0
-      tap: ^15.1.4
+      tap: ^15.1.5
       typescript: ^4.5.2
     dependencies:
       fastify: 3.24.0
@@ -52,7 +52,7 @@ importers:
       esbuild: 0.13.15
       mercurius-integration-testing: 3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8
       prettier: 2.5.0
-      tap: 15.1.4_typescript@4.5.2
+      tap: 15.1.5_typescript@4.5.2
       typescript: 4.5.2
 
   examples/codegen-gql-files:
@@ -70,7 +70,7 @@ importers:
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.5.0
-      tap: ^15.1.4
+      tap: ^15.1.5
       typescript: ^4.5.2
     dependencies:
       '@graphql-tools/load-files': 6.5.2_graphql@15.7.2
@@ -87,7 +87,7 @@ importers:
       esbuild: 0.13.15
       mercurius-integration-testing: 3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8
       prettier: 2.5.0
-      tap: 15.1.4_typescript@4.5.2
+      tap: 15.1.5_typescript@4.5.2
       typescript: 4.5.2
 
   examples/manual:
@@ -103,7 +103,7 @@ importers:
       mercurius: ^8.10.0
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.5.0
-      tap: ^15.1.4
+      tap: ^15.1.5
       typescript: ^4.5.2
     dependencies:
       fastify: 3.24.0
@@ -118,7 +118,7 @@ importers:
       graphql-tag: 2.12.6_graphql@15.7.2
       mercurius-integration-testing: 3.2.0_e9d689f0fa60f9a04e4fc3d7dd02b4e8
       prettier: 2.5.0
-      tap: 15.1.4_typescript@4.5.2
+      tap: 15.1.5_typescript@4.5.2
       typescript: 4.5.2
 
   packages/mercurius-codegen:
@@ -5965,8 +5965,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /tap/15.1.4_typescript@4.5.2:
-    resolution: {integrity: sha512-zxN7Wp9/CAxRpiELCwUeOcH5ePXCvZ+FW1uhPDMg6CStvjNh+R/PnNykdRXnfayuvAH3dlRfP041rgpAeSL8/Q==}
+  /tap/15.1.5_typescript@4.5.2:
+    resolution: {integrity: sha512-ha9ify0cagIOENV5D+T8ys+FFOWqPaWAKk66hjtUWjywXdGmnL8LRxloZa8sHiaB+Az1GYx4ufEaflOpedSCbQ==}
     engines: {node: '>=10'}
     hasBin: true
     peerDependencies:
