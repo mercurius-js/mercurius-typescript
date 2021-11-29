@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@graphql-tools/load-files": "^6.5.2",
-    "fastify": "^3.24.0",
+    "fastify": "^3.24.1",
     "graphql": "^15.7.2",
     "mercurius": "^8.10.0",
     "mercurius-codegen": "workspace:*"
