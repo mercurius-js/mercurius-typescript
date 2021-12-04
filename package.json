@@ -32,7 +32,7 @@
     "changesets-github-release": "^0.0.4",
     "esbuild": "^0.14.2",
     "husky": "^7.0.4",
-    "prettier": "^2.5.0",
+    "prettier": "^2.5.1",
     "pretty-quick": "^3.1.2",
     "rimraf": "^3.0.2"
   }
