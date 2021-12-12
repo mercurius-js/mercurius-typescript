@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/node": "^16.11.12",
     "@types/tap": "^15.0.5",
-    "bob-tsm": "^0.3.6",
+    "bob-tsm": "^0.3.7",
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.2",
     "graphql-tag": "^2.12.6",
