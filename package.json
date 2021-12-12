@@ -21,11 +21,6 @@
     "pretty": "prettier --write \"**/*.{ts,json}\"",
     "test": "pnpm test --recursive --no-bail --stream"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "devDependencies": {
     "@changesets/cli": "^2.18.1",
     "@types/node": "^16.11.12",
