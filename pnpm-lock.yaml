@@ -142,7 +142,7 @@ importers:
       bob-watch: ^0.1.1
       changesets-github-release: ^0.0.4
       chokidar: ^3.5.2
-      concurrently: ^6.4.0
+      concurrently: ^6.5.0
       cross-env: ^7.0.3
       fastify: ^3.25.0
       graphql: ^15.7.2
@@ -182,7 +182,7 @@ importers:
       ava: 3.15.0
       bob-watch: 0.1.1
       changesets-github-release: 0.0.4
-      concurrently: 6.4.0
+      concurrently: 6.5.0
       cross-env: 7.0.3
       fastify: 3.25.0
       graphql: 15.8.0
@@ -2244,8 +2244,8 @@ packages:
       well-known-symbols: 2.0.0
     dev: true
 
-  /concurrently/6.4.0:
-    resolution: {integrity: sha512-HZ3D0RTQMH3oS4gvtYj1P+NBc6PzE2McEra6yEFcQKrUQ9HvtTGU4Dbne083F034p+LRb7kWU0tPRNvSGs1UCQ==}
+  /concurrently/6.5.0:
+    resolution: {integrity: sha512-BjC0KYxXtO6EiWa46gfWYzcLULPBCb+5+VZFtzCemR/co0QSHU4mysEvmT6cnedPpQ9dtJzb+2G694o3V7TgLg==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     dependencies:
