@@ -57,7 +57,7 @@ importers:
 
   examples/codegen-gql-files:
     specifiers:
-      '@graphql-tools/load-files': ^6.5.2
+      '@graphql-tools/load-files': ^6.5.3
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^16.11.14
       '@types/tap': ^15.0.5
@@ -73,7 +73,7 @@ importers:
       tap: ^15.1.5
       typescript: ^4.5.4
     dependencies:
-      '@graphql-tools/load-files': 6.5.2_graphql@15.8.0
+      '@graphql-tools/load-files': 6.5.3_graphql@15.8.0
       fastify: 3.25.0
       graphql: 15.8.0
       mercurius: 8.12.0
@@ -129,7 +129,7 @@ importers:
       '@graphql-codegen/typescript': ^2.4.1
       '@graphql-codegen/typescript-operations': ^2.2.1
       '@graphql-codegen/typescript-resolvers': ^2.4.2
-      '@graphql-tools/load-files': ^6.5.2
+      '@graphql-tools/load-files': ^6.5.3
       '@graphql-tools/utils': ^8.5.5
       '@graphql-typed-document-node/core': ^3.1.1
       '@istanbuljs/nyc-config-typescript': ^1.0.2
@@ -167,7 +167,7 @@ importers:
       '@graphql-codegen/typescript': 2.4.1_graphql@15.8.0
       '@graphql-codegen/typescript-operations': 2.2.1_graphql@15.8.0
       '@graphql-codegen/typescript-resolvers': 2.4.2_graphql@15.8.0
-      '@graphql-tools/load-files': 6.5.2_graphql@15.8.0
+      '@graphql-tools/load-files': 6.5.3_graphql@15.8.0
       '@graphql-tools/utils': 8.5.5_graphql@15.8.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@15.8.0
       chokidar: 3.5.2
@@ -1034,8 +1034,8 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-tools/load-files/6.5.2_graphql@15.8.0:
-    resolution: {integrity: sha512-ZU/v0HA7L3jCgizK5r3JHTg4ZQg+b+t3lSakU1cYT78kHT98milhlU+YF2giS7XP9KcS6jGTAalQbbX2yQA1sg==}
+  /@graphql-tools/load-files/6.5.3_graphql@15.8.0:
+    resolution: {integrity: sha512-hu6hw2fj3ltno7ezbyAQc5VdLCymgx0XIwvk0l9sWAlV2xnaNcX7p/z1qm6U/db2MiCumRBBIm/QuR7Jn71qZg==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
