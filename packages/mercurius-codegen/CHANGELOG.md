@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 3.3.0
+
+### Minor Changes
+
+- 43701ff: Support mercurius@^9.0.0 & graphql-js v16
+
 ## 3.2.0
 
 ### Minor Changes
