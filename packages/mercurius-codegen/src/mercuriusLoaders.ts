@@ -1,12 +1,5 @@
 import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
-
-import type {
-  GraphQLField,
-  GraphQLNullableType,
-  GraphQLOutputType,
-} from 'graphql'
-
-export type {} from '@graphql-codegen/plugin-helpers'
+import { GraphQLField, GraphQLType } from 'graphql'
 
 export interface MercuriusLoadersPluginConfig {
   namespacedImportName?: string
@@ -18,9 +11,10 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
     async plugin(schema, _documents, config) {
       const {
         GraphQLList,
-        GraphQLNonNull,
         GraphQLObjectType,
         GraphQLScalarType,
+        isNonNullType,
+        isListType,
       } = await import('graphql')
 
       const namespacedImportPrefix = config.namespacedImportName
@@ -54,7 +48,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
       const loaders: Record<string, Record<string, string>> = {}
 
       function fieldToType(
-        field: GraphQLField<unknown, unknown> | GraphQLOutputType,
+        field: GraphQLField<unknown, unknown> | GraphQLType,
         typeAcumStart: string = '',
         typeAcumEnd: string = ''
       ): string {
@@ -62,7 +56,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
         let isArray = false
         let nullableItems = true
 
-        let fieldType: GraphQLNullableType
+        let fieldType: GraphQLType
 
         if ('args' in field) {
           fieldType = field.type
@@ -70,15 +64,15 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
           fieldType = field
         }
 
-        if (fieldType instanceof GraphQLNonNull) {
+        if (isNonNullType(fieldType)) {
           isNullable = false
           fieldType = fieldType.ofType
         }
 
-        if (fieldType instanceof GraphQLList) {
+        if (isListType(fieldType)) {
           fieldType = fieldType.ofType
           isArray = true
-          if (fieldType instanceof GraphQLNonNull) {
+          if (isNonNullType(fieldType)) {
             nullableItems = false
             fieldType = fieldType.ofType
           }
@@ -98,7 +92,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
           }
         }
 
-        if (fieldType instanceof GraphQLList) {
+        if (isListType(fieldType)) {
           return fieldToType(fieldType.ofType, typeAcumStart, typeAcumEnd)
         } else if (fieldType instanceof GraphQLScalarType) {
           return typeAcumStart + `Scalars["${fieldType.name}"]` + typeAcumEnd

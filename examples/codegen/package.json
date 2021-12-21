@@ -16,13 +16,13 @@
   },
   "dependencies": {
     "fastify": "^3.25.0",
-    "graphql": "^15.7.2",
+    "graphql": "^16.2.0",
     "mercurius": "^9.0.0",
     "mercurius-codegen": "workspace:*"
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.1.1",
-    "@types/node": "^16.11.14",
+    "@types/node": "^16.11.15",
     "@types/tap": "^15.0.5",
     "bob-tsm": "^0.3.9",
     "cross-env": "^7.0.3",

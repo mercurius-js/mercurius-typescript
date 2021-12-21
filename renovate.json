@@ -4,5 +4,5 @@
   "rangeStrategy": "bump",
   "ignorePaths": ["**/node_modules/**"],
   "automerge": true,
-  "ignoreDeps": ["graphql"]
+  "ignoreDeps": []
 }
