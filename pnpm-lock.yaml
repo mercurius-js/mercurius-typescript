@@ -36,7 +36,7 @@ importers:
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.5.1
-      tap: ^15.1.5
+      tap: ^15.1.6
       typescript: ^4.5.4
     dependencies:
       fastify: 3.25.3
@@ -52,7 +52,7 @@ importers:
       esbuild: 0.14.10
       mercurius-integration-testing: 3.2.0_f7bc2c79fb6e4ce92ed1defbe7c0a610
       prettier: 2.5.1
-      tap: 15.1.5_typescript@4.5.4
+      tap: 15.1.6_typescript@4.5.4
       typescript: 4.5.4
 
   examples/codegen-gql-files:
@@ -70,7 +70,7 @@ importers:
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.5.1
-      tap: ^15.1.5
+      tap: ^15.1.6
       typescript: ^4.5.4
     dependencies:
       '@graphql-tools/load-files': 6.5.3_graphql@16.2.0
@@ -87,7 +87,7 @@ importers:
       esbuild: 0.14.10
       mercurius-integration-testing: 3.2.0_f7bc2c79fb6e4ce92ed1defbe7c0a610
       prettier: 2.5.1
-      tap: 15.1.5_typescript@4.5.4
+      tap: 15.1.6_typescript@4.5.4
       typescript: 4.5.4
 
   examples/manual:
@@ -103,7 +103,7 @@ importers:
       mercurius: ^9.1.0
       mercurius-integration-testing: ^3.2.0
       prettier: ^2.5.1
-      tap: ^15.1.5
+      tap: ^15.1.6
       typescript: ^4.5.4
     dependencies:
       fastify: 3.25.3
@@ -118,7 +118,7 @@ importers:
       graphql-tag: 2.12.6_graphql@16.2.0
       mercurius-integration-testing: 3.2.0_f7bc2c79fb6e4ce92ed1defbe7c0a610
       prettier: 2.5.1
-      tap: 15.1.5_typescript@4.5.4
+      tap: 15.1.6_typescript@4.5.4
       typescript: 4.5.4
 
   packages/mercurius-codegen:
@@ -4147,8 +4147,8 @@ packages:
     hasBin: true
     dev: true
 
-  /libtap/1.1.3:
-    resolution: {integrity: sha512-BfbhcSlcFngZWYvDt+gs4m1BkjP0LaFEg6+4FBAXD0E8Br95wpXCCvS5JZHW1a5QPWMrFD4LhsqBpTPRB3Em8g==}
+  /libtap/1.1.4:
+    resolution: {integrity: sha512-jM+QyAeRdVs1bJrNpjlu+l8gRdDkAehqls31AwSnqXghVLUP6nbYeU2Xfs2svYS7ZdksvnHvrxCKRBFEz/BCjA==}
     engines: {node: '>=10'}
     dependencies:
       async-hook-domain: 2.0.4
@@ -6001,8 +6001,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /tap/15.1.5_typescript@4.5.4:
-    resolution: {integrity: sha512-ha9ify0cagIOENV5D+T8ys+FFOWqPaWAKk66hjtUWjywXdGmnL8LRxloZa8sHiaB+Az1GYx4ufEaflOpedSCbQ==}
+  /tap/15.1.6_typescript@4.5.4:
+    resolution: {integrity: sha512-TN7xH6Q2tUPTd6qwmkhuFJcx1vUR8e4dDUpBKc61G0krOzne7Ia6aKIFb8O/0kVazachSSuVME1V8nQ2xwWL8w==}
     engines: {node: '>=10'}
     hasBin: true
     peerDependencies:
@@ -6026,7 +6026,7 @@ packages:
       isexe: 2.0.0
       istanbul-lib-processinfo: 2.0.2
       jackspeak: 1.4.1
-      libtap: 1.1.3
+      libtap: 1.1.4
       minipass: 3.1.6
       mkdirp: 1.0.4
       nyc: 15.1.0
