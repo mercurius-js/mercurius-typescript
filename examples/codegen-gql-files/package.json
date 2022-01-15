@@ -25,7 +25,7 @@
     "@graphql-typed-document-node/core": "^3.1.1",
     "@types/node": "^16.11.19",
     "@types/tap": "^15.0.5",
-    "bob-tsm": "^0.4.4",
+    "bob-tsm": "^0.4.5",
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.11",
     "mercurius-integration-testing": "^3.2.0",
