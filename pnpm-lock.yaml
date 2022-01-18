@@ -141,7 +141,7 @@ importers:
       ava: ^3.15.0
       bob-watch: ^0.1.1
       changesets-github-release: ^0.0.4
-      chokidar: ^3.5.2
+      chokidar: ^3.5.3
       concurrently: ^7.0.0
       cross-env: ^7.0.3
       fastify: ^3.25.3
@@ -170,7 +170,7 @@ importers:
       '@graphql-tools/load-files': 6.5.3_graphql@16.2.0
       '@graphql-tools/utils': 8.6.1_graphql@16.2.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.2.0
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       mkdirp: 1.0.4
     devDependencies:
       '@istanbuljs/nyc-config-typescript': 1.0.2_nyc@15.1.0
@@ -1636,7 +1636,7 @@ packages:
       arrify: 2.0.1
       callsites: 3.1.0
       chalk: 4.1.2
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       chunkd: 2.0.1
       ci-info: 2.0.0
       ci-parallel-vars: 1.0.1
@@ -2077,6 +2077,21 @@ packages:
 
   /chokidar/3.5.2:
     resolution: {integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==}
+    engines: {node: '>= 8.10.0'}
+    dependencies:
+      anymatch: 3.1.2
+      braces: 3.0.2
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /chokidar/3.5.3:
+    resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
