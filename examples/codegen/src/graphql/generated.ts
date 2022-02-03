@@ -20,9 +20,9 @@ export type ResolverFn<TResult, TParent, TContext, TArgs> = (
 ) =>
   | Promise<import('mercurius-codegen').DeepPartial<TResult>>
   | import('mercurius-codegen').DeepPartial<TResult>
-export type RequireFields<T, K extends keyof T> = {
-  [X in Exclude<keyof T, K>]?: T[X]
-} & { [P in K]-?: NonNullable<T[P]> }
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
+  [P in K]-?: NonNullable<T[P]>
+}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -335,7 +335,7 @@ export type dogsQuery = {
   dogs: Array<{
     __typename?: 'Dog'
     name: string
-    owner?: { __typename?: 'Human'; name: string } | null | undefined
+    owner?: { __typename?: 'Human'; name: string } | null
   }>
 }
 

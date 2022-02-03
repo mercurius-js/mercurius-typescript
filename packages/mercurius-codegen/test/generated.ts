@@ -24,9 +24,9 @@ export type ResolverFn<TResult, TParent, TContext, TArgs> = (
 ) =>
   | Promise<import('mercurius-codegen').DeepPartial<TResult>>
   | import('mercurius-codegen').DeepPartial<TResult>
-export type RequireFields<T, K extends keyof T> = {
-  [X in Exclude<keyof T, K>]?: T[X]
-} & { [P in K]-?: NonNullable<T[P]> }
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
+  [P in K]-?: NonNullable<T[P]>
+}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -215,7 +215,7 @@ export type QueryResolvers<
     ResolversTypes['String'],
     ParentType,
     ContextType,
-    RequireFields<QueryhelloArgs, never>
+    Partial<QueryhelloArgs>
   >
   aHuman?: Resolver<ResolversTypes['Human'], ParentType, ContextType>
   getNArray?: Resolver<Maybe<ResolversTypes['NArray']>, ParentType, ContextType>
@@ -231,7 +231,7 @@ export type HumanResolvers<
     Maybe<ResolversTypes['Boolean']>,
     ParentType,
     ContextType,
-    RequireFields<HumanhasSonArgs, never>
+    Partial<HumanhasSonArgs>
   >
   sons?: Resolver<
     Array<Maybe<ResolversTypes['Human']>>,
