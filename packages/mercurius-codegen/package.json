@@ -56,7 +56,7 @@
     "cross-env": "^7.0.3",
     "fastify": "^3.27.1",
     "graphql": "^16.3.0",
-    "mercurius": "^9.1.0",
+    "mercurius": "^9.2.0",
     "mercurius-codegen": "workspace:*",
     "nyc": "15.1.0",
     "open-cli": "^7.0.1",
