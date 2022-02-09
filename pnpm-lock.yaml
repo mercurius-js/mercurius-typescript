@@ -127,7 +127,7 @@ importers:
       '@graphql-codegen/plugin-helpers': ^2.4.0
       '@graphql-codegen/typed-document-node': ^2.2.3
       '@graphql-codegen/typescript': ^2.4.3
-      '@graphql-codegen/typescript-operations': ^2.2.4
+      '@graphql-codegen/typescript-operations': ^2.3.0
       '@graphql-codegen/typescript-resolvers': ^2.5.0
       '@graphql-tools/load-files': ^6.5.3
       '@graphql-tools/utils': ^8.6.1
@@ -166,7 +166,7 @@ importers:
       '@graphql-codegen/plugin-helpers': 2.4.0_graphql@16.3.0
       '@graphql-codegen/typed-document-node': 2.2.3_graphql@16.3.0
       '@graphql-codegen/typescript': 2.4.3_graphql@16.3.0
-      '@graphql-codegen/typescript-operations': 2.2.4_graphql@16.3.0
+      '@graphql-codegen/typescript-operations': 2.3.0_graphql@16.3.0
       '@graphql-codegen/typescript-resolvers': 2.5.0_graphql@16.3.0
       '@graphql-tools/load-files': 6.5.3_graphql@16.3.0
       '@graphql-tools/utils': 8.6.1_graphql@16.3.0
@@ -989,8 +989,8 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-codegen/typescript-operations/2.2.4_graphql@16.3.0:
-    resolution: {integrity: sha512-PAunOSdl4avsaGLTBxZkxOBQNfp9bmobBOX5p6q99NMYwoXsmtyu0mD8jIbzM+LMbxrskNxKJ1sywZ11aYGCMA==}
+  /@graphql-codegen/typescript-operations/2.3.0_graphql@16.3.0:
+    resolution: {integrity: sha512-CIiNSNWKs3PT6UNC8aVvUXXcb6fa5u9NhHW6Qmfx4fXse9JKn6zwNdJio9cU/HfjwnWDCx1yWO+ngMEg3Lec4A==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
