@@ -30,8 +30,8 @@
     "watch": "concurrently -r pnpm:test:watch \"wait-on coverage && serve coverage/lcov-report\" \"wait-on -s 1 tcp:5000 && open-cli http://localhost:5000\""
   },
   "dependencies": {
-    "@graphql-codegen/core": "^2.5.0",
-    "@graphql-codegen/plugin-helpers": "^2.4.0",
+    "@graphql-codegen/core": "^2.5.1",
+    "@graphql-codegen/plugin-helpers": "^2.4.1",
     "@graphql-codegen/typed-document-node": "^2.2.3",
     "@graphql-codegen/typescript": "^2.4.3",
     "@graphql-codegen/typescript-operations": "^2.3.0",
