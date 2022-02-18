@@ -28,7 +28,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
       const subscriptionType = schema.getSubscriptionType()
 
       let code = `
-    type Loader<TReturn, TObj, TParams, TContext> = (
+    export type Loader<TReturn, TObj, TParams, TContext> = (
         queries: Array<{
           obj: TObj;
           params: TParams;
@@ -37,7 +37,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
           reply: import("fastify").FastifyReply;
         }
       ) => Promise<Array<import("mercurius-codegen").DeepPartial<TReturn>>>;
-    type LoaderResolver<TReturn, TObj, TParams, TContext> = 
+    export type LoaderResolver<TReturn, TObj, TParams, TContext> =
     Loader<TReturn, TObj, TParams, TContext> | {
         loader: Loader<TReturn, TObj, TParams, TContext>;
         opts?:{
