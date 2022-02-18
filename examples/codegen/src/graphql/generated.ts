@@ -277,7 +277,7 @@ export type Resolvers<ContextType = MercuriusContext> = {
   Subscription?: SubscriptionResolvers<ContextType>
 }
 
-type Loader<TReturn, TObj, TParams, TContext> = (
+export type Loader<TReturn, TObj, TParams, TContext> = (
   queries: Array<{
     obj: TObj
     params: TParams
@@ -286,7 +286,7 @@ type Loader<TReturn, TObj, TParams, TContext> = (
     reply: import('fastify').FastifyReply
   }
 ) => Promise<Array<import('mercurius-codegen').DeepPartial<TReturn>>>
-type LoaderResolver<TReturn, TObj, TParams, TContext> =
+export type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
   | {
       loader: Loader<TReturn, TObj, TParams, TContext>
