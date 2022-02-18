@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 3.3.1
+
+### Patch Changes
+
+- 82fa1ad: Export custom Loader types from generated TS #180 (thanks to @luke88jones)
+
 ## 3.3.0
 
 ### Minor Changes
