@@ -157,7 +157,7 @@ importers:
       rimraf: ^3.0.2
       serve: ^13.0.2
       tmp-promise: ^3.0.3
-      ts-node: ^10.6.0
+      ts-node: ^10.7.0
       typescript: ^4.6.2
       wait-for-expect: ^3.0.2
       wait-on: ^6.0.1
@@ -197,7 +197,7 @@ importers:
       rimraf: 3.0.2
       serve: 13.0.2
       tmp-promise: 3.0.3
-      ts-node: 10.6.0_26fbf5a52c80d5c03b8156a027d52902
+      ts-node: 10.7.0_26fbf5a52c80d5c03b8156a027d52902
       typescript: 4.6.2
       wait-for-expect: 3.0.2
       wait-on: 6.0.1
@@ -5616,8 +5616,8 @@ packages:
     resolution: {integrity: sha1-N21NKdlR1jaKb3oK6FwvTV4GWPM=}
     dev: true
 
-  /ts-node/10.6.0_26fbf5a52c80d5c03b8156a027d52902:
-    resolution: {integrity: sha512-CJen6+dfOXolxudBQXnVjRVvYTmTWbyz7cn+xq2XTsvnaXbHqr4gXSCNbS2Jj8yTZMuGwUoBESLaOkLascVVvg==}
+  /ts-node/10.7.0_26fbf5a52c80d5c03b8156a027d52902:
+    resolution: {integrity: sha512-TbIGS4xgJoX2i3do417KSaep1uRAW/Lu+WAL2doDHC0D6ummjirVOXU5/7aiZotbQ5p1Zp9tP7U6cYhA0O7M8A==}
     hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
