@@ -32,7 +32,7 @@ importers:
       esbuild: ^0.14.25
       fastify: ^3.27.4
       graphql: ^16.3.0
-      mercurius: ^9.3.3
+      mercurius: ^9.3.4
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^4.0.0
       prettier: ^2.5.1
@@ -41,7 +41,7 @@ importers:
     dependencies:
       fastify: 3.27.4
       graphql: 16.3.0
-      mercurius: 9.3.3
+      mercurius: 9.3.4
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.3.0
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 0.4.6_esbuild@0.14.25+typescript@4.6.2
       cross-env: 7.0.3
       esbuild: 0.14.25
-      mercurius-integration-testing: 4.0.0_8b7e493cdf550f87d8e25c6e0505841f
+      mercurius-integration-testing: 4.0.0_e228ae61d68cfd271c19f0cf378911d7
       prettier: 2.5.1
       tap: 16.0.0_typescript@4.6.2
       typescript: 4.6.2
@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.14.25
       fastify: ^3.27.4
       graphql: ^16.3.0
-      mercurius: ^9.3.3
+      mercurius: ^9.3.4
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^4.0.0
       prettier: ^2.5.1
@@ -76,7 +76,7 @@ importers:
       '@graphql-tools/load-files': 6.5.3_graphql@16.3.0
       fastify: 3.27.4
       graphql: 16.3.0
-      mercurius: 9.3.3
+      mercurius: 9.3.4
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.3.0
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 0.4.6_esbuild@0.14.25+typescript@4.6.2
       cross-env: 7.0.3
       esbuild: 0.14.25
-      mercurius-integration-testing: 4.0.0_8b7e493cdf550f87d8e25c6e0505841f
+      mercurius-integration-testing: 4.0.0_e228ae61d68cfd271c19f0cf378911d7
       prettier: 2.5.1
       tap: 16.0.0_typescript@4.6.2
       typescript: 4.6.2
@@ -100,7 +100,7 @@ importers:
       fastify: ^3.27.4
       graphql: ^16.3.0
       graphql-tag: ^2.12.6
-      mercurius: ^9.3.3
+      mercurius: ^9.3.4
       mercurius-integration-testing: ^4.0.0
       prettier: ^2.5.1
       tap: ^16.0.0
@@ -108,7 +108,7 @@ importers:
     dependencies:
       fastify: 3.27.4
       graphql: 16.3.0
-      mercurius: 9.3.3
+      mercurius: 9.3.4
     devDependencies:
       '@types/node': 17.0.14
       '@types/tap': 15.0.6
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.14.25
       graphql-tag: 2.12.6_graphql@16.3.0
-      mercurius-integration-testing: 4.0.0_8b7e493cdf550f87d8e25c6e0505841f
+      mercurius-integration-testing: 4.0.0_e228ae61d68cfd271c19f0cf378911d7
       prettier: 2.5.1
       tap: 16.0.0_typescript@4.6.2
       typescript: 4.6.2
@@ -147,7 +147,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^3.27.4
       graphql: ^16.3.0
-      mercurius: ^9.3.3
+      mercurius: ^9.3.4
       mercurius-codegen: workspace:*
       mkdirp: ^1.0.4
       nyc: 15.1.0
@@ -188,7 +188,7 @@ importers:
       cross-env: 7.0.3
       fastify: 3.27.4
       graphql: 16.3.0
-      mercurius: 9.3.3
+      mercurius: 9.3.4
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.0.1
@@ -3951,7 +3951,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/4.0.0_8b7e493cdf550f87d8e25c6e0505841f:
+  /mercurius-integration-testing/4.0.0_e228ae61d68cfd271c19f0cf378911d7:
     resolution: {integrity: sha512-iYUQZN2K12Rf6Qfk/iMO2YugTEnBmrf9H2aiX21HPpsd9NWNvK3o5jLiWsAp/1+rFIX73tknX+TuRMdO1texyg==}
     peerDependencies:
       fastify: ^3.7.0
@@ -3962,15 +3962,15 @@ packages:
       cookie: 0.4.2
       fastify: 3.27.4
       graphql: 16.3.0
-      mercurius: 9.3.3
+      mercurius: 9.3.4
       ws: 8.4.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius/9.3.3:
-    resolution: {integrity: sha512-C6OFyu40MeEYrVCZItCliyWO4E4Xplprd0nv8jUTNPDozLKWQUHueXECEvhwH8XFYw0axdtxKAJVDaKkPZTOGg==}
+  /mercurius/9.3.4:
+    resolution: {integrity: sha512-vymE7a8j8KJzQAefA0HnUBoGxoCDav01EA6GAd+QoPo/cvhswatHgVOYc3yOF5QK7RIOa17cC0l0ED94xjYNCA==}
     dependencies:
       '@types/isomorphic-form-data': 2.0.0
       events.on: 1.0.1
