@@ -128,7 +128,7 @@ importers:
       '@graphql-codegen/typed-document-node': ^2.2.7
       '@graphql-codegen/typescript': ^2.4.7
       '@graphql-codegen/typescript-operations': ^2.3.4
-      '@graphql-codegen/typescript-resolvers': ^2.5.4
+      '@graphql-codegen/typescript-resolvers': ^2.6.0
       '@graphql-tools/load-files': ^6.5.3
       '@graphql-tools/utils': ^8.6.3
       '@graphql-typed-document-node/core': ^3.1.1
@@ -167,7 +167,7 @@ importers:
       '@graphql-codegen/typed-document-node': 2.2.7_graphql@16.3.0
       '@graphql-codegen/typescript': 2.4.7_graphql@16.3.0
       '@graphql-codegen/typescript-operations': 2.3.4_graphql@16.3.0
-      '@graphql-codegen/typescript-resolvers': 2.5.4_graphql@16.3.0
+      '@graphql-codegen/typescript-resolvers': 2.6.0_graphql@16.3.0
       '@graphql-tools/load-files': 6.5.3_graphql@16.3.0
       '@graphql-tools/utils': 8.6.3_graphql@16.3.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.3.0
@@ -1012,8 +1012,8 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-codegen/typescript-resolvers/2.5.4_graphql@16.3.0:
-    resolution: {integrity: sha512-d63v4oy3sWdZHD2NYoA0raozSFF8r6SjGomL1V9vEWPtFAAFv2yu3Jar+CIfzKYZweMq29+IZ5BZakKKJHxvwg==}
+  /@graphql-codegen/typescript-resolvers/2.6.0_graphql@16.3.0:
+    resolution: {integrity: sha512-VVTgOetqK1zg0m5TpLQGrn2OOmAec1kYghfOVuTaxeyBWjaYnxEv3VWfVdp4Gbv85TKBftIbYPi5V82+Cgq5+A==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
