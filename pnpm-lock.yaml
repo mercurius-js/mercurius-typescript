@@ -36,7 +36,7 @@ importers:
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^4.0.0
       prettier: ^2.6.0
-      tap: ^16.0.0
+      tap: ^16.0.1
       typescript: ^4.6.2
     dependencies:
       fastify: 3.27.4
@@ -52,7 +52,7 @@ importers:
       esbuild: 0.14.27
       mercurius-integration-testing: 4.0.0_c2e6a25ca7644e57b87eddc975762d86
       prettier: 2.6.0
-      tap: 16.0.0_typescript@4.6.2
+      tap: 16.0.1_typescript@4.6.2
       typescript: 4.6.2
 
   examples/codegen-gql-files:
@@ -70,7 +70,7 @@ importers:
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^4.0.0
       prettier: ^2.6.0
-      tap: ^16.0.0
+      tap: ^16.0.1
       typescript: ^4.6.2
     dependencies:
       '@graphql-tools/load-files': 6.5.3_graphql@16.3.0
@@ -87,7 +87,7 @@ importers:
       esbuild: 0.14.27
       mercurius-integration-testing: 4.0.0_c2e6a25ca7644e57b87eddc975762d86
       prettier: 2.6.0
-      tap: 16.0.0_typescript@4.6.2
+      tap: 16.0.1_typescript@4.6.2
       typescript: 4.6.2
 
   examples/manual:
@@ -103,7 +103,7 @@ importers:
       mercurius: ^9.3.5
       mercurius-integration-testing: ^4.0.0
       prettier: ^2.6.0
-      tap: ^16.0.0
+      tap: ^16.0.1
       typescript: ^4.6.2
     dependencies:
       fastify: 3.27.4
@@ -118,7 +118,7 @@ importers:
       graphql-tag: 2.12.6_graphql@16.3.0
       mercurius-integration-testing: 4.0.0_c2e6a25ca7644e57b87eddc975762d86
       prettier: 2.6.0
-      tap: 16.0.0_typescript@4.6.2
+      tap: 16.0.1_typescript@4.6.2
       typescript: 4.6.2
 
   packages/mercurius-codegen:
@@ -2993,7 +2993,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       cross-spawn: 7.0.3
-      signal-exit: 3.0.6
+      signal-exit: 3.0.7
     dev: true
 
   /form-data/2.5.1:
@@ -3754,7 +3754,7 @@ packages:
       minipass: 3.1.6
       own-or: 1.0.0
       own-or-env: 1.0.2
-      signal-exit: 3.0.6
+      signal-exit: 3.0.7
       stack-utils: 2.0.5
       tap-parser: 11.0.1
       tap-yaml: 1.0.0
@@ -5445,8 +5445,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /tap/16.0.0_typescript@4.6.2:
-    resolution: {integrity: sha512-EnrFFUIn+/089C051WYPXxNlAnXJ1TkKerh0Osz9lK0Ynb+X5FWBEZxWcZLVKiucdTnV5g97NL8Xaw1CuAkj4Q==}
+  /tap/16.0.1_typescript@4.6.2:
+    resolution: {integrity: sha512-y32sc4NFWzeOE1mrNvZoS1kRJADI8MCCSaatVBalCNVgusTf59h3t8mHZ3d0wSTQRs05JTOG52WC3KnWovhjPg==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
@@ -5478,7 +5478,7 @@ packages:
       nyc: 15.1.0
       opener: 1.5.2
       rimraf: 3.0.2
-      signal-exit: 3.0.6
+      signal-exit: 3.0.7
       source-map-support: 0.5.21
       tap-mocha-reporter: 5.0.3
       tap-parser: 11.0.1
