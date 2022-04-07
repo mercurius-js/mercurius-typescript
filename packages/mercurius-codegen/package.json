@@ -37,7 +37,7 @@
     "@graphql-codegen/typescript-operations": "^2.3.5",
     "@graphql-codegen/typescript-resolvers": "^2.6.1",
     "@graphql-tools/load-files": "^6.5.3",
-    "@graphql-tools/utils": "^8.6.5",
+    "@graphql-tools/utils": "^8.6.6",
     "@graphql-typed-document-node/core": "^3.1.1",
     "chokidar": "^3.5.3",
     "mkdirp": "^1.0.4"
