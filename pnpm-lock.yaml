@@ -130,7 +130,7 @@ importers:
       '@graphql-codegen/typescript-operations': ^2.3.5
       '@graphql-codegen/typescript-resolvers': ^2.6.1
       '@graphql-tools/load-files': ^6.5.3
-      '@graphql-tools/utils': ^8.6.8
+      '@graphql-tools/utils': ^8.6.9
       '@graphql-typed-document-node/core': ^3.1.1
       '@istanbuljs/nyc-config-typescript': ^1.0.2
       '@types/mkdirp': ^1.0.2
@@ -169,7 +169,7 @@ importers:
       '@graphql-codegen/typescript-operations': 2.3.5_graphql@16.3.0
       '@graphql-codegen/typescript-resolvers': 2.6.1_graphql@16.3.0
       '@graphql-tools/load-files': 6.5.3_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.3.0
       chokidar: 3.5.3
       mkdirp: 1.0.4
@@ -955,7 +955,7 @@ packages:
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.3.0
       '@graphql-tools/schema': 8.3.1_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
     dev: false
@@ -965,7 +965,7 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       change-case-all: 1.0.14
       common-tags: 1.8.2
       graphql: 16.3.0
@@ -980,7 +980,7 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
     dev: false
@@ -1025,7 +1025,7 @@ packages:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.3.0
       '@graphql-codegen/typescript': 2.4.8_graphql@16.3.0
       '@graphql-codegen/visitor-plugin-common': 2.7.4_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       auto-bind: 4.0.0
       graphql: 16.3.0
       tslib: 2.3.1
@@ -1058,7 +1058,7 @@ packages:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.3.0
       '@graphql-tools/optimize': 1.1.1_graphql@16.3.0
       '@graphql-tools/relay-operation-optimizer': 6.4.1_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       auto-bind: 4.0.0
       change-case-all: 1.0.14
       dependency-graph: 0.11.0
@@ -1087,7 +1087,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
     dev: false
@@ -1106,7 +1106,7 @@ packages:
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       graphql: 16.3.0
       relay-compiler: 12.0.0_graphql@16.3.0
       tslib: 2.3.1
@@ -1121,14 +1121,14 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-tools/merge': 8.2.1_graphql@16.3.0
-      '@graphql-tools/utils': 8.6.8_graphql@16.3.0
+      '@graphql-tools/utils': 8.6.9_graphql@16.3.0
       graphql: 16.3.0
       tslib: 2.3.1
       value-or-promise: 1.0.11
     dev: false
 
-  /@graphql-tools/utils/8.6.8_graphql@16.3.0:
-    resolution: {integrity: sha512-EdUUeKi/wp/UvuknyINpQ/uXDqTM3qxPPPDIq5RpfW0zQOeCvbZcx8xHoMox0TYKvKtg3zoB7aprUtoW+iZLxw==}
+  /@graphql-tools/utils/8.6.9_graphql@16.3.0:
+    resolution: {integrity: sha512-Z1X4d4GCT81+8CSt6SgU4t1w1UAUsAIRb67mI90k/zAs+ArkB95iE3bWXuJCUmd1+r8DGGtmUNOArtd6wkt+OQ==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
