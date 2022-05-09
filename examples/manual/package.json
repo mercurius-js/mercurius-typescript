@@ -14,7 +14,7 @@
   "dependencies": {
     "fastify": "^3.29.0",
     "graphql": "^16.4.0",
-    "mercurius": "^9.3.6"
+    "mercurius": "^9.5.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.14",
