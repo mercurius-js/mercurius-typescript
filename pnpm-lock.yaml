@@ -27,7 +27,7 @@ importers:
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^17.0.14
       '@types/tap': ^15.0.7
-      bob-tsm: ^0.4.8
+      bob-tsm: ^1.0.0
       cross-env: ^7.0.3
       esbuild: ^0.14.39
       fastify: ^3.29.0
@@ -47,7 +47,7 @@ importers:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.5.0
       '@types/node': 17.0.14
       '@types/tap': 15.0.7
-      bob-tsm: 0.4.8_esbuild@0.14.39+typescript@4.6.4
+      bob-tsm: 1.0.0_esbuild@0.14.39+typescript@4.6.4
       cross-env: 7.0.3
       esbuild: 0.14.39
       mercurius-integration-testing: 4.0.0_fc700ac359084e866a6625c71d4caa9b
@@ -61,7 +61,7 @@ importers:
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^17.0.14
       '@types/tap': ^15.0.7
-      bob-tsm: ^0.4.8
+      bob-tsm: ^1.0.0
       cross-env: ^7.0.3
       esbuild: ^0.14.39
       fastify: ^3.29.0
@@ -82,7 +82,7 @@ importers:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.5.0
       '@types/node': 17.0.14
       '@types/tap': 15.0.7
-      bob-tsm: 0.4.8_esbuild@0.14.39+typescript@4.6.4
+      bob-tsm: 1.0.0_esbuild@0.14.39+typescript@4.6.4
       cross-env: 7.0.3
       esbuild: 0.14.39
       mercurius-integration-testing: 4.0.0_fc700ac359084e866a6625c71d4caa9b
@@ -94,7 +94,7 @@ importers:
     specifiers:
       '@types/node': ^17.0.14
       '@types/tap': ^15.0.7
-      bob-tsm: ^0.4.8
+      bob-tsm: ^1.0.0
       cross-env: ^7.0.3
       esbuild: ^0.14.39
       fastify: ^3.29.0
@@ -112,7 +112,7 @@ importers:
     devDependencies:
       '@types/node': 17.0.14
       '@types/tap': 15.0.7
-      bob-tsm: 0.4.8_esbuild@0.14.39+typescript@4.6.4
+      bob-tsm: 1.0.0_esbuild@0.14.39+typescript@4.6.4
       cross-env: 7.0.3
       esbuild: 0.14.39
       graphql-tag: 2.12.6_graphql@16.5.0
@@ -1708,12 +1708,12 @@ packages:
     resolution: {integrity: sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==}
     dev: true
 
-  /bob-tsm/0.4.8_esbuild@0.14.39+typescript@4.6.4:
-    resolution: {integrity: sha512-HctV79VMhh8xh5+plIJbkghL9H0pi+euZvLSjvhgqkm3uQ73ebPUh3k7u/bYyXkhiVC/O0gs/I0alw7WOkZ3kw==}
-    engines: {node: ^12.20.0 || >=14.13.0}
+  /bob-tsm/1.0.0_esbuild@0.14.39+typescript@4.6.4:
+    resolution: {integrity: sha512-pyCeEpgm7+2VcklvUsTfdNOMtfOpuJwh0W/f7T2iNJqNxFfyyqOhAtQK4lxZC77lx5NigpbshLBHlf6fQ33NjQ==}
+    engines: {node: '>=14.13.1'}
     hasBin: true
     peerDependencies:
-      esbuild: '>=0.14.13'
+      esbuild: '>=0.14.39'
       typescript: '>=4.1.2'
     peerDependenciesMeta:
       typescript:
