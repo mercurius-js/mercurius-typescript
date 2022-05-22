@@ -143,7 +143,7 @@ importers:
       c8: ^7.11.3
       changesets-github-release: ^0.1.0
       chokidar: ^3.5.3
-      concurrently: ^7.2.0
+      concurrently: ^7.2.1
       cross-env: ^7.0.3
       fastify: ^3.29.0
       graphql: ^16.5.0
@@ -184,7 +184,7 @@ importers:
       bob-watch: 0.1.1
       c8: 7.11.3
       changesets-github-release: 0.1.0
-      concurrently: 7.2.0
+      concurrently: 7.2.1
       cross-env: 7.0.3
       fastify: 3.29.0
       graphql: 16.5.0
@@ -2128,8 +2128,8 @@ packages:
       well-known-symbols: 2.0.0
     dev: true
 
-  /concurrently/7.2.0:
-    resolution: {integrity: sha512-4KIVY5HopDRhN3ndAgfFOLsMk1PZUPgghlgTMZ5Pb5aTrqYg86RcZaIZC2Cz+qpZ9DsX36WHGjvWnXPqdnblhw==}
+  /concurrently/7.2.1:
+    resolution: {integrity: sha512-7cab/QyqipqghrVr9qZmoWbidu0nHsmxrpNqQ7r/67vfl1DWJElexehQnTH1p+87tDkihaAjM79xTZyBQh7HLw==}
     engines: {node: ^12.20.0 || ^14.13.0 || >=16.0.0}
     hasBin: true
     dependencies:
