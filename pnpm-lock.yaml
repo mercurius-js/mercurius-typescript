@@ -125,10 +125,10 @@ importers:
     specifiers:
       '@graphql-codegen/core': ^2.5.1
       '@graphql-codegen/plugin-helpers': ^2.4.2
-      '@graphql-codegen/typed-document-node': ^2.2.11
-      '@graphql-codegen/typescript': ^2.4.11
-      '@graphql-codegen/typescript-operations': ^2.4.0
-      '@graphql-codegen/typescript-resolvers': ^2.6.4
+      '@graphql-codegen/typed-document-node': ^2.2.12
+      '@graphql-codegen/typescript': ^2.5.0
+      '@graphql-codegen/typescript-operations': ^2.4.1
+      '@graphql-codegen/typescript-resolvers': ^2.6.5
       '@graphql-tools/load-files': ^6.5.3
       '@graphql-tools/utils': ^8.6.12
       '@graphql-typed-document-node/core': ^3.1.1
@@ -164,10 +164,10 @@ importers:
     dependencies:
       '@graphql-codegen/core': 2.5.1_graphql@16.5.0
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.5.0
-      '@graphql-codegen/typed-document-node': 2.2.11_graphql@16.5.0
-      '@graphql-codegen/typescript': 2.4.11_graphql@16.5.0
-      '@graphql-codegen/typescript-operations': 2.4.0_graphql@16.5.0
-      '@graphql-codegen/typescript-resolvers': 2.6.4_graphql@16.5.0
+      '@graphql-codegen/typed-document-node': 2.2.12_graphql@16.5.0
+      '@graphql-codegen/typescript': 2.5.0_graphql@16.5.0
+      '@graphql-codegen/typescript-operations': 2.4.1_graphql@16.5.0
+      '@graphql-codegen/typescript-resolvers': 2.6.5_graphql@16.5.0
       '@graphql-tools/load-files': 6.5.3_graphql@16.5.0
       '@graphql-tools/utils': 8.6.12_graphql@16.5.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.5.0
@@ -1010,13 +1010,13 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /@graphql-codegen/typed-document-node/2.2.11_graphql@16.5.0:
-    resolution: {integrity: sha512-AHBfw6gHSs0XOuIWsLZwtSgmk+3XqUCyPfXCeDE3Z9MNx/EYYY6lr8cFcsFnR3ASotcVAsVoLTfB4YS4NqgqdA==}
+  /@graphql-codegen/typed-document-node/2.2.12_graphql@16.5.0:
+    resolution: {integrity: sha512-Xmgl2/JHXjJSdWoh1FG5nDSgPYbJamA2scZYX+ypXnZeEp/Tb7gaN9uabZls4wJNFkM1hYwn5ubbJqgfA5A90w==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.5.0
-      '@graphql-codegen/visitor-plugin-common': 2.8.0_graphql@16.5.0
+      '@graphql-codegen/visitor-plugin-common': 2.9.0_graphql@16.5.0
       auto-bind: 4.0.0
       change-case-all: 1.0.14
       graphql: 16.5.0
@@ -1026,14 +1026,14 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-codegen/typescript-operations/2.4.0_graphql@16.5.0:
-    resolution: {integrity: sha512-vJ15FLyWchuO2Xkp6uz7jJOdChiay7P9KJKFDILx/JTwjinU1fFa7iOvyeTvslqiUPxgsXthR5izdY+E5IyLkQ==}
+  /@graphql-codegen/typescript-operations/2.4.1_graphql@16.5.0:
+    resolution: {integrity: sha512-NIHn4T5wxQ45PtKJ19q+AOqR4f2jW8UlMfQD34RG7vTuD42g+Y00GupYFTyzE6bsUAIhsVgJ4QJmP+taipBKAQ==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.5.0
-      '@graphql-codegen/typescript': 2.4.11_graphql@16.5.0
-      '@graphql-codegen/visitor-plugin-common': 2.8.0_graphql@16.5.0
+      '@graphql-codegen/typescript': 2.5.0_graphql@16.5.0
+      '@graphql-codegen/visitor-plugin-common': 2.9.0_graphql@16.5.0
       auto-bind: 4.0.0
       graphql: 16.5.0
       tslib: 2.4.0
@@ -1042,14 +1042,14 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-codegen/typescript-resolvers/2.6.4_graphql@16.5.0:
-    resolution: {integrity: sha512-BTV5q9d7V+4mVyYRnE8N7HyArmvDbUEY5JwyV94jhlN0AOq2zKQBrs8MRvx8v1VenjTGV+PlnDpF3aEtQu8o+g==}
+  /@graphql-codegen/typescript-resolvers/2.6.5_graphql@16.5.0:
+    resolution: {integrity: sha512-vzREbHyiYHhy/C90V8HKnfD7hnJIeioqZIYssX9WTQ5pVHqdeO/k4Gbw9ljcFe4OsP5d9GFHzhtU+/GnQlCyaA==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.5.0
-      '@graphql-codegen/typescript': 2.4.11_graphql@16.5.0
-      '@graphql-codegen/visitor-plugin-common': 2.8.0_graphql@16.5.0
+      '@graphql-codegen/typescript': 2.5.0_graphql@16.5.0
+      '@graphql-codegen/visitor-plugin-common': 2.9.0_graphql@16.5.0
       '@graphql-tools/utils': 8.6.12_graphql@16.5.0
       auto-bind: 4.0.0
       graphql: 16.5.0
@@ -1059,14 +1059,14 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-codegen/typescript/2.4.11_graphql@16.5.0:
-    resolution: {integrity: sha512-K3oDLPJRH9Wgpg9TOvb7L+xrJZ8HxkIzV2umqGn54c+8DQjvnRFBIYRO0THgUBMnEauE2sEy6RZkGHGfgQUruA==}
+  /@graphql-codegen/typescript/2.5.0_graphql@16.5.0:
+    resolution: {integrity: sha512-eCCebNyhV5NcNyfrNOdur1b4zPSyj2o89yaSliEMSShf4WolfFOv4aYpL4tFXjhkw3n2pR7MYFDUnrzmDpfmNw==}
     peerDependencies:
       graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.4.2_graphql@16.5.0
       '@graphql-codegen/schema-ast': 2.4.1_graphql@16.5.0
-      '@graphql-codegen/visitor-plugin-common': 2.8.0_graphql@16.5.0
+      '@graphql-codegen/visitor-plugin-common': 2.9.0_graphql@16.5.0
       auto-bind: 4.0.0
       graphql: 16.5.0
       tslib: 2.4.0
@@ -1075,8 +1075,8 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-codegen/visitor-plugin-common/2.8.0_graphql@16.5.0:
-    resolution: {integrity: sha512-29MOaxBog7qaEhmeCzJn2mONSbcA+slCTzHN4nJ3aZl4KrC9V32rXlQpG5x0qHbFQ1LaG1f5gPO83xbiAeMBIw==}
+  /@graphql-codegen/visitor-plugin-common/2.9.0_graphql@16.5.0:
+    resolution: {integrity: sha512-w353lPpXlgsQT6dxfcHw3hQdodGnfSwsxofHVfROqrIBZIjH0kNiFHOt8rnewYkLGEa75bWDVaM1ofyXEaN+3w==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
@@ -1539,7 +1539,7 @@ packages:
     dev: true
 
   /asap/2.0.6:
-    resolution: {integrity: sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=}
+    resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
     dev: false
 
   /async-hook-domain/2.0.4:
@@ -3286,7 +3286,7 @@ packages:
     engines: {node: '>= 4'}
 
   /immutable/3.7.6:
-    resolution: {integrity: sha1-E7TTyxK++hVIKib+Gy665kAHHks=}
+    resolution: {integrity: sha512-AizQPcaofEtO11RZhPPHBOJRdo/20MKQF9mBLnVkBoyHi1/zXK8fzVdnEpSV9gxqtnh6Qomfp3F0xT5qP/vThw==}
     engines: {node: '>=0.8.0'}
     dev: false
 
@@ -3778,7 +3778,7 @@ packages:
     dev: true
 
   /map-cache/0.2.2:
-    resolution: {integrity: sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=}
+    resolution: {integrity: sha512-8y/eV9QQZCiyn1SprXSrCmqJN0yNRATe+PO8ztwqrvrbdRLA3eYJF0yaR0YayLWkMbsQSKWS9N2gPcGEc4UsZg==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -4053,7 +4053,7 @@ packages:
     dev: false
 
   /node-int64/0.4.0:
-    resolution: {integrity: sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=}
+    resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
     dev: false
 
   /node-preload/0.2.1:
@@ -4156,7 +4156,7 @@ packages:
     dev: true
 
   /object-assign/4.1.1:
-    resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
+    resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -4358,7 +4358,7 @@ packages:
     dev: false
 
   /parse-filepath/1.0.2:
-    resolution: {integrity: sha1-pjISf1Oq89FYdvWHLz/6x2PWyJE=}
+    resolution: {integrity: sha512-FwdRXKCohSVeXqwtYonZTXtbGJKrn+HNyWDYVcp5yuJlesTwNH4rsmRZ+GrKAPJ5bLpRxESMeS+Rl0VCHRvB2Q==}
     engines: {node: '>=0.8'}
     dependencies:
       is-absolute: 1.0.0
@@ -4427,12 +4427,12 @@ packages:
     dev: true
 
   /path-root-regex/0.1.2:
-    resolution: {integrity: sha1-v8zcjfWxLcUsi0PsONGNcsBLqW0=}
+    resolution: {integrity: sha512-4GlJ6rZDhQZFE0DPVKh0e9jmZ5egZfxTkp7bcRDuPlJXbAwhxcl2dINPUAsjLdejqaLsCeg8axcLjIbvBjN4pQ==}
     engines: {node: '>=0.10.0'}
     dev: false
 
   /path-root/0.1.1:
-    resolution: {integrity: sha1-mkpoFMrBwM1zNgqV8yCDyOpHRbc=}
+    resolution: {integrity: sha512-QLcPegTHF11axjfojBIoDygmS2E3Lf+8+jI6wOVmNVenrKSo3mFdSGiIgdSHenczw3wPtlVMQaFVwGmM7BJdtg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       path-root-regex: 0.1.2
