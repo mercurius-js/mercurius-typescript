@@ -1,6 +1,6 @@
 {
   "name": "mercurius-codegen",
-  "version": "3.3.1",
+  "version": "4.0.0",
   "keywords": [
     "fastify",
     "graphql",
@@ -55,9 +55,9 @@
     "changesets-github-release": "^0.1.0",
     "concurrently": "^7.2.1",
     "cross-env": "^7.0.3",
-    "fastify": "^3.29.0",
+    "fastify": "^4.0.1",
     "graphql": "^16.5.0",
-    "mercurius": "^9.8.0",
+    "mercurius": "^10.0.0",
     "mercurius-codegen": "workspace:*",
     "nyc": "15.1.0",
     "open-cli": "^7.0.1",
@@ -72,9 +72,9 @@
     "wait-on": "^6.0.1"
   },
   "peerDependencies": {
-    "fastify": "^3.29.0",
+    "fastify": "^4.0.0",
     "graphql": "*",
-    "mercurius": "^8.0.0 || ^7.0.0 || ^6.4.0 || ^9.0.0",
+    "mercurius": "^10.0.0",
     "prettier": "^2.6.2"
   }
 }
