@@ -1,5 +1,13 @@
 # mercurius-codegen
 
+## 4.0.0
+
+### Major Changes
+
+- 8b08174: Update to Fastify v4 and Mercurius v10
+
+  Thanks to @ZiiMakc, PR https://github.com/mercurius-js/mercurius-typescript/pull/285
+
 ## 3.3.1
 
 ### Patch Changes
