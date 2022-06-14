@@ -9,7 +9,7 @@ importers:
       changesets-github-release: ^0.1.0
       esbuild: ^0.14.43
       husky: ^8.0.1
-      prettier: ^2.6.2
+      prettier: ^2.7.0
       pretty-quick: ^3.1.3
       rimraf: ^3.0.2
     devDependencies:
@@ -18,8 +18,8 @@ importers:
       changesets-github-release: 0.1.0
       esbuild: 0.14.43
       husky: 8.0.1
-      prettier: 2.6.2
-      pretty-quick: 3.1.3_prettier@2.6.2
+      prettier: 2.7.0
+      pretty-quick: 3.1.3_prettier@2.7.0
       rimraf: 3.0.2
 
   examples/codegen:
@@ -35,7 +35,7 @@ importers:
       mercurius: ^10.0.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^5.0.0
-      prettier: ^2.6.2
+      prettier: ^2.7.0
       tap: ^16.2.0
       typescript: ^4.7.3
     dependencies:
@@ -51,7 +51,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.14.43
       mercurius-integration-testing: 5.0.0_4rs34bvlxvz3gd3wpnuvmqdmk4
-      prettier: 2.6.2
+      prettier: 2.7.0
       tap: 16.2.0_typescript@4.7.3
       typescript: 4.7.3
 
@@ -69,7 +69,7 @@ importers:
       mercurius: ^10.0.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^5.0.0
-      prettier: ^2.6.2
+      prettier: ^2.7.0
       tap: ^16.2.0
       typescript: ^4.7.3
     dependencies:
@@ -86,7 +86,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.14.43
       mercurius-integration-testing: 5.0.0_4rs34bvlxvz3gd3wpnuvmqdmk4
-      prettier: 2.6.2
+      prettier: 2.7.0
       tap: 16.2.0_typescript@4.7.3
       typescript: 4.7.3
 
@@ -102,7 +102,7 @@ importers:
       graphql-tag: ^2.12.6
       mercurius: ^10.0.0
       mercurius-integration-testing: ^5.0.0
-      prettier: ^2.6.2
+      prettier: ^2.7.0
       tap: ^16.2.0
       typescript: ^4.7.3
     dependencies:
@@ -117,7 +117,7 @@ importers:
       esbuild: 0.14.43
       graphql-tag: 2.12.6_graphql@16.5.0
       mercurius-integration-testing: 5.0.0_4rs34bvlxvz3gd3wpnuvmqdmk4
-      prettier: 2.6.2
+      prettier: 2.7.0
       tap: 16.2.0_typescript@4.7.3
       typescript: 4.7.3
 
@@ -152,7 +152,7 @@ importers:
       mkdirp: ^1.0.4
       nyc: 15.1.0
       open-cli: ^7.0.1
-      prettier: ^2.6.2
+      prettier: ^2.7.0
       proxyquire: ^2.1.3
       rimraf: ^3.0.2
       serve: ^13.0.2
@@ -192,7 +192,7 @@ importers:
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.0.1
-      prettier: 2.6.2
+      prettier: 2.7.0
       proxyquire: 2.1.3
       rimraf: 3.0.2
       serve: 13.0.2
@@ -4713,8 +4713,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.6.2:
-    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
+  /prettier/2.7.0:
+    resolution: {integrity: sha512-nwoX4GMFgxoPC6diHvSwmK/4yU8FFH3V8XWtLQrbj4IBsK2pkYhG4kf/ljF/haaZ/aii+wNJqISrCDPgxGWDVQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -4726,7 +4726,7 @@ packages:
       parse-ms: 2.1.0
     dev: true
 
-  /pretty-quick/3.1.3_prettier@2.6.2:
+  /pretty-quick/3.1.3_prettier@2.7.0:
     resolution: {integrity: sha512-kOCi2FJabvuh1as9enxYmrnBC6tVMoVOenMaBqRfsvBHB0cbpYHjdQEpSglpASDFEXVwplpcGR4CLEaisYAFcA==}
     engines: {node: '>=10.13'}
     hasBin: true
@@ -4739,7 +4739,7 @@ packages:
       ignore: 5.2.0
       mri: 1.2.0
       multimatch: 4.0.0
-      prettier: 2.6.2
+      prettier: 2.7.0
     dev: true
 
   /process-on-spawn/1.0.0:
