@@ -29,7 +29,7 @@
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.44",
     "mercurius-integration-testing": "^5.0.0",
-    "prettier": "^2.7.0",
+    "prettier": "^2.7.1",
     "tap": "^16.2.0",
     "typescript": "^4.7.3"
   },
