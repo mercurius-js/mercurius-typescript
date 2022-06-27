@@ -15,7 +15,7 @@
     "test": "cross-env NODE_ENV=test tap --node-arg=--require=bob-tsm"
   },
   "dependencies": {
-    "@graphql-tools/load-files": "^6.5.4",
+    "@graphql-tools/load-files": "^6.6.0",
     "fastify": "^4.1.0",
     "graphql": "^16.5.0",
     "mercurius": "^10.0.0",
