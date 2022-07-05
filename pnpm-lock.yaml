@@ -32,7 +32,7 @@ importers:
       esbuild: ^0.14.48
       fastify: ^4.2.0
       graphql: ^16.5.0
-      mercurius: ^10.0.0
+      mercurius: ^10.1.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
@@ -41,7 +41,7 @@ importers:
     dependencies:
       fastify: 4.2.0
       graphql: 16.5.0
-      mercurius: 10.0.0
+      mercurius: 10.1.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.5.0
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 1.0.0_in67hqo4xu3xlhbki4b5mzly5u
       cross-env: 7.0.3
       esbuild: 0.14.48
-      mercurius-integration-testing: 5.0.0_pfulxjyoqjsno6bdvjdc5qmhde
+      mercurius-integration-testing: 5.0.0_tyyc5tpv5zc6dzkwze6jyx6dqm
       prettier: 2.7.1
       tap: 16.3.0_typescript@4.7.4
       typescript: 4.7.4
@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.14.48
       fastify: ^4.2.0
       graphql: ^16.5.0
-      mercurius: ^10.0.0
+      mercurius: ^10.1.0
       mercurius-codegen: workspace:*
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
@@ -76,7 +76,7 @@ importers:
       '@graphql-tools/load-files': 6.6.0_graphql@16.5.0
       fastify: 4.2.0
       graphql: 16.5.0
-      mercurius: 10.0.0
+      mercurius: 10.1.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.5.0
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 1.0.0_in67hqo4xu3xlhbki4b5mzly5u
       cross-env: 7.0.3
       esbuild: 0.14.48
-      mercurius-integration-testing: 5.0.0_pfulxjyoqjsno6bdvjdc5qmhde
+      mercurius-integration-testing: 5.0.0_tyyc5tpv5zc6dzkwze6jyx6dqm
       prettier: 2.7.1
       tap: 16.3.0_typescript@4.7.4
       typescript: 4.7.4
@@ -100,7 +100,7 @@ importers:
       fastify: ^4.2.0
       graphql: ^16.5.0
       graphql-tag: ^2.12.6
-      mercurius: ^10.0.0
+      mercurius: ^10.1.0
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
       tap: ^16.3.0
@@ -108,7 +108,7 @@ importers:
     dependencies:
       fastify: 4.2.0
       graphql: 16.5.0
-      mercurius: 10.0.0
+      mercurius: 10.1.0
     devDependencies:
       '@types/node': 17.0.42
       '@types/tap': 15.0.7
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.14.48
       graphql-tag: 2.12.6_graphql@16.5.0
-      mercurius-integration-testing: 5.0.0_pfulxjyoqjsno6bdvjdc5qmhde
+      mercurius-integration-testing: 5.0.0_tyyc5tpv5zc6dzkwze6jyx6dqm
       prettier: 2.7.1
       tap: 16.3.0_typescript@4.7.4
       typescript: 4.7.4
@@ -147,7 +147,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^4.2.0
       graphql: ^16.5.0
-      mercurius: ^10.0.0
+      mercurius: ^10.1.0
       mercurius-codegen: workspace:*
       mkdirp: ^1.0.4
       nyc: 15.1.0
@@ -188,7 +188,7 @@ importers:
       cross-env: 7.0.3
       fastify: 4.2.0
       graphql: 16.5.0
-      mercurius: 10.0.0
+      mercurius: 10.1.0
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.0.1
@@ -1421,6 +1421,12 @@ packages:
     resolution: {integrity: sha512-uUrgZ8AxS+Lio0fZKAipJjAh415JyrOZowliZAzmnJSsf7piVL5w+G0+gFJ0KSu3QRhvui/7zuvpLz03YjXAhg==}
     dev: true
 
+  /abort-controller/3.0.0:
+    resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
+    engines: {node: '>=6.5'}
+    dependencies:
+      event-target-shim: 5.0.1
+
   /abstract-logging/2.0.1:
     resolution: {integrity: sha512-2BjRTZxTPvheOvGbBslFSYOUkr+SjPtOnrLP33f+VIWLzezQpZcqVg7ja3L4dBXmzzgwT+a029jRx5PCi3JuiA==}
 
@@ -2474,7 +2480,7 @@ packages:
     dev: true
 
   /ee-first/1.1.1:
-    resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
+    resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
   /electron-to-chromium/1.4.152:
     resolution: {integrity: sha512-jk4Ju5SGZAQQJ1iI4Rgru7dDlvkQPLpNPWH9gIZmwCD4YteA5Bbk1xPcPDUf5jUYs3e1e80RXdi8XgKQZaigeg==}
@@ -2808,6 +2814,10 @@ packages:
   /etag/1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
+
+  /event-target-shim/5.0.1:
+    resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
+    engines: {node: '>=6'}
 
   /events-to-array/1.1.2:
     resolution: {integrity: sha512-inRWzRY7nG+aXZxBzEqYKB3HPgwflZRopAjDCHv0whhRx+MTUr1ei0ICZUypdyE0HRm4L2d5VEcIqLD6yl+BFA==}
@@ -4023,7 +4033,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/5.0.0_pfulxjyoqjsno6bdvjdc5qmhde:
+  /mercurius-integration-testing/5.0.0_tyyc5tpv5zc6dzkwze6jyx6dqm:
     resolution: {integrity: sha512-h74OjoeYx0F1Y5PE6fta5nnW0d/HdzTsTglLCudQopyn5JC5BHTvpC6ZDDOU2kEUybKsH2wbS35+x6NXsbqlcA==}
     peerDependencies:
       fastify: ^4.0.0
@@ -4034,15 +4044,15 @@ packages:
       cookie: 0.4.2
       fastify: 4.2.0
       graphql: 16.5.0
-      mercurius: 10.0.0
+      mercurius: 10.1.0
       ws: 8.8.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius/10.0.0:
-    resolution: {integrity: sha512-qLhiKCaIg1oF6wMcegMIzjx0S6JmwLWV+6Z+z6zSiZpSnivHnaIrI5BQUMSdqiJQ3jbvzc4wMXQFJAYApA7qEw==}
+  /mercurius/10.1.0:
+    resolution: {integrity: sha512-7CBxRcxRELyGDz2FernU2dogyJ2b7Vp4JBUx68Pn082xNH97Oel/Mt4yPpn7V2V1bY7MyuxSF+oZLzFlG+5jCw==}
     engines: {node: '>=14.19.3'}
     dependencies:
       '@fastify/error': 3.0.0
@@ -4054,7 +4064,7 @@ packages:
       graphql-jit: 0.7.4_graphql@16.5.0
       mqemitter: 5.0.0
       p-map: 4.0.0
-      readable-stream: 3.6.0
+      readable-stream: 4.0.0
       safe-stable-stringify: 2.3.1
       secure-json-parse: 2.4.0
       single-user-cache: 0.6.0
@@ -4895,6 +4905,12 @@ packages:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
+
+  /readable-stream/4.0.0:
+    resolution: {integrity: sha512-Mf7ilWBP6AV3tF3MjtBrHMH3roso7wIrpgzCwt9ybvqiJQVWIEBMnp/W+S//yvYSsUUi2cJIwD7q7m57l0AqZw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dependencies:
+      abort-controller: 3.0.0
 
   /readable-web-to-node-stream/3.0.2:
     resolution: {integrity: sha512-ePeK6cc1EcKLEhJFt/AebMCLL+GgSKhuygrZ/GLaKZYEecIgIECf4UaUuaByiGtzckwR4ain9VzUh95T1exYGw==}
