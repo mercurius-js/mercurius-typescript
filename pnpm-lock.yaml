@@ -155,7 +155,7 @@ importers:
       prettier: ^2.7.1
       proxyquire: ^2.1.3
       rimraf: ^3.0.2
-      serve: ^13.0.2
+      serve: ^13.0.4
       tmp-promise: ^3.0.3
       ts-node: ^10.8.2
       typescript: ^4.7.4
@@ -195,7 +195,7 @@ importers:
       prettier: 2.7.1
       proxyquire: 2.1.3
       rimraf: 3.0.2
-      serve: 13.0.2
+      serve: 13.0.4
       tmp-promise: 3.0.3
       ts-node: 10.8.2_7jzfgmf7dege7ou35wy2ivjdqu
       typescript: 4.7.4
@@ -2914,7 +2914,7 @@ packages:
     resolution: {integrity: sha512-qKRta6N7BWEFVlyonVY/V+BMLgFqktCUV0QjT259ekAIlbVrMaFnFLxJ4s/JPl4tou56S1BzPufI60bLe29fHA==}
 
   /fast-url-parser/1.1.3:
-    resolution: {integrity: sha1-9K8+qfNNiicc9YrSs3WfQx8LMY0=}
+    resolution: {integrity: sha512-5jOCVXADYNuRkKFzNJ0dCCewsZiYo0dz8QNYljkOpFC6r2U4OBmKtvm/Tsuh4w1YYdDqDb31a8TVhBJ2OJKdqQ==}
     dependencies:
       punycode: 1.4.1
     dev: true
@@ -4612,7 +4612,7 @@ packages:
     engines: {node: '>=0.10.0'}
 
   /path-is-inside/1.0.2:
-    resolution: {integrity: sha1-NlQX3t5EQw0cEa9hAn+s8HS9/FM=}
+    resolution: {integrity: sha512-DUWJr3+ULp4zXmol/SZkFf3JGsS9/SIv+Y3Rt93/UjPpDpklB5f1er4O3POIbUuUJ3FXgqte2Q7SrU6zAqwk8w==}
     dev: true
 
   /path-key/2.0.1:
@@ -5139,8 +5139,8 @@ packages:
       range-parser: 1.2.0
     dev: true
 
-  /serve/13.0.2:
-    resolution: {integrity: sha512-71R6fKvNgKrqARAag6lYJNnxDzpH7DCNrMuvPY5PLVaC2PDhJsGTj/34o4o4tPWhTuLgEXqvgnAWbATQ9zGZTQ==}
+  /serve/13.0.4:
+    resolution: {integrity: sha512-Lj8rhXmphJCRQVv5qwu0NQZ2h+0MrRyRJxDZu5y3qLH2i/XY6a0FPj/VmjMUdkJb672MBfE8hJ274PU6JzBd0Q==}
     hasBin: true
     dependencies:
       '@zeit/schemas': 2.6.0
