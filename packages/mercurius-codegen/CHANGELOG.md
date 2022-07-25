@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 4.0.1
+
+### Patch Changes
+
+- c3f8aa9: Fix @graphql-codegen/typescript-resolvers types import
+
 ## 4.0.0
 
 ### Major Changes
