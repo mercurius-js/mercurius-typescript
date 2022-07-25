@@ -1,7 +1,7 @@
 import type {} from 'mercurius'
 import type { GraphQLSchema } from 'graphql'
 import type { TypeScriptPluginConfig } from '@graphql-codegen/typescript'
-import type { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers/config'
+import type { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers'
 import type { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import type { Source } from '@graphql-tools/utils'
 import type { MercuriusLoadersPluginConfig } from './mercuriusLoaders'
