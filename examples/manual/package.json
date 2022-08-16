@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "fastify": "^4.4.0",
-    "graphql": "^16.5.0",
+    "graphql": "^16.6.0",
     "mercurius": "^10.1.0"
   },
   "devDependencies": {
