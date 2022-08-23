@@ -27,7 +27,7 @@ importers:
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^18.6.1
       '@types/tap': ^15.0.7
-      bob-tsm: ^1.1.1
+      bob-tsm: ^1.1.2
       cross-env: ^7.0.3
       esbuild: ^0.15.5
       fastify: ^4.5.2
@@ -47,7 +47,7 @@ importers:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
-      bob-tsm: 1.1.1_k2el7cp5jxvwn2itdedexlaiqy
+      bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
       cross-env: 7.0.3
       esbuild: 0.15.5
       mercurius-integration-testing: 5.0.0_l4t43iugksbzrlnmaj4rse5he4
@@ -61,7 +61,7 @@ importers:
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^18.6.1
       '@types/tap': ^15.0.7
-      bob-tsm: ^1.1.1
+      bob-tsm: ^1.1.2
       cross-env: ^7.0.3
       esbuild: ^0.15.5
       fastify: ^4.5.2
@@ -82,7 +82,7 @@ importers:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
-      bob-tsm: 1.1.1_k2el7cp5jxvwn2itdedexlaiqy
+      bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
       cross-env: 7.0.3
       esbuild: 0.15.5
       mercurius-integration-testing: 5.0.0_l4t43iugksbzrlnmaj4rse5he4
@@ -94,7 +94,7 @@ importers:
     specifiers:
       '@types/node': ^18.6.1
       '@types/tap': ^15.0.7
-      bob-tsm: ^1.1.1
+      bob-tsm: ^1.1.2
       cross-env: ^7.0.3
       esbuild: ^0.15.5
       fastify: ^4.5.2
@@ -112,7 +112,7 @@ importers:
     devDependencies:
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
-      bob-tsm: 1.1.1_k2el7cp5jxvwn2itdedexlaiqy
+      bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
       cross-env: 7.0.3
       esbuild: 0.15.5
       graphql-tag: 2.12.6_graphql@16.6.0
@@ -1789,8 +1789,8 @@ packages:
     resolution: {integrity: sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==}
     dev: true
 
-  /bob-tsm/1.1.1_k2el7cp5jxvwn2itdedexlaiqy:
-    resolution: {integrity: sha512-7bhjUD4PkIKh8xH6HCXFId9eTs8FvMurxgtZqee1Phs+1aLPv7RJK31X7WMLV6vzU5pN3hHbg+LC53d1EUP1vA==}
+  /bob-tsm/1.1.2_k2el7cp5jxvwn2itdedexlaiqy:
+    resolution: {integrity: sha512-5H6wIDpQTop5rt/5JRvtssmpiTkIqi1EBkpSy19GfReOed6QoeD+iJIRjNgyiI7ZsX1ogETxgN7KiW5Wx6pUEQ==}
     engines: {node: '>=14.13.1'}
     hasBin: true
     peerDependencies:
