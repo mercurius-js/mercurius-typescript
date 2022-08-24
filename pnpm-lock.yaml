@@ -32,7 +32,7 @@ importers:
       esbuild: ^0.15.5
       fastify: ^4.5.2
       graphql: ^16.6.0
-      mercurius: ^10.1.1
+      mercurius: ^10.2.0
       mercurius-codegen: workspace:4.0.1
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
@@ -41,7 +41,7 @@ importers:
     dependencies:
       fastify: 4.5.2
       graphql: 16.6.0
-      mercurius: 10.1.1_graphql@16.6.0
+      mercurius: 10.2.0_graphql@16.6.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
       cross-env: 7.0.3
       esbuild: 0.15.5
-      mercurius-integration-testing: 5.0.0_l4t43iugksbzrlnmaj4rse5he4
+      mercurius-integration-testing: 5.0.0_hsdoflcctztiktyqja53po45gu
       prettier: 2.7.1
       tap: 16.3.0_typescript@4.7.4
       typescript: 4.7.4
@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.15.5
       fastify: ^4.5.2
       graphql: ^16.6.0
-      mercurius: ^10.1.1
+      mercurius: ^10.2.0
       mercurius-codegen: workspace:4.0.1
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
@@ -76,7 +76,7 @@ importers:
       '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
       fastify: 4.5.2
       graphql: 16.6.0
-      mercurius: 10.1.1_graphql@16.6.0
+      mercurius: 10.2.0_graphql@16.6.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
       cross-env: 7.0.3
       esbuild: 0.15.5
-      mercurius-integration-testing: 5.0.0_l4t43iugksbzrlnmaj4rse5he4
+      mercurius-integration-testing: 5.0.0_hsdoflcctztiktyqja53po45gu
       prettier: 2.7.1
       tap: 16.3.0_typescript@4.7.4
       typescript: 4.7.4
@@ -100,7 +100,7 @@ importers:
       fastify: ^4.5.2
       graphql: ^16.6.0
       graphql-tag: ^2.12.6
-      mercurius: ^10.1.1
+      mercurius: ^10.2.0
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
       tap: ^16.3.0
@@ -108,7 +108,7 @@ importers:
     dependencies:
       fastify: 4.5.2
       graphql: 16.6.0
-      mercurius: 10.1.1_graphql@16.6.0
+      mercurius: 10.2.0_graphql@16.6.0
     devDependencies:
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.15.5
       graphql-tag: 2.12.6_graphql@16.6.0
-      mercurius-integration-testing: 5.0.0_l4t43iugksbzrlnmaj4rse5he4
+      mercurius-integration-testing: 5.0.0_hsdoflcctztiktyqja53po45gu
       prettier: 2.7.1
       tap: 16.3.0_typescript@4.7.4
       typescript: 4.7.4
@@ -147,7 +147,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^4.5.2
       graphql: ^16.6.0
-      mercurius: ^10.1.1
+      mercurius: ^10.2.0
       mercurius-codegen: workspace:4.0.1
       mkdirp: ^1.0.4
       nyc: 15.1.0
@@ -188,7 +188,7 @@ importers:
       cross-env: 7.0.3
       fastify: 4.5.2
       graphql: 16.6.0
-      mercurius: 10.1.1_graphql@16.6.0
+      mercurius: 10.2.0_graphql@16.6.0
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.0.1
@@ -997,7 +997,7 @@ packages:
     dependencies:
       '@fastify/accept-negotiator': 1.0.0
       content-disposition: 0.5.4
-      fastify-plugin: 4.0.0
+      fastify-plugin: 4.2.0
       glob: 8.0.3
       p-limit: 3.1.0
       readable-stream: 4.1.0
@@ -1005,10 +1005,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@fastify/websocket/6.0.1:
-    resolution: {integrity: sha512-RdrPMpD/gjm7ocqFZN2TVHRAjDNG483dvH7cbMXJPTvIei2xz/sqa5TwtqGPrupU91GZjlUYQqUjQb/cQHA7kw==}
+  /@fastify/websocket/7.0.0:
+    resolution: {integrity: sha512-GmmbRSYy4379eXYd9VNBYU8NxlgkftX07fR9tRDURYDs2tDYNBXkVOlwNcxSVXodWhJhPrYkyrrAQzOSWFYW/A==}
     dependencies:
-      fastify-plugin: 3.0.1
+      fastify-plugin: 4.2.0
       ws: 8.8.1
     transitivePeerDependencies:
       - bufferutil
@@ -2914,11 +2914,8 @@ packages:
       punycode: 1.4.1
     dev: true
 
-  /fastify-plugin/3.0.1:
-    resolution: {integrity: sha512-qKcDXmuZadJqdTm6vlCqioEbyewF60b/0LOFCcYN1B6BIZGlYJumWWOYs70SFYLDAH4YqdE1cxH/RKMG7rFxgA==}
-
-  /fastify-plugin/4.0.0:
-    resolution: {integrity: sha512-ZJcXPPcqkj7HFDYqbsCuOIAgIZ/sd2b+OnBxNGyxAcUDUJfIpxp4t23CwxO2E7LZpqUrIliA4TnjxTXG8mLoqw==}
+  /fastify-plugin/4.2.0:
+    resolution: {integrity: sha512-hovKzEXZc2YgeuXn41/2EA/IaIOdRu1pB9WKgnzDBj3lhKSdDCEsckHa7I6LiT/LhflvAQX7ZY8IQ6eBX0htTg==}
 
   /fastify/4.5.2:
     resolution: {integrity: sha512-cDLhc0bh1ftzMoS7ccGGPUW/xTUnk6I51TktQqKFeJnhoAfk56tfn+xDs8JcJYfouPK23Ljx4OpMaEi+kIDwEg==}
@@ -4033,7 +4030,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/5.0.0_l4t43iugksbzrlnmaj4rse5he4:
+  /mercurius-integration-testing/5.0.0_hsdoflcctztiktyqja53po45gu:
     resolution: {integrity: sha512-h74OjoeYx0F1Y5PE6fta5nnW0d/HdzTsTglLCudQopyn5JC5BHTvpC6ZDDOU2kEUybKsH2wbS35+x6NXsbqlcA==}
     peerDependencies:
       fastify: ^4.0.0
@@ -4044,24 +4041,24 @@ packages:
       cookie: 0.4.2
       fastify: 4.5.2
       graphql: 16.6.0
-      mercurius: 10.1.1_graphql@16.6.0
+      mercurius: 10.2.0_graphql@16.6.0
       ws: 8.8.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius/10.1.1_graphql@16.6.0:
-    resolution: {integrity: sha512-QOnyWcgE3TswlDEKEr1azWK8gqUNOtabgGXwmsH7Cu+BFN1nMN0fEt4O/r2THHxsJ45NLMICAkR6UEWT7LNTqQ==}
+  /mercurius/10.2.0_graphql@16.6.0:
+    resolution: {integrity: sha512-f8owDHQ6zCS9CgJ9ZHrm8l3Dw/P+Z4dbmx6dkqtDD8FsUiD33jYiMJVWGndsDcb/VH9gsAkJszrb0He7zdVNVw==}
     engines: {node: '>=14.19.3'}
     peerDependencies:
       graphql: ^16.0.0
     dependencies:
       '@fastify/error': 3.0.0
       '@fastify/static': 6.4.1
-      '@fastify/websocket': 6.0.1
+      '@fastify/websocket': 7.0.0
       events.on: 1.0.1
-      fastify-plugin: 3.0.1
+      fastify-plugin: 4.2.0
       graphql: 16.6.0
       graphql-jit: 0.7.4_graphql@16.6.0
       mqemitter: 5.0.0
