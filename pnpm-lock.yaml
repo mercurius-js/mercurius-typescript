@@ -37,7 +37,7 @@ importers:
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
       tap: ^16.3.0
-      typescript: ^4.7.4
+      typescript: ^4.8.2
     dependencies:
       fastify: 4.5.2
       graphql: 16.6.0
@@ -47,13 +47,13 @@ importers:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
-      bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
+      bob-tsm: 1.1.2_4uzyelxoia3ggpguotwoy3f7fe
       cross-env: 7.0.3
       esbuild: 0.15.5
       mercurius-integration-testing: 5.0.0_hsdoflcctztiktyqja53po45gu
       prettier: 2.7.1
-      tap: 16.3.0_typescript@4.7.4
-      typescript: 4.7.4
+      tap: 16.3.0_typescript@4.8.2
+      typescript: 4.8.2
 
   examples/codegen-gql-files:
     specifiers:
@@ -71,7 +71,7 @@ importers:
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
       tap: ^16.3.0
-      typescript: ^4.7.4
+      typescript: ^4.8.2
     dependencies:
       '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
       fastify: 4.5.2
@@ -82,13 +82,13 @@ importers:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
-      bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
+      bob-tsm: 1.1.2_4uzyelxoia3ggpguotwoy3f7fe
       cross-env: 7.0.3
       esbuild: 0.15.5
       mercurius-integration-testing: 5.0.0_hsdoflcctztiktyqja53po45gu
       prettier: 2.7.1
-      tap: 16.3.0_typescript@4.7.4
-      typescript: 4.7.4
+      tap: 16.3.0_typescript@4.8.2
+      typescript: 4.8.2
 
   examples/manual:
     specifiers:
@@ -104,7 +104,7 @@ importers:
       mercurius-integration-testing: ^5.0.0
       prettier: ^2.7.1
       tap: ^16.3.0
-      typescript: ^4.7.4
+      typescript: ^4.8.2
     dependencies:
       fastify: 4.5.2
       graphql: 16.6.0
@@ -112,14 +112,14 @@ importers:
     devDependencies:
       '@types/node': 18.6.1
       '@types/tap': 15.0.7
-      bob-tsm: 1.1.2_k2el7cp5jxvwn2itdedexlaiqy
+      bob-tsm: 1.1.2_4uzyelxoia3ggpguotwoy3f7fe
       cross-env: 7.0.3
       esbuild: 0.15.5
       graphql-tag: 2.12.6_graphql@16.6.0
       mercurius-integration-testing: 5.0.0_hsdoflcctztiktyqja53po45gu
       prettier: 2.7.1
-      tap: 16.3.0_typescript@4.7.4
-      typescript: 4.7.4
+      tap: 16.3.0_typescript@4.8.2
+      typescript: 4.8.2
 
   packages/mercurius-codegen:
     specifiers:
@@ -158,7 +158,7 @@ importers:
       serve: ^14.0.1
       tmp-promise: ^3.0.3
       ts-node: ^10.9.1
-      typescript: ^4.7.4
+      typescript: ^4.8.2
       wait-for-expect: ^3.0.2
       wait-on: ^6.0.1
     dependencies:
@@ -197,8 +197,8 @@ importers:
       rimraf: 3.0.2
       serve: 14.0.1
       tmp-promise: 3.0.3
-      ts-node: 10.9.1_f6w67sjx3imwytyzb2qhabnzqe
-      typescript: 4.7.4
+      ts-node: 10.9.1_cr3pzbui3qv4oobzbnw6o6umpe
+      typescript: 4.8.2
       wait-for-expect: 3.0.2
       wait-on: 6.0.1
 
@@ -1789,7 +1789,7 @@ packages:
     resolution: {integrity: sha512-DRQrD6gJyy8FbiE4s+bDoXS9hiW3Vbx5uCdwvcCf3zLHL+Iv7LtGHLpr+GZV8rHG8tK766FGYBwRbu8pELTt+w==}
     dev: true
 
-  /bob-tsm/1.1.2_k2el7cp5jxvwn2itdedexlaiqy:
+  /bob-tsm/1.1.2_4uzyelxoia3ggpguotwoy3f7fe:
     resolution: {integrity: sha512-5H6wIDpQTop5rt/5JRvtssmpiTkIqi1EBkpSy19GfReOed6QoeD+iJIRjNgyiI7ZsX1ogETxgN7KiW5Wx6pUEQ==}
     engines: {node: '>=14.13.1'}
     hasBin: true
@@ -1801,7 +1801,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.15.5
-      typescript: 4.7.4
+      typescript: 4.8.2
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -5504,7 +5504,7 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /tap/16.3.0_typescript@4.7.4:
+  /tap/16.3.0_typescript@4.8.2:
     resolution: {integrity: sha512-J9GffPUAbX6FnWbQ/jj7ktzd9nnDFP1fH44OzidqOmxUfZ1hPLMOvpS99LnDiP0H2mO8GY3kGN5XoY0xIKbNFA==}
     engines: {node: '>=12'}
     hasBin: true
@@ -5543,7 +5543,7 @@ packages:
       tap-parser: 11.0.1
       tap-yaml: 1.0.0
       tcompare: 5.0.7
-      typescript: 4.7.4
+      typescript: 4.8.2
       which: 2.0.2
     transitivePeerDependencies:
       - supports-color
@@ -5677,7 +5677,7 @@ packages:
     resolution: {integrity: sha512-dagAKX7vaesNNAwOc9Np9C2mJ+7YopF4lk+jE2JML9ta4kZ91Y6UruJNH65bLRYoUROD8EY+Pmi44qQWwXR7sw==}
     dev: true
 
-  /ts-node/10.9.1_f6w67sjx3imwytyzb2qhabnzqe:
+  /ts-node/10.9.1_cr3pzbui3qv4oobzbnw6o6umpe:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -5703,7 +5703,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 4.7.4
+      typescript: 4.8.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -5761,8 +5761,8 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript/4.7.4:
-    resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
+  /typescript/4.8.2:
+    resolution: {integrity: sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
