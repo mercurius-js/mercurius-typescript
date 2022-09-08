@@ -26,6 +26,6 @@
     "mercurius-integration-testing": "^5.0.0",
     "prettier": "^2.7.1",
     "tap": "^16.3.0",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.3"
   }
 }
