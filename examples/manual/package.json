@@ -21,7 +21,7 @@
     "@types/tap": "^15.0.7",
     "bob-tsm": "^1.1.2",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.15.7",
+    "esbuild": "^0.15.8",
     "graphql-tag": "^2.12.6",
     "mercurius-integration-testing": "^5.0.0",
     "prettier": "^2.7.1",
