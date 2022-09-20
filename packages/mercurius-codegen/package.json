@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@graphql-codegen/core": "^2.6.2",
-    "@graphql-codegen/plugin-helpers": "^2.7.0",
+    "@graphql-codegen/plugin-helpers": "^2.7.1",
     "@graphql-codegen/typed-document-node": "^2.3.3",
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
