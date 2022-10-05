@@ -151,7 +151,7 @@ importers:
       mercurius-codegen: workspace:4.0.1
       mkdirp: ^1.0.4
       nyc: 15.1.0
-      open-cli: ^7.0.1
+      open-cli: ^7.1.0
       prettier: ^2.7.1
       proxyquire: ^2.1.3
       rimraf: ^3.0.2
@@ -191,7 +191,7 @@ importers:
       mercurius: 10.5.1_graphql@16.6.0
       mercurius-codegen: 'link:'
       nyc: 15.1.0
-      open-cli: 7.0.1
+      open-cli: 7.1.0
       prettier: 2.7.1
       proxyquire: 2.1.3
       rimraf: 3.0.2
@@ -2323,9 +2323,11 @@ packages:
       which: 2.0.2
     dev: true
 
-  /crypto-random-string/2.0.0:
-    resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
-    engines: {node: '>=8'}
+  /crypto-random-string/4.0.0:
+    resolution: {integrity: sha512-x8dy3RnvYdlUcPOjkEHqozhiwzKNSq7GcPuXFbnyMOCHxX8V3OgIg/pYuabl2sbUPfIJaeAQB7PMOK8DFIdoRA==}
+    engines: {node: '>=12'}
+    dependencies:
+      type-fest: 1.4.0
     dev: true
 
   /csv-generate/3.4.3:
@@ -3007,13 +3009,13 @@ packages:
       is-unicode-supported: 1.2.0
     dev: true
 
-  /file-type/16.5.4:
-    resolution: {integrity: sha512-/yFHK0aGjFEgDJjEKP0pWCplsPFPhwyfwevf/pVxiN0tmE4L9LmwWxWukdJSHdoCli4VgQLehjJtwQBnqmsKcw==}
-    engines: {node: '>=10'}
+  /file-type/18.0.0:
+    resolution: {integrity: sha512-jjMwFpnW8PKofLE/4ohlhqwDk5k0NC6iy0UHAJFKoY1fQeGMN0GDdLgHQrvCbSpMwbqzoCZhRI5dETCZna5qVA==}
+    engines: {node: '>=14.16'}
     dependencies:
       readable-web-to-node-stream: 3.0.2
-      strtok3: 6.3.0
-      token-types: 4.2.0
+      strtok3: 7.0.0
+      token-types: 5.0.1
     dev: true
 
   /fill-keys/1.0.2:
@@ -3651,6 +3653,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /is-stream/3.0.0:
+    resolution: {integrity: sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: true
+
   /is-string/1.0.7:
     resolution: {integrity: sha512-tE2UXzivje6ofPW7l23cjDOMa09gb7xlAqG6jG5ej6uPV32TlWP3NKPigtaGeHNu9fohccRYvIiZMfOOnOYUtg==}
     engines: {node: '>= 0.4'}
@@ -4023,8 +4030,8 @@ packages:
       mimic-fn: 4.0.0
     dev: true
 
-  /meow/10.1.3:
-    resolution: {integrity: sha512-0WL7RMCPPdUTE00+GxJjL4d5Dm6eUbmAzxlzywJWiRUKCW093owmZ7/q74tH9VI91vxw9KJJNxAcvdpxb2G4iA==}
+  /meow/10.1.5:
+    resolution: {integrity: sha512-/d+PQ4GKmGvM9Bee/DPa8z3mXs/pkvJE2KEThngVNOqtmljC6K7NMPxtc2JeZYTmpWb9k/TmxjeL18ez3h7vCw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       '@types/minimist': 1.2.2
@@ -4417,16 +4424,16 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
-  /open-cli/7.0.1:
-    resolution: {integrity: sha512-w//Mb5nLGTu9aIAsAehgxV+CGEkd+P3CbdoTW8y2coQ/fmGXBSrea0i4RBqGnd9prSPX1akrBYc0e3NnWM4SPA==}
-    engines: {node: '>=14.13'}
+  /open-cli/7.1.0:
+    resolution: {integrity: sha512-Xnn/B7WY9ygV47oK+LlYp5WU8xr0tEL6SEw9jMX8n6ceElOs2AzVXFXI87/O0+b+LwLokQBZVxBMzGZHCYVppw==}
+    engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
-      file-type: 16.5.4
+      file-type: 18.0.0
       get-stdin: 9.0.0
-      meow: 10.1.3
+      meow: 10.1.5
       open: 8.4.0
-      tempy: 1.0.1
+      tempy: 3.0.0
     dev: true
 
   /open/8.4.0:
@@ -4655,9 +4662,9 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
-  /peek-readable/4.1.0:
-    resolution: {integrity: sha512-ZI3LnwUv5nOGbQzD9c2iDG6toheuXSZP5esSHBjopsXH4dg19soufvpUGA3uohi5anFtGb2lhAVdHzH6R/Evvg==}
-    engines: {node: '>=8'}
+  /peek-readable/5.0.0:
+    resolution: {integrity: sha512-YtCKvLUOvwtMGmrniQPdO7MwPjgkFBtFIrmfSbYmYuq3tKDV/mcfAhBth1+C3ru7uXIZasc/pHnb+YDYNkkj4A==}
+    engines: {node: '>=14.16'}
     dev: true
 
   /picocolors/1.0.0:
@@ -5452,12 +5459,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /strtok3/6.3.0:
-    resolution: {integrity: sha512-fZtbhtvI9I48xDSywd/somNqgUHl2L2cstmXCCif0itOf96jeW18MBSyrLuNicYQVkvpOxkZtkzujiTJ9LW5Jw==}
-    engines: {node: '>=10'}
+  /strtok3/7.0.0:
+    resolution: {integrity: sha512-pQ+V+nYQdC5H3Q7qBZAz/MO6lwGhoC2gOAjuouGf/VO0m7vQRh8QNMl2Uf6SwAtzZ9bOw3UIeBukEGNJl5dtXQ==}
+    engines: {node: '>=14.16'}
     dependencies:
       '@tokenizer/token': 0.3.0
-      peek-readable: 4.1.0
+      peek-readable: 5.0.0
     dev: true
 
   /supertap/3.0.1:
@@ -5596,15 +5603,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /tempy/1.0.1:
-    resolution: {integrity: sha512-biM9brNqxSc04Ee71hzFbryD11nX7VPhQQY32AdDmjFvodsRFz/3ufeoTZ6uYkRFfGo188tENcASNs3vTdsM0w==}
-    engines: {node: '>=10'}
+  /tempy/3.0.0:
+    resolution: {integrity: sha512-B2I9X7+o2wOaW4r/CWMkpOO9mdiTRCxXNgob6iGvPmfPWgH/KyUD6Uy5crtWBxIBe3YrNZKR2lSzv1JJKWD4vA==}
+    engines: {node: '>=14.16'}
     dependencies:
-      del: 6.1.1
-      is-stream: 2.0.1
+      is-stream: 3.0.0
       temp-dir: 2.0.0
-      type-fest: 0.16.0
-      unique-string: 2.0.0
+      type-fest: 2.17.0
+      unique-string: 3.0.0
     dev: true
 
   /term-size/2.2.1:
@@ -5679,9 +5685,9 @@ packages:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
 
-  /token-types/4.2.0:
-    resolution: {integrity: sha512-P0rrp4wUpefLncNamWIef62J0v0kQR/GfDVji9WKY7GDCWy5YbVSrKUTam07iWPZQGy0zWNOfstYTykMmPNR7w==}
-    engines: {node: '>=10'}
+  /token-types/5.0.1:
+    resolution: {integrity: sha512-Y2fmSnZjQdDb9W4w4r1tswlMHylzWIeOKpx0aZH9BgGtACHhrk3OkT52AzwcuqTRBZtvvnTjDBh8eynMulu8Vg==}
+    engines: {node: '>=14.16'}
     dependencies:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
@@ -5763,11 +5769,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/0.16.0:
-    resolution: {integrity: sha512-eaBzG6MxNzEn9kiwvtre90cXaNLkmadMWa1zQMs3XORCXNbsH/OewwbxC5ia9dCxIxnTAsSxXJaa/p5y8DlvJg==}
-    engines: {node: '>=10'}
-    dev: true
-
   /type-fest/0.6.0:
     resolution: {integrity: sha512-q+MB8nYR1KDLrgr4G5yemftpMC7/QLqVndBmEEdqzmNj5dcFOO4Oo8qlwZE3ULT3+Zim1F8Kq4cBnikNhlCMlg==}
     engines: {node: '>=8'}
@@ -5829,11 +5830,11 @@ packages:
       strip-ansi: 3.0.1
     dev: true
 
-  /unique-string/2.0.0:
-    resolution: {integrity: sha512-uNaeirEPvpZWSgzwsPGtU2zVSTrn/8L5q/IexZmH0eH6SA73CmAA5U4GwORTxQAZs95TAXLNqeLoPPNO5gZfWg==}
-    engines: {node: '>=8'}
+  /unique-string/3.0.0:
+    resolution: {integrity: sha512-VGXBUVwxKMBUznyffQweQABPRRW1vHZAbadFZud4pLFAqRGvv/96vafgjWFqzourzr8YonlQiPgH0YCJfawoGQ==}
+    engines: {node: '>=12'}
     dependencies:
-      crypto-random-string: 2.0.0
+      crypto-random-string: 4.0.0
     dev: true
 
   /universalify/0.1.2:
