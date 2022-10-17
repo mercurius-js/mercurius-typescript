@@ -57,7 +57,7 @@
     "cross-env": "^7.0.3",
     "fastify": "^4.8.1",
     "graphql": "^16.6.0",
-    "mercurius": "^10.5.1",
+    "mercurius": "^11.0.1",
     "mercurius-codegen": "workspace:4.0.1",
     "nyc": "15.1.0",
     "open-cli": "^7.1.0",
@@ -74,7 +74,7 @@
   "peerDependencies": {
     "fastify": "^4.8.1",
     "graphql": "*",
-    "mercurius": "^10.5.1",
+    "mercurius": "^11.0.1",
     "prettier": "^2.7.1"
   }
 }
