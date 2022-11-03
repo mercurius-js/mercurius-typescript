@@ -1,6 +1,6 @@
 {
   "name": "mercurius-codegen",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "keywords": [
     "fastify",
     "graphql",
@@ -58,7 +58,7 @@
     "fastify": "^4.9.2",
     "graphql": "^16.6.0",
     "mercurius": "^11.3.0",
-    "mercurius-codegen": "workspace:4.0.1",
+    "mercurius-codegen": "workspace:5.0.0",
     "nyc": "15.1.0",
     "open-cli": "^7.1.0",
     "prettier": "^2.7.1",
