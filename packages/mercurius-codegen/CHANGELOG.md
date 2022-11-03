@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 5.0.0
+
+### Major Changes
+
+- 2655e45: Update for mercurius v11
+
 ## 4.0.1
 
 ### Patch Changes
