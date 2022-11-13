@@ -36,7 +36,7 @@ importers:
       mercurius-codegen: workspace:5.0.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.7.1
-      tap: ^16.3.0
+      tap: ^16.3.1
       typescript: ^4.8.4
     dependencies:
       fastify: 4.9.2
@@ -52,7 +52,7 @@ importers:
       esbuild: 0.15.13
       mercurius-integration-testing: 6.0.1_f7iz6p4f4d3qbwzobfohwvvdyu
       prettier: 2.7.1
-      tap: 16.3.0_typescript@4.8.4
+      tap: 16.3.1_typescript@4.8.4
       typescript: 4.8.4
 
   examples/codegen-gql-files:
@@ -70,7 +70,7 @@ importers:
       mercurius-codegen: workspace:5.0.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.7.1
-      tap: ^16.3.0
+      tap: ^16.3.1
       typescript: ^4.8.4
     dependencies:
       '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
@@ -87,7 +87,7 @@ importers:
       esbuild: 0.15.13
       mercurius-integration-testing: 6.0.1_f7iz6p4f4d3qbwzobfohwvvdyu
       prettier: 2.7.1
-      tap: 16.3.0_typescript@4.8.4
+      tap: 16.3.1_typescript@4.8.4
       typescript: 4.8.4
 
   examples/manual:
@@ -103,7 +103,7 @@ importers:
       mercurius: ^11.3.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.7.1
-      tap: ^16.3.0
+      tap: ^16.3.1
       typescript: ^4.8.4
     dependencies:
       fastify: 4.9.2
@@ -118,7 +118,7 @@ importers:
       graphql-tag: 2.12.6_graphql@16.6.0
       mercurius-integration-testing: 6.0.1_f7iz6p4f4d3qbwzobfohwvvdyu
       prettier: 2.7.1
-      tap: 16.3.0_typescript@4.8.4
+      tap: 16.3.1_typescript@4.8.4
       typescript: 4.8.4
 
   packages/mercurius-codegen:
@@ -5584,8 +5584,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /tap/16.3.0_typescript@4.8.4:
-    resolution: {integrity: sha512-J9GffPUAbX6FnWbQ/jj7ktzd9nnDFP1fH44OzidqOmxUfZ1hPLMOvpS99LnDiP0H2mO8GY3kGN5XoY0xIKbNFA==}
+  /tap/16.3.1_typescript@4.8.4:
+    resolution: {integrity: sha512-B4+R/fY7hXuwDQOIpnT8rbXYYKUxX1Mu9e1axeoYtm5loyZRa2eYIL0zz8NaOg6h/dd+J8t25okCVg1RLDM8Yw==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
