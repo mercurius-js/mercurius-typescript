@@ -36,7 +36,7 @@ importers:
       mercurius-codegen: workspace:5.0.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.7.1
-      tap: ^16.3.1
+      tap: ^16.3.2
       typescript: ^4.9.3
     dependencies:
       fastify: 4.9.2
@@ -52,7 +52,7 @@ importers:
       esbuild: 0.15.14
       mercurius-integration-testing: 6.0.1_f7iz6p4f4d3qbwzobfohwvvdyu
       prettier: 2.7.1
-      tap: 16.3.1_typescript@4.9.3
+      tap: 16.3.2_typescript@4.9.3
       typescript: 4.9.3
 
   examples/codegen-gql-files:
@@ -70,7 +70,7 @@ importers:
       mercurius-codegen: workspace:5.0.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.7.1
-      tap: ^16.3.1
+      tap: ^16.3.2
       typescript: ^4.9.3
     dependencies:
       '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
@@ -87,7 +87,7 @@ importers:
       esbuild: 0.15.14
       mercurius-integration-testing: 6.0.1_f7iz6p4f4d3qbwzobfohwvvdyu
       prettier: 2.7.1
-      tap: 16.3.1_typescript@4.9.3
+      tap: 16.3.2_typescript@4.9.3
       typescript: 4.9.3
 
   examples/manual:
@@ -103,7 +103,7 @@ importers:
       mercurius: ^11.3.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.7.1
-      tap: ^16.3.1
+      tap: ^16.3.2
       typescript: ^4.9.3
     dependencies:
       fastify: 4.9.2
@@ -118,7 +118,7 @@ importers:
       graphql-tag: 2.12.6_graphql@16.6.0
       mercurius-integration-testing: 6.0.1_f7iz6p4f4d3qbwzobfohwvvdyu
       prettier: 2.7.1
-      tap: 16.3.1_typescript@4.9.3
+      tap: 16.3.2_typescript@4.9.3
       typescript: 4.9.3
 
   packages/mercurius-codegen:
@@ -3819,8 +3819,8 @@ packages:
       istanbul-lib-report: 3.0.0
     dev: true
 
-  /jackspeak/1.4.1:
-    resolution: {integrity: sha512-npN8f+M4+IQ8xD3CcWi3U62VQwKlT3Tj4GxbdT/fYTmeogD9eBF9OFdpoFG/VPNoshRjPUijdkp/p2XrzUHaVg==}
+  /jackspeak/1.4.2:
+    resolution: {integrity: sha512-GHeGTmnuaHnvS+ZctRB01bfxARuu9wW83ENbuiweu07SFcVlZrJpcshSre/keGT7YGBhLHg/+rXCNSrsEHKU4Q==}
     engines: {node: '>=8'}
     dependencies:
       cliui: 7.0.4
@@ -3904,8 +3904,8 @@ packages:
       own-or-env: 1.0.2
       signal-exit: 3.0.7
       stack-utils: 2.0.6
-      tap-parser: 11.0.1
-      tap-yaml: 1.0.0
+      tap-parser: 11.0.2
+      tap-yaml: 1.0.2
       tcompare: 5.0.7
       trivial-deferred: 1.0.1
     dev: true
@@ -5553,31 +5553,31 @@ packages:
       diff: 4.0.2
       escape-string-regexp: 2.0.0
       glob: 7.2.3
-      tap-parser: 11.0.1
-      tap-yaml: 1.0.0
+      tap-parser: 11.0.2
+      tap-yaml: 1.0.2
       unicode-length: 2.1.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tap-parser/11.0.1:
-    resolution: {integrity: sha512-5ow0oyFOnXVSALYdidMX94u0GEjIlgc/BPFYLx0yRh9hb8+cFGNJqJzDJlUqbLOwx8+NBrIbxCWkIQi7555c0w==}
+  /tap-parser/11.0.2:
+    resolution: {integrity: sha512-6qGlC956rcORw+fg7Fv1iCRAY8/bU9UabUAhs3mXRH6eRmVZcNPLheSXCYaVaYeSwx5xa/1HXZb1537YSvwDZg==}
     engines: {node: '>= 8'}
     hasBin: true
     dependencies:
       events-to-array: 1.1.2
       minipass: 3.3.4
-      tap-yaml: 1.0.0
+      tap-yaml: 1.0.2
     dev: true
 
-  /tap-yaml/1.0.0:
-    resolution: {integrity: sha512-Rxbx4EnrWkYk0/ztcm5u3/VznbyFJpyXO12dDBHKWiDVxy7O2Qw6MRrwO5H6Ww0U5YhRY/4C/VzWmFPhBQc4qQ==}
+  /tap-yaml/1.0.2:
+    resolution: {integrity: sha512-GegASpuqBnRNdT1U+yuUPZ8rEU64pL35WPBpCISWwff4dErS2/438barz7WFJl4Nzh3Y05tfPidZnH+GaV1wMg==}
     dependencies:
       yaml: 1.10.2
     dev: true
 
-  /tap/16.3.1_typescript@4.9.3:
-    resolution: {integrity: sha512-B4+R/fY7hXuwDQOIpnT8rbXYYKUxX1Mu9e1axeoYtm5loyZRa2eYIL0zz8NaOg6h/dd+J8t25okCVg1RLDM8Yw==}
+  /tap/16.3.2_typescript@4.9.3:
+    resolution: {integrity: sha512-4MWMObR8unbv5gAHHVW9F0MNk3opQMnLusSWvt4KBAnKmkwpBRKIfNF64fimQbcR4y9a7U9ISV7pCldlV3J8Pw==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
@@ -5602,7 +5602,7 @@ packages:
       glob: 7.2.3
       isexe: 2.0.0
       istanbul-lib-processinfo: 2.0.3
-      jackspeak: 1.4.1
+      jackspeak: 1.4.2
       libtap: 1.4.0
       minipass: 3.3.4
       mkdirp: 1.0.4
@@ -5612,8 +5612,8 @@ packages:
       signal-exit: 3.0.7
       source-map-support: 0.5.21
       tap-mocha-reporter: 5.0.3
-      tap-parser: 11.0.1
-      tap-yaml: 1.0.0
+      tap-parser: 11.0.2
+      tap-yaml: 1.0.2
       tcompare: 5.0.7
       typescript: 4.9.3
       which: 2.0.2
