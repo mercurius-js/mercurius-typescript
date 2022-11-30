@@ -11,7 +11,7 @@ export { plugin }
 
 export type {} from '@graphql-codegen/plugin-helpers'
 
-interface CodegenMercuriusOptions {
+export interface CodegenMercuriusOptions {
   /**
    * Specify the target path of the code generation.
    *
