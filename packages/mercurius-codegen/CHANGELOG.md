@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 5.0.1
+
+### Patch Changes
+
+- 532a891: Export `CodegenMercuriusOptions` interface
+
 ## 5.0.0
 
 ### Major Changes
