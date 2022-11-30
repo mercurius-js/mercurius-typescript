@@ -1,7 +1,11 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import { buildSchema } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import { codegenMercurius, CodegenMercuriusOptions, loadSchemaFiles } from 'mercurius-codegen'
+import {
+  codegenMercurius,
+  CodegenMercuriusOptions,
+  loadSchemaFiles,
+} from 'mercurius-codegen'
 
 export const app = Fastify({
   logger: true,
