@@ -17,7 +17,7 @@
     "mercurius": "^11.3.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.10",
     "@types/tap": "^15.0.7",
     "bob-tsm": "^1.1.2",
     "cross-env": "^7.0.3",
