@@ -1,11 +1,19 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify'
 import { buildSchema } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import { codegenMercurius, loadSchemaFiles } from 'mercurius-codegen'
+import { codegenMercurius, CodegenMercuriusOptions, loadSchemaFiles } from 'mercurius-codegen'
 
 export const app = Fastify({
   logger: true,
 })
+
+const codegenMercuriusOptions: CodegenMercuriusOptions = {
+  targetPath: './src/graphql/generated.ts',
+  operationsGlob: './src/graphql/operations/*.gql',
+  watchOptions: {
+    enabled: process.env.NODE_ENV === 'development',
+  },
+}
 
 const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
   watchOptions: {
@@ -14,10 +22,7 @@ const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
       app.graphql.replaceSchema(buildSchema(schema.join('\n')))
       app.graphql.defineResolvers(resolvers)
 
-      codegenMercurius(app, {
-        targetPath: './src/graphql/generated.ts',
-        operationsGlob: './src/graphql/operations/*.gql',
-      }).catch(console.error)
+      codegenMercurius(app, codegenMercuriusOptions).catch(console.error)
     },
   },
 })
@@ -124,12 +129,6 @@ app.register(mercurius, {
   subscription: true,
 })
 
-codegenMercurius(app, {
-  targetPath: './src/graphql/generated.ts',
-  operationsGlob: './src/graphql/operations/*.gql',
-  watchOptions: {
-    enabled: process.env.NODE_ENV === 'development',
-  },
-}).catch(console.error)
+codegenMercurius(app, codegenMercuriusOptions).catch(console.error)
 
 // app.listen(8000)
