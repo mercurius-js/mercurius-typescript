@@ -27,7 +27,7 @@
     "@types/tap": "^15.0.7",
     "bob-tsm": "^1.1.2",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.15.16",
+    "esbuild": "^0.15.17",
     "mercurius-integration-testing": "^6.0.1",
     "prettier": "^2.8.0",
     "tap": "^16.3.2",
