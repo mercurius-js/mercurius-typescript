@@ -26,7 +26,7 @@
     "@types/node": "^18.11.18",
     "changesets-github-release": "^0.1.0",
     "esbuild": "^0.16.13",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "prettier": "^2.8.1",
     "pretty-quick": "^3.1.3",
     "rimraf": "^3.0.2"

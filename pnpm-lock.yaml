@@ -8,7 +8,7 @@ importers:
       '@types/node': ^18.11.18
       changesets-github-release: ^0.1.0
       esbuild: ^0.16.13
-      husky: ^8.0.2
+      husky: ^8.0.3
       prettier: ^2.8.1
       pretty-quick: ^3.1.3
       rimraf: ^3.0.2
@@ -17,7 +17,7 @@ importers:
       '@types/node': 18.11.18
       changesets-github-release: 0.1.0
       esbuild: 0.16.13
-      husky: 8.0.2
+      husky: 8.0.3
       prettier: 2.8.1
       pretty-quick: 3.1.3_prettier@2.8.1
       rimraf: 3.0.2
@@ -3450,8 +3450,8 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /husky/8.0.2:
-    resolution: {integrity: sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==}
+  /husky/8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
