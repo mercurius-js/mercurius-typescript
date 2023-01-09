@@ -36,7 +36,7 @@ importers:
       mercurius-codegen: workspace:5.0.1
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.8.2
-      tap: ^16.3.2
+      tap: ^16.3.3
       typescript: ^4.9.4
     dependencies:
       fastify: 4.11.0
@@ -52,7 +52,7 @@ importers:
       esbuild: 0.16.16
       mercurius-integration-testing: 6.0.1_qxi53mw7zaq3g7wdb4w4j6m344
       prettier: 2.8.2
-      tap: 16.3.2_typescript@4.9.4
+      tap: 16.3.3_typescript@4.9.4
       typescript: 4.9.4
 
   examples/codegen-gql-files:
@@ -70,7 +70,7 @@ importers:
       mercurius-codegen: workspace:5.0.1
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.8.2
-      tap: ^16.3.2
+      tap: ^16.3.3
       typescript: ^4.9.4
     dependencies:
       '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
@@ -87,7 +87,7 @@ importers:
       esbuild: 0.16.16
       mercurius-integration-testing: 6.0.1_qxi53mw7zaq3g7wdb4w4j6m344
       prettier: 2.8.2
-      tap: 16.3.2_typescript@4.9.4
+      tap: 16.3.3_typescript@4.9.4
       typescript: 4.9.4
 
   examples/manual:
@@ -103,7 +103,7 @@ importers:
       mercurius: ^11.5.0
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.8.2
-      tap: ^16.3.2
+      tap: ^16.3.3
       typescript: ^4.9.4
     dependencies:
       fastify: 4.11.0
@@ -118,7 +118,7 @@ importers:
       graphql-tag: 2.12.6_graphql@16.6.0
       mercurius-integration-testing: 6.0.1_qxi53mw7zaq3g7wdb4w4j6m344
       prettier: 2.8.2
-      tap: 16.3.2_typescript@4.9.4
+      tap: 16.3.3_typescript@4.9.4
       typescript: 4.9.4
 
   packages/mercurius-codegen:
@@ -5616,8 +5616,8 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /tap/16.3.2_typescript@4.9.4:
-    resolution: {integrity: sha512-4MWMObR8unbv5gAHHVW9F0MNk3opQMnLusSWvt4KBAnKmkwpBRKIfNF64fimQbcR4y9a7U9ISV7pCldlV3J8Pw==}
+  /tap/16.3.3_typescript@4.9.4:
+    resolution: {integrity: sha512-E6Ti4FaH3zUvOtl13GA60n8aodRj44S8Vu5efM84U5NmquJo4+y21+2VM9r9jR5iiEcce5dqvlrrwAhZ6r11xg==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
