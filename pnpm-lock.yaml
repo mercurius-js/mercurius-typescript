@@ -149,7 +149,7 @@ importers:
       graphql: ^16.6.0
       mercurius: ^11.5.0
       mercurius-codegen: workspace:5.0.1
-      mkdirp: ^2.1.2
+      mkdirp: ^2.1.3
       nyc: 15.1.0
       open-cli: ^7.1.0
       prettier: ^2.8.3
@@ -172,7 +172,7 @@ importers:
       '@graphql-tools/utils': 9.1.4_graphql@16.6.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       chokidar: 3.5.3
-      mkdirp: 2.1.2
+      mkdirp: 2.1.3
     devDependencies:
       '@istanbuljs/nyc-config-typescript': 1.0.2_nyc@15.1.0
       '@types/mkdirp': 1.0.2
@@ -4283,8 +4283,8 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdirp/2.1.2:
-    resolution: {integrity: sha512-12UORspdR5q37RhJO1XasFrqNX3FbIbdtvNP2uHJJx6mhEXdNDaaCiXLiLGrqaKX1n6WvafTIIndZV2pJayNsg==}
+  /mkdirp/2.1.3:
+    resolution: {integrity: sha512-sjAkg21peAG9HS+Dkx7hlG9Ztx7HLeKnvB3NQRcu/mltCVmvkF0pisbiTSfDVYTT86XEfZrTUosLdZLStquZUw==}
     engines: {node: '>=10'}
     hasBin: true
     dev: false
