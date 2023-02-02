@@ -26,7 +26,7 @@ importers:
     specifiers:
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^18.11.18
-      '@types/tap': ^15.0.7
+      '@types/tap': ^15.0.8
       bob-tsm: ^1.1.2
       cross-env: ^7.0.3
       esbuild: ^0.17.5
@@ -46,7 +46,7 @@ importers:
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@types/node': 18.11.18
-      '@types/tap': 15.0.7
+      '@types/tap': 15.0.8
       bob-tsm: 1.1.2_kg2cyfcfh5d6i4dqr3zu2q3hwy
       cross-env: 7.0.3
       esbuild: 0.17.5
@@ -60,7 +60,7 @@ importers:
       '@graphql-tools/load-files': ^6.6.1
       '@graphql-typed-document-node/core': ^3.1.1
       '@types/node': ^18.11.18
-      '@types/tap': ^15.0.7
+      '@types/tap': ^15.0.8
       bob-tsm: ^1.1.2
       cross-env: ^7.0.3
       esbuild: ^0.17.5
@@ -81,7 +81,7 @@ importers:
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@types/node': 18.11.18
-      '@types/tap': 15.0.7
+      '@types/tap': 15.0.8
       bob-tsm: 1.1.2_kg2cyfcfh5d6i4dqr3zu2q3hwy
       cross-env: 7.0.3
       esbuild: 0.17.5
@@ -93,7 +93,7 @@ importers:
   examples/manual:
     specifiers:
       '@types/node': ^18.11.18
-      '@types/tap': ^15.0.7
+      '@types/tap': ^15.0.8
       bob-tsm: ^1.1.2
       cross-env: ^7.0.3
       esbuild: ^0.17.5
@@ -111,7 +111,7 @@ importers:
       mercurius: 12.0.0_graphql@16.6.0
     devDependencies:
       '@types/node': 18.11.18
-      '@types/tap': 15.0.7
+      '@types/tap': 15.0.8
       bob-tsm: 1.1.2_kg2cyfcfh5d6i4dqr3zu2q3hwy
       cross-env: 7.0.3
       esbuild: 0.17.5
@@ -1627,8 +1627,8 @@ packages:
     resolution: {integrity: sha512-KQf+QAMWKMrtBMsB8/24w53tEsxllMj6TuA80TT/5igJalLI/zm0L3oXRbIAl4Ohfc85gyHX/jhMwsVkmhLU4A==}
     dev: true
 
-  /@types/tap/15.0.7:
-    resolution: {integrity: sha512-TTMajw4gxQfFgYbhXhy/Tb2OiNcwS+4oP/9yp1/GdU0pFJo3wtnkYhRgmQy39ksh+rnoa0VrPHJ4Tuv2cLNQ5A==}
+  /@types/tap/15.0.8:
+    resolution: {integrity: sha512-ZfeoiZlLIaFi4t6wccwbTEicrHREkP0bOq8dZVi/nWvG5F8O7LlS2cSUZBiOW/D4cgWS/p2uhM3lJoyzFAl80w==}
     dependencies:
       '@types/node': 18.11.18
     dev: true
