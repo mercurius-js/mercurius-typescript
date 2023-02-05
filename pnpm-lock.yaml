@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.26.0
-      '@types/node': ^18.11.18
+      '@types/node': ^18.11.19
       changesets-github-release: ^0.1.0
       esbuild: ^0.17.5
       husky: ^8.0.3
@@ -14,7 +14,7 @@ importers:
       rimraf: ^3.0.2
     devDependencies:
       '@changesets/cli': 2.26.0
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       changesets-github-release: 0.1.0
       esbuild: 0.17.5
       husky: 8.0.3
@@ -25,7 +25,7 @@ importers:
   examples/codegen:
     specifiers:
       '@graphql-typed-document-node/core': ^3.1.1
-      '@types/node': ^18.11.18
+      '@types/node': ^18.11.19
       '@types/tap': ^15.0.8
       bob-tsm: ^1.1.2
       cross-env: ^7.0.3
@@ -45,7 +45,7 @@ importers:
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       '@types/tap': 15.0.8
       bob-tsm: 1.1.2_kg2cyfcfh5d6i4dqr3zu2q3hwy
       cross-env: 7.0.3
@@ -59,7 +59,7 @@ importers:
     specifiers:
       '@graphql-tools/load-files': ^6.6.1
       '@graphql-typed-document-node/core': ^3.1.1
-      '@types/node': ^18.11.18
+      '@types/node': ^18.11.19
       '@types/tap': ^15.0.8
       bob-tsm: ^1.1.2
       cross-env: ^7.0.3
@@ -80,7 +80,7 @@ importers:
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       '@types/tap': 15.0.8
       bob-tsm: 1.1.2_kg2cyfcfh5d6i4dqr3zu2q3hwy
       cross-env: 7.0.3
@@ -92,7 +92,7 @@ importers:
 
   examples/manual:
     specifiers:
-      '@types/node': ^18.11.18
+      '@types/node': ^18.11.19
       '@types/tap': ^15.0.8
       bob-tsm: ^1.1.2
       cross-env: ^7.0.3
@@ -110,7 +110,7 @@ importers:
       graphql: 16.6.0
       mercurius: 12.0.0_graphql@16.6.0
     devDependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       '@types/tap': 15.0.8
       bob-tsm: 1.1.2_kg2cyfcfh5d6i4dqr3zu2q3hwy
       cross-env: 7.0.3
@@ -134,7 +134,7 @@ importers:
       '@graphql-typed-document-node/core': ^3.1.1
       '@istanbuljs/nyc-config-typescript': ^1.0.2
       '@types/mkdirp': ^1.0.2
-      '@types/node': ^18.11.18
+      '@types/node': ^18.11.19
       '@types/prettier': ^2.7.2
       '@types/proxyquire': ^1.3.28
       '@types/rimraf': ^3.0.2
@@ -176,7 +176,7 @@ importers:
     devDependencies:
       '@istanbuljs/nyc-config-typescript': 1.0.2_nyc@15.1.0
       '@types/mkdirp': 1.0.2
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       '@types/prettier': 2.7.2
       '@types/proxyquire': 1.3.28
       '@types/rimraf': 3.0.2
@@ -197,7 +197,7 @@ importers:
       rimraf: 3.0.2
       serve: 14.2.0
       tmp-promise: 3.0.3
-      ts-node: 10.9.1_bdgp3l2zgaopogaavxusmetvge
+      ts-node: 10.9.1_qqdszkrtcshgbphghj7vnvrrby
       typescript: 4.9.5
       wait-for-expect: 3.0.2
       wait-on: 7.0.1
@@ -1565,7 +1565,7 @@ packages:
     resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
     dev: true
 
   /@types/is-ci/3.0.0:
@@ -1593,15 +1593,15 @@ packages:
   /@types/mkdirp/1.0.2:
     resolution: {integrity: sha512-o0K1tSO0Dx5X6xlU5F1D6625FawhC3dU3iqr25lluNv/+/QIVH8RLNEiVokgIZo+mz+87w/3Mkg/VvQS+J51fQ==}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
     dev: true
 
   /@types/node/12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node/18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+  /@types/node/18.11.19:
+    resolution: {integrity: sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1620,7 +1620,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 8.0.0
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
     dev: true
 
   /@types/semver/6.2.3:
@@ -1630,7 +1630,7 @@ packages:
   /@types/tap/15.0.8:
     resolution: {integrity: sha512-ZfeoiZlLIaFi4t6wccwbTEicrHREkP0bOq8dZVi/nWvG5F8O7LlS2cSUZBiOW/D4cgWS/p2uhM3lJoyzFAl80w==}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
     dev: true
 
   /@zeit/schemas/2.29.0:
@@ -5788,7 +5788,7 @@ packages:
     resolution: {integrity: sha512-dagAKX7vaesNNAwOc9Np9C2mJ+7YopF4lk+jE2JML9ta4kZ91Y6UruJNH65bLRYoUROD8EY+Pmi44qQWwXR7sw==}
     dev: true
 
-  /ts-node/10.9.1_bdgp3l2zgaopogaavxusmetvge:
+  /ts-node/10.9.1_qqdszkrtcshgbphghj7vnvrrby:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -5807,7 +5807,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
