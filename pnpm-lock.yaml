@@ -32,7 +32,7 @@ importers:
       esbuild: ^0.17.7
       fastify: ^4.13.0
       graphql: ^16.6.0
-      mercurius: ^12.0.0
+      mercurius: ^12.0.1
       mercurius-codegen: workspace:5.0.1
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.8.4
@@ -41,7 +41,7 @@ importers:
     dependencies:
       fastify: 4.13.0
       graphql: 16.6.0
-      mercurius: 12.0.0_graphql@16.6.0
+      mercurius: 12.0.1_graphql@16.6.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
@@ -50,7 +50,7 @@ importers:
       bob-tsm: 1.1.2_bbhdg2tg4je6yluawzqfcx3rwi
       cross-env: 7.0.3
       esbuild: 0.17.7
-      mercurius-integration-testing: 6.0.1_mfeierfx7lk3wglivr7payan2a
+      mercurius-integration-testing: 6.0.1_ac7gqnag5cag43t2koxrhidl6q
       prettier: 2.8.4
       tap: 16.3.4_typescript@4.9.5
       typescript: 4.9.5
@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.17.7
       fastify: ^4.13.0
       graphql: ^16.6.0
-      mercurius: ^12.0.0
+      mercurius: ^12.0.1
       mercurius-codegen: workspace:5.0.1
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.8.4
@@ -76,7 +76,7 @@ importers:
       '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
       fastify: 4.13.0
       graphql: 16.6.0
-      mercurius: 12.0.0_graphql@16.6.0
+      mercurius: 12.0.1_graphql@16.6.0
       mercurius-codegen: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
@@ -85,7 +85,7 @@ importers:
       bob-tsm: 1.1.2_bbhdg2tg4je6yluawzqfcx3rwi
       cross-env: 7.0.3
       esbuild: 0.17.7
-      mercurius-integration-testing: 6.0.1_mfeierfx7lk3wglivr7payan2a
+      mercurius-integration-testing: 6.0.1_ac7gqnag5cag43t2koxrhidl6q
       prettier: 2.8.4
       tap: 16.3.4_typescript@4.9.5
       typescript: 4.9.5
@@ -100,7 +100,7 @@ importers:
       fastify: ^4.13.0
       graphql: ^16.6.0
       graphql-tag: ^2.12.6
-      mercurius: ^12.0.0
+      mercurius: ^12.0.1
       mercurius-integration-testing: ^6.0.1
       prettier: ^2.8.4
       tap: ^16.3.4
@@ -108,7 +108,7 @@ importers:
     dependencies:
       fastify: 4.13.0
       graphql: 16.6.0
-      mercurius: 12.0.0_graphql@16.6.0
+      mercurius: 12.0.1_graphql@16.6.0
     devDependencies:
       '@types/node': 18.13.0
       '@types/tap': 15.0.8
@@ -116,7 +116,7 @@ importers:
       cross-env: 7.0.3
       esbuild: 0.17.7
       graphql-tag: 2.12.6_graphql@16.6.0
-      mercurius-integration-testing: 6.0.1_mfeierfx7lk3wglivr7payan2a
+      mercurius-integration-testing: 6.0.1_ac7gqnag5cag43t2koxrhidl6q
       prettier: 2.8.4
       tap: 16.3.4_typescript@4.9.5
       typescript: 4.9.5
@@ -147,7 +147,7 @@ importers:
       cross-env: ^7.0.3
       fastify: ^4.13.0
       graphql: ^16.6.0
-      mercurius: ^12.0.0
+      mercurius: ^12.0.1
       mercurius-codegen: workspace:5.0.1
       mkdirp: ^2.1.3
       nyc: 15.1.0
@@ -188,7 +188,7 @@ importers:
       cross-env: 7.0.3
       fastify: 4.13.0
       graphql: 16.6.0
-      mercurius: 12.0.0_graphql@16.6.0
+      mercurius: 12.0.1_graphql@16.6.0
       mercurius-codegen: 'link:'
       nyc: 15.1.0
       open-cli: 7.1.0
@@ -3327,8 +3327,8 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /graphql-jit/0.7.4_graphql@16.6.0:
-    resolution: {integrity: sha512-kWyHmsQtKMD6xcKDgf4dgPLyIZhviqA6IWGdnA0ElL9wgrIOTxf3eI4c0/U3tnoAU3t09zliVCfDkfIptzYjIA==}
+  /graphql-jit/0.8.0_graphql@16.6.0:
+    resolution: {integrity: sha512-mxdV9ohO6jKt1o9erb+7RpmnDKQFQCcJlYVfGa3j4+ieP0ITDsAlm194+pfvdv5F4zgrgZfSe5xx5Rf98epJmg==}
     peerDependencies:
       graphql: '>=15'
     dependencies:
@@ -4118,7 +4118,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing/6.0.1_mfeierfx7lk3wglivr7payan2a:
+  /mercurius-integration-testing/6.0.1_ac7gqnag5cag43t2koxrhidl6q:
     resolution: {integrity: sha512-YBjsR0KtjtnlGIuyOpg40PD57eq9XKSSsyisrsGUAY2Ql4nY6nP8oM3JN2zjk7j8zYlZRnIiZKovsTOddqXZdA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4130,15 +4130,15 @@ packages:
       cookie: 0.5.0
       fastify: 4.13.0
       graphql: 16.6.0
-      mercurius: 12.0.0_graphql@16.6.0
+      mercurius: 12.0.1_graphql@16.6.0
       ws: 8.10.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius/12.0.0_graphql@16.6.0:
-    resolution: {integrity: sha512-ORe/0eFuUq5lFMF1c8hdEQz44MdK4A8gMbJr8US3BakHBeYbbFDWGskhHkYmaZkx2ka0NJh+iMasWiL07kAoHg==}
+  /mercurius/12.0.1_graphql@16.6.0:
+    resolution: {integrity: sha512-Yt7+Sy50Av9W0nopp3bXBK+gSmpbWaPQFuxGWixRRhgBBn7SF1AUJ3iC8v7/qsiffzNo8l0TF2tQwlUCRhTNWg==}
     engines: {node: '>=14.19.3'}
     peerDependencies:
       graphql: ^16.0.0
@@ -4148,7 +4148,7 @@ packages:
       '@fastify/websocket': 7.1.1
       fastify-plugin: 4.3.0
       graphql: 16.6.0
-      graphql-jit: 0.7.4_graphql@16.6.0
+      graphql-jit: 0.8.0_graphql@16.6.0
       mqemitter: 5.0.0
       p-map: 4.0.0
       readable-stream: 4.2.0
