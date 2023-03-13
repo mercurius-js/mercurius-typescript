@@ -33,7 +33,7 @@ importers:
       fastify: ^4.14.1
       graphql: ^16.6.0
       mercurius: ^12.2.0
-      mercurius-codegen: workspace:5.0.1
+      mercurius-codegen: workspace:5.0.2
       mercurius-integration-testing: ^8.0.0
       prettier: ^2.8.4
       tap: ^16.3.4
@@ -67,7 +67,7 @@ importers:
       fastify: ^4.14.1
       graphql: ^16.6.0
       mercurius: ^12.2.0
-      mercurius-codegen: workspace:5.0.1
+      mercurius-codegen: workspace:5.0.2
       mercurius-integration-testing: ^8.0.0
       prettier: ^2.8.4
       tap: ^16.3.4
@@ -148,7 +148,7 @@ importers:
       fastify: ^4.14.1
       graphql: ^16.6.0
       mercurius: ^12.2.0
-      mercurius-codegen: workspace:5.0.1
+      mercurius-codegen: workspace:5.0.2
       mkdirp: ^2.1.5
       nyc: 15.1.0
       open-cli: ^7.1.0

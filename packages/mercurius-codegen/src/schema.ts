@@ -73,7 +73,7 @@ export function loadSchemaFiles(
   schemaPath: string | string[],
   { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {}
 ) {
-  const log = (...message: Parameters<typeof console['log']>) =>
+  const log = (...message: Parameters<(typeof console)['log']>) =>
     silent ? undefined : console.log(...message)
 
   const {
