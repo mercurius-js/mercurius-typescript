@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 5.0.2
+
+### Patch Changes
+
+- 14a45fd: Allow peer dependency to mercurius v12
+
 ## 5.0.1
 
 ### Patch Changes

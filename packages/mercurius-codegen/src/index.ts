@@ -119,7 +119,7 @@ export async function codegenMercurius(
   const { writeOutputSchema } = await import('./outputSchema')
 
   return new Promise((resolve, reject) => {
-    const log = (...message: Parameters<typeof console['log']>) =>
+    const log = (...message: Parameters<(typeof console)['log']>) =>
       silent ? undefined : console.log(...message)
 
     setImmediate(() => {
