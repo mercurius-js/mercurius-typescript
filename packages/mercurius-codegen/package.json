@@ -43,6 +43,7 @@
     "mkdirp": "^2.1.6"
   },
   "devDependencies": {
+    "@graphql-codegen/visitor-plugin-common": "^3.0.2",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/mkdirp": "^1.0.2",
     "@types/node": "^18.15.7",

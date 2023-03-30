@@ -1,7 +1,14 @@
 import { CodegenPlugin } from '@graphql-codegen/plugin-helpers'
 import { GraphQLField, GraphQLType } from 'graphql'
 
-export interface MercuriusLoadersPluginConfig {
+import type { RawResolversConfig } from '@graphql-codegen/visitor-plugin-common';
+
+/**
+ * Subset of Config Options that are supported by this plugin
+ */
+type SupportedConfigOptions = Pick<RawResolversConfig, 'addUnderscoreToArgsType'>
+
+export interface MercuriusLoadersPluginConfig extends SupportedConfigOptions {
   namespacedImportName?: string
   loadersCustomParentTypes?: Record<string, string>
 }
@@ -126,7 +133,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
               config.loadersCustomParentTypes?.[type.name] || type.name
             },${
               hasArgs
-                ? `${namespacedImportPrefix}${type.name}${value.name}Args`
+                ? `${namespacedImportPrefix}${type.name}${config.addUnderscoreToArgsType ? '_' : ''}${value.name}Args`
                 : '{}'
             }, TContext>`
           })
