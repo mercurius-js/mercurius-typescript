@@ -313,6 +313,16 @@ test('warns about unsupported namingConvention, respecting silent', async (t) =>
   })
 })
 
+test('supports addUnderscoreToArgsType config option', async (t) => {
+  t.plan(1);
+  await app.ready();
+  generatedCode = await generateCode(app.graphql.schema, {
+    addUnderscoreToArgsType: true,
+  });
+
+  t.snapshot(generatedCode, 'generated code');
+})
+
 test('gql helper', (t) => {
   t.plan(2)
 
