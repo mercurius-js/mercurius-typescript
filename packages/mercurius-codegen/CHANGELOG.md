@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 5.0.3
+
+### Patch Changes
+
+- a2d5a6b: Add support for addUnderscoreToArgsType codegen config
+
 ## 5.0.2
 
 ### Patch Changes

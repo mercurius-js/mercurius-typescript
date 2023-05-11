@@ -41,7 +41,7 @@ importers:
         specifier: ^12.2.0
         version: 12.2.0(graphql@16.6.0)
       mercurius-codegen:
-        specifier: workspace:5.0.2
+        specifier: workspace:*
         version: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core':
@@ -90,7 +90,7 @@ importers:
         specifier: ^12.2.0
         version: 12.2.0(graphql@16.6.0)
       mercurius-codegen:
-        specifier: workspace:5.0.2
+        specifier: workspace:*
         version: link:../../packages/mercurius-codegen
     devDependencies:
       '@graphql-typed-document-node/core':
@@ -252,7 +252,7 @@ importers:
         specifier: ^12.2.0
         version: 12.2.0(graphql@16.6.0)
       mercurius-codegen:
-        specifier: workspace:5.0.2
+        specifier: workspace:*
         version: 'link:'
       nyc:
         specifier: 15.1.0
