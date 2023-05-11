@@ -22,14 +22,14 @@
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@types/node": "^18.15.7",
+    "@types/node": "^18.15.10",
     "@types/tap": "^15.0.8",
     "bob-tsm": "^1.1.2",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.17.12",
+    "esbuild": "^0.17.18",
     "mercurius-integration-testing": "^8.0.0",
     "prettier": "^2.8.7",
     "tap": "^16.3.4",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.4"
   }
 }
