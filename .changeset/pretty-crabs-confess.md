@@ -1,5 +1,5 @@
 ---
-'mercurius-codegen': minor
+'mercurius-codegen': patch
 ---
 
 Add support for addUnderscoreToArgsType codegen config
