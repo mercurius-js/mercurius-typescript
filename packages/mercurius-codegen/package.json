@@ -32,7 +32,7 @@
   "dependencies": {
     "@graphql-codegen/core": "^3.1.0",
     "@graphql-codegen/plugin-helpers": "^4.2.0",
-    "@graphql-codegen/typed-document-node": "^3.0.2",
+    "@graphql-codegen/typed-document-node": "^4.0.1",
     "@graphql-codegen/typescript": "^3.0.4",
     "@graphql-codegen/typescript-operations": "^3.0.4",
     "@graphql-codegen/typescript-resolvers": "^3.2.1",
