@@ -78,8 +78,8 @@ importers:
   examples/codegen-gql-files:
     dependencies:
       '@graphql-tools/load-files':
-        specifier: ^6.6.1
-        version: 6.6.1(graphql@16.6.0)
+        specifier: ^7.0.0
+        version: 7.0.0(graphql@16.6.0)
       fastify:
         specifier: ^4.17.0
         version: 4.17.0
@@ -191,11 +191,11 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(graphql@16.6.0)
       '@graphql-tools/load-files':
-        specifier: ^6.6.1
-        version: 6.6.1(graphql@16.6.0)
+        specifier: ^7.0.0
+        version: 7.0.0(graphql@16.6.0)
       '@graphql-tools/utils':
-        specifier: ^9.2.1
-        version: 9.2.1(graphql@16.6.0)
+        specifier: ^10.0.0
+        version: 10.0.0(graphql@16.6.0)
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.6.0)
@@ -1418,14 +1418,15 @@ packages:
       - supports-color
     dev: false
 
-  /@graphql-tools/load-files@6.6.1(graphql@16.6.0):
-    resolution: {integrity: sha512-nd4GOjdD68bdJkHfRepILb0gGwF63mJI7uD4oJuuf2Kzeq8LorKa6WfyxUhdMuLmZhnx10zdAlWPfwv1NOAL4Q==}
+  /@graphql-tools/load-files@7.0.0(graphql@16.6.0):
+    resolution: {integrity: sha512-P98amERIwI7FD8Bsq6xUbz9Mj63W8qucfrE/WQjad5jFMZYdFFt46a99FFdfx8S/ZYgpAlj/AZbaTtWLitMgNQ==}
+    engines: {node: '>=16.0.0'}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       globby: 11.1.0
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.5.0
       unixify: 1.0.0
     dev: false
 
@@ -1472,6 +1473,17 @@ packages:
       graphql: 16.6.0
       tslib: 2.5.0
       value-or-promise: 1.0.11
+    dev: false
+
+  /@graphql-tools/utils@10.0.0(graphql@16.6.0):
+    resolution: {integrity: sha512-ndBPc6zgR+eGU/jHLpuojrs61kYN3Z89JyMLwK3GCRkPv4EQn9EOr1UWqF1JO0iM+/jAVHY0mvfUxyrFFN9DUQ==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
+      graphql: 16.6.0
+      tslib: 2.5.0
     dev: false
 
   /@graphql-tools/utils@9.0.1(graphql@16.6.0):
