@@ -36,8 +36,8 @@ importers:
   examples/codegen:
     dependencies:
       fastify:
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.18.0
+        version: 4.18.0
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -68,7 +68,7 @@ importers:
         version: 0.17.19
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.17.0)(graphql@16.6.0)(mercurius@13.0.0)
+        version: 8.1.1(fastify@4.18.0)(graphql@16.6.0)(mercurius@13.0.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -85,8 +85,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(graphql@16.6.0)
       fastify:
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.18.0
+        version: 4.18.0
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -117,7 +117,7 @@ importers:
         version: 0.17.19
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.17.0)(graphql@16.6.0)(mercurius@13.0.0)
+        version: 8.1.1(fastify@4.18.0)(graphql@16.6.0)(mercurius@13.0.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -131,8 +131,8 @@ importers:
   examples/manual:
     dependencies:
       fastify:
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.18.0
+        version: 4.18.0
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.6.0)
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.17.0)(graphql@16.6.0)(mercurius@13.0.0)
+        version: 8.1.1(fastify@4.18.0)(graphql@16.6.0)(mercurius@13.0.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -247,8 +247,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       fastify:
-        specifier: ^4.17.0
-        version: 4.17.0
+        specifier: ^4.18.0
+        version: 4.18.0
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -2016,8 +2016,8 @@ packages:
       - supports-color
     dev: true
 
-  /avvio@8.2.0:
-    resolution: {integrity: sha512-bbCQdg7bpEv6kGH41RO/3B2/GMMmJSo2iBK+X8AWN9mujtfUipMDfIjsgHCfpnKqoGEQrrmCDKSa5OQ19+fDmg==}
+  /avvio@8.2.1:
+    resolution: {integrity: sha512-TAlMYvOuwGyLK3PfBb5WKBXZmXz2fVCgv23d6zZFdle/q3gPjmxBaeuC0pY0Dzs5PWMSgfqqEZkrye19GlDTgw==}
     dependencies:
       archy: 1.0.0
       debug: 4.3.4
@@ -2571,7 +2571,7 @@ packages:
       js-string-escape: 1.0.1
       lodash: 4.17.21
       md5-hex: 3.0.1
-      semver: 7.3.8
+      semver: 7.5.1
       well-known-symbols: 2.0.0
     dev: true
 
@@ -3139,24 +3139,24 @@ packages:
   /fastify-plugin@4.3.0:
     resolution: {integrity: sha512-M3+i368lV0OYTJ5TfClIoPKEKSOF7112iiPdwgfSR0gN98BjA1Nk+c6oBHtfcVt9KiMxl+EQKHC1QNWo3ZOpYQ==}
 
-  /fastify@4.17.0:
-    resolution: {integrity: sha512-tzuY1tgWJo2Y6qEKwmLhFvACUmr68Io2pqP/sDKU71KRM6A6R3DrCDqLGqANbeLZcKUfdfY58ut35CGqemcTgg==}
+  /fastify@4.18.0:
+    resolution: {integrity: sha512-L5o/2GEkBastQ3HV0dtKo7SUZ497Z1+q4fcqAoPyq6JCQ/8zdk1JQEoTQwnBWCp+EmA7AQa6mxNqSAEhzP0RwQ==}
     dependencies:
       '@fastify/ajv-compiler': 3.5.0
       '@fastify/error': 3.2.0
       '@fastify/fast-json-stringify-compiler': 4.3.0
       abstract-logging: 2.0.1
-      avvio: 8.2.0
+      avvio: 8.2.1
       fast-content-type-parse: 1.0.0
       fast-json-stringify: 5.7.0
       find-my-way: 7.6.0
-      light-my-request: 5.6.1
-      pino: 8.7.0
-      process-warning: 2.0.0
+      light-my-request: 5.10.0
+      pino: 8.14.1
+      process-warning: 2.2.0
       proxy-addr: 2.0.7
       rfdc: 1.3.0
       secure-json-parse: 2.7.0
-      semver: 7.3.8
+      semver: 7.5.1
       tiny-lru: 11.0.1
     transitivePeerDependencies:
       - supports-color
@@ -4096,11 +4096,11 @@ packages:
       trivial-deferred: 1.0.1
     dev: true
 
-  /light-my-request@5.6.1:
-    resolution: {integrity: sha512-sbJnC1UBRivi9L1kICr3CESb82pNiPNB3TvtdIrZZqW0Qh8uDXvoywMmWKZlihDcmw952CMICCzM+54LDf+E+g==}
+  /light-my-request@5.10.0:
+    resolution: {integrity: sha512-ZU2D9GmAcOUculTTdH9/zryej6n8TzT+fNGdNtm6SDp5MMMpHrJJkvAdE3c6d8d2chE9i+a//dS9CWZtisknqA==}
     dependencies:
       cookie: 0.5.0
-      process-warning: 2.0.0
+      process-warning: 2.2.0
       set-cookie-parser: 2.5.1
 
   /lines-and-columns@1.2.4:
@@ -4289,7 +4289,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing@8.1.1(fastify@4.17.0)(graphql@16.6.0)(mercurius@13.0.0):
+  /mercurius-integration-testing@8.1.1(fastify@4.18.0)(graphql@16.6.0)(mercurius@13.0.0):
     resolution: {integrity: sha512-JyyKGw4pXe+Hy8huDIMjIO1B0DIJkQDXuWX9+gtAQXKlwICQrTzUAfQGtqVMFypsvV8W15TUCxZraIqt01mFGg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4306,7 +4306,7 @@ packages:
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
       cookie: 0.5.0
-      fastify: 4.17.0
+      fastify: 4.18.0
       graphql: 16.6.0
       mercurius: 13.0.0(graphql@16.6.0)
       ws: 8.13.0
@@ -4546,7 +4546,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.11.0
-      semver: 7.3.8
+      semver: 7.5.1
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -4556,7 +4556,7 @@ packages:
     dependencies:
       hosted-git-info: 5.2.1
       is-core-module: 2.11.0
-      semver: 7.3.8
+      semver: 7.5.1
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -4944,8 +4944,8 @@ packages:
   /pino-std-serializers@6.0.0:
     resolution: {integrity: sha512-mMMOwSKrmyl+Y12Ri2xhH1lbzQxwwpuru9VjyJpgFIH4asSj88F2csdMwN6+M5g1Ll4rmsYghHLQJw81tgZ7LQ==}
 
-  /pino@8.7.0:
-    resolution: {integrity: sha512-l9sA5uPxmZzwydhMWUcm1gI0YxNnYl8MfSr2h8cwLvOAzQLBLewzF247h/vqHe3/tt6fgtXeG9wdjjoetdI/vA==}
+  /pino@8.14.1:
+    resolution: {integrity: sha512-8LYNv7BKWXSfS+k6oEc6occy5La+q2sPwU3q2ljTX5AZk7v+5kND2o5W794FyRaqha6DJajmkNRsWtPpFyMUdw==}
     hasBin: true
     dependencies:
       atomic-sleep: 1.0.0
@@ -4953,7 +4953,7 @@ packages:
       on-exit-leak-free: 2.1.0
       pino-abstract-transport: 1.0.0
       pino-std-serializers: 6.0.0
-      process-warning: 2.0.0
+      process-warning: 2.2.0
       quick-format-unescaped: 4.0.4
       real-require: 0.2.0
       safe-stable-stringify: 2.4.1
@@ -5028,8 +5028,8 @@ packages:
       fromentries: 1.3.2
     dev: true
 
-  /process-warning@2.0.0:
-    resolution: {integrity: sha512-+MmoAXoUX+VTHAlwns0h+kFUWFs/3FZy+ZuchkgjyOu3oioLAo2LB5aCfKPh2+P9O18i3m43tUEv3YqttSy0Ww==}
+  /process-warning@2.2.0:
+    resolution: {integrity: sha512-/1WZ8+VQjR6avWOgHeEPd7SDQmFQ1B5mC1eRXsCm5TarlNmx/wCsa5GEaxGm05BORRtyG/Ex/3xq3TuRvq57qg==}
 
   /process@0.11.10:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
@@ -5374,8 +5374,8 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
 
-  /semver@7.3.8:
-    resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
+  /semver@7.5.1:
+    resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
