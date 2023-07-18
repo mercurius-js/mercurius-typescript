@@ -25,7 +25,7 @@
     "@changesets/cli": "^2.26.2",
     "@types/node": "^18.16.19",
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.18.13",
+    "esbuild": "^0.18.14",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3",
