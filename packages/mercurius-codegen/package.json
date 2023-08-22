@@ -54,7 +54,7 @@
     "bob-watch": "^0.1.2",
     "c8": "^8.0.1",
     "changesets-github-release": "^0.1.0",
-    "concurrently": "^8.2.0",
+    "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
     "fastify": "^4.21.0",
     "graphql": "^16.8.0",
