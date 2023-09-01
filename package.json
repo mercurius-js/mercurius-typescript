@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "@types/node": "^18.17.12",
+    "@types/node": "^18.17.13",
     "changesets-github-release": "^0.1.0",
     "esbuild": "^0.19.2",
     "husky": "^8.0.3",
