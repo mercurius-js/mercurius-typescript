@@ -55,8 +55,8 @@ importers:
         specifier: ^18.17.15
         version: 18.17.15
       '@types/tap':
-        specifier: ^15.0.8
-        version: 15.0.8
+        specifier: ^15.0.9
+        version: 15.0.9
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.19.2)(typescript@5.2.2)
@@ -104,8 +104,8 @@ importers:
         specifier: ^18.17.15
         version: 18.17.15
       '@types/tap':
-        specifier: ^15.0.8
-        version: 15.0.8
+        specifier: ^15.0.9
+        version: 15.0.9
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.19.2)(typescript@5.2.2)
@@ -144,8 +144,8 @@ importers:
         specifier: ^18.17.15
         version: 18.17.15
       '@types/tap':
-        specifier: ^15.0.8
-        version: 15.0.8
+        specifier: ^15.0.9
+        version: 15.0.9
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.19.2)(typescript@5.2.2)
@@ -1730,8 +1730,8 @@ packages:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
     dev: true
 
-  /@types/tap@15.0.8:
-    resolution: {integrity: sha512-ZfeoiZlLIaFi4t6wccwbTEicrHREkP0bOq8dZVi/nWvG5F8O7LlS2cSUZBiOW/D4cgWS/p2uhM3lJoyzFAl80w==}
+  /@types/tap@15.0.9:
+    resolution: {integrity: sha512-ewkqbmoYTsKC333VmdpUvxRl8/tDK2RRzR/BBCAuuFPgEvNp1vxqL2Dh812acDpmaBsgWkYORxy8e/RODrzMPw==}
     dependencies:
       '@types/node': 18.17.15
     dev: true
