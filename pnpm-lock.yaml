@@ -12,8 +12,8 @@ importers:
         specifier: ^2.26.2
         version: 2.26.2
       '@types/node':
-        specifier: ^18.17.17
-        version: 18.17.17
+        specifier: ^18.17.18
+        version: 18.17.18
       changesets-github-release:
         specifier: ^0.1.0
         version: 0.1.0
@@ -52,8 +52,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.8.1)
       '@types/node':
-        specifier: ^18.17.17
-        version: 18.17.17
+        specifier: ^18.17.18
+        version: 18.17.18
       '@types/tap':
         specifier: ^15.0.9
         version: 15.0.9
@@ -101,8 +101,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.8.1)
       '@types/node':
-        specifier: ^18.17.17
-        version: 18.17.17
+        specifier: ^18.17.18
+        version: 18.17.18
       '@types/tap':
         specifier: ^15.0.9
         version: 15.0.9
@@ -141,8 +141,8 @@ importers:
         version: 13.1.0(graphql@16.8.1)
     devDependencies:
       '@types/node':
-        specifier: ^18.17.17
-        version: 18.17.17
+        specifier: ^18.17.18
+        version: 18.17.18
       '@types/tap':
         specifier: ^15.0.9
         version: 15.0.9
@@ -217,8 +217,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       '@types/node':
-        specifier: ^18.17.17
-        version: 18.17.17
+        specifier: ^18.17.18
+        version: 18.17.18
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
@@ -281,7 +281,7 @@ importers:
         version: 3.0.3
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@types/node@18.17.17)(typescript@5.2.2)
+        version: 10.9.1(@types/node@18.17.18)(typescript@5.2.2)
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -1668,7 +1668,7 @@ packages:
     resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.17.17
+      '@types/node': 18.17.18
     dev: true
 
   /@types/is-ci@3.0.0:
@@ -1696,15 +1696,15 @@ packages:
   /@types/mkdirp@1.0.2:
     resolution: {integrity: sha512-o0K1tSO0Dx5X6xlU5F1D6625FawhC3dU3iqr25lluNv/+/QIVH8RLNEiVokgIZo+mz+87w/3Mkg/VvQS+J51fQ==}
     dependencies:
-      '@types/node': 18.17.17
+      '@types/node': 18.17.18
     dev: true
 
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@18.17.17:
-    resolution: {integrity: sha512-cOxcXsQ2sxiwkykdJqvyFS+MLQPLvIdwh5l6gNg8qF6s+C7XSkEWOZjK+XhUZd+mYvHV/180g2cnCcIl4l06Pw==}
+  /@types/node@18.17.18:
+    resolution: {integrity: sha512-/4QOuy3ZpV7Ya1GTRz5CYSz3DgkKpyUptXuQ5PPce7uuyJAOR7r9FhkmxJfvcNUXyklbC63a+YvB3jxy7s9ngw==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -1723,7 +1723,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 8.0.0
-      '@types/node': 18.17.17
+      '@types/node': 18.17.18
     dev: true
 
   /@types/semver@7.5.0:
@@ -1733,7 +1733,7 @@ packages:
   /@types/tap@15.0.9:
     resolution: {integrity: sha512-ewkqbmoYTsKC333VmdpUvxRl8/tDK2RRzR/BBCAuuFPgEvNp1vxqL2Dh812acDpmaBsgWkYORxy8e/RODrzMPw==}
     dependencies:
-      '@types/node': 18.17.17
+      '@types/node': 18.17.18
     dev: true
 
   /@zeit/schemas@2.29.0:
@@ -6035,7 +6035,7 @@ packages:
     resolution: {integrity: sha512-dagAKX7vaesNNAwOc9Np9C2mJ+7YopF4lk+jE2JML9ta4kZ91Y6UruJNH65bLRYoUROD8EY+Pmi44qQWwXR7sw==}
     dev: true
 
-  /ts-node@10.9.1(@types/node@18.17.17)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@18.17.18)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -6054,7 +6054,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.17.17
+      '@types/node': 18.17.18
       acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
