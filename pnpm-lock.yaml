@@ -198,8 +198,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(graphql@16.8.1)
       '@graphql-tools/utils':
-        specifier: ^10.0.6
-        version: 10.0.6(graphql@16.8.1)
+        specifier: ^10.0.7
+        version: 10.0.7(graphql@16.8.1)
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.8.1)
@@ -1479,8 +1479,8 @@ packages:
       value-or-promise: 1.0.11
     dev: false
 
-  /@graphql-tools/utils@10.0.6(graphql@16.8.1):
-    resolution: {integrity: sha512-hZMjl/BbX10iagovakgf3IiqArx8TPsotq5pwBld37uIX1JiZoSbgbCIFol7u55bh32o6cfDEiiJgfAD5fbeyQ==}
+  /@graphql-tools/utils@10.0.7(graphql@16.8.1):
+    resolution: {integrity: sha512-KOdeMj6Hd/MENDaqPbws3YJl3wVy0DeYnL7PyUms5Skyf7uzI9INynDwPMhLXfSb0/ph6BXTwMd5zBtWbF8tBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
