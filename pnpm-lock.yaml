@@ -36,8 +36,8 @@ importers:
   examples/codegen:
     dependencies:
       fastify:
-        specifier: ^4.23.2
-        version: 4.23.2
+        specifier: ^4.24.0
+        version: 4.24.0
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -68,7 +68,7 @@ importers:
         version: 0.19.4
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.23.2)(graphql@16.8.1)(mercurius@13.1.0)
+        version: 8.1.1(fastify@4.24.0)(graphql@16.8.1)(mercurius@13.1.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -85,8 +85,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(graphql@16.8.1)
       fastify:
-        specifier: ^4.23.2
-        version: 4.23.2
+        specifier: ^4.24.0
+        version: 4.24.0
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -117,7 +117,7 @@ importers:
         version: 0.19.4
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.23.2)(graphql@16.8.1)(mercurius@13.1.0)
+        version: 8.1.1(fastify@4.24.0)(graphql@16.8.1)(mercurius@13.1.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -131,8 +131,8 @@ importers:
   examples/manual:
     dependencies:
       fastify:
-        specifier: ^4.23.2
-        version: 4.23.2
+        specifier: ^4.24.0
+        version: 4.24.0
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.8.1)
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.23.2)(graphql@16.8.1)(mercurius@13.1.0)
+        version: 8.1.1(fastify@4.24.0)(graphql@16.8.1)(mercurius@13.1.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -247,8 +247,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       fastify:
-        specifier: ^4.23.2
-        version: 4.23.2
+        specifier: ^4.24.0
+        version: 4.24.0
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -3138,8 +3138,8 @@ packages:
   /fastify-plugin@4.3.0:
     resolution: {integrity: sha512-M3+i368lV0OYTJ5TfClIoPKEKSOF7112iiPdwgfSR0gN98BjA1Nk+c6oBHtfcVt9KiMxl+EQKHC1QNWo3ZOpYQ==}
 
-  /fastify@4.23.2:
-    resolution: {integrity: sha512-WFSxsHES115svC7NrerNqZwwM0UOxbC/P6toT9LRHgAAFvG7o2AN5W+H4ihCtOGuYXjZf4z+2jXC89rVEoPWOA==}
+  /fastify@4.24.0:
+    resolution: {integrity: sha512-6Uu2cCAV1UgexPnWKchgRt77lng9ivNmyFhPMcgUbJ4VaVBE1l6aYluiYZiVsgOBFpHrmdj7FD6n1aHswln4yQ==}
     dependencies:
       '@fastify/ajv-compiler': 3.5.0
       '@fastify/error': 3.2.0
@@ -3148,7 +3148,7 @@ packages:
       avvio: 8.2.1
       fast-content-type-parse: 1.0.0
       fast-json-stringify: 5.7.0
-      find-my-way: 7.6.0
+      find-my-way: 7.7.0
       light-my-request: 5.10.0
       pino: 8.14.1
       process-warning: 2.2.0
@@ -3235,8 +3235,8 @@ packages:
       pkg-dir: 4.2.0
     dev: true
 
-  /find-my-way@7.6.0:
-    resolution: {integrity: sha512-H7berWdHJ+5CNVr4ilLWPai4ml7Y2qAsxjw3pfeBxPigZmaDTzF0wjJLj90xRCmGcWYcyt050yN+34OZDJm1eQ==}
+  /find-my-way@7.7.0:
+    resolution: {integrity: sha512-+SrHpvQ52Q6W9f3wJoJBbAQULJuNEEQwBvlvYwACDhBTLOTMiQ0HYWh4+vC3OivGP2ENcTI1oKlFA2OepJNjhQ==}
     engines: {node: '>=14'}
     dependencies:
       fast-deep-equal: 3.1.3
@@ -4312,7 +4312,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing@8.1.1(fastify@4.23.2)(graphql@16.8.1)(mercurius@13.1.0):
+  /mercurius-integration-testing@8.1.1(fastify@4.24.0)(graphql@16.8.1)(mercurius@13.1.0):
     resolution: {integrity: sha512-JyyKGw4pXe+Hy8huDIMjIO1B0DIJkQDXuWX9+gtAQXKlwICQrTzUAfQGtqVMFypsvV8W15TUCxZraIqt01mFGg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4329,7 +4329,7 @@ packages:
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.1)
       cookie: 0.5.0
-      fastify: 4.23.2
+      fastify: 4.24.0
       graphql: 16.8.1
       mercurius: 13.1.0(graphql@16.8.1)
       ws: 8.13.0
