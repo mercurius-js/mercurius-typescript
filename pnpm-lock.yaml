@@ -223,8 +223,8 @@ importers:
         specifier: ^2.7.3
         version: 2.7.3
       '@types/proxyquire':
-        specifier: ^1.3.30
-        version: 1.3.30
+        specifier: ^1.3.31
+        version: 1.3.31
       '@types/rimraf':
         specifier: ^3.0.2
         version: 3.0.2
@@ -1718,8 +1718,8 @@ packages:
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: true
 
-  /@types/proxyquire@1.3.30:
-    resolution: {integrity: sha512-erD15isFDzHMfeQC09DMjGeI0G6pJm7r5R7X/CxnEEe6tEp7N4r6xLYhTptdzne8zMz+2+5wJzrefCMvbmV/Fg==}
+  /@types/proxyquire@1.3.31:
+    resolution: {integrity: sha512-uALowNG2TSM1HNPMMOR0AJwv4aPYPhqB0xlEhkeRTMuto5hjoSPZkvgu1nbPUkz3gEPAHv4sy4DmKsurZiEfRQ==}
     dev: true
 
   /@types/rimraf@3.0.2:
