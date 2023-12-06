@@ -229,8 +229,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       ava:
-        specifier: ^6.0.0
-        version: 6.0.0
+        specifier: ^6.0.1
+        version: 6.0.1
       bob-watch:
         specifier: ^0.1.2
         version: 0.1.2
@@ -2027,8 +2027,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /ava@6.0.0:
-    resolution: {integrity: sha512-sgruhDqX9QwW3iuivRgvHNZsE/3oc2yMpANUms2WIN3YGLmhng6aFoDDEFFtwKaaw2H7KteAOuNzv9ml1UO2QQ==}
+  /ava@6.0.1:
+    resolution: {integrity: sha512-9zR0wOwlcJdOWwHOKnpi0GrPRLTlxDFapGalP4rGD0oQRKxDVoucBBWvxVQ/2cPv10Hx1PkDXLJH5iUzhPn0/g==}
     engines: {node: ^18.18 || ^20.8 || ^21}
     hasBin: true
     peerDependencies:
@@ -5871,7 +5871,7 @@ packages:
     dependencies:
       eastasianwidth: 0.2.0
       emoji-regex: 9.2.2
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
     dev: true
 
   /string-width@7.0.0:
@@ -5910,13 +5910,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       ansi-regex: 5.0.1
-
-  /strip-ansi@7.0.1:
-    resolution: {integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==}
-    engines: {node: '>=12'}
-    dependencies:
-      ansi-regex: 6.0.1
-    dev: true
 
   /strip-ansi@7.1.0:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
@@ -6581,7 +6574,7 @@ packages:
     dependencies:
       ansi-styles: 6.2.1
       string-width: 5.1.2
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
     dev: true
 
   /wrappy@1.0.2:
