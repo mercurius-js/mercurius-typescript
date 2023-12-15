@@ -29,7 +29,7 @@
     "esbuild": "^0.19.9",
     "mercurius-integration-testing": "^8.1.1",
     "prettier": "^2.8.8",
-    "tap": "^16.3.9",
+    "tap": "^16.3.10",
     "typescript": "^5.3.3"
   }
 }
