@@ -306,6 +306,7 @@ export interface Loaders<
   }
 > {
   Human?: {
+    __resolveReference?: LoaderResolver<Human, Human, {}, TContext>
     name?: LoaderResolver<Scalars['String'], Human, {}, TContext>
     father?: LoaderResolver<Maybe<Human>, Human, {}, TContext>
     hasSon?: LoaderResolver<
@@ -342,6 +343,7 @@ export interface Loaders<
   }
 
   NArray?: {
+    __resolveReference?: LoaderResolver<NArray, NArray, {}, TContext>
     nArray?: LoaderResolver<
       Maybe<Array<Maybe<Array<Maybe<Scalars['Int']>>>>>,
       NArray,
