@@ -229,8 +229,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       ava:
-        specifier: ^6.0.1
-        version: 6.0.1
+        specifier: ^6.1.0
+        version: 6.1.0
       bob-watch:
         specifier: ^0.1.2
         version: 0.1.2
@@ -2015,8 +2015,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /ava@6.0.1:
-    resolution: {integrity: sha512-9zR0wOwlcJdOWwHOKnpi0GrPRLTlxDFapGalP4rGD0oQRKxDVoucBBWvxVQ/2cPv10Hx1PkDXLJH5iUzhPn0/g==}
+  /ava@6.1.0:
+    resolution: {integrity: sha512-0fOQIWMHT9DYelzTYc3TI/4fmmmJ5LdvRWd6F43CppYfg84VrM5EO+hmlv2cPujMJAWuVesUWVloUu9PIwrgTA==}
     engines: {node: ^18.18 || ^20.8 || ^21}
     hasBin: true
     peerDependencies:
