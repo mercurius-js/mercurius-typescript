@@ -12,8 +12,8 @@ importers:
         specifier: ^2.27.1
         version: 2.27.1
       '@types/node':
-        specifier: ^20.11.24
-        version: 20.11.24
+        specifier: ^20.11.25
+        version: 20.11.25
       changesets-github-release:
         specifier: ^0.1.0
         version: 0.1.0
@@ -52,8 +52,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.8.1)
       '@types/node':
-        specifier: ^20.11.24
-        version: 20.11.24
+        specifier: ^20.11.25
+        version: 20.11.25
       '@types/tap':
         specifier: ^15.0.11
         version: 15.0.11
@@ -101,8 +101,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.8.1)
       '@types/node':
-        specifier: ^20.11.24
-        version: 20.11.24
+        specifier: ^20.11.25
+        version: 20.11.25
       '@types/tap':
         specifier: ^15.0.11
         version: 15.0.11
@@ -141,8 +141,8 @@ importers:
         version: 13.3.3(graphql@16.8.1)
     devDependencies:
       '@types/node':
-        specifier: ^20.11.24
-        version: 20.11.24
+        specifier: ^20.11.25
+        version: 20.11.25
       '@types/tap':
         specifier: ^15.0.11
         version: 15.0.11
@@ -217,8 +217,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       '@types/node':
-        specifier: ^20.11.24
-        version: 20.11.24
+        specifier: ^20.11.25
+        version: 20.11.25
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
@@ -281,7 +281,7 @@ importers:
         version: 3.0.3
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.11.24)(typescript@5.3.3)
+        version: 10.9.2(@types/node@20.11.25)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1712,7 +1712,7 @@ packages:
     resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
@@ -1730,15 +1730,15 @@ packages:
   /@types/mkdirp@1.0.2:
     resolution: {integrity: sha512-o0K1tSO0Dx5X6xlU5F1D6625FawhC3dU3iqr25lluNv/+/QIVH8RLNEiVokgIZo+mz+87w/3Mkg/VvQS+J51fQ==}
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: true
 
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@20.11.24:
-    resolution: {integrity: sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==}
+  /@types/node@20.11.25:
+    resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1759,7 +1759,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 8.0.0
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: true
 
   /@types/semver@7.5.0:
@@ -1769,7 +1769,7 @@ packages:
   /@types/tap@15.0.11:
     resolution: {integrity: sha512-QzbxIsrK6yX3iWC2PXGX/Ljz5cGISDEuOGISMcckeSUKIJXzbsfJLF4LddoncZ+ELVZpO0X87KfRem4h+yBFXQ==}
     dependencies:
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
     dev: true
 
   /@vercel/nft@0.26.2:
@@ -6000,7 +6000,7 @@ packages:
     resolution: {integrity: sha512-dagAKX7vaesNNAwOc9Np9C2mJ+7YopF4lk+jE2JML9ta4kZ91Y6UruJNH65bLRYoUROD8EY+Pmi44qQWwXR7sw==}
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.11.24)(typescript@5.3.3):
+  /ts-node@10.9.2(@types/node@20.11.25)(typescript@5.3.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -6019,7 +6019,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 20.11.24
+      '@types/node': 20.11.25
       acorn: 8.11.2
       acorn-walk: 8.3.0
       arg: 4.1.3
