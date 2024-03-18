@@ -42,8 +42,8 @@ importers:
         specifier: ^16.8.1
         version: 16.8.1
       mercurius:
-        specifier: ^13.4.0
-        version: 13.4.0(graphql@16.8.1)
+        specifier: ^13.4.1
+        version: 13.4.1(graphql@16.8.1)
       mercurius-codegen:
         specifier: workspace:*
         version: link:../../packages/mercurius-codegen
@@ -68,7 +68,7 @@ importers:
         version: 0.20.2
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.0)
+        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.1)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -91,8 +91,8 @@ importers:
         specifier: ^16.8.1
         version: 16.8.1
       mercurius:
-        specifier: ^13.4.0
-        version: 13.4.0(graphql@16.8.1)
+        specifier: ^13.4.1
+        version: 13.4.1(graphql@16.8.1)
       mercurius-codegen:
         specifier: workspace:*
         version: link:../../packages/mercurius-codegen
@@ -117,7 +117,7 @@ importers:
         version: 0.20.2
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.0)
+        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.1)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -137,8 +137,8 @@ importers:
         specifier: ^16.8.1
         version: 16.8.1
       mercurius:
-        specifier: ^13.4.0
-        version: 13.4.0(graphql@16.8.1)
+        specifier: ^13.4.1
+        version: 13.4.1(graphql@16.8.1)
     devDependencies:
       '@types/node':
         specifier: ^20.11.28
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.8.1)
       mercurius-integration-testing:
         specifier: ^8.1.1
-        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.0)
+        version: 8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.1)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -253,8 +253,8 @@ importers:
         specifier: ^16.8.1
         version: 16.8.1
       mercurius:
-        specifier: ^13.4.0
-        version: 13.4.0(graphql@16.8.1)
+        specifier: ^13.4.1
+        version: 13.4.1(graphql@16.8.1)
       mercurius-codegen:
         specifier: workspace:*
         version: 'link:'
@@ -1902,14 +1902,6 @@ packages:
     dependencies:
       ajv: 8.11.0
 
-  /ajv@6.12.6:
-    resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
-    dependencies:
-      fast-deep-equal: 3.1.3
-      fast-json-stable-stringify: 2.1.0
-      json-schema-traverse: 0.4.1
-      uri-js: 4.4.1
-
   /ajv@8.11.0:
     resolution: {integrity: sha512-wGgprdCvMalC0BztXvitD2hC04YffAvtsUn93JbGXYLAtCUO4xd17mCCZQxUOItiBwZvJScWo8NIvQMQ71rdpg==}
     dependencies:
@@ -2842,10 +2834,6 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: true
 
-  /deepmerge@4.2.2:
-    resolution: {integrity: sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==}
-    engines: {node: '>=0.10.0'}
-
   /default-browser-id@5.0.0:
     resolution: {integrity: sha512-A6p/pu/6fyBcA1TRz/GqWYPViplrftcW2gZC9q79ngNCKAeR/X3gcEdXQHl4KNXV+3wgIJ1CPkJQ3IHM6lcsyA==}
     engines: {node: '>=18'}
@@ -3159,16 +3147,6 @@ packages:
       merge2: 1.4.1
       micromatch: 4.0.5
     dev: true
-
-  /fast-json-stable-stringify@2.1.0:
-    resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
-
-  /fast-json-stringify@1.21.0:
-    resolution: {integrity: sha512-xY6gyjmHN3AK1Y15BCbMpeO9+dea5ePVsp3BouHCdukcx0hOHbXwFhRodhcI0NpZIgDChSeAKkHW9YjKvhwKBA==}
-    dependencies:
-      ajv: 6.12.6
-      deepmerge: 4.2.2
-      string-similarity: 4.0.4
 
   /fast-json-stringify@5.8.0:
     resolution: {integrity: sha512-VVwK8CFMSALIvt14U8AvrSzQAwN/0vaVRiFFUVlpnXSnDGrSkOAO5MtzyN8oQNjLd5AqTW5OZRgyjoNuAuR3jQ==}
@@ -3569,16 +3547,15 @@ packages:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
     dev: true
 
-  /graphql-jit@0.8.0(graphql@16.8.1):
-    resolution: {integrity: sha512-mxdV9ohO6jKt1o9erb+7RpmnDKQFQCcJlYVfGa3j4+ieP0ITDsAlm194+pfvdv5F4zgrgZfSe5xx5Rf98epJmg==}
+  /graphql-jit@0.8.4(graphql@16.8.1):
+    resolution: {integrity: sha512-4KRrJ1ROy3Usgbl3eAoUMfdfZCRjkcw9cCGT7QwTUIHm9dPGaSaldxzGUttyjErU0rsYEb6WWyb6mMh5r6lEoQ==}
     peerDependencies:
       graphql: '>=15'
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.1)
-      fast-json-stringify: 1.21.0
+      fast-json-stringify: 5.8.0
       generate-function: 2.3.1
       graphql: 16.8.1
-      json-schema: 0.4.0
       lodash.memoize: 4.1.2
       lodash.merge: 4.6.2
       lodash.mergewith: 4.6.2
@@ -4154,14 +4131,8 @@ packages:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
     dev: true
 
-  /json-schema-traverse@0.4.1:
-    resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
-
   /json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
-
-  /json-schema@0.4.0:
-    resolution: {integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==}
 
   /json5@2.2.1:
     resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
@@ -4374,7 +4345,7 @@ packages:
       yargs-parser: 18.1.3
     dev: true
 
-  /mercurius-integration-testing@8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.0):
+  /mercurius-integration-testing@8.1.1(fastify@4.26.2)(graphql@16.8.1)(mercurius@13.4.1):
     resolution: {integrity: sha512-JyyKGw4pXe+Hy8huDIMjIO1B0DIJkQDXuWX9+gtAQXKlwICQrTzUAfQGtqVMFypsvV8W15TUCxZraIqt01mFGg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4393,15 +4364,15 @@ packages:
       cookie: 0.5.0
       fastify: 4.26.2
       graphql: 16.8.1
-      mercurius: 13.4.0(graphql@16.8.1)
+      mercurius: 13.4.1(graphql@16.8.1)
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /mercurius@13.4.0(graphql@16.8.1):
-    resolution: {integrity: sha512-WNjpBYMRDTpqCs+dLrzZzRIzVJsiBHDCtvJyqnyJRayep9/R1K2mCtaK1HOWL9XLNFXztaJGPpEL8k9WyO1uqQ==}
+  /mercurius@13.4.1(graphql@16.8.1):
+    resolution: {integrity: sha512-fN7nfkuq1iB/S5J4PxG9F4nKeEsdbIUCT2CPdKDEPQUzJ9voXIxM5Zwm086MHEsiBa80mE+pvxgodiVLRgaOGQ==}
     engines: {node: '>=14.19.3'}
     peerDependencies:
       graphql: ^16.0.0
@@ -4411,7 +4382,7 @@ packages:
       '@fastify/websocket': 8.0.0
       fastify-plugin: 4.3.0
       graphql: 16.8.1
-      graphql-jit: 0.8.0(graphql@16.8.1)
+      graphql-jit: 0.8.4(graphql@16.8.1)
       mqemitter: 5.0.0
       p-map: 4.0.0
       readable-stream: 4.2.0
@@ -5628,10 +5599,6 @@ packages:
     dependencies:
       mixme: 0.5.4
     dev: true
-
-  /string-similarity@4.0.4:
-    resolution: {integrity: sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   /string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
