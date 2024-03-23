@@ -124,7 +124,14 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
         if (type instanceof GraphQLObjectType) {
           const fields = type.getFields()
 
-          const typeCode: Record<string, string> = {}
+          const typeCode: Record<string, string> = {
+            __resolveReference: `LoaderResolver<${namespacedImportPrefix}${
+              config.loadersCustomParentTypes?.[type.name] || type.name
+            },${namespacedImportPrefix}${
+              config.loadersCustomParentTypes?.[type.name] || type.name
+            },{}, TContext>`,
+          }
+
           Object.entries(fields).forEach(([key, value]) => {
             const tsType = fieldToType(value)
 
