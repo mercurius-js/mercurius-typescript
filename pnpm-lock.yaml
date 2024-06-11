@@ -207,8 +207,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       mkdirp:
-        specifier: ^2.1.6
-        version: 2.1.6
+        specifier: ^3.0.1
+        version: 3.0.1
     devDependencies:
       '@istanbuljs/nyc-config-typescript':
         specifier: ^1.0.2
@@ -1759,7 +1759,7 @@ packages:
     resolution: {integrity: sha512-c/iUqMymAlxLAyIK3u5SzrwkrkyOdv1XDc91T+b5FsY7Jr6ERhUD19jJHOhPW4GD6tmN6mFEorfSdks525pwdQ==}
     deprecated: This is a stub types definition. mkdirp provides its own type definitions, so you do not need this installed.
     dependencies:
-      mkdirp: 2.1.6
+      mkdirp: 3.0.1
     dev: true
 
   /@types/node@12.20.55:
@@ -4528,8 +4528,8 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdirp@2.1.6:
-    resolution: {integrity: sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==}
+  /mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
     hasBin: true
 
