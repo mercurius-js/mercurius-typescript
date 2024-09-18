@@ -22,7 +22,7 @@
     "test": "pnpm test --recursive --no-bail --stream"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "@changesets/cli": "^2.27.8",
     "@types/node": "^20.12.7",
     "changesets-github-release": "^0.1.0",
     "esbuild": "^0.20.2",
