@@ -60,7 +60,7 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
       function fieldToType(
         field: GraphQLField<unknown, unknown> | GraphQLType,
         typeAcumStart: string = '',
-        typeAcumEnd: string = ''
+        typeAcumEnd: string = '',
       ): string {
         let isNullable = true
         let isArray = false
@@ -130,17 +130,16 @@ export const MercuriusLoadersPlugin: CodegenPlugin<MercuriusLoadersPluginConfig>
 
             const hasArgs = value.args.length > 0
 
-            typeCode[
-              key
-            ] = `LoaderResolver<${tsType},${namespacedImportPrefix}${
-              config.loadersCustomParentTypes?.[type.name] || type.name
-            },${
-              hasArgs
-                ? `${namespacedImportPrefix}${type.name}${
-                    config.addUnderscoreToArgsType ? '_' : ''
-                  }${value.name}Args`
-                : '{}'
-            }, TContext>`
+            typeCode[key] =
+              `LoaderResolver<${tsType},${namespacedImportPrefix}${
+                config.loadersCustomParentTypes?.[type.name] || type.name
+              },${
+                hasArgs
+                  ? `${namespacedImportPrefix}${type.name}${
+                      config.addUnderscoreToArgsType ? '_' : ''
+                    }${value.name}Args`
+                  : '{}'
+              }, TContext>`
           })
 
           loaders[type.name] = typeCode

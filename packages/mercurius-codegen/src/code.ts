@@ -25,7 +25,7 @@ export async function generateCode(
   codegenConfig: CodegenPluginsConfig = {},
   preImportCode?: string,
   silent?: boolean,
-  operationsGlob?: string[] | string
+  operationsGlob?: string[] | string,
 ) {
   const { codegen } = await import('@graphql-codegen/core')
   const typescriptPlugin = await import('@graphql-codegen/typescript')
@@ -56,7 +56,7 @@ export async function generateCode(
               schema,
             }
             return operationSource
-          })
+          }),
       )
     : ([] as [])
 
@@ -68,7 +68,7 @@ export async function generateCode(
   ) {
     if (!silent) {
       console.warn(
-        `namingConvention "${codegenConfig.namingConvention}" is not supported! it has been set to "keep" automatically.`
+        `namingConvention "${codegenConfig.namingConvention}" is not supported! it has been set to "keep" automatically.`,
       )
     }
   }
@@ -86,7 +86,7 @@ export async function generateCode(
       codegenConfig,
       {
         namingConvention: 'keep',
-      } as CodegenPluginsConfig
+      } as CodegenPluginsConfig,
     ),
     documents,
     filename: 'mercurius.generated.ts',
@@ -96,7 +96,7 @@ export async function generateCode(
         typescriptResolvers: typescriptResolversPlugin,
         mercuriusLoaders: MercuriusLoadersPlugin,
       },
-      operationsPlugins
+      operationsPlugins,
     ) as {
       [name: string]: CodegenPlugin<any>
     },

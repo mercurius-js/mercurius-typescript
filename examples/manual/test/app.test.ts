@@ -18,14 +18,12 @@ tap.test('query', async (t) => {
       hello: string
       helloTyped: string
       helloInline: string
-    }>(
-      gql`
-        query {
-          helloTyped
-          helloInline
-        }
-      `
-    )
+    }>(gql`
+      query {
+        helloTyped
+        helloInline
+      }
+    `)
     .then((response) => {
       t.same(response, {
         data: {
@@ -79,7 +77,7 @@ tap.test('subscription', async (t) => {
           variables: {
             message: notificationMessage,
           },
-        }
+        },
       )
       .then((response) => {
         t.same(response, {

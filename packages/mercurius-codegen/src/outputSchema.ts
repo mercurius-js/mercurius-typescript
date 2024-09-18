@@ -6,7 +6,7 @@ import { writeFileIfChanged } from './write'
 
 export async function writeOutputSchema(
   app: FastifyInstance,
-  config: string | boolean
+  config: string | boolean,
 ) {
   if (!config) return
 
@@ -21,7 +21,7 @@ export async function writeOutputSchema(
 
   const schema = await formatPrettier(
     printSchemaWithDirectives(app.graphql.schema),
-    'graphql'
+    'graphql',
   )
 
   await writeFileIfChanged(targetPath, schema)
