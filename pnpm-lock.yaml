@@ -55,8 +55,8 @@ importers:
         specifier: ^20.12.7
         version: 20.12.7
       '@types/tap':
-        specifier: ^15.0.11
-        version: 15.0.11
+        specifier: ^15.0.12
+        version: 15.0.12
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.20.2)(typescript@5.4.5)
@@ -104,8 +104,8 @@ importers:
         specifier: ^20.12.7
         version: 20.12.7
       '@types/tap':
-        specifier: ^15.0.11
-        version: 15.0.11
+        specifier: ^15.0.12
+        version: 15.0.12
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.20.2)(typescript@5.4.5)
@@ -144,8 +144,8 @@ importers:
         specifier: ^20.12.7
         version: 20.12.7
       '@types/tap':
-        specifier: ^15.0.11
-        version: 15.0.11
+        specifier: ^15.0.12
+        version: 15.0.12
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.20.2)(typescript@5.4.5)
@@ -1034,8 +1034,8 @@ packages:
   '@types/semver@7.5.0':
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
 
-  '@types/tap@15.0.11':
-    resolution: {integrity: sha512-QzbxIsrK6yX3iWC2PXGX/Ljz5cGISDEuOGISMcckeSUKIJXzbsfJLF4LddoncZ+ELVZpO0X87KfRem4h+yBFXQ==}
+  '@types/tap@15.0.12':
+    resolution: {integrity: sha512-QuVlxQEBOBASkirrwp0ciwO9stIzOdRMHyaYYsexeVSAYwR4sq+YIYaQbVaYXSXi8+yPf22ZZNieRCB8KAJrTA==}
 
   '@vercel/nft@0.26.2':
     resolution: {integrity: sha512-bxe2iShmKZi7476xYamyKvhhKwQ6JPEtQ2FSq1AjMUH2buMd8LQMkdoHinTqZYc+1sMTh3G0ARdjzNvV1FEisA==}
@@ -4338,7 +4338,7 @@ snapshots:
 
   '@types/semver@7.5.0': {}
 
-  '@types/tap@15.0.11':
+  '@types/tap@15.0.12':
     dependencies:
       '@types/node': 20.12.7
 
