@@ -158,7 +158,7 @@ test.serial('integrates with mercurius', async (t) => {
     generatedCode,
     await readFile(tempTargetPath.path, {
       encoding: 'utf-8',
-    })
+    }),
   )
 })
 
@@ -192,7 +192,7 @@ test.serial('integrates with mercurius and respects silent', async (t) => {
     generatedCode,
     await readFile(tempTargetPath.path, {
       encoding: 'utf-8',
-    })
+    }),
   )
 })
 
@@ -214,7 +214,7 @@ test('writes generated code', async (t) => {
     code,
     await readFile(tempTargetPath.path, {
       encoding: 'utf-8',
-    })
+    }),
   )
 })
 
@@ -252,7 +252,7 @@ test('respects "disable" flag', async (t) => {
     await readFile(tempTargetPath.path, {
       encoding: 'utf-8',
     }),
-    ''
+    '',
   )
 })
 
@@ -280,7 +280,7 @@ test('warns about unsupported namingConvention, respecting silent', async (t) =>
   const mockConsoleWarn = (message: string) => {
     t.is(
       message,
-      `namingConvention "${namingConvention}" is not supported! it has been set to "keep" automatically.`
+      `namingConvention "${namingConvention}" is not supported! it has been set to "keep" automatically.`,
     )
   }
 
@@ -533,7 +533,7 @@ test('operations with watching', async (t) => {
       query B {
         hello
       }
-    `
+    `,
   )
 
   t.teardown(() => {
@@ -610,7 +610,7 @@ test.serial('load schema files with watching', async (t) => {
       type Query {
         hello: String!
       }
-    `
+    `,
   )
 
   let resolveChangePromise: (value: string[]) => void
@@ -637,7 +637,7 @@ test.serial('load schema files with watching', async (t) => {
           // usePolling: true,
         },
       },
-    }
+    },
   )
 
   t.teardown(async () => {
@@ -652,7 +652,7 @@ test.serial('load schema files with watching', async (t) => {
         enabled: true,
         uniqueWatch: false,
       },
-    }
+    },
   )
 
   t.teardown(async () => {
@@ -667,7 +667,7 @@ test.serial('load schema files with watching', async (t) => {
         enabled: false,
         uniqueWatch: false,
       },
-    }
+    },
   )
 
   t.teardown(async () => {
@@ -684,7 +684,7 @@ test.serial('load schema files with watching', async (t) => {
       extend type Query {
         hello2: String!
       }
-    `
+    `,
   )
 
   const schema2 = await changePromise
@@ -704,7 +704,7 @@ test.serial('load schema files with watching', async (t) => {
           // usePolling: true,
         },
       },
-    }
+    },
   )
 
   t.teardown(async () => {
@@ -737,7 +737,7 @@ test.serial('load schema watching error handling', async (t) => {
       type Query {
         hello: String!
       }
-    `
+    `,
   )
 
   let resolveChangePromise: (value: string[]) => void
@@ -763,7 +763,7 @@ test.serial('load schema watching error handling', async (t) => {
           throw Error('expected error')
         },
       },
-    }
+    },
   )
 
   t.teardown(() => void closeWatcher())
@@ -789,7 +789,7 @@ test.serial('load schema watching error handling', async (t) => {
       extend type Query {
         hello2: String!
       }
-    `
+    `,
   )
 
   const schema2 = await changePromise
@@ -821,7 +821,7 @@ test.serial('load schema with no files', async (t) => {
     },
     {
       message: 'No GraphQL Schema files found!',
-    }
+    },
   )
 })
 
@@ -837,12 +837,12 @@ test.serial('pre-built schema', async (t) => {
             hello: String!
           }
         `,
-        'graphql'
+        'graphql',
       ),
     ]).replace(/\r\n/g, '\n'),
     {
       encoding: 'utf-8',
-    }
+    },
   )
 
   const { loadSchemaFiles }: typeof import('../src/schema') =
@@ -862,7 +862,7 @@ test.serial('pre-built schema', async (t) => {
     '../src/schema',
     {
       [buildJSONPath]: [123],
-    }
+    },
   )
 
   const { schema: schemaPreloadManipulated } = loadSchemaFilesManipulated(
@@ -871,7 +871,7 @@ test.serial('pre-built schema', async (t) => {
       prebuild: {
         enabled: true,
       },
-    }
+    },
   )
 
   t.snapshot(schemaPreloadManipulated)
@@ -902,7 +902,7 @@ test.serial('writes output schema', async (t) => {
   t.snapshot(
     await readFile(tempTarget.path, {
       encoding: 'utf8',
-    })
+    }),
   )
 
   t.is(fs.existsSync('schema.gql'), false)
@@ -918,7 +918,7 @@ test.serial('writes output schema', async (t) => {
   t.snapshot(
     await readFile('schema.gql', {
       encoding: 'utf8',
-    })
+    }),
   )
 })
 

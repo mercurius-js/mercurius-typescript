@@ -71,7 +71,7 @@ function isValidSchemaList(v: unknown): v is Array<string> {
 
 export function loadSchemaFiles(
   schemaPath: string | string[],
-  { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {}
+  { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {},
 ) {
   const log = (...message: Parameters<(typeof console)['log']>) =>
     silent ? undefined : console.log(...message)
@@ -142,7 +142,7 @@ export function loadSchemaFiles(
 
     const watcher = watch(
       schemaPath,
-      Object.assign({ useFsEvents: false } as ChokidarOptions, chokidarOptions)
+      Object.assign({ useFsEvents: false } as ChokidarOptions, chokidarOptions),
     )
 
     const watcherToResolve = deferredPromise<FSWatcher | undefined>()
@@ -177,12 +177,12 @@ export function loadSchemaFiles(
 
     const listener = (
       eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-      changedPath: string
+      changedPath: string,
     ) => {
       if (!isReady) return
 
       log(
-        `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`
+        `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`,
       )
 
       try {

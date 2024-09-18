@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 6.0.0
+
+### Major Changes
+
+- b7997a5: Update for Mercurius v5, Fastify v15 and Prettier v3
+
 ## 5.0.3
 
 ### Patch Changes

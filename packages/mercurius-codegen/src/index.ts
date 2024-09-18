@@ -96,7 +96,7 @@ export async function codegenMercurius(
     operationsGlob,
     watchOptions,
     outputSchema = false,
-  }: CodegenMercuriusOptions
+  }: CodegenMercuriusOptions,
 ): Promise<{
   closeWatcher: () => Promise<boolean>
   watcher: Promise<FSWatcher | undefined>
@@ -143,8 +143,8 @@ export async function codegenMercurius(
               {
                 useFsEvents: false,
               } as ChokidarOptions,
-              chokidarOptions
-            )
+              chokidarOptions,
+            ),
           )
 
           let isReady = false
@@ -177,12 +177,12 @@ export async function codegenMercurius(
 
           const listener = (
             eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-            changedPath: string
+            changedPath: string,
           ) => {
             if (!isReady) return
 
             log(
-              `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`
+              `[mercurius-codegen] ${changedPath} ${eventName}, re-generating...`,
             )
 
             generateCode(
@@ -190,14 +190,14 @@ export async function codegenMercurius(
               codegenConfig,
               preImportCode,
               silent,
-              operationsGlob
+              operationsGlob,
             ).then((code) => {
               writeGeneratedCode({
                 code,
                 targetPath,
               }).then((absoluteTargetPath) => {
                 log(
-                  `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`
+                  `[mercurius-codegen] Code re-generated at ${absoluteTargetPath}`,
                 )
               }, console.error)
             }, console.error)
@@ -223,7 +223,7 @@ export async function codegenMercurius(
         codegenConfig,
         preImportCode,
         silent,
-        operationsGlob
+        operationsGlob,
       ).then((code) => {
         writeGeneratedCode({
           code,

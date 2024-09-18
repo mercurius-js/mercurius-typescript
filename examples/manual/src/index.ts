@@ -127,7 +127,7 @@ const loaders: MercuriusLoaders = {
   Dog: {
     async owner(queries, _ctx) {
       return queries.map(
-        ({ obj }: { obj: { name: string } }) => owners[obj.name]
+        ({ obj }: { obj: { name: string } }) => owners[obj.name],
       )
     },
   },
