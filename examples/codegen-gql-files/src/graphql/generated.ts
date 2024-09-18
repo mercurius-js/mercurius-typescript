@@ -16,7 +16,7 @@ export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
-  info: GraphQLResolveInfo
+  info: GraphQLResolveInfo,
 ) =>
   | Promise<import('mercurius-codegen').DeepPartial<TResult>>
   | import('mercurius-codegen').DeepPartial<TResult>
@@ -83,14 +83,14 @@ export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
-  info: GraphQLResolveInfo
+  info: GraphQLResolveInfo,
 ) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>
 
 export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
   args: TArgs,
   context: TContext,
-  info: GraphQLResolveInfo
+  info: GraphQLResolveInfo,
 ) => TResult | Promise<TResult>
 
 export interface SubscriptionSubscriberObject<
@@ -98,7 +98,7 @@ export interface SubscriptionSubscriberObject<
   TKey extends string,
   TParent,
   TContext,
-  TArgs
+  TArgs,
 > {
   subscribe: SubscriptionSubscribeFn<
     { [key in TKey]: TResult },
@@ -124,7 +124,7 @@ export type SubscriptionObject<
   TKey extends string,
   TParent,
   TContext,
-  TArgs
+  TArgs,
 > =
   | SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>
   | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>
@@ -134,7 +134,7 @@ export type SubscriptionResolver<
   TKey extends string,
   TParent = {},
   TContext = {},
-  TArgs = {}
+  TArgs = {},
 > =
   | ((
       ...args: any[]
@@ -144,13 +144,13 @@ export type SubscriptionResolver<
 export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
   parent: TParent,
   context: TContext,
-  info: GraphQLResolveInfo
+  info: GraphQLResolveInfo,
 ) => Maybe<TTypes> | Promise<Maybe<TTypes>>
 
 export type IsTypeOfResolverFn<T = {}, TContext = {}> = (
   obj: T,
   context: TContext,
-  info: GraphQLResolveInfo
+  info: GraphQLResolveInfo,
 ) => boolean | Promise<boolean>
 
 export type NextResolverFn<T> = () => Promise<T>
@@ -159,13 +159,13 @@ export type DirectiveResolverFn<
   TResult = {},
   TParent = {},
   TContext = {},
-  TArgs = {}
+  TArgs = {},
 > = (
   next: NextResolverFn<TResult>,
   parent: TParent,
   args: TArgs,
   context: TContext,
-  info: GraphQLResolveInfo
+  info: GraphQLResolveInfo,
 ) => TResult | Promise<TResult>
 
 /** Mapping between all available schema types and the resolvers types */
@@ -194,7 +194,7 @@ export type ResolversParentTypes = {
 
 export type DogResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes['Dog'] = ResolversParentTypes['Dog']
+  ParentType extends ResolversParentTypes['Dog'] = ResolversParentTypes['Dog'],
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   owner?: Resolver<Maybe<ResolversTypes['Human']>, ParentType, ContextType>
@@ -203,7 +203,8 @@ export type DogResolvers<
 
 export type HumanResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes['Human'] = ResolversParentTypes['Human']
+  ParentType extends
+    ResolversParentTypes['Human'] = ResolversParentTypes['Human'],
 > = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
@@ -211,7 +212,8 @@ export type HumanResolvers<
 
 export type MutationResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
+  ParentType extends
+    ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation'],
 > = {
   add?: Resolver<
     ResolversTypes['Int'],
@@ -229,7 +231,8 @@ export type MutationResolvers<
 
 export type QueryResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
+  ParentType extends
+    ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = {
   Hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   dogs?: Resolver<Array<ResolversTypes['Dog']>, ParentType, ContextType>
@@ -237,7 +240,8 @@ export type QueryResolvers<
 
 export type SubscriptionResolvers<
   ContextType = MercuriusContext,
-  ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']
+  ParentType extends
+    ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription'],
 > = {
   newNotification?: SubscriptionResolver<
     ResolversTypes['String'],
@@ -262,7 +266,7 @@ export type Loader<TReturn, TObj, TParams, TContext> = (
   }>,
   context: TContext & {
     reply: import('fastify').FastifyReply
-  }
+  },
 ) => Promise<Array<import('mercurius-codegen').DeepPartial<TReturn>>>
 export type LoaderResolver<TReturn, TObj, TParams, TContext> =
   | Loader<TReturn, TObj, TParams, TContext>
@@ -275,7 +279,7 @@ export type LoaderResolver<TReturn, TObj, TParams, TContext> =
 export interface Loaders<
   TContext = import('mercurius').MercuriusContext & {
     reply: import('fastify').FastifyReply
-  }
+  },
 > {
   Dog?: {
     name?: LoaderResolver<Scalars['String'], Dog, {}, TContext>
