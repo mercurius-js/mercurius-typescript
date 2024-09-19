@@ -76,7 +76,7 @@ importers:
         specifier: ^16.3.10
         version: 16.3.10(typescript@5.6.2)
       typescript:
-        specifier: ^5.4.5
+        specifier: ^5.6.2
         version: 5.6.2
 
   examples/codegen-gql-files:
@@ -125,7 +125,7 @@ importers:
         specifier: ^16.3.10
         version: 16.3.10(typescript@5.6.2)
       typescript:
-        specifier: ^5.4.5
+        specifier: ^5.6.2
         version: 5.6.2
 
   examples/manual:
@@ -168,7 +168,7 @@ importers:
         specifier: ^16.3.10
         version: 16.3.10(typescript@5.6.2)
       typescript:
-        specifier: ^5.4.5
+        specifier: ^5.6.2
         version: 5.6.2
 
   packages/mercurius-codegen:
@@ -283,7 +283,7 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@20.16.5)(typescript@5.6.2)
       typescript:
-        specifier: ^5.4.5
+        specifier: ^5.6.2
         version: 5.6.2
       wait-for-expect:
         specifier: ^3.0.2
