@@ -60,7 +60,7 @@
     "graphql": "^16.9.0",
     "mercurius": "^15.0.0",
     "mercurius-codegen": "workspace:*",
-    "nyc": "15.1.0",
+    "nyc": "17.1.0",
     "open-cli": "^8.0.0",
     "prettier": "^3.3.3",
     "proxyquire": "^2.1.3",
