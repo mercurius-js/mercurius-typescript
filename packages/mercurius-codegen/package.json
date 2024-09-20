@@ -70,7 +70,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2",
     "wait-for-expect": "^3.0.2",
-    "wait-on": "^7.2.0"
+    "wait-on": "^8.0.1"
   },
   "peerDependencies": {
     "fastify": "^5.0.0",
