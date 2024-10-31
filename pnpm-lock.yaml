@@ -12,8 +12,8 @@ importers:
         specifier: ^2.27.9
         version: 2.27.9
       '@types/node':
-        specifier: ^22.8.5
-        version: 22.8.5
+        specifier: ^22.8.6
+        version: 22.8.6
       changesets-github-release:
         specifier: ^0.1.0
         version: 0.1.0
@@ -52,8 +52,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.9.0)
       '@types/node':
-        specifier: ^22.8.5
-        version: 22.8.5
+        specifier: ^22.8.6
+        version: 22.8.6
       '@types/tap':
         specifier: ^15.0.12
         version: 15.0.12
@@ -74,7 +74,7 @@ importers:
         version: 3.3.3
       tap:
         specifier: ^16.3.10
-        version: 16.3.10(ts-node@10.9.2(@types/node@22.8.5)(typescript@5.6.3))(typescript@5.6.3)
+        version: 16.3.10(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -101,8 +101,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.9.0)
       '@types/node':
-        specifier: ^22.8.5
-        version: 22.8.5
+        specifier: ^22.8.6
+        version: 22.8.6
       '@types/tap':
         specifier: ^15.0.12
         version: 15.0.12
@@ -123,7 +123,7 @@ importers:
         version: 3.3.3
       tap:
         specifier: ^16.3.10
-        version: 16.3.10(ts-node@10.9.2(@types/node@22.8.5)(typescript@5.6.3))(typescript@5.6.3)
+        version: 16.3.10(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -141,8 +141,8 @@ importers:
         version: 15.1.0(graphql@16.9.0)
     devDependencies:
       '@types/node':
-        specifier: ^22.8.5
-        version: 22.8.5
+        specifier: ^22.8.6
+        version: 22.8.6
       '@types/tap':
         specifier: ^15.0.12
         version: 15.0.12
@@ -166,7 +166,7 @@ importers:
         version: 3.3.3
       tap:
         specifier: ^16.3.10
-        version: 16.3.10(ts-node@10.9.2(@types/node@22.8.5)(typescript@5.6.3))(typescript@5.6.3)
+        version: 16.3.10(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -217,8 +217,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.8.5
-        version: 22.8.5
+        specifier: ^22.8.6
+        version: 22.8.6
       '@types/prettier':
         specifier: ^3.0.0
         version: 3.0.0
@@ -281,7 +281,7 @@ importers:
         version: 3.0.3
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.8.5)(typescript@5.6.3)
+        version: 10.9.2(@types/node@22.8.6)(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -1002,8 +1002,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.8.5':
-    resolution: {integrity: sha512-5iYk6AMPtsMbkZqCO1UGF9W5L38twq11S2pYWkybGHH2ogPUvXWNlQqJBzuEZWKj/WRH+QTeiv6ySWqJtvIEgA==}
+  '@types/node@22.8.6':
+    resolution: {integrity: sha512-tosuJYKrIqjQIlVCM4PEGxOmyg3FCPa/fViuJChnGeEIhjA46oy8FMVoF9su1/v8PNs2a8Q0iFNyOx0uOF91nw==}
 
   '@types/prettier@3.0.0':
     resolution: {integrity: sha512-mFMBfMOz8QxhYVbuINtswBp9VL2b4Y0QqYHwqLz3YbgtfAcat2Dl6Y1o4e22S/OVE6Ebl9m7wWiMT2lSbAs1wA==}
@@ -4322,7 +4322,7 @@ snapshots:
   '@types/glob@8.1.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.8.5
+      '@types/node': 22.8.6
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -4334,7 +4334,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.8.5':
+  '@types/node@22.8.6':
     dependencies:
       undici-types: 6.19.8
 
@@ -4347,11 +4347,11 @@ snapshots:
   '@types/rimraf@3.0.2':
     dependencies:
       '@types/glob': 8.1.0
-      '@types/node': 22.8.5
+      '@types/node': 22.8.6
 
   '@types/tap@15.0.12':
     dependencies:
-      '@types/node': 22.8.5
+      '@types/node': 22.8.6
 
   '@vercel/nft@0.27.5':
     dependencies:
@@ -6536,7 +6536,7 @@ snapshots:
     dependencies:
       yaml: 1.10.2
 
-  tap@16.3.10(ts-node@10.9.2(@types/node@22.8.5)(typescript@5.6.3))(typescript@5.6.3):
+  tap@16.3.10(ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3))(typescript@5.6.3):
     dependencies:
       chokidar: 3.6.0
       findit: 2.0.0
@@ -6560,7 +6560,7 @@ snapshots:
       tcompare: 5.0.7
       which: 2.0.2
     optionalDependencies:
-      ts-node: 10.9.2(@types/node@22.8.5)(typescript@5.6.3)
+      ts-node: 10.9.2(@types/node@22.8.6)(typescript@5.6.3)
       typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
@@ -6644,14 +6644,14 @@ snapshots:
 
   trivial-deferred@1.1.2: {}
 
-  ts-node@10.9.2(@types/node@22.8.5)(typescript@5.6.3):
+  ts-node@10.9.2(@types/node@22.8.6)(typescript@5.6.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.8.5
+      '@types/node': 22.8.6
       acorn: 8.12.1
       acorn-walk: 8.3.4
       arg: 4.1.3
