@@ -55,8 +55,8 @@ importers:
         specifier: ^22.10.1
         version: 22.10.1
       '@types/tap':
-        specifier: ^15.0.12
-        version: 15.0.12
+        specifier: ^18.0.0
+        version: 18.0.0(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.24.0)(typescript@5.7.2)
@@ -104,8 +104,8 @@ importers:
         specifier: ^22.10.1
         version: 22.10.1
       '@types/tap':
-        specifier: ^15.0.12
-        version: 15.0.12
+        specifier: ^18.0.0
+        version: 18.0.0(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.24.0)(typescript@5.7.2)
@@ -144,8 +144,8 @@ importers:
         specifier: ^22.10.1
         version: 22.10.1
       '@types/tap':
-        specifier: ^15.0.12
-        version: 15.0.12
+        specifier: ^18.0.0
+        version: 18.0.0(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.24.0)(typescript@5.7.2)
@@ -1015,8 +1015,9 @@ packages:
   '@types/rimraf@3.0.2':
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
 
-  '@types/tap@15.0.12':
-    resolution: {integrity: sha512-QuVlxQEBOBASkirrwp0ciwO9stIzOdRMHyaYYsexeVSAYwR4sq+YIYaQbVaYXSXi8+yPf22ZZNieRCB8KAJrTA==}
+  '@types/tap@18.0.0':
+    resolution: {integrity: sha512-caqy4dfOj/mdGpMdjRIsJc0HDCMUeCLCxbf1mlfAbpDGzOOqd5yQ4hRMxiER+sR7Wx1y3gNEPqFw0ySp4uI/jQ==}
+    deprecated: This is a stub types definition. tap provides its own type definitions, so you do not need this installed.
 
   '@vercel/nft@0.27.5':
     resolution: {integrity: sha512-b2A7M+4yMHdWKY7xCC+kBEcnMrpaSE84CnuauTjhKKoCEeej0byJMAB8h/RBVnw/HdZOAFVcxR0Izr3LL24FwA==}
@@ -4329,9 +4330,15 @@ snapshots:
       '@types/glob': 8.1.0
       '@types/node': 22.10.1
 
-  '@types/tap@15.0.12':
+  '@types/tap@18.0.0(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)':
     dependencies:
-      '@types/node': 22.10.1
+      tap: 16.3.10(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))(typescript@5.7.2)
+    transitivePeerDependencies:
+      - coveralls
+      - flow-remove-types
+      - supports-color
+      - ts-node
+      - typescript
 
   '@vercel/nft@0.27.5':
     dependencies:
