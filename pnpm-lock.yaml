@@ -36,8 +36,8 @@ importers:
   examples/codegen:
     dependencies:
       fastify:
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.2.0
+        version: 5.2.0
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -68,7 +68,7 @@ importers:
         version: 0.24.0
       mercurius-integration-testing:
         specifier: ^9.0.0
-        version: 9.0.0(fastify@5.1.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0))
+        version: 9.0.0(fastify@5.2.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0))
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -85,8 +85,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0(graphql@16.9.0)
       fastify:
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.2.0
+        version: 5.2.0
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -117,7 +117,7 @@ importers:
         version: 0.24.0
       mercurius-integration-testing:
         specifier: ^9.0.0
-        version: 9.0.0(fastify@5.1.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0))
+        version: 9.0.0(fastify@5.2.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0))
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -131,8 +131,8 @@ importers:
   examples/manual:
     dependencies:
       fastify:
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.2.0
+        version: 5.2.0
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.9.0)
       mercurius-integration-testing:
         specifier: ^9.0.0
-        version: 9.0.0(fastify@5.1.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0))
+        version: 9.0.0(fastify@5.2.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0))
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -247,8 +247,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       fastify:
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.2.0
+        version: 5.2.0
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -1723,8 +1723,8 @@ packages:
   fastify-plugin@5.0.0:
     resolution: {integrity: sha512-0725fmH/yYi8ugsjszLci+lLnGBK6cG+WSxM7edY2OXJEU7gr2JiGBoieL2h9mhTych1vFsEfXsAsGGDJ/Rd5w==}
 
-  fastify@5.1.0:
-    resolution: {integrity: sha512-0SdUC5AoiSgMSc2Vxwv3WyKzyGMDJRAW/PgNsK1kZrnkO6MeqUIW9ovVg9F2UGIqtIcclYMyeJa4rK6OZc7Jxg==}
+  fastify@5.2.0:
+    resolution: {integrity: sha512-3s+Qt5S14Eq5dCpnE0FxTp3z4xKChI83ZnMv+k0FwX+VUoZrgCFoLAxpfdi/vT4y6Mk+g7aAMt9pgXDoZmkefQ==}
 
   fastparallel@2.4.1:
     resolution: {integrity: sha512-qUmhxPgNHmvRjZKBFUNI0oZuuH9OlSIOXmJ98lhKPxMZZ7zS/Fi0wRHOihDSz0R1YiIOjxzOY4bq65YTcdBi2Q==}
@@ -2873,6 +2873,9 @@ packages:
 
   secure-json-parse@2.7.0:
     resolution: {integrity: sha512-6aU+Rwsezw7VR8/nyvKTx8QpWH9FrcYiXXlqC4z5d5XQBDRqtbfsRjnwGyqbi3gddNtWHuEk9OANUotL26qKUw==}
+
+  secure-json-parse@3.0.1:
+    resolution: {integrity: sha512-9QR7G96th4QJ2+dJwvZB+JoXyt8PN+DbEjOr6kL2/JU4KH8Eb2sFdU+gt8EDdzWDWoWH0uocDdfCoFzdVSixUA==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -5130,7 +5133,7 @@ snapshots:
 
   fastify-plugin@5.0.0: {}
 
-  fastify@5.1.0:
+  fastify@5.2.0:
     dependencies:
       '@fastify/ajv-compiler': 4.0.0
       '@fastify/error': 4.0.0
@@ -5144,7 +5147,7 @@ snapshots:
       process-warning: 4.0.0
       proxy-addr: 2.0.7
       rfdc: 1.4.1
-      secure-json-parse: 2.7.0
+      secure-json-parse: 3.0.1
       semver: 7.6.3
       toad-cache: 3.7.0
 
@@ -5722,11 +5725,11 @@ snapshots:
 
   meow@12.1.1: {}
 
-  mercurius-integration-testing@9.0.0(fastify@5.1.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0)):
+  mercurius-integration-testing@9.0.0(fastify@5.2.0)(graphql@16.9.0)(mercurius@15.1.0(graphql@16.9.0)):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.9.0)
       cookie: 0.5.0
-      fastify: 5.1.0
+      fastify: 5.2.0
       graphql: 16.9.0
       mercurius: 15.1.0(graphql@16.9.0)
       ws: 8.18.0
@@ -6298,6 +6301,8 @@ snapshots:
   safer-buffer@2.1.2: {}
 
   secure-json-parse@2.7.0: {}
+
+  secure-json-parse@3.0.1: {}
 
   semver@6.3.1: {}
 
