@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "fastify": "^5.2.0",
-    "graphql": "^16.9.0",
+    "graphql": "^16.10.0",
     "mercurius": "^15.1.0",
     "mercurius-codegen": "workspace:*"
   },
