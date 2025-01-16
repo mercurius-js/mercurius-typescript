@@ -82,8 +82,8 @@ importers:
   examples/codegen-gql-files:
     dependencies:
       '@graphql-tools/load-files':
-        specifier: ^7.0.0
-        version: 7.0.0(graphql@16.10.0)
+        specifier: ^7.0.1
+        version: 7.0.1(graphql@16.10.0)
       fastify:
         specifier: ^5.2.1
         version: 5.2.1
@@ -195,8 +195,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(graphql@16.10.0)
       '@graphql-tools/load-files':
-        specifier: ^7.0.0
-        version: 7.0.0(graphql@16.10.0)
+        specifier: ^7.0.1
+        version: 7.0.1(graphql@16.10.0)
       '@graphql-tools/utils':
         specifier: ^10.7.2
         version: 10.7.2(graphql@16.10.0)
@@ -850,8 +850,8 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
 
-  '@graphql-tools/load-files@7.0.0':
-    resolution: {integrity: sha512-P98amERIwI7FD8Bsq6xUbz9Mj63W8qucfrE/WQjad5jFMZYdFFt46a99FFdfx8S/ZYgpAlj/AZbaTtWLitMgNQ==}
+  '@graphql-tools/load-files@7.0.1':
+    resolution: {integrity: sha512-oTNIENc9To9u8Gc3kY82C74caW6kXa8ya2GyxWRXp8gP4zK/7PmvlWJK0/GFCUH0cU3t9jM7k59zXz1+ZfP3Mw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
@@ -4132,7 +4132,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@graphql-tools/load-files@7.0.0(graphql@16.10.0)':
+  '@graphql-tools/load-files@7.0.1(graphql@16.10.0)':
     dependencies:
       globby: 11.1.0
       graphql: 16.10.0
