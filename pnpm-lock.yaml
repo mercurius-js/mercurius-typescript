@@ -30,8 +30,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(prettier@3.4.2)
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^6.0.1
+        version: 6.0.1
 
   examples/codegen:
     dependencies:
@@ -271,8 +271,8 @@ importers:
         specifier: ^2.1.3
         version: 2.1.3
       rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^6.0.1
+        version: 6.0.1
       serve:
         specifier: ^14.2.4
         version: 14.2.4
@@ -2847,6 +2847,11 @@ packages:
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     deprecated: Rimraf versions prior to v4 are no longer supported
+    hasBin: true
+
+  rimraf@6.0.1:
+    resolution: {integrity: sha512-9dkvaxAsk/xNXSJzMgFqqMCuFgt2+KsOFek3TMLfo8NCPfWpBmqwyNn5Y+NX56QUYfCtsyhF3ayiboEoUmJk/A==}
+    engines: {node: 20 || >=22}
     hasBin: true
 
   run-applescript@7.0.0:
@@ -6277,6 +6282,11 @@ snapshots:
   rimraf@3.0.2:
     dependencies:
       glob: 7.2.3
+
+  rimraf@6.0.1:
+    dependencies:
+      glob: 11.0.0
+      package-json-from-dist: 1.0.0
 
   run-applescript@7.0.0: {}
 
