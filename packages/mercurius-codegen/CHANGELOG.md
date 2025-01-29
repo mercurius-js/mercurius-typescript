@@ -1,5 +1,11 @@
 # mercurius-codegen
 
+## 6.0.1
+
+### Patch Changes
+
+- c017be4: Support mercurious v16 peer dependency
+
 ## 6.0.0
 
 ### Major Changes
