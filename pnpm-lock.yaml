@@ -207,8 +207,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       mkdirp:
-        specifier: ^2.1.6
-        version: 2.1.6
+        specifier: ^3.0.1
+        version: 3.0.1
     devDependencies:
       '@istanbuljs/nyc-config-typescript':
         specifier: ^1.0.2
@@ -2407,8 +2407,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  mkdirp@2.1.6:
-    resolution: {integrity: sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==}
+  mkdirp@3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4322,7 +4322,7 @@ snapshots:
 
   '@types/mkdirp@2.0.0':
     dependencies:
-      mkdirp: 2.1.6
+      mkdirp: 3.0.1
 
   '@types/node@12.20.55': {}
 
@@ -5824,7 +5824,7 @@ snapshots:
 
   mkdirp@1.0.4: {}
 
-  mkdirp@2.1.6: {}
+  mkdirp@3.0.1: {}
 
   module-not-found-error@1.0.1: {}
 
