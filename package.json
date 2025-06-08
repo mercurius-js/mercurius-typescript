@@ -18,7 +18,7 @@
     "ci:version": "pnpm pretty && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts && pnpm update -r mercurius-codegen",
     "clean": "pnpm dlx rimraf \"**/{node_modules,dist,coverage,.nyc_output}\" pnpm-lock.yaml && pnpm i",
     "pretty": "prettier --write \"**/*.{ts,json}\"",
-    "test": "pnpm test --recursive --no-bail --stream"
+    "test": "pnpm -r --no-bail --stream test"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.4",
