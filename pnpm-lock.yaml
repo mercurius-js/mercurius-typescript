@@ -9,10 +9,10 @@ importers:
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.27.12
+        specifier: ^2.29.4
         version: 2.29.4
       '@types/node':
-        specifier: ^22.13.0
+        specifier: ^22.15.30
         version: 22.15.30
       changesets-github-release:
         specifier: ^0.1.0
@@ -24,10 +24,10 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       prettier:
-        specifier: ^3.4.2
+        specifier: ^3.5.3
         version: 3.5.3
       pretty-quick:
-        specifier: ^4.0.0
+        specifier: ^4.2.2
         version: 4.2.2(prettier@3.5.3)
       rimraf:
         specifier: ^6.0.1
@@ -36,13 +36,13 @@ importers:
   examples/codegen:
     dependencies:
       fastify:
-        specifier: ^5.2.1
+        specifier: ^5.3.3
         version: 5.3.3
       graphql:
-        specifier: ^16.10.0
+        specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.0.1
+        specifier: ^16.1.0
         version: 16.1.0(graphql@16.11.0)
       mercurius-codegen:
         specifier: workspace:*
@@ -52,7 +52,7 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.11.0)
       '@types/node':
-        specifier: ^22.13.0
+        specifier: ^22.15.30
         version: 22.15.30
       '@types/tap':
         specifier: ^18.0.0
@@ -70,13 +70,13 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1(fastify@5.3.3)(graphql@16.11.0)(mercurius@16.1.0(graphql@16.11.0))
       prettier:
-        specifier: ^3.4.2
+        specifier: ^3.5.3
         version: 3.5.3
       tap:
         specifier: ^16.3.10
         version: 16.3.10(ts-node@10.9.2(@types/node@22.15.30)(typescript@5.8.3))(typescript@5.8.3)
       typescript:
-        specifier: ^5.7.3
+        specifier: ^5.8.3
         version: 5.8.3
 
   examples/codegen-gql-files:
@@ -85,13 +85,13 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(graphql@16.11.0)
       fastify:
-        specifier: ^5.2.1
+        specifier: ^5.3.3
         version: 5.3.3
       graphql:
-        specifier: ^16.10.0
+        specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.0.1
+        specifier: ^16.1.0
         version: 16.1.0(graphql@16.11.0)
       mercurius-codegen:
         specifier: workspace:*
@@ -101,7 +101,7 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.11.0)
       '@types/node':
-        specifier: ^22.13.0
+        specifier: ^22.15.30
         version: 22.15.30
       '@types/tap':
         specifier: ^18.0.0
@@ -119,29 +119,29 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1(fastify@5.3.3)(graphql@16.11.0)(mercurius@16.1.0(graphql@16.11.0))
       prettier:
-        specifier: ^3.4.2
+        specifier: ^3.5.3
         version: 3.5.3
       tap:
         specifier: ^16.3.10
         version: 16.3.10(ts-node@10.9.2(@types/node@22.15.30)(typescript@5.8.3))(typescript@5.8.3)
       typescript:
-        specifier: ^5.7.3
+        specifier: ^5.8.3
         version: 5.8.3
 
   examples/manual:
     dependencies:
       fastify:
-        specifier: ^5.2.1
+        specifier: ^5.3.3
         version: 5.3.3
       graphql:
-        specifier: ^16.10.0
+        specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.0.1
+        specifier: ^16.1.0
         version: 16.1.0(graphql@16.11.0)
     devDependencies:
       '@types/node':
-        specifier: ^22.13.0
+        specifier: ^22.15.30
         version: 22.15.30
       '@types/tap':
         specifier: ^18.0.0
@@ -162,13 +162,13 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1(fastify@5.3.3)(graphql@16.11.0)(mercurius@16.1.0(graphql@16.11.0))
       prettier:
-        specifier: ^3.4.2
+        specifier: ^3.5.3
         version: 3.5.3
       tap:
         specifier: ^16.3.10
         version: 16.3.10(ts-node@10.9.2(@types/node@22.15.30)(typescript@5.8.3))(typescript@5.8.3)
       typescript:
-        specifier: ^5.7.3
+        specifier: ^5.8.3
         version: 5.8.3
 
   packages/mercurius-codegen:
@@ -198,7 +198,7 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(graphql@16.11.0)
       '@graphql-tools/utils':
-        specifier: ^10.7.2
+        specifier: ^10.8.6
         version: 10.8.6(graphql@16.11.0)
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
@@ -217,7 +217,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.13.0
+        specifier: ^22.15.30
         version: 22.15.30
       '@types/prettier':
         specifier: ^3.0.0
@@ -229,8 +229,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       ava:
-        specifier: ^6.2.0
-        version: 6.3.0
+        specifier: ^6.4.0
+        version: 6.4.0
       bob-watch:
         specifier: ^0.1.2
         version: 0.1.2
@@ -247,13 +247,13 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       fastify:
-        specifier: ^5.2.1
+        specifier: ^5.3.3
         version: 5.3.3
       graphql:
-        specifier: ^16.10.0
+        specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.0.1
+        specifier: ^16.1.0
         version: 16.1.0(graphql@16.11.0)
       mercurius-codegen:
         specifier: workspace:*
@@ -265,7 +265,7 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0
       prettier:
-        specifier: ^3.4.2
+        specifier: ^3.5.3
         version: 3.5.3
       proxyquire:
         specifier: ^2.1.3
@@ -283,13 +283,13 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.15.30)(typescript@5.8.3)
       typescript:
-        specifier: ^5.7.3
+        specifier: ^5.8.3
         version: 5.8.3
       wait-for-expect:
         specifier: ^3.0.2
         version: 3.0.2
       wait-on:
-        specifier: ^8.0.2
+        specifier: ^8.0.3
         version: 8.0.3
 
 packages:
@@ -1190,9 +1190,9 @@ packages:
     resolution: {integrity: sha512-Hdw8qdNiqdJ8LqT0iK0sVzkFbzg6fhnQqqfWhBDxcHZvU75+B+ayzTy8x+k5Ix0Y92XOhOUlx74ps+bA6BeYMQ==}
     engines: {node: '>=8'}
 
-  ava@6.3.0:
-    resolution: {integrity: sha512-64K+xNmlgMo1D94evJlkBWmJ6CGrO6oEctGEjA3PIl5GrwZyMXM5OEycZWnKGduE1YdqMvYDl29SgnNk7kyx+A==}
-    engines: {node: ^18.18 || ^20.8 || ^22 || >=23}
+  ava@6.4.0:
+    resolution: {integrity: sha512-aeFapuBZtaGwVMlFFf074SZJ0bPcdmAdJdsvhHMp+XaOnC2DgeMzopb7yyYAhulNGRJQfUK/SIBYo2PoX7+gtw==}
+    engines: {node: ^18.18 || ^20.8 || ^22 || ^23 || >=24}
     hasBin: true
     peerDependencies:
       '@ava/typescript': '*'
@@ -4498,7 +4498,7 @@ snapshots:
 
   auto-bind@4.0.0: {}
 
-  ava@6.3.0:
+  ava@6.4.0:
     dependencies:
       '@vercel/nft': 0.29.4
       acorn: 8.14.1
