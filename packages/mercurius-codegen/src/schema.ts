@@ -1,4 +1,6 @@
-import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
+import type { FSWatcher, ChokidarOptions } from 'chokidar'
+import type { EventName } from 'chokidar/handler'
+
 import { existsSync } from 'fs'
 import { resolve } from 'path'
 
@@ -175,10 +177,7 @@ export function loadSchemaFiles(
 
     watcher.on('error', watcherToResolve.reject)
 
-    const listener = (
-      eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-      changedPath: string,
-    ) => {
+    const listener = (eventName: EventName, changedPath: string) => {
       if (!isReady) return
 
       log(

@@ -141,7 +141,7 @@ export async function writeGeneratedCode({
   code: string
   targetPath: string
 }) {
-  const { default: mkdirp } = await import('mkdirp')
+  const { mkdirp } = await import('mkdirp')
 
   targetPath = resolve(targetPath)
 

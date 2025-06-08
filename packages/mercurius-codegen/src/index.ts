@@ -1,7 +1,8 @@
 import type {} from 'mercurius'
 import type { FastifyInstance } from 'fastify'
-import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
+import type { FSWatcher, ChokidarOptions } from 'chokidar'
 import type { CodegenPluginsConfig } from './code'
+import type { EventName } from 'chokidar/handler'
 
 import { MercuriusLoadersPlugin } from './mercuriusLoaders'
 import { deferredPromise } from './utils'
@@ -175,10 +176,7 @@ export async function codegenMercurius(
             global.mercuriusOperationsWatchCleanup = closeWatcher
           }
 
-          const listener = (
-            eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-            changedPath: string,
-          ) => {
+          const listener = (eventName: EventName, changedPath: string) => {
             if (!isReady) return
 
             log(
