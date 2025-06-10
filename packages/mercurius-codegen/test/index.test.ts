@@ -617,7 +617,7 @@ test.serial('load schema files with watching', async (t) => {
       resolve(value)
     }
   })
-  const { schema, closeWatcher, watcher } = await loadSchemaFiles(
+  const { schema, closeWatcher, watcher } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -637,7 +637,7 @@ test.serial('load schema files with watching', async (t) => {
     await closeWatcher()
   })
 
-  const { closeWatcher: closeIsolatedWatcher } = await loadSchemaFiles(
+  const { closeWatcher: closeIsolatedWatcher } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: false,
@@ -652,7 +652,7 @@ test.serial('load schema files with watching', async (t) => {
     await closeIsolatedWatcher()
   })
 
-  const { closeWatcher: closeNoWatcher } = await loadSchemaFiles(
+  const { closeWatcher: closeNoWatcher } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -684,7 +684,7 @@ test.serial('load schema files with watching', async (t) => {
 
   t.snapshot(schema2)
 
-  const { closeWatcher: closeWatcher2 } = await loadSchemaFiles(
+  const { closeWatcher: closeWatcher2 } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -704,9 +704,7 @@ test.serial('load schema files with watching', async (t) => {
     await closeWatcher2()
   })
 
-  const noWatcher = await loadSchemaFiles(
-    path.join(tempTargetDir.path, '*.gql'),
-  )
+  const noWatcher = loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
 
   t.snapshot(noWatcher.schema.join('\n'))
 })
@@ -746,7 +744,7 @@ test.serial('load schema watching error handling', async (t) => {
       resolve(value)
     }
   })
-  const { schema, closeWatcher, watcher } = await loadSchemaFiles(
+  const { schema, closeWatcher, watcher } = loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -810,9 +808,9 @@ test.serial('load schema with no files', async (t) => {
     await tempTargetDir.cleanup()
   })
 
-  await t.throwsAsync(
-    async () => {
-      await loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
+  t.throws(
+    () => {
+      loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
     },
     {
       message: 'No GraphQL Schema files found!',
@@ -843,7 +841,7 @@ test.serial('pre-built schema', async (t) => {
   const { loadSchemaFiles }: typeof import('../src/schema') =
     proxyquire.noPreserveCache()('../src/schema', {})
 
-  const { schema } = await loadSchemaFiles('./test/operations/*.gql', {
+  const { schema } = loadSchemaFiles('./test/operations/*.gql', {
     prebuild: {
       enabled: true,
     },

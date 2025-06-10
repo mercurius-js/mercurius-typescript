@@ -70,7 +70,7 @@ function isValidSchemaList(v: unknown): v is Array<string> {
   return Array.isArray(v) && !!v.length && v.every((v) => typeof v === 'string')
 }
 
-export async function loadSchemaFiles(
+export function loadSchemaFiles(
   schemaPath: string | string[],
   { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {},
 ) {
@@ -85,8 +85,10 @@ export async function loadSchemaFiles(
   const prebuiltSchemaPath =
     prebuiltSchemaPathOption != null ? resolve(prebuiltSchemaPathOption) : null
 
-  async function loadSchemaFiles() {
-    const { loadFilesSync } = await import('@graphql-tools/load-files')
+  function loadSchemaFiles() {
+    const {
+      loadFilesSync,
+    }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
 
     const schema = loadFilesSync(schemaPath, {})
       .map((v) => {
@@ -129,7 +131,7 @@ export async function loadSchemaFiles(
     }
   }
 
-  if (!schema) schema = await loadSchemaFiles()
+  if (!schema) schema = loadSchemaFiles()
 
   let closeWatcher = async () => false
 
@@ -142,7 +144,7 @@ export async function loadSchemaFiles(
   let watcherPromise: Promise<FSWatcher | undefined>
 
   if (watchEnabled) {
-    const { watch } = await import('chokidar')
+    const { watch }: typeof import('chokidar') = require('chokidar')
 
     const watcher = watch(
       schemaPath,
@@ -190,7 +192,7 @@ export async function loadSchemaFiles(
       )
 
       try {
-        const schema = await loadSchemaFiles()
+        const schema = loadSchemaFiles()
 
         if (watchOptions.onChange) watchOptions.onChange(schema)
       } catch (err) {
@@ -199,8 +201,6 @@ export async function loadSchemaFiles(
     }
 
     watcher.on('all', listener)
-
-    await watcherToResolve.promise
   } else {
     watcherPromise = Promise.resolve(undefined)
   }
