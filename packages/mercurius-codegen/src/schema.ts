@@ -1,5 +1,4 @@
-import type { FSWatcher, ChokidarOptions } from 'chokidar'
-import type { EventName } from 'chokidar/handler'
+import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
 
 import { existsSync } from 'fs'
 import { resolve } from 'path'
@@ -107,9 +106,14 @@ export async function loadSchemaFiles(
 
     const schemaStringPromise = formatPrettier(JSON.stringify(schema), 'json')
 
-    schemaStringPromise.then((schemaString) => {
-      writeFileIfChanged(prebuiltSchemaPath, schemaString).catch(console.error)
-    }, console.error)
+    schemaStringPromise.then(
+      (schemaString) => {
+        writeFileIfChanged(prebuiltSchemaPath, schemaString).catch(
+          console.error,
+        )
+      },
+      (err) => console.error(err),
+    )
 
     return schema
   }
@@ -142,7 +146,7 @@ export async function loadSchemaFiles(
 
     const watcher = watch(
       schemaPath,
-      Object.assign({ useFsEvents: true } as ChokidarOptions, chokidarOptions),
+      Object.assign({ useFsEvents: false } as ChokidarOptions, chokidarOptions),
     )
 
     const watcherToResolve = deferredPromise<FSWatcher | undefined>()
@@ -175,21 +179,24 @@ export async function loadSchemaFiles(
 
     watcher.on('error', watcherToResolve.reject)
 
-    const listener = (eventName: EventName, changedPath: string) => {
+    const listener = async (
+      eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+      changedPath: string,
+    ) => {
       if (!isReady) return
 
       log(
         `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`,
       )
 
-      loadSchemaFiles().then((schema) => {
-        if (watchOptions.onChange) watchOptions.onChange(schema)
-      }, console.error)
-    }
+      try {
+        const schema = await loadSchemaFiles()
 
-    watcher.on('add', (path) => {
-      log(`[mercurius-codegen] ${path} added`)
-    })
+        if (watchOptions.onChange) watchOptions.onChange(schema)
+      } catch (err) {
+        console.error(err)
+      }
+    }
 
     watcher.on('all', listener)
 
