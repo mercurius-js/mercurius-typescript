@@ -6,10 +6,10 @@ import Fastify from 'fastify'
 import fs from 'fs'
 import { parse, print, buildSchema } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import mkdirp from 'mkdirp'
+import { mkdirp } from 'mkdirp'
 import path from 'path'
 import proxyquire from 'proxyquire'
-import rimraf from 'rimraf'
+import { rimraf } from 'rimraf'
 import tmp from 'tmp-promise'
 import waitForExpect from 'wait-for-expect'
 
@@ -35,14 +35,7 @@ test.after.always(async () => {
     force: true,
   })
 
-  await new Promise<void>((resolve, reject) => {
-    rimraf('./tmp', (err) => {
-      if (err) {
-        return reject(err)
-      }
-      resolve()
-    })
-  })
+  await rimraf('./tmp')
 })
 
 const appWithoutMercurius = Fastify()
@@ -624,7 +617,7 @@ test.serial('load schema files with watching', async (t) => {
       resolve(value)
     }
   })
-  const { schema, closeWatcher, watcher } = loadSchemaFiles(
+  const { schema, closeWatcher, watcher } = await loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -644,7 +637,7 @@ test.serial('load schema files with watching', async (t) => {
     await closeWatcher()
   })
 
-  const { closeWatcher: closeIsolatedWatcher } = loadSchemaFiles(
+  const { closeWatcher: closeIsolatedWatcher } = await loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: false,
@@ -659,7 +652,7 @@ test.serial('load schema files with watching', async (t) => {
     await closeIsolatedWatcher()
   })
 
-  const { closeWatcher: closeNoWatcher } = loadSchemaFiles(
+  const { closeWatcher: closeNoWatcher } = await loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -691,7 +684,7 @@ test.serial('load schema files with watching', async (t) => {
 
   t.snapshot(schema2)
 
-  const { closeWatcher: closeWatcher2 } = loadSchemaFiles(
+  const { closeWatcher: closeWatcher2 } = await loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -711,7 +704,9 @@ test.serial('load schema files with watching', async (t) => {
     await closeWatcher2()
   })
 
-  const noWatcher = loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
+  const noWatcher = await loadSchemaFiles(
+    path.join(tempTargetDir.path, '*.gql'),
+  )
 
   t.snapshot(noWatcher.schema.join('\n'))
 })
@@ -751,7 +746,7 @@ test.serial('load schema watching error handling', async (t) => {
       resolve(value)
     }
   })
-  const { schema, closeWatcher, watcher } = loadSchemaFiles(
+  const { schema, closeWatcher, watcher } = await loadSchemaFiles(
     path.join(tempTargetDir.path, '*.gql'),
     {
       silent: true,
@@ -848,7 +843,7 @@ test.serial('pre-built schema', async (t) => {
   const { loadSchemaFiles }: typeof import('../src/schema') =
     proxyquire.noPreserveCache()('../src/schema', {})
 
-  const { schema } = loadSchemaFiles('./test/operations/*.gql', {
+  const { schema } = await loadSchemaFiles('./test/operations/*.gql', {
     prebuild: {
       enabled: true,
     },
@@ -865,7 +860,7 @@ test.serial('pre-built schema', async (t) => {
     },
   )
 
-  const { schema: schemaPreloadManipulated } = loadSchemaFilesManipulated(
+  const { schema: schemaPreloadManipulated } = await loadSchemaFilesManipulated(
     './test/operations/*.gql',
     {
       prebuild: {
