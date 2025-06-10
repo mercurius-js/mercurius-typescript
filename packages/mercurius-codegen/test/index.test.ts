@@ -810,9 +810,9 @@ test.serial('load schema with no files', async (t) => {
     await tempTargetDir.cleanup()
   })
 
-  t.throws(
-    () => {
-      loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
+  await t.throwsAsync(
+    async () => {
+      await loadSchemaFiles(path.join(tempTargetDir.path, '*.gql'))
     },
     {
       message: 'No GraphQL Schema files found!',
