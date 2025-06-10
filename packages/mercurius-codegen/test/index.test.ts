@@ -6,10 +6,10 @@ import Fastify from 'fastify'
 import fs from 'fs'
 import { parse, print, buildSchema } from 'graphql'
 import mercurius, { IResolvers, MercuriusLoaders } from 'mercurius'
-import mkdirp from 'mkdirp'
+import { mkdirp } from 'mkdirp'
 import path from 'path'
 import proxyquire from 'proxyquire'
-import rimraf from 'rimraf'
+import { rimraf } from 'rimraf'
 import tmp from 'tmp-promise'
 import waitForExpect from 'wait-for-expect'
 
@@ -35,14 +35,7 @@ test.after.always(async () => {
     force: true,
   })
 
-  await new Promise<void>((resolve, reject) => {
-    rimraf('./tmp', (err) => {
-      if (err) {
-        return reject(err)
-      }
-      resolve()
-    })
-  })
+  await rimraf('./tmp')
 })
 
 const appWithoutMercurius = Fastify()
@@ -865,7 +858,7 @@ test.serial('pre-built schema', async (t) => {
     },
   )
 
-  const { schema: schemaPreloadManipulated } = loadSchemaFilesManipulated(
+  const { schema: schemaPreloadManipulated } = await loadSchemaFilesManipulated(
     './test/operations/*.gql',
     {
       prebuild: {

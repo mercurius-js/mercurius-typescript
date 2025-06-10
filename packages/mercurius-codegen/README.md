@@ -51,7 +51,7 @@ codegenMercurius(app, {
 // the resolvers are going to be typed,
 // or if your resolvers are in different files...
 
-app.listen(8000)
+app.listen({ port: 8000 })
 ```
 
 ```ts

@@ -1,4 +1,5 @@
 import type { FSWatcher, WatchOptions as ChokidarOptions } from 'chokidar'
+
 import { existsSync } from 'fs'
 import { resolve } from 'path'
 
@@ -107,9 +108,14 @@ export function loadSchemaFiles(
 
     const schemaStringPromise = formatPrettier(JSON.stringify(schema), 'json')
 
-    schemaStringPromise.then((schemaString) => {
-      writeFileIfChanged(prebuiltSchemaPath, schemaString).catch(console.error)
-    }, console.error)
+    schemaStringPromise.then(
+      (schemaString) => {
+        writeFileIfChanged(prebuiltSchemaPath, schemaString).catch(
+          console.error,
+        )
+      },
+      (err) => console.error(err),
+    )
 
     return schema
   }
@@ -175,7 +181,7 @@ export function loadSchemaFiles(
 
     watcher.on('error', watcherToResolve.reject)
 
-    const listener = (
+    const listener = async (
       eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
       changedPath: string,
     ) => {
@@ -186,9 +192,9 @@ export function loadSchemaFiles(
       )
 
       try {
-        const schema = loadSchemaFiles()
+        const schema = await loadSchemaFiles()
 
-        if (watchOptions.onChange) watchOptions.onChange(schema)
+        if (watchOptions.onChange) await watchOptions.onChange(schema)
       } catch (err) {
         console.error(err)
       }

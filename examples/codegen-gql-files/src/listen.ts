@@ -1,3 +1,5 @@
 import { app } from './index'
 
-app.listen(8000)
+app.listen({
+  port: 8000,
+})
