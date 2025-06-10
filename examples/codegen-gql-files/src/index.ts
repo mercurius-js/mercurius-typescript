@@ -135,4 +135,4 @@ app.register(mercurius, {
 
 codegenMercurius(app, codegenMercuriusOptions).catch(console.error)
 
-// app.listen(8000)
+// app.listen({ port: 8000 })
