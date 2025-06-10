@@ -71,7 +71,7 @@ function isValidSchemaList(v: unknown): v is Array<string> {
   return Array.isArray(v) && !!v.length && v.every((v) => typeof v === 'string')
 }
 
-export function loadSchemaFiles(
+export async function loadSchemaFiles(
   schemaPath: string | string[],
   { watchOptions = {}, prebuild = {}, silent }: LoadSchemaOptions = {},
 ) {
@@ -86,10 +86,8 @@ export function loadSchemaFiles(
   const prebuiltSchemaPath =
     prebuiltSchemaPathOption != null ? resolve(prebuiltSchemaPathOption) : null
 
-  function loadSchemaFiles() {
-    const {
-      loadFilesSync,
-    }: typeof import('@graphql-tools/load-files') = require('@graphql-tools/load-files')
+  async function loadSchemaFiles() {
+    const { loadFilesSync } = await import('@graphql-tools/load-files')
 
     const schema = loadFilesSync(schemaPath, {})
       .map((v) => {
@@ -127,7 +125,7 @@ export function loadSchemaFiles(
     }
   }
 
-  if (!schema) schema = loadSchemaFiles()
+  if (!schema) schema = await loadSchemaFiles()
 
   let closeWatcher = async () => false
 
@@ -140,11 +138,11 @@ export function loadSchemaFiles(
   let watcherPromise: Promise<FSWatcher | undefined>
 
   if (watchEnabled) {
-    const { watch }: typeof import('chokidar') = require('chokidar')
+    const { watch } = await import('chokidar')
 
     const watcher = watch(
       schemaPath,
-      Object.assign({ useFsEvents: false } as ChokidarOptions, chokidarOptions),
+      Object.assign({ useFsEvents: true } as ChokidarOptions, chokidarOptions),
     )
 
     const watcherToResolve = deferredPromise<FSWatcher | undefined>()
@@ -184,16 +182,18 @@ export function loadSchemaFiles(
         `[mercurius-codegen] ${changedPath} ${eventName}, loading new schema...`,
       )
 
-      try {
-        const schema = loadSchemaFiles()
-
+      loadSchemaFiles().then((schema) => {
         if (watchOptions.onChange) watchOptions.onChange(schema)
-      } catch (err) {
-        console.error(err)
-      }
+      }, console.error)
     }
 
+    watcher.on('add', (path) => {
+      log(`[mercurius-codegen] ${path} added`)
+    })
+
     watcher.on('all', listener)
+
+    await watcherToResolve.promise
   } else {
     watcherPromise = Promise.resolve(undefined)
   }
