@@ -21,7 +21,7 @@
     "test": "pnpm -r --no-bail --stream test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.4",
+    "@changesets/cli": "^2.29.5",
     "@types/node": "^22.15.32",
     "changesets-github-release": "^0.1.0",
     "esbuild": "^0.25.5",
