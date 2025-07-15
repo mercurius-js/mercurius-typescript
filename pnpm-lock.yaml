@@ -12,8 +12,8 @@ importers:
         specifier: ^2.29.5
         version: 2.29.5
       '@types/node':
-        specifier: ^22.16.3
-        version: 22.16.3
+        specifier: ^22.16.4
+        version: 22.16.4
       changesets-github-release:
         specifier: ^0.1.0
         version: 0.1.0
@@ -52,11 +52,11 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.11.0)
       '@types/node':
-        specifier: ^22.16.3
-        version: 22.16.3
+        specifier: ^22.16.4
+        version: 22.16.4
       '@types/tap':
         specifier: ^18.0.0
-        version: 18.0.0(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+        version: 18.0.0(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.25.6)(typescript@5.8.3)
@@ -74,7 +74,7 @@ importers:
         version: 3.6.2
       tap:
         specifier: ^16.3.10
-        version: 16.3.10(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+        version: 16.3.10(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -101,11 +101,11 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.11.0)
       '@types/node':
-        specifier: ^22.16.3
-        version: 22.16.3
+        specifier: ^22.16.4
+        version: 22.16.4
       '@types/tap':
         specifier: ^18.0.0
-        version: 18.0.0(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+        version: 18.0.0(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.25.6)(typescript@5.8.3)
@@ -123,7 +123,7 @@ importers:
         version: 3.6.2
       tap:
         specifier: ^16.3.10
-        version: 16.3.10(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+        version: 16.3.10(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -141,11 +141,11 @@ importers:
         version: 16.2.0(graphql@16.11.0)
     devDependencies:
       '@types/node':
-        specifier: ^22.16.3
-        version: 22.16.3
+        specifier: ^22.16.4
+        version: 22.16.4
       '@types/tap':
         specifier: ^18.0.0
-        version: 18.0.0(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+        version: 18.0.0(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
       bob-tsm:
         specifier: ^1.1.2
         version: 1.1.2(esbuild@0.25.6)(typescript@5.8.3)
@@ -166,7 +166,7 @@ importers:
         version: 3.6.2
       tap:
         specifier: ^16.3.10
-        version: 16.3.10(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+        version: 16.3.10(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -217,8 +217,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^22.16.3
-        version: 22.16.3
+        specifier: ^22.16.4
+        version: 22.16.4
       '@types/prettier':
         specifier: ^3.0.0
         version: 3.0.0
@@ -284,7 +284,7 @@ importers:
         version: 3.0.3
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.16.3)(typescript@5.8.3)
+        version: 10.9.2(@types/node@22.16.4)(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -1030,8 +1030,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.16.3':
-    resolution: {integrity: sha512-sr4Xz74KOUeYadexo1r8imhRtlVXcs+j3XK3TcoiYk7B1t3YRVJgtaD3cwX73NYb71pmVuMLNRhJ9XKdoDB74g==}
+  '@types/node@22.16.4':
+    resolution: {integrity: sha512-PYRhNtZdm2wH/NT2k/oAJ6/f2VD2N2Dag0lGlx2vWgMSJXGNmlce5MiTQzoWAiIJtso30mjnfQCOKVH+kAQC/g==}
 
   '@types/prettier@3.0.0':
     resolution: {integrity: sha512-mFMBfMOz8QxhYVbuINtswBp9VL2b4Y0QqYHwqLz3YbgtfAcat2Dl6Y1o4e22S/OVE6Ebl9m7wWiMT2lSbAs1wA==}
@@ -4346,7 +4346,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.16.3':
+  '@types/node@22.16.4':
     dependencies:
       undici-types: 6.21.0
 
@@ -4360,9 +4360,9 @@ snapshots:
     dependencies:
       rimraf: 6.0.1
 
-  '@types/tap@18.0.0(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)':
+  '@types/tap@18.0.0(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)':
     dependencies:
-      tap: 16.3.10(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3)
+      tap: 16.3.10(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3)
     transitivePeerDependencies:
       - coveralls
       - flow-remove-types
@@ -6538,7 +6538,7 @@ snapshots:
     dependencies:
       yaml: 1.10.2
 
-  tap@16.3.10(ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3))(typescript@5.8.3):
+  tap@16.3.10(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))(typescript@5.8.3):
     dependencies:
       chokidar: 3.6.0
       findit: 2.0.0
@@ -6562,7 +6562,7 @@ snapshots:
       tcompare: 5.0.7
       which: 2.0.2
     optionalDependencies:
-      ts-node: 10.9.2(@types/node@22.16.3)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.16.4)(typescript@5.8.3)
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
@@ -6646,14 +6646,14 @@ snapshots:
 
   trivial-deferred@1.1.2: {}
 
-  ts-node@10.9.2(@types/node@22.16.3)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.16.3
+      '@types/node': 22.16.4
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
