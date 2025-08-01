@@ -69,7 +69,7 @@
     "serve": "^14.2.4",
     "tmp-promise": "^3.0.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.2",
     "wait-for-expect": "^3.0.2",
     "wait-on": "^8.0.4"
   },
