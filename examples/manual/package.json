@@ -12,7 +12,7 @@
     "test": "cross-env NODE_ENV=test tap --node-arg=--require=bob-tsm"
   },
   "dependencies": {
-    "fastify": "^5.5.0",
+    "fastify": "^5.6.0",
     "graphql": "^16.11.0",
     "mercurius": "^16.2.0"
   },
