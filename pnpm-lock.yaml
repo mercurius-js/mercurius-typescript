@@ -292,8 +292,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       wait-on:
-        specifier: ^8.0.5
-        version: 8.0.5
+        specifier: ^9.0.0
+        version: 9.0.0
 
 packages:
 
@@ -3330,9 +3330,9 @@ packages:
   wait-for-expect@4.0.0:
     resolution: {integrity: sha512-mcH2HYUUHhdFGHVJkgwkBxRihZO4VSuPyh6xhYHz7LEnYkcaLbTAEEsTpYiFw4UY45XdTZYYIaquuMucw9wWMw==}
 
-  wait-on@8.0.5:
-    resolution: {integrity: sha512-J3WlS0txVHkhLRb2FsmRg3dkMTCV1+M6Xra3Ho7HzZDHpE7DCOnoSoCJsZotrmW3uRMhvIJGSKUKrh/MeF4iag==}
-    engines: {node: '>=12.0.0'}
+  wait-on@9.0.0:
+    resolution: {integrity: sha512-bKOl7CJ4zGhKW4qvoasLM5t2NtLUcc1Ar2N6XeYCQpW0w+DMdLC0YH1JUH3bTWDCsHblapHMzhtFmmPc+ITNJw==}
+    engines: {node: '>=20.0.0'}
     hasBin: true
 
   webidl-conversions@3.0.1:
@@ -6751,7 +6751,7 @@ snapshots:
 
   wait-for-expect@4.0.0: {}
 
-  wait-on@8.0.5:
+  wait-on@9.0.0:
     dependencies:
       axios: 1.12.1
       joi: 18.0.1
