@@ -42,8 +42,8 @@ importers:
         specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.2.0
-        version: 16.2.0(graphql@16.11.0)
+        specifier: ^16.3.0
+        version: 16.3.0(graphql@16.11.0)
       mercurius-codegen:
         specifier: workspace:*
         version: link:../../packages/mercurius-codegen
@@ -68,7 +68,7 @@ importers:
         version: 0.25.10
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.2.0(graphql@16.11.0))
+        version: 9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.3.0(graphql@16.11.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -91,8 +91,8 @@ importers:
         specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.2.0
-        version: 16.2.0(graphql@16.11.0)
+        specifier: ^16.3.0
+        version: 16.3.0(graphql@16.11.0)
       mercurius-codegen:
         specifier: workspace:*
         version: link:../../packages/mercurius-codegen
@@ -117,7 +117,7 @@ importers:
         version: 0.25.10
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.2.0(graphql@16.11.0))
+        version: 9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.3.0(graphql@16.11.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -137,8 +137,8 @@ importers:
         specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.2.0
-        version: 16.2.0(graphql@16.11.0)
+        specifier: ^16.3.0
+        version: 16.3.0(graphql@16.11.0)
     devDependencies:
       '@types/node':
         specifier: ^22.18.6
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.11.0)
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.2.0(graphql@16.11.0))
+        version: 9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.3.0(graphql@16.11.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -256,8 +256,8 @@ importers:
         specifier: ^16.11.0
         version: 16.11.0
       mercurius:
-        specifier: ^16.2.0
-        version: 16.2.0(graphql@16.11.0)
+        specifier: ^16.3.0
+        version: 16.3.0(graphql@16.11.0)
       mercurius-codegen:
         specifier: workspace:*
         version: 'link:'
@@ -2368,8 +2368,8 @@ packages:
       '@mercuriusjs/gateway':
         optional: true
 
-  mercurius@16.2.0:
-    resolution: {integrity: sha512-I2+KRkC6MVbf44FN7hopWXj+OzS1nKLwN7brAkpd3MLTz9mQgWMYdnrk2ETVaG6yD3x9zIIzuRrCQcuWHyFL1w==}
+  mercurius@16.3.0:
+    resolution: {integrity: sha512-JQSCMc/TmvNfbOkGDwY5cSvkmn01ME/LiqvhzCGK5RtN4VfgcWUgXofh8uTkvdOmguOl35zwGfVVZvV/zPC+pA==}
     engines: {node: ^20.9.0 || >=22.0.0}
     peerDependencies:
       graphql: ^16.0.0
@@ -5775,19 +5775,19 @@ snapshots:
 
   meow@12.1.1: {}
 
-  mercurius-integration-testing@9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.2.0(graphql@16.11.0)):
+  mercurius-integration-testing@9.0.1(fastify@5.6.1)(graphql@16.11.0)(mercurius@16.3.0(graphql@16.11.0)):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.11.0)
       cookie: 1.0.2
       fastify: 5.6.1
       graphql: 16.11.0
-      mercurius: 16.2.0(graphql@16.11.0)
+      mercurius: 16.3.0(graphql@16.11.0)
       ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  mercurius@16.2.0(graphql@16.11.0):
+  mercurius@16.3.0(graphql@16.11.0):
     dependencies:
       '@fastify/error': 4.2.0
       '@fastify/static': 8.2.0
