@@ -42,8 +42,8 @@ importers:
         specifier: ^16.12.0
         version: 16.12.0
       mercurius:
-        specifier: ^16.5.0
-        version: 16.5.0(graphql@16.12.0)
+        specifier: ^16.6.0
+        version: 16.6.0(graphql@16.12.0)
       mercurius-codegen:
         specifier: workspace:*
         version: link:../../packages/mercurius-codegen
@@ -68,7 +68,7 @@ importers:
         version: 0.27.0
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.5.0(graphql@16.12.0))
+        version: 9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.6.0(graphql@16.12.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -91,8 +91,8 @@ importers:
         specifier: ^16.12.0
         version: 16.12.0
       mercurius:
-        specifier: ^16.5.0
-        version: 16.5.0(graphql@16.12.0)
+        specifier: ^16.6.0
+        version: 16.6.0(graphql@16.12.0)
       mercurius-codegen:
         specifier: workspace:*
         version: link:../../packages/mercurius-codegen
@@ -117,7 +117,7 @@ importers:
         version: 0.27.0
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.5.0(graphql@16.12.0))
+        version: 9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.6.0(graphql@16.12.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -137,8 +137,8 @@ importers:
         specifier: ^16.12.0
         version: 16.12.0
       mercurius:
-        specifier: ^16.5.0
-        version: 16.5.0(graphql@16.12.0)
+        specifier: ^16.6.0
+        version: 16.6.0(graphql@16.12.0)
     devDependencies:
       '@types/node':
         specifier: ^24.10.1
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.12.0)
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.5.0(graphql@16.12.0))
+        version: 9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.6.0(graphql@16.12.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -256,8 +256,8 @@ importers:
         specifier: ^16.12.0
         version: 16.12.0
       mercurius:
-        specifier: ^16.5.0
-        version: 16.5.0(graphql@16.12.0)
+        specifier: ^16.6.0
+        version: 16.6.0(graphql@16.12.0)
       mercurius-codegen:
         specifier: workspace:*
         version: 'link:'
@@ -1964,11 +1964,6 @@ packages:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
     hasBin: true
 
-  glob@11.0.2:
-    resolution: {integrity: sha512-YT7U7Vye+t5fZ/QMkBFrTJ7ZQxInIUjwyAjVj84CYXqgBdv30MFUPGnBR6sQaVq6Is15wYJUsnzTuWaGRBhBAQ==}
-    engines: {node: 20 || >=22}
-    hasBin: true
-
   glob@11.0.3:
     resolution: {integrity: sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==}
     engines: {node: 20 || >=22}
@@ -2435,8 +2430,8 @@ packages:
       '@mercuriusjs/gateway':
         optional: true
 
-  mercurius@16.5.0:
-    resolution: {integrity: sha512-l5SOEXYATLhlH1M3tEIF1lJdwcgxXdNCf7HsCHoZ9IFO4Sgs//lo/ymeRuXOnapQ6zo1yruecY7OsRVaSCC2LA==}
+  mercurius@16.6.0:
+    resolution: {integrity: sha512-X4IJ4kL1ySKhen7/PHzrAiu+96xIVzxQoGDENdab/SbS36Z9qbngyES6mXbDGGvVhL+4ehxBo22Yg4GMFc6Umw==}
     engines: {node: ^20.9.0 || >=22.0.0}
     peerDependencies:
       graphql: ^16.0.0
@@ -2487,10 +2482,6 @@ packages:
   mimic-function@5.0.1:
     resolution: {integrity: sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==}
     engines: {node: '>=18'}
-
-  minimatch@10.0.1:
-    resolution: {integrity: sha512-ethXTt3SGGR+95gudmqJ1eNhRO7eGEGIgYA9vnPatK4/etz2MEVDno5GMCibdMTuBMyElzIlgxMna3K94XDIDQ==}
-    engines: {node: 20 || >=22}
 
   minimatch@10.1.1:
     resolution: {integrity: sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==}
@@ -4195,7 +4186,7 @@ snapshots:
       content-disposition: 0.5.4
       fastify-plugin: 5.0.1
       fastq: 1.19.1
-      glob: 11.0.2
+      glob: 11.0.3
 
   '@fastify/websocket@11.1.0':
     dependencies:
@@ -5538,15 +5529,6 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
-  glob@11.0.2:
-    dependencies:
-      foreground-child: 3.3.1
-      jackspeak: 4.1.1
-      minimatch: 10.0.1
-      minipass: 7.1.2
-      package-json-from-dist: 1.0.1
-      path-scurry: 2.0.0
-
   glob@11.0.3:
     dependencies:
       foreground-child: 3.3.1
@@ -5979,19 +5961,19 @@ snapshots:
 
   meow@12.1.1: {}
 
-  mercurius-integration-testing@9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.5.0(graphql@16.12.0)):
+  mercurius-integration-testing@9.0.1(fastify@5.6.2)(graphql@16.12.0)(mercurius@16.6.0(graphql@16.12.0)):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.12.0)
       cookie: 1.0.2
       fastify: 5.6.2
       graphql: 16.12.0
-      mercurius: 16.5.0(graphql@16.12.0)
+      mercurius: 16.6.0(graphql@16.12.0)
       ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  mercurius@16.5.0(graphql@16.12.0):
+  mercurius@16.6.0(graphql@16.12.0):
     dependencies:
       '@fastify/error': 4.2.0
       '@fastify/static': 8.2.0
@@ -6044,10 +6026,6 @@ snapshots:
   mimic-fn@2.1.0: {}
 
   mimic-function@5.0.1: {}
-
-  minimatch@10.0.1:
-    dependencies:
-      brace-expansion: 2.0.1
 
   minimatch@10.1.1:
     dependencies:
