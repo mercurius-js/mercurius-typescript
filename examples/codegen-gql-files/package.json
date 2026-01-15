@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@types/node": "^24.10.8",
+    "@types/node": "^24.10.9",
     "@types/tap": "^18.0.0",
     "bob-tsm": "^1.1.2",
     "cross-env": "^10.1.0",
