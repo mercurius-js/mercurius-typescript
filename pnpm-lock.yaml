@@ -36,8 +36,8 @@ importers:
   examples/codegen:
     dependencies:
       fastify:
-        specifier: ^5.7.2
-        version: 5.7.2
+        specifier: ^5.7.4
+        version: 5.7.4
       graphql:
         specifier: ^16.12.0
         version: 16.12.0
@@ -68,7 +68,7 @@ importers:
         version: 0.27.2
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.7.2)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0))
+        version: 9.0.1(fastify@5.7.4)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -85,8 +85,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(graphql@16.12.0)
       fastify:
-        specifier: ^5.7.2
-        version: 5.7.2
+        specifier: ^5.7.4
+        version: 5.7.4
       graphql:
         specifier: ^16.12.0
         version: 16.12.0
@@ -117,7 +117,7 @@ importers:
         version: 0.27.2
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.7.2)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0))
+        version: 9.0.1(fastify@5.7.4)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -131,8 +131,8 @@ importers:
   examples/manual:
     dependencies:
       fastify:
-        specifier: ^5.7.2
-        version: 5.7.2
+        specifier: ^5.7.4
+        version: 5.7.4
       graphql:
         specifier: ^16.12.0
         version: 16.12.0
@@ -160,7 +160,7 @@ importers:
         version: 2.12.6(graphql@16.12.0)
       mercurius-integration-testing:
         specifier: ^9.0.1
-        version: 9.0.1(fastify@5.7.2)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0))
+        version: 9.0.1(fastify@5.7.4)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0))
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -250,8 +250,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       fastify:
-        specifier: ^5.7.2
-        version: 5.7.2
+        specifier: ^5.7.4
+        version: 5.7.4
       graphql:
         specifier: ^16.12.0
         version: 16.12.0
@@ -1773,8 +1773,8 @@ packages:
   fastify-plugin@5.0.1:
     resolution: {integrity: sha512-HCxs+YnRaWzCl+cWRYFnHmeRFyR5GVnJTAaCJQiYzQSDwK9MgJdyAsuL3nh0EWRCYMgQ5MeziymvmAhUHYHDUQ==}
 
-  fastify@5.7.2:
-    resolution: {integrity: sha512-dBJolW+hm6N/yJVf6J5E1BxOBNkuXNl405nrfeR8SpvGWG3aCC2XDHyiFBdow8Win1kj7sjawQc257JlYY6M/A==}
+  fastify@5.7.4:
+    resolution: {integrity: sha512-e6l5NsRdaEP8rdD8VR0ErJASeyaRbzXYpmkrpr2SuvuMq6Si3lvsaVy5C+7gLanEkvjpMDzBXWE5HPeb/hgTxA==}
 
   fastparallel@2.4.1:
     resolution: {integrity: sha512-qUmhxPgNHmvRjZKBFUNI0oZuuH9OlSIOXmJ98lhKPxMZZ7zS/Fi0wRHOihDSz0R1YiIOjxzOY4bq65YTcdBi2Q==}
@@ -5177,7 +5177,7 @@ snapshots:
 
   fastify-plugin@5.0.1: {}
 
-  fastify@5.7.2:
+  fastify@5.7.4:
     dependencies:
       '@fastify/ajv-compiler': 4.0.5
       '@fastify/error': 4.2.0
@@ -5780,11 +5780,11 @@ snapshots:
 
   meow@12.1.1: {}
 
-  mercurius-integration-testing@9.0.1(fastify@5.7.2)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0)):
+  mercurius-integration-testing@9.0.1(fastify@5.7.4)(graphql@16.12.0)(mercurius@16.7.0(graphql@16.12.0)):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.12.0)
       cookie: 1.0.2
-      fastify: 5.7.2
+      fastify: 5.7.4
       graphql: 16.12.0
       mercurius: 16.7.0(graphql@16.12.0)
       ws: 8.18.2
