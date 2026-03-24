@@ -58,7 +58,7 @@
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
     "fastify": "^5.8.4",
-    "graphql": "^16.13.1",
+    "graphql": "^16.13.2",
     "mercurius": "^16.8.0",
     "mercurius-codegen": "workspace:*",
     "nyc": "18.0.0",
